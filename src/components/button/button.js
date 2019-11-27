@@ -1,29 +1,82 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Button = ({ children, variant }) => (
-  <StyledButton variant={variant}>{children}</StyledButton>
+const Button = ({ children, variant, ...props }) => (
+  <StyledButton variant={variant} {...props}>
+    {children}
+  </StyledButton>
 );
 
 export default Button;
 
+const solidVariant = () => css`
+  background: #4262ff;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 40px;
+  border: none;
+  :hover {
+    background: #2b4df5;
+  }
+`;
+
+const outlineVariant = () => css`
+  background: transparent;
+  color: #4262ff;
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 40px;
+  border: 1px solid #4262ff;
+  :hover {
+    color: #fff;
+    background: #4262ff;
+  }
+`;
+
+const ghostVariant = () => css`
+  background: transparent;
+  color: #4262ff;
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 40px;
+  border: none;
+  :hover {
+    background: #e9eff5;
+  }
+`;
+
+const linkVariant = () => css`
+  background: transparent;
+  text-transform: uppercase;
+  border: none;
+  a {
+    color: #4262ff;
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 const handleVariant = variant => {
   switch (variant) {
-    case "primary":
-      return "blue";
-    case "danger":
-      return "red";
+    case "solid":
+      return solidVariant();
+    case "outline":
+      return outlineVariant();
+    case "ghost":
+      return ghostVariant();
+    case "link":
+      return linkVariant();
     default:
-      return "blue";
+      return solidVariant();
   }
 };
 
 const StyledButton = styled.button(
   ({ variant }) => css`
-    border: none;
-    padding: 0 12px;
-    height: 40px;
-    color: #fff;
-    background: ${handleVariant(variant)};
+    cursor: pointer;
+    ${handleVariant(variant)};
   `
 );
