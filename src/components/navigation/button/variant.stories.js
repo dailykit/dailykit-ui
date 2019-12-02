@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import Button from "./button";
 
 export default {
-  title: "Button"
+  title: "NAVIGATION | Button"
 };
 
 export const Variants = () => {
