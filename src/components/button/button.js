@@ -9,68 +9,88 @@ const Button = ({ children, variant, ...props }) => (
 
 export default Button;
 
-const solidVariant = () => css`
-  background: #4262ff;
-  color: #fff;
-  border-radius: 4px;
-  padding: 0 12px;
-  height: 40px;
-  border: none;
+const baseVariant = () => css`
+  background: #fff;
+  color: #00A7E1;
+  padding: 13px 28px;
+  border: 1px solid #00A7E1;
+  text-transform: uppercase;
   :hover {
-    background: #2b4df5;
-  }
-`;
-
-const outlineVariant = () => css`
-  background: transparent;
-  color: #4262ff;
-  border-radius: 4px;
-  padding: 0 12px;
-  height: 40px;
-  border: 1px solid #4262ff;
-  :hover {
+    background: #00A7E1;
     color: #fff;
-    background: #4262ff;
   }
 `;
 
-const ghostVariant = () => css`
-  background: transparent;
-  color: #4262ff;
-  border-radius: 4px;
-  padding: 0 12px;
-  height: 40px;
+const primaryActionVariant = () => css`
+  background: #00A7E1;
+  color: #fff;
+  padding: 13px 28px;
+  padding-left: 24px;
+  border: 1px solid #00A7E1;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  ::before {
+    content: '+';
+    margin-right: 8px;
+  }
+`
+
+const secondaryActionVariant = () => css`
+  background: #fff;
+  color: #00A7E1;
+  padding: 13px 28px;
+  padding-left: 24px;
+  border: 1px solid #00A7E1;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  ::before {
+    content: '+';
+    margin-right: 8px;
+  }
+`
+
+const ghostActionVariant = () => css`
+  background: #fff;
+  color: #00A7E1;
   border: none;
-  :hover {
-    background: #e9eff5;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  ::before {
+    content: '+';
+    margin-right: 8px;
   }
 `;
 
 const linkVariant = () => css`
-  background: transparent;
-  text-transform: uppercase;
-  border: none;
-  a {
-    color: #4262ff;
-    text-decoration: none;
-    :hover {
-      text-decoration: underline;
-    }
+    color: #00A7E1;
+    background: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    border: none;
   }
 `;
 
 const handleVariant = variant => {
   switch (variant) {
-    case "solid":
-      return solidVariant();
-    case "outline":
-      return outlineVariant();
-    case "ghost":
-      return ghostVariant();
+    case "base":
+      return baseVariant();
+    case "primary-action":
+      return primaryActionVariant();
+    case "secondary-action":
+      return secondaryActionVariant();
+    case "ghost-action":
+      return ghostActionVariant();
     case "link":
       return linkVariant();
     default:
-      return solidVariant();
+      return baseVariant();
   }
 };
 

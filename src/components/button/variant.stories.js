@@ -10,17 +10,20 @@ export default {
 export const Variants = () => {
   return (
     <ButtonWrapper>
-      <Button variant="solid" onClick={action("solid clicked")}>
-        Solid
+      <Button variant="base" onClick={action("base clicked")}>
+        Base
       </Button>
-      <Button variant="outline" onClick={action("outline clicked")}>
-        Outline
+      <Button variant="primary-action" onClick={action("primary clicked")}>
+        Primary Action
       </Button>
-      <Button variant="ghost" onClick={action("ghost clicked")}>
-        Ghost
+      <Button variant="secondary-action" onClick={action("secondary clicked")}>
+        Secondary Action
+      </Button>
+      <Button variant="ghost-action" onClick={action("ghost clicked")}>
+        Add field
       </Button>
       <Button variant="link" onClick={action("link clicked")}>
-        <a href="#">Link</a>
+        Field Action or Link
       </Button>
     </ButtonWrapper>
   );
