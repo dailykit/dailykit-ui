@@ -1,29 +1,33 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { TextButton, IconButton, ComboButton } from '@dailykit/ui'
+import { TextButton, IconButton, ComboButton, ButtonGroup } from '@dailykit/ui'
 
-import { PlusIcon, SearchIcon } from '../../assets/icons'
+import { PlusIcon, SearchIcon, ClearIcon } from '../../assets/icons'
 
 storiesOf('Button', module)
    .add('Text Button', () => (
-      <div>
+      <ButtonGroup align='left'>
          <TextButton type='solid'>Solid Button</TextButton>
          <TextButton type='outline'>Outline Button</TextButton>
-      </div>
+         <TextButton type='ghost'>Ghost Button</TextButton>
+      </ButtonGroup>
    ))
    .add('Icon Button', () => (
-      <div>
+      <ButtonGroup align='left'>
          <IconButton type='solid'>
             <PlusIcon />
          </IconButton>
          <IconButton type='outline'>
             <SearchIcon />
          </IconButton>
-      </div>
+         <IconButton type='ghost'>
+            <SearchIcon />
+         </IconButton>
+      </ButtonGroup>
    ))
    .add('Combo Button', () => (
-      <div>
+      <ButtonGroup align='left'>
          <ComboButton type='solid'>
             <SearchIcon /> Search
          </ComboButton>
@@ -31,5 +35,9 @@ storiesOf('Button', module)
             Add Ingredient
             <PlusIcon />
          </ComboButton>
-      </div>
+         <ComboButton type='ghost'>
+            <ClearIcon />
+            Clear Filters
+         </ComboButton>
+      </ButtonGroup>
    ))
