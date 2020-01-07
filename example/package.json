@@ -11,7 +11,7 @@
   },
   "scripts": {
     "story": "start-storybook",
-    "build-story": "build-storybook -c .storybook -o build"
+    "build-story": "build-storybook -c .storybook -o build --quiet"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
