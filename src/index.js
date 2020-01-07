@@ -3,6 +3,13 @@ import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
 import { Text, Password, TextArea } from './components/Form'
 import { SingleSelect, MultiSelect } from './components/Select'
+import {
+   TPanel,
+   Tunnel,
+   TPanelBody,
+   TPanelFooter,
+   TPanelHead
+} from './components/TunnelVision'
 
 export {
    TextButton,
@@ -14,5 +21,10 @@ export {
    Password,
    TextArea,
    SingleSelect,
-   MultiSelect
+   MultiSelect,
+   TPanel,
+   Tunnel,
+   TPanelBody,
+   TPanelFooter,
+   TPanelHead
 }
