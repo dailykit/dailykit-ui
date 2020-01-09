@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { SingleSelect, MultiSelect } from '@dailykit/ui'
+import { ComboBox } from '@dailykit/ui'
 
 export default {
-   title: 'Select'
+   title: 'ComboBox'
 }
 
 export const Single = () => {
@@ -18,7 +18,8 @@ export const Single = () => {
    const selectedOption = option => {}
    return (
       <div>
-         <SingleSelect
+         <ComboBox
+            type='single'
             options={options}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
@@ -39,7 +40,8 @@ export const Multi = () => {
    const selectedOption = option => {}
    return (
       <div>
-         <MultiSelect
+         <ComboBox
+            type='multi'
             options={options}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."

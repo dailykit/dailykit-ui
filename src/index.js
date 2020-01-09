@@ -2,7 +2,7 @@ import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
 import { Text, Password, TextArea } from './components/Form'
-import { SingleSelect, MultiSelect } from './components/Select'
+import ComboBox from './components/ComboBox'
 import {
    TPanel,
    Tunnel,
@@ -20,8 +20,7 @@ export {
    Text,
    Password,
    TextArea,
-   SingleSelect,
-   MultiSelect,
+   ComboBox,
    TPanel,
    Tunnel,
    TPanelBody,
