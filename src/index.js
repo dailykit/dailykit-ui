@@ -3,6 +3,7 @@ import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
 import { Text, Password, TextArea } from './components/Form'
 import ComboBox from './components/ComboBox'
+import Select from './components/Select'
 import {
    TPanel,
    Tunnel,
@@ -25,5 +26,6 @@ export {
    Tunnel,
    TPanelBody,
    TPanelFooter,
-   TPanelHead
+   TPanelHead,
+   Select
 }
