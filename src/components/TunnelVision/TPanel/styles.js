@@ -10,7 +10,7 @@ export const Panel = styled.div(
     position: absolute;
     border-left: 1px solid #000;
     background: rgba(0, 0, 0, 0.2);
-    div {
+    > div {
       height: inherit;
       background: #fff;
       width: 50%;
