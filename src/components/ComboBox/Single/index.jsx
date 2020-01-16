@@ -31,8 +31,8 @@ const SingleSelect = ({ options, placeholder, selectedOption }) => {
             <div onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
                {selected !== null ? (
                   <>
-                     <span data-type='text' title={options[selected].value}>
-                        {options[selected].value}
+                     <span data-type='text' title={options[selected].title}>
+                        {options[selected].title}
                      </span>
                      <span data-type='icon' onClick={() => setSelected(null)}>
                         <ClearIcon />
@@ -61,12 +61,12 @@ const SingleSelect = ({ options, placeholder, selectedOption }) => {
             <StyledOptions>
                {options
                   .filter(option =>
-                     option.value.toLowerCase().includes(keyword)
+                     option.title.toLowerCase().includes(keyword)
                   )
                   .map((option, index) => (
                      <StyledOption
                         key={option.id}
-                        title={option.value}
+                        title={option.title}
                         isSelected={selected === index}
                         onClick={() => {
                            setKeyword('')
@@ -75,7 +75,7 @@ const SingleSelect = ({ options, placeholder, selectedOption }) => {
                            setIsOptionsVisible(!isOptionsVisible)
                         }}
                      >
-                        <span>{option.value}</span>
+                        <span>{option.title}</span>
                         {option.description && <p>{option.description}</p>}
                      </StyledOption>
                   ))}
