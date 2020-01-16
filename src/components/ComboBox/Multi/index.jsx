@@ -126,6 +126,7 @@ const MultiSelect = ({ options, placeholder, selectedOption }) => {
                         <div>
                            <input
                               type='checkbox'
+                              readOnly
                               checked={optionExists(selectedOptions, option.id)}
                            />
                            <span>{option.title}</span>
