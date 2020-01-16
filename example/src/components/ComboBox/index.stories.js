@@ -15,12 +15,14 @@ export const Single = () => {
       { id: 5, title: 'Option5', description: 'This is option 5' },
       { id: 6, title: 'Option6', description: 'This is option 6' }
    ])
-   const selectedOption = option => {}
+   const selectedOption = option => console.log(option)
+   const searchedOption = option => console.log(option)
    return (
       <div>
          <ComboBox
             type='single'
             options={options}
+            searchedOption={searchedOption}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
          />
@@ -37,12 +39,14 @@ export const Multi = () => {
       { id: 5, title: 'Option5', description: 'This is option 5' },
       { id: 6, title: 'Option6', description: 'This is option 6' }
    ])
-   const selectedOption = option => {}
+   const selectedOption = option => console.log(option)
+   const searchedOption = option => console.log(option)
    return (
       <div>
          <ComboBox
             type='multi'
             options={options}
+            searchedOption={searchedOption}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
          />

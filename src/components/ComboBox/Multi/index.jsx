@@ -26,7 +26,12 @@ const optionExists = (options, item) => {
    return false
 }
 
-const MultiSelect = ({ options, placeholder, selectedOption }) => {
+const MultiSelect = ({
+   options,
+   placeholder,
+   selectedOption,
+   searchedOption
+}) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
    const [selectedOptions, setSelectedOptions] = React.useState([])
@@ -71,10 +76,12 @@ const MultiSelect = ({ options, placeholder, selectedOption }) => {
                </span>
                <input
                   type='text'
-                  placeholder={placeholder}
                   value={keyword}
-                  onChange={e => setKeyword(e.target.value.toLowerCase())}
-                  onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+                  placeholder={placeholder}
+                  onChange={e =>
+                     searchedOption(e.target.value) ||
+                     setKeyword(e.target.value.toLowerCase())
+                  }
                />
             </div>
             <span onClick={() => setIsOptionsVisible(!isOptionsVisible)}>

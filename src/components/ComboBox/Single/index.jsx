@@ -15,7 +15,12 @@ import {
    ArrowUpIcon
 } from '../../../assets/icons'
 
-const SingleSelect = ({ options, placeholder, selectedOption }) => {
+const SingleSelect = ({
+   options,
+   placeholder,
+   selectedOption,
+   searchedOption
+}) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
    const [selected, setSelected] = React.useState(null)
@@ -45,10 +50,12 @@ const SingleSelect = ({ options, placeholder, selectedOption }) => {
                      </span>
                      <input
                         type='text'
-                        placeholder={placeholder}
                         value={keyword}
-                        onChange={e => setKeyword(e.target.value.toLowerCase())}
-                        onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+                        placeholder={placeholder}
+                        onChange={e =>
+                           searchedOption(e.target.value) ||
+                           setKeyword(e.target.value.toLowerCase())
+                        }
                      />
                   </>
                )}
