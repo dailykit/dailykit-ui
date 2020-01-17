@@ -59,7 +59,6 @@ export const TextField = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <div style={{ margin: '24px 0 0 32px' }}>
          <Text
             label='Username'
             name='username'
@@ -67,7 +66,6 @@ export const TextField = () => {
             hasError={state.username.error}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
-      </div>
    )
 }
 
@@ -78,7 +76,6 @@ export const PasswordField = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <div style={{ margin: '24px 0 0 32px' }}>
          <Password
             label='Password'
             name='password'
@@ -86,7 +83,6 @@ export const PasswordField = () => {
             hasError={state.password.error}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
-      </div>
    )
 }
 
@@ -97,7 +93,6 @@ export const TextAreaField = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <div style={{ margin: '24px 0 0 32px' }}>
          <TextArea
             label='Text Area'
             name='textarea'
@@ -106,6 +101,5 @@ export const TextAreaField = () => {
             hasError={state.textarea.error}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
-      </div>
    )
 }
