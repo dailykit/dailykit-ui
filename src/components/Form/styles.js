@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Field = styled.div(
   ({ hasValue }) => css`
-    width: 280px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
