@@ -53,7 +53,7 @@ export const TunnelVision = () => {
       setPanels([...temp])
    }
    return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', transform: 'translate(16px,-16px)' }}>
          <Tunnel>
             <TPanel layer={1} visibility={panels[0]}>
                <TPanelHead>
@@ -70,7 +70,7 @@ export const TunnelVision = () => {
                </TPanelFooter>
             </TPanel>
 
-            <TPanel layer={2} visibility={panels[1]}>
+            <TPanel layer={2} visibility={panels[1]} type='wide'>
                <TPanelHead>
                   <h3>Panel 2</h3>
                   <TextButton type='outline' onClick={() => closePanel(1)}>
@@ -100,7 +100,7 @@ export const TunnelVision = () => {
                </TPanelFooter>
             </TPanel>
 
-            <TPanel layer={4} visibility={panels[3]}>
+            <TPanel layer={4} visibility={panels[3]} type='wide'>
                <TPanelHead>
                   <h3>Panel 4</h3>
                   <TextButton type='outline' onClick={() => closePanel(3)}>
