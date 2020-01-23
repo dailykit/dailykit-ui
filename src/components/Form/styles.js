@@ -51,7 +51,7 @@ export const RadioButton = styled.span`
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    width: 70px;
+    min-width: 70px;
     color: ${ props => props.active ? '#FFFFFF' : ' #888D9D' };
     background : ${ props => props.active ? 'linear-gradient(180deg, #28C1F7 -4.17%, #00A7E1 100%)' : '#F3F3F3' };
 
