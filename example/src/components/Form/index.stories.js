@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, Password, TextArea } from '@dailykit/ui'
+import { Text, Password, TextArea, RadioGroup } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -101,5 +101,17 @@ export const TextAreaField = () => {
             hasError={state.textarea.error}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
+   )
+}
+
+export const RadioGroupField = () => {
+   const [options] = React.useState([
+      { id : 1, title : 'Option 1' },
+      { id : 2, title : 'Option 2' },
+      { id : 3, title : 'Option 3' }
+   ])
+
+   return (
+      <RadioGroup options={ options } onChange={ (option) => console.log(option) } />
    )
 }
