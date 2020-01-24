@@ -1,7 +1,7 @@
 import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
-import { Text, Password, TextArea, RadioGroup } from './components/Form'
+import { Text, Password, TextArea, RadioGroup, TextAndSelect } from './components/Form'
 import ComboBox from './components/ComboBox'
 import Select from './components/Select'
 import {
@@ -19,6 +19,7 @@ export {
    ButtonGroup,
    Toggle,
    Text,
+   TextAndSelect,
    Password,
    TextArea,
    RadioGroup,

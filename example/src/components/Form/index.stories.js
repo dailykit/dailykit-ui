@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, Password, TextArea, RadioGroup } from '@dailykit/ui'
+import { Text, Password, TextArea, RadioGroup, TextAndSelect } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -113,5 +113,18 @@ export const RadioGroupField = () => {
 
    return (
       <RadioGroup options={ options } onChange={ (option) => console.log(option) } />
+   )
+}
+
+export const TextAndSelectField = () => {
+
+   const [options] = React.useState([
+      { id : 1, title : 'gms' },
+      { id : 2, title : 'kgs' },
+      { id : 3, title : 'lbs' }
+   ])
+
+   return (
+      <TextAndSelect options={ options } label="Quantity" name="quantity" value="" onChange={ (val) => console.log(val) }/>
    )
 }
