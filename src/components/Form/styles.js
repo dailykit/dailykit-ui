@@ -63,3 +63,40 @@ export const RadioButton = styled.span`
       cursor: pointer;
     }
 `
+
+export const DropDown = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    > div:nth-child(1){
+      display: flex;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: #555B6E;
+      padding: 10px;
+      min-width: 70px;
+
+      span:nth-child(1){
+        margin-right: 10px;
+      }
+    }
+
+    div:nth-child(2) > div{
+      padding: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+`
+
+export const TextAndSelectStyle = styled.div`
+    display: flex;
+    align-items: baseline;
+
+    div:nth-child(1) {
+      margin-right: 10px;
+    }
+`
