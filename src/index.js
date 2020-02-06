@@ -2,6 +2,7 @@ import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
 import { TagGroup, Tag } from './components/Tags'
+import { AvatarGroup, Avatar } from './components/Avatar'
 import {
    Text,
    Password,
@@ -38,5 +39,7 @@ export {
    TPanelHead,
    Select,
    TagGroup,
-   Tag
+   Tag,
+   AvatarGroup,
+   Avatar
 }
