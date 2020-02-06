@@ -4,6 +4,13 @@ import Toggle from './components/Toggle'
 import { TagGroup, Tag } from './components/Tags'
 import { AvatarGroup, Avatar } from './components/Avatar'
 import {
+   Table,
+   TableHead,
+   TableBody,
+   TableRow,
+   TableCell
+} from './components/Table'
+import {
    Text,
    Password,
    TextArea,
@@ -41,5 +48,10 @@ export {
    TagGroup,
    Tag,
    AvatarGroup,
-   Avatar
+   Avatar,
+   Table,
+   TableHead,
+   TableBody,
+   TableRow,
+   TableCell
 }
