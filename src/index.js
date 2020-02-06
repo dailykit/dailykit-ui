@@ -1,7 +1,14 @@
 import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
-import { Text, Password, TextArea, RadioGroup, TextAndSelect } from './components/Form'
+import { TagGroup, Tag } from './components/Tags'
+import {
+   Text,
+   Password,
+   TextArea,
+   RadioGroup,
+   TextAndSelect
+} from './components/Form'
 import ComboBox from './components/ComboBox'
 import Select from './components/Select'
 import {
@@ -29,5 +36,7 @@ export {
    TPanelBody,
    TPanelFooter,
    TPanelHead,
-   Select
+   Select,
+   TagGroup,
+   Tag
 }
