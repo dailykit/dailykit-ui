@@ -1,6 +1,7 @@
 import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
+import Checkbox from './components/Checkbox'
 import { TagGroup, Tag } from './components/Tags'
 import { AvatarGroup, Avatar } from './components/Avatar'
 import {
@@ -33,6 +34,7 @@ export {
    ComboButton,
    ButtonGroup,
    Toggle,
+   Checkbox,
    Text,
    TextAndSelect,
    Password,
