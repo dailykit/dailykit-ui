@@ -4,7 +4,7 @@ import ArrowDownIcon from './ArrowDownIcon'
 import ArrowUpIcon from './ArrowUpIcon'
 import RemoveIcon from './RemoveIcon'
 import PlusIcon from './PlusIcon'
-import Tick from './Tick'
+import TickIcon from './TickIcon'
 
 export {
    ClearIcon,
@@ -13,5 +13,5 @@ export {
    ArrowUpIcon,
    RemoveIcon,
    PlusIcon,
-   Tick
+   TickIcon
 }

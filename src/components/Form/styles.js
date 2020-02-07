@@ -7,7 +7,6 @@ export const Field = styled.div(
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    margin-bottom: 16px;
     label {
       position: absolute;
       color: #888d9d;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StyledCheckbox } from './styles';
-import { Tick } from '../../assets/icons';
+import { TickIcon } from '../../assets/icons';
 
 const Checkbox = ({ checked, onChange }) => {
     
@@ -14,7 +14,7 @@ const Checkbox = ({ checked, onChange }) => {
 
     return (
         <StyledCheckbox checked={ value } onClick={ clicked }>
-            <Tick hidden={ !value }/>
+            <TickIcon hidden={ !value }/>
         </StyledCheckbox>
     );
 }
