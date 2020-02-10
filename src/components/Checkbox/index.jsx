@@ -5,15 +5,19 @@ import { TickIcon } from '../../assets/icons';
 
 const Checkbox = ({ checked, onChange }) => {
     
-    const [value, setValue] = React.useState(checked); 
-    
-    const clicked = () => {
+    const [value, setValue] = React.useState(checked);
+
+    const changeValue = (e) => {
+        e.stopPropagation();
         setValue(!value);
-        onChange(value);
     }
 
+    React.useEffect(() => {
+        onChange(value);
+    }, [value]);
+
     return (
-        <StyledCheckbox checked={ value } onClick={ clicked }>
+        <StyledCheckbox checked={ value } onClick={ changeValue }>
             <TickIcon hidden={ !value }/>
         </StyledCheckbox>
     );
