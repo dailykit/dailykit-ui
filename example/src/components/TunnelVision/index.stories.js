@@ -13,7 +13,6 @@ export const TunnelVision = () => {
          <TextButton type='solid' onClick={() => openTunnel(1)}>
             Open Tunnel 1
          </TextButton>
-
          <Tunnels tunnels={tunnels}>
             <Tunnel layer={1}>
                <h2>Tunnel 1</h2>

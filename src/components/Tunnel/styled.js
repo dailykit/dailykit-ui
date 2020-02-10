@@ -7,7 +7,7 @@ export const StyledTunnel = styled.div`
    bottom: 0;
    width: 100vw;
    height: 100vh;
-   position: absolute;
+   position: fixed;
    background: rgba(0, 0, 0, 0.1);
 `
 
