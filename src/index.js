@@ -20,13 +20,7 @@ import {
 } from './components/Form'
 import ComboBox from './components/ComboBox'
 import Select from './components/Select'
-import {
-   TPanel,
-   Tunnel,
-   TPanelBody,
-   TPanelFooter,
-   TPanelHead
-} from './components/TunnelVision'
+import { Tunnels, Tunnel, useTunnel } from './components/Tunnel'
 
 export {
    TextButton,
@@ -41,11 +35,9 @@ export {
    TextArea,
    RadioGroup,
    ComboBox,
-   TPanel,
+   Tunnels,
    Tunnel,
-   TPanelBody,
-   TPanelFooter,
-   TPanelHead,
+   useTunnel,
    Select,
    TagGroup,
    Tag,

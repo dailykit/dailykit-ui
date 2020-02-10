@@ -1,119 +1,56 @@
 import React from 'react'
 
-import {
-   Tunnel,
-   TPanel,
-   TPanelBody,
-   TPanelFooter,
-   TPanelHead,
-   TextButton
-} from '@dailykit/ui'
+import { Tunnels, Tunnel, useTunnel, TextButton } from '@dailykit/ui'
 
 export default {
-   title: 'Tunnel Vision'
+   title: 'Tunnel'
 }
 
 export const TunnelVision = () => {
-   const [panels, setPanels] = React.useState([
-      'hidden',
-      'hidden',
-      'hidden',
-      'hidden'
-   ])
-
-   const togglePanel = panel => {
-      const temp = panels
-      if (panel || panel === 0) {
-         temp[panel] = 'full'
-      }
-      if (panel - 1 || panel - 1 === 0) {
-         temp[panel - 1] = 'partial'
-      }
-      let len = panel - 1
-      if (len > 0) {
-         while (len--) {
-            temp[len] = 'hidden'
-         }
-      }
-      setPanels([...temp])
-   }
-
-   const closePanel = panel => {
-      const temp = panels
-      temp[panel] = 'hidden'
-      if (panel < temp.length - 1 && panel + 1) {
-         temp[panel + 1] = 'hidden'
-      }
-      if (panel - 1 || panel - 1 === 0) {
-         temp[panel - 1] = 'full'
-      }
-      if (panel - 2 || panel - 2 === 0) {
-         temp[panel - 2] = 'partial'
-      }
-      setPanels([...temp])
-   }
+   const [tunnels, openTunnel, closeTunnel] = useTunnel(4)
    return (
-      <div style={{ position: 'relative', transform: 'translate(16px,-16px)' }}>
-         <Tunnel>
-            <TPanel layer={1} visibility={panels[0]}>
-               <TPanelHead>
-                  <h3>Panel 1</h3>
-                  <TextButton type='outline' onClick={() => closePanel(0)}>
-                     Close
-                  </TextButton>
-               </TPanelHead>
-               <TPanelBody>Body</TPanelBody>
-               <TPanelFooter>
-                  <TextButton type='solid' onClick={() => togglePanel(1)}>
-                     Show Panel 2
-                  </TextButton>
-               </TPanelFooter>
-            </TPanel>
-
-            <TPanel layer={2} visibility={panels[1]} type='wide'>
-               <TPanelHead>
-                  <h3>Panel 2</h3>
-                  <TextButton type='outline' onClick={() => closePanel(1)}>
-                     Close
-                  </TextButton>
-               </TPanelHead>
-               <TPanelBody>Body</TPanelBody>
-               <TPanelFooter>
-                  <TextButton type='solid' onClick={() => togglePanel(2)}>
-                     Show Panel 3
-                  </TextButton>
-               </TPanelFooter>
-            </TPanel>
-
-            <TPanel layer={3} visibility={panels[2]}>
-               <TPanelHead>
-                  <h3>Panel 3</h3>
-                  <TextButton type='outline' onClick={() => closePanel(2)}>
-                     Close
-                  </TextButton>
-               </TPanelHead>
-               <TPanelBody>Body</TPanelBody>
-               <TPanelFooter>
-                  <TextButton type='solid' onClick={() => togglePanel(3)}>
-                     Show Panel 4
-                  </TextButton>
-               </TPanelFooter>
-            </TPanel>
-
-            <TPanel layer={4} visibility={panels[3]} type='wide'>
-               <TPanelHead>
-                  <h3>Panel 4</h3>
-                  <TextButton type='outline' onClick={() => closePanel(3)}>
-                     Close
-                  </TextButton>
-               </TPanelHead>
-               <TPanelBody>Body</TPanelBody>
-               <TPanelFooter />
-            </TPanel>
-         </Tunnel>
-         <TextButton type='solid' onClick={() => togglePanel(0)}>
-            Show Panel 1
+      <>
+         <TextButton type='solid' onClick={() => openTunnel(1)}>
+            Open Tunnel 1
          </TextButton>
-      </div>
+         <Tunnels tunnels={tunnels}>
+            <Tunnel layer={1}>
+               <h2>Tunnel 1</h2>
+               <TextButton type='solid' onClick={() => openTunnel(2)}>
+                  Open Tunnel 2
+               </TextButton>
+               <TextButton type='outline' onClick={() => closeTunnel(1)}>
+                  Close Tunnel 1
+               </TextButton>
+            </Tunnel>
+
+            <Tunnel layer={2} size='lg'>
+               <h2>Tunnel 2</h2>
+               <TextButton type='solid' onClick={() => openTunnel(3)}>
+                  Open Tunnel 3
+               </TextButton>
+               <TextButton type='outline' onClick={() => closeTunnel(2)}>
+                  Close Tunnel 2
+               </TextButton>
+            </Tunnel>
+
+            <Tunnel layer={3}>
+               <h2>Tunnel 3</h2>
+               <TextButton type='solid' onClick={() => openTunnel(4)}>
+                  Open Tunnel 4
+               </TextButton>
+               <TextButton type='outline' onClick={() => closeTunnel(3)}>
+                  Close Tunnel 3
+               </TextButton>
+            </Tunnel>
+
+            <Tunnel layer={4}>
+               <h2>Tunnel 4</h2>
+               <TextButton type='outline' onClick={() => closeTunnel(4)}>
+                  Close Tunnel 4
+               </TextButton>
+            </Tunnel>
+         </Tunnels>
+      </>
    )
 }
