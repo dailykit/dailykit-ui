@@ -24,16 +24,22 @@ const useTunnel = count => {
 const Tunnels = ({ tunnels, children }) => {
    return (
       <div>
-         {children.map(
-            (tunnel, index) =>
-               tunnels[index] === 'visible' && {
-                  ...tunnel,
-                  props: {
-                     ...tunnel.props,
-                     ...(tunnels[index + 1] === 'visible' && { partial: true })
+         {Array.isArray(children) &&
+            children.map(
+               (tunnel, index) =>
+                  tunnels[index] === 'visible' && {
+                     ...tunnel,
+                     props: {
+                        ...tunnel.props,
+                        ...(tunnels[index + 1] === 'visible' && {
+                           partial: true
+                        })
+                     }
                   }
-               }
-         )}
+            )}
+         {children.hasOwnProperty('props') &&
+            tunnels[0] === 'visible' &&
+            children}
       </div>
    )
 }
