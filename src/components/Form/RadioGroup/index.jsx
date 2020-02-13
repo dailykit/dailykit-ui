@@ -2,9 +2,9 @@ import React from 'react';
 
 import { RadioButton } from '../styles';
 
-const RadioGroup = ({ options, onChange }) => {
+const RadioGroup = ({ options, active, onChange }) => {
 
-    const [selected, setSelected] = React.useState(undefined);
+    const [selected, setSelected] = React.useState(active);
 
     const select = (option) => {
         setSelected(option.id);
