@@ -112,7 +112,7 @@ export const RadioGroupField = () => {
    ])
 
    return (
-      <RadioGroup options={ options } onChange={ (option) => console.log(option) } />
+      <RadioGroup options={ options } active={ 2 } onChange={ (option) => console.log(option) } />
    )
 }
 
