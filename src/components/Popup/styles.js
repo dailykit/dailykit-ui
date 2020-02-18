@@ -1,23 +1,54 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    display: ${ props => props.show ? 'flex' : 'none' };
-    transition: 0.2s ease;
-    justify-content: center;
-    align-items: center;
-    background: rgba(217, 233, 241, 0.38);
+const whatColor = type => {
+    switch (type) {
+      case "primary":
+        return "#28C1F7";
+      case "danger":
+        return "#FF5A52";
+      default:
+        return "#28C1F7";
+    }
+};
+  
+export const Wrapper = styled.div`
+    z-index: 10;
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
-`
-
+    bottom: 0;
+    display: ${props => (props.show ? "flex" : "none")};
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+`;
+  
 export const StyledPopup = styled.div`
     background: #fff;
-    min-height: 150px;
-    min-width: 350px;
-    padding: 28px;
-    1px solid #FF8484;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
-` 
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 25px 28px 28px 28px;
+    max-width: calc(100vw - 40px);
+    text-align: left;
+`;
+  
+export const Text = styled.p`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 16px;
+    color: ${props => whatColor(props.type)};
+`;
+  
+export  const ConfirmText = styled.p`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 16px;
+    color: #555b6e;
+`;
+  
+export const Actions = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;

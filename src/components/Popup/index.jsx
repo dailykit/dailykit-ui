@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { Container, StyledPopup } from './styles';
+import { Wrapper, StyledPopup, Text, ConfirmText, Actions } from './styles';
 
 const Popup = ({ show, children }) => {
-
     return (
-        <Container show={ show }>
-            <StyledPopup>
-                { children }
-            </StyledPopup>
-        </Container>
-    )
-}
+      <Wrapper show={show}>
+        <StyledPopup>{children}</StyledPopup>
+      </Wrapper>
+    );
+};
+  
+Popup.Text = ({ type, children }) => <Text type={type}>{children}</Text>;
 
-export default Popup; 
+Popup.ConfirmText = ({ children }) => <ConfirmText>{children}</ConfirmText>;
+
+Popup.Actions = ({ children }) => <Actions>{children}</Actions>;
+
+export default Popup;
