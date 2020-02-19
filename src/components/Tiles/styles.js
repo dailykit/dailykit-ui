@@ -67,21 +67,21 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
         switch (size) {
             case "lg":
             return css`
-                padding: 36px 34px 34px 34px;
+                padding: 36px;
                 font-weight: 500;
                 line-height: 14px;
                 > div {
-                margin-top: 16px;
+                    margin-top: 16px;
                 }
             `;
             case "sm":
             return css`
                 max-width: 350px;
-                padding: 18px 16px 16px 16px;
+                padding: 16px;
                 font-weight: 500;
                 line-height: 19px;
                 > div {
-                margin-top: 14px;
+                    margin-top: 12px;
                 }
             `;
             default:
@@ -91,9 +91,10 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
         return css`
             display: flex;
             justify-content: center;
-            padding: 21px;
+            align-items: center;
+            padding: 20px;
             > div {
-            margin-left: 11px;
+                margin-left: 11px;
             }
         `;
         default:
