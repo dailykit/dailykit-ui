@@ -23,6 +23,7 @@ import ComboBox from './components/ComboBox'
 import Select from './components/Select'
 import { Tunnels, Tunnel, useTunnel } from './components/Tunnel'
 import Card from './components/Card';
+import { DashboardTile } from './components/Tiles';
 
 export {
    TextButton,
@@ -51,5 +52,6 @@ export {
    TableBody,
    TableRow,
    TableCell,
-   Card
+   Card,
+   DashboardTile
 }
