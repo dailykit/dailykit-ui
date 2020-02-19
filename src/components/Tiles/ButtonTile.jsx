@@ -5,7 +5,7 @@ import { StyledButtonTile } from './styles';
 
 const ButtonTile = ({ type, size, text, noIcon }) => (
   <StyledButtonTile type={type} size={size}>
-    {!noIcon && <PlusIcon size={type === "primary" ? 28 : 16} color="#555b6e"/>}
+    {!noIcon && <PlusIcon size={type === "primary" ? 32 : 20} color="#555b6e"/>}
     <div> {text} </div>
   </StyledButtonTile>
 );
