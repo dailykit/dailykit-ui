@@ -47,6 +47,11 @@ export const StyledDashboardTile = styled.div`
             font-size: 14px;
             line-height: 16px;
             color: #00a7e1;
+
+            svg {
+                transform: translateY(1px);
+                margin-left: 3px;
+            }
         }
     }
 
