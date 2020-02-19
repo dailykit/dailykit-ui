@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledDashboardTile = styled.div`
     background: #ffffff;
@@ -54,4 +54,57 @@ export const StyledDashboardTile = styled.div`
         background: #efefef;
         cursor: pointer;
     }
+`;
+
+const extendedButtonTileStyle = (type = "primary", size = "sm") => {
+    switch (type) {
+        case "primary":
+        switch (size) {
+            case "lg":
+            return css`
+                padding: 36px 34px 34px 34px;
+                font-weight: 500;
+                line-height: 14px;
+                > div {
+                margin-top: 16px;
+                }
+            `;
+            case "sm":
+            return css`
+                max-width: 350px;
+                padding: 18px 16px 16px 16px;
+                font-weight: 500;
+                line-height: 19px;
+                > div {
+                margin-top: 14px;
+                }
+            `;
+            default:
+            return extendedButtonTileStyle();
+        }
+        case "secondary":
+        return css`
+            display: flex;
+            justify-content: center;
+            padding: 21px;
+            > div {
+            margin-left: 11px;
+            }
+        `;
+        default:
+            extendedButtonTileStyle();
+    }
+};
+
+export const StyledButtonTile = styled.button`
+    margin: 20px 0;
+    background: #ffffff;
+    border: 1px solid #f3f3f3;
+    box-sizing: border-box;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.13);
+    color: #555b6e;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    ${props => extendedButtonTileStyle(props.type, props.size)};
 `;
