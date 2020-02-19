@@ -6,15 +6,12 @@ export default {
 }
 
 export const CheckboxField = () => {
-   const [checked, setChecked] = React.useState(false)
-
+   const [checked, setChecked] = React.useState(true)
    return (
       <React.Fragment>
-         <Checkbox
-            checked={ checked }
-            onChange={ (checked) => setChecked(checked) }
-         /> 
-         <span>Yes, I love Dailykit!</span>
+         <Checkbox id='label' checked={checked} onChange={setChecked}>
+            Yo, this is a label!
+         </Checkbox>
       </React.Fragment>
    )
 }
