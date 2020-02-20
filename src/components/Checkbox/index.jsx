@@ -1,26 +1,23 @@
-import React from 'react';
+import React from 'react'
 
-import { StyledCheckbox } from './styles';
-import { TickIcon } from '../../assets/icons';
+import { StyledCheckbox } from './styles'
+import { TickIcon } from '../../assets/icons'
 
-const Checkbox = ({ checked, onChange }) => {
-    
-    const [value, setValue] = React.useState(checked);
-
-    const changeValue = (e) => {
-        e.stopPropagation();
-        setValue(!value);
-    }
-
-    React.useEffect(() => {
-        onChange(value);
-    }, [value]);
-
-    return (
-        <StyledCheckbox checked={ value } onClick={ changeValue }>
-            <TickIcon hidden={ !value }/>
-        </StyledCheckbox>
-    );
+const Checkbox = ({ id, checked, children, onChange }) => {
+   console.log('TCL: Checkbox -> children', children)
+   return (
+      <StyledCheckbox isChecked={checked}>
+         <input type='checkbox' id={id} />
+         <span onClick={() => onChange(!checked)}>
+            {checked && <TickIcon />}
+         </span>
+         {typeof children === 'string' && (
+            <label htmlFor={id} onClick={() => onChange(!checked)}>
+               {children}
+            </label>
+         )}
+      </StyledCheckbox>
+   )
 }
 
-export default Checkbox;
+export default Checkbox
