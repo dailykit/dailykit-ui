@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export const StyledTextButton = styled.button`
   height: 40px;
   padding: 0 28px;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
   color: #ffffff;
   cursor: pointer;
