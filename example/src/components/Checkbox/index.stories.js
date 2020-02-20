@@ -6,8 +6,7 @@ export default {
 }
 
 export const CheckboxField = () => {
-   const [checked, setChecked] = React.useState(false)
-
+   const [checked, setChecked] = React.useState(true)
    return (
       <React.Fragment>
          <Checkbox

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import { StyledCheckbox, HiddenCheckbox } from './styles';
 import { CheckIcon } from '../../assets/icons';
@@ -15,4 +15,4 @@ const Checkbox = ({ checked, label, ...props }) => {
       );
 }
 
-export default Checkbox;
+export default Checkbox
