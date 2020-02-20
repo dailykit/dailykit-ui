@@ -2,7 +2,7 @@ import { TextButton, IconButton, ComboButton } from './components/button'
 import ButtonGroup from './components/ButtonGroup'
 import Toggle from './components/Toggle'
 import Checkbox from './components/Checkbox'
-import Popup from './components/Popup';
+import Popup from './components/Popup'
 import { TagGroup, Tag } from './components/Tags'
 import { AvatarGroup, Avatar } from './components/Avatar'
 import {
@@ -19,11 +19,11 @@ import {
    RadioGroup,
    TextAndSelect
 } from './components/Form'
-import ComboBox from './components/ComboBox'
+import Dropdown from './components/Dropdown'
 import Select from './components/Select'
 import { Tunnels, Tunnel, useTunnel } from './components/Tunnel'
-import Card from './components/Card';
-import { DashboardTile,ButtonTile } from './components/Tiles';
+import Card from './components/Card'
+import { DashboardTile, ButtonTile } from './components/Tiles'
 
 export {
    TextButton,
@@ -38,7 +38,7 @@ export {
    Password,
    TextArea,
    RadioGroup,
-   ComboBox,
+   Dropdown,
    Tunnels,
    Tunnel,
    useTunnel,
