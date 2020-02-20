@@ -12,8 +12,9 @@ export const CheckboxField = () => {
          <Checkbox
             checked={ checked }
             onChange={ (e) => setChecked(e.target.checked) }
-            label="Yes, I love Dailykit!"
-         /> 
+         >
+         Yes! I love DailyKit!
+         </Checkbox> 
       </React.Fragment>
    )
 }
