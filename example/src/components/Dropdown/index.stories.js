@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { ComboBox } from '@dailykit/ui'
+import { Dropdown } from '@dailykit/ui'
 
 export default {
-   title: 'ComboBox'
+   title: 'Dropdown'
 }
 
 export const Single = () => {
@@ -19,7 +19,7 @@ export const Single = () => {
    const searchedOption = option => console.log(option)
    return (
       <div>
-         <ComboBox
+         <Dropdown
             type='single'
             options={options}
             searchedOption={searchedOption}
@@ -43,7 +43,7 @@ export const Multi = () => {
    const searchedOption = option => console.log(option)
    return (
       <div>
-         <ComboBox
+         <Dropdown
             type='multi'
             options={options}
             searchedOption={searchedOption}
