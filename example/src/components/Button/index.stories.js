@@ -1,9 +1,15 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { TextButton, IconButton, ComboButton, ButtonGroup } from '@dailykit/ui'
-
-import { PlusIcon, SearchIcon, ClearIcon } from '../../assets/icons'
+import {
+   TextButton,
+   IconButton,
+   ComboButton,
+   ButtonGroup,
+   PlusIcon,
+   SearchIcon,
+   ClearIcon
+} from '@dailykit/ui'
 
 storiesOf('Button', module)
    .add('Text Button', () => (
