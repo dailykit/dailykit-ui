@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from './node_modules/styled-components'
 
 export const StyledTextButton = styled.button`
   height: 40px;
