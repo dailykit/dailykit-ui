@@ -1,6 +1,11 @@
 import React from 'react'
 
-import { StyledTextButton, StyledIconButton, StyledComboButton } from './styles'
+import {
+   StyledTextButton,
+   StyledIconButton,
+   StyledComboButton,
+   StyledButtonGroup
+} from './styles'
 
 export const TextButton = ({ children, ...props }) => (
    <StyledTextButton {...props}>{children}</StyledTextButton>
@@ -26,3 +31,7 @@ export const ComboButton = ({ children, ...props }) => {
       </StyledComboButton>
    )
 }
+
+export const ButtonGroup = ({ children, ...props }) => (
+   <StyledButtonGroup {...props}>{children}</StyledButtonGroup>
+)

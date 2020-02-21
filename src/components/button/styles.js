@@ -82,7 +82,7 @@ export const StyledIconButton = styled.button`
 
 export const StyledComboButton = styled.button`
   height: 40px;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -144,3 +144,23 @@ export const StyledComboButton = styled.button`
         }
      `}
 `
+
+export const StyledButtonGroup = styled.div(
+   ({ align }) => css`
+      display: flex;
+      button {
+         ${align === 'left' &&
+            css`
+               &:not(:last-child) {
+                  margin-right: 16px;
+               }
+            `}
+         ${align === 'right' &&
+            css`
+               &:not(:first-child) {
+                  margin-left: 16px;
+               }
+            `}
+      }
+   `
+)
