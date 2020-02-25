@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export const StyledCheckbox = styled.div`
    display: flex;
    align-items: center;
+   justify-content: space-between;
    > span {
+      color: #555b6e;
       cursor: pointer;
       user-select: none;
       margin-right: 8px;
