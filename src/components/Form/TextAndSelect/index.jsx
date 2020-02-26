@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text } from '../'
+import { Input } from '../'
 import { DropDown, TextAndSelectStyle } from '../styles'
 import { ArrowDownIcon, ArrowUpIcon } from '../../../assets/icons'
 
@@ -24,7 +24,8 @@ const TextAndSelect = ({ label, name, value, options, onChange }) => {
 
    return (
       <TextAndSelectStyle>
-         <Text
+         <Input
+            type='text'
             label={label}
             name={field.name}
             value={field.value}
