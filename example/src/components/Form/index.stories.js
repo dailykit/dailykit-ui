@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input, RadioGroup, TextAndSelect, HelperText } from '@dailykit/ui'
+import { Input, RadioGroup, HelperText } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -120,26 +120,5 @@ export const RadioButtons = () => {
          active={2}
          onChange={option => console.log(option)}
       />
-   )
-}
-
-export const TextAndSelectField = () => {
-   const [options] = React.useState([
-      { id: 1, title: 'gms' },
-      { id: 2, title: 'kgs' },
-      { id: 3, title: 'lbs' }
-   ])
-
-   return (
-      <div>
-         <TextAndSelect
-            value=''
-            name='quantity'
-            label='Quantity'
-            options={options}
-            onChange={val => console.log(val)}
-         />
-         <HelperText type='error' message='Entered text must be a number' />
-      </div>
    )
 }

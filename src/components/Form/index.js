@@ -4,7 +4,6 @@ import Password from './Password'
 import Text from './Text'
 import TextArea from './TextArea'
 import RadioGroup from './RadioGroup'
-import TextAndSelect from './TextAndSelect'
 import HelperText from './HelperText'
 
 const Input = props => {
@@ -20,4 +19,4 @@ const Input = props => {
    }
 }
 
-export { Input, RadioGroup, TextAndSelect, HelperText }
+export { Input, RadioGroup, HelperText }
