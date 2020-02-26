@@ -5,9 +5,8 @@ import { TagGroup, Tag } from '@dailykit/ui'
 
 storiesOf('Tag', module).add('Tags', () => (
    <TagGroup>
-      <Tag color='primary'>Primary</Tag>
-      <Tag color='success'>Success</Tag>
-      <Tag color='danger'>Danger</Tag>
-      <Tag>Default</Tag>
+      <Tag>Recipes</Tag>
+      <Tag>Ingredients</Tag>
+      <Tag>Inventories</Tag>
    </TagGroup>
 ))
