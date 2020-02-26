@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import { Field } from "../styles";
+import { Field } from '../styles'
 
-const Password = ({ label, name, hasError, ...props }) => (
-  <Field hasValue={props.value}>
-    <input type="password" id={name} name={name} {...props} />
-    <label htmlFor={name}>{label}</label>
-    {props.value.length > 0 && hasError && (
-      <span data-type="error">{hasError}</span>
-    )}
-  </Field>
-);
+const Password = ({ label, name, ...props }) => (
+   <Field hasValue={props.value}>
+      <input type='password' id={name} name={name} {...props} />
+      <label htmlFor={name}>{label}</label>
+   </Field>
+)
 
-export default Password;
+export default Password

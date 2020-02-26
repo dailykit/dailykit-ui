@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, Password, TextArea, RadioGroup, TextAndSelect } from '@dailykit/ui'
+import { Input, RadioGroup, HelperText } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -52,79 +52,73 @@ const reducers = (state, { type, payload }) => {
    }
 }
 
-export const TextField = () => {
+export const Text = () => {
    const [state, dispatch] = React.useReducer(reducers, initialState)
 
    const handleChange = (name, value) => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-         <Text
+      <div>
+         <Input
+            type='text'
             label='Username'
             name='username'
             value={state.username.value}
-            hasError={state.username.error}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
+         <HelperText type='hint' message='Fill in your username here' />
+      </div>
    )
 }
 
-export const PasswordField = () => {
+export const Password = () => {
    const [state, dispatch] = React.useReducer(reducers, initialState)
 
    const handleChange = (name, value) => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-         <Password
-            label='Password'
-            name='password'
-            value={state.password.value}
-            hasError={state.password.error}
-            onChange={e => handleChange(e.target.name, e.target.value)}
-         />
+      <Input
+         type='password'
+         label='Password'
+         name='password'
+         value={state.password.value}
+         onChange={e => handleChange(e.target.name, e.target.value)}
+      />
    )
 }
 
-export const TextAreaField = () => {
+export const TextArea = () => {
    const [state, dispatch] = React.useReducer(reducers, initialState)
 
    const handleChange = (name, value) => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-         <TextArea
-            label='Text Area'
-            name='textarea'
-            rows='5'
-            value={state.textarea.value}
-            hasError={state.textarea.error}
-            onChange={e => handleChange(e.target.name, e.target.value)}
-         />
+      <Input
+         type='textarea'
+         label='Text Area'
+         name='textarea'
+         rows='5'
+         value={state.textarea.value}
+         onChange={e => handleChange(e.target.name, e.target.value)}
+      />
    )
 }
 
-export const RadioGroupField = () => {
+export const RadioButtons = () => {
    const [options] = React.useState([
-      { id : 1, title : 'Option 1' },
-      { id : 2, title : 'Option 2' },
-      { id : 3, title : 'Option 3' }
+      { id: 1, title: 'Option 1' },
+      { id: 2, title: 'Option 2' },
+      { id: 3, title: 'Option 3' }
    ])
 
    return (
-      <RadioGroup options={ options } active={ 2 } onChange={ (option) => console.log(option) } />
-   )
-}
-
-export const TextAndSelectField = () => {
-
-   const [options] = React.useState([
-      { id : 1, title : 'gms' },
-      { id : 2, title : 'kgs' },
-      { id : 3, title : 'lbs' }
-   ])
-
-   return (
-      <TextAndSelect options={ options } label="Quantity" name="quantity" value="" onChange={ (val) => console.log(val) }/>
+      <RadioGroup
+         options={options}
+         active={2}
+         onChange={option => console.log(option)}
+      />
    )
 }

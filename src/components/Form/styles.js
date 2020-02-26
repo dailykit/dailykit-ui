@@ -48,13 +48,15 @@ export const Field = styled.div(
    `
 )
 
-export const RadioButton = styled.span`
-   padding: 7px 12px;
+export const RadioButton = styled.div`
+   height: 40px;
+   padding: 0 12px;
    font-weight: 500;
-   font-size: 12px;
-   line-height: 14px;
-   min-width: 70px;
-   color: ${props => (props.active ? '#FFFFFF' : ' #888D9D')};
+   font-size: 14px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   color: ${props => (props.active ? '#FFFFFF' : ' #555B6E')};
    background: ${props =>
       props.active
          ? 'linear-gradient(180deg, #28C1F7 -4.17%, #00A7E1 100%)'
