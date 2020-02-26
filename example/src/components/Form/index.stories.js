@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input, RadioGroup, TextAndSelect } from '@dailykit/ui'
+import { Input, RadioGroup, TextAndSelect, HelperText } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -59,14 +59,16 @@ export const Text = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <Input
-         type='text'
-         label='Username'
-         name='username'
-         value={state.username.value}
-         hasError={state.username.error}
-         onChange={e => handleChange(e.target.name, e.target.value)}
-      />
+      <div>
+         <Input
+            type='text'
+            label='Username'
+            name='username'
+            value={state.username.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <HelperText type='hint' message='Fill in your username here' />
+      </div>
    )
 }
 
@@ -82,7 +84,6 @@ export const Password = () => {
          label='Password'
          name='password'
          value={state.password.value}
-         hasError={state.password.error}
          onChange={e => handleChange(e.target.name, e.target.value)}
       />
    )
@@ -101,7 +102,6 @@ export const TextArea = () => {
          name='textarea'
          rows='5'
          value={state.textarea.value}
-         hasError={state.textarea.error}
          onChange={e => handleChange(e.target.name, e.target.value)}
       />
    )
@@ -131,12 +131,15 @@ export const TextAndSelectField = () => {
    ])
 
    return (
-      <TextAndSelect
-         options={options}
-         label='Quantity'
-         name='quantity'
-         value=''
-         onChange={val => console.log(val)}
-      />
+      <div>
+         <TextAndSelect
+            value=''
+            name='quantity'
+            label='Quantity'
+            options={options}
+            onChange={val => console.log(val)}
+         />
+         <HelperText type='error' message='Entered text must be a number' />
+      </div>
    )
 }
