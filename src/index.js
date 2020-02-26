@@ -5,8 +5,9 @@ import Dropdown from './components/Dropdown'
 import Select from './components/Select'
 import Card from './components/Card'
 import ListItem from './components/List/ListItem'
+import Text from './components/Text'
 
-export { Toggle, Checkbox, Popup, Dropdown, Select, Card, ListItem }
+export { Toggle, Checkbox, Popup, Dropdown, Select, Card, ListItem, Text }
 
 // Components
 export * from './components/Tags'
