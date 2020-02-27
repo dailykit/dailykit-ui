@@ -84,7 +84,6 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
             `;
             case "sm":
             return css`
-                max-width: 350px;
                 padding: 16px;
                 font-weight: 500;
                 line-height: 19px;
