@@ -118,7 +118,6 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
 };
 
 export const StyledButtonTile = styled.button`
-    margin: 20px 0;
     background: #ffffff;
     border: 1px solid #f3f3f3;
     box-sizing: border-box;

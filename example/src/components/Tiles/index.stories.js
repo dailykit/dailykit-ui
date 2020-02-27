@@ -21,12 +21,14 @@ export const ButtonTileVariant = () => (
             size="lg"
             text="Add Title"
             onClick={ e => console.log('Tile clicked') }
+            style={{ margin : '20px 0' }}
         />
         <ButtonTile
             type="primary"
             size="sm"
             text="Add an App"
             onClick={ e => console.log('Tile clicked') }
+            style={{ margin : '20px 0' }}
         />
         <ButtonTile
             type="primary"
@@ -34,17 +36,20 @@ export const ButtonTileVariant = () => (
             text="Add a Photo"
             helper="add some text maybe"
             onClick={ e => console.log('Tile clicked') }
+            style={{ margin : '20px 0' }}
         />
         <ButtonTile
             type="secondary"
             text="Add Sub Title"
             onClick={ e => console.log('Tile clicked') }
+            style={{ margin : '20px 0' }}
         />
         <ButtonTile
             noIcon
             type="secondary"
             text="Select Sub Title"
             onClick={ e => console.log('Tile clicked') }
+            style={{ margin : '20px 0' }}
         />
     </>
 )
