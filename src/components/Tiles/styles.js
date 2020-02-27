@@ -72,6 +72,14 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
                 line-height: 14px;
                 > div {
                     margin-top: 16px;
+                    &.helper {
+                        margin-top: 12px;
+                        font-style: italic;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: #888d9d;
+                    }
                 }
             `;
             case "sm":
@@ -82,6 +90,14 @@ const extendedButtonTileStyle = (type = "primary", size = "sm") => {
                 line-height: 19px;
                 > div {
                     margin-top: 12px;
+                    &.helper {
+                        margin-top: 12px;
+                        font-style: italic;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: #888d9d;
+                    }
                 }
             `;
             default:

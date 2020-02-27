@@ -16,9 +16,35 @@ export const DashboardTileVariant = () => (
 
 export const ButtonTileVariant = () => (
     <>
-        <ButtonTile type="primary" size="lg" text="Add Title" />
-        <ButtonTile type="primary" size="sm" text="Add an App" />
-        <ButtonTile type="secondary" text="Add Sub Title" />
-        <ButtonTile type="secondary" noIcon text="Select Sub Title" />
+        <ButtonTile
+            type="primary"
+            size="lg"
+            text="Add Title"
+            onClick={ e => console.log('Tile clicked') }
+        />
+        <ButtonTile
+            type="primary"
+            size="sm"
+            text="Add an App"
+            onClick={ e => console.log('Tile clicked') }
+        />
+        <ButtonTile
+            type="primary"
+            size="sm"
+            text="Add a Photo"
+            helper="add some text maybe"
+            onClick={ e => console.log('Tile clicked') }
+        />
+        <ButtonTile
+            type="secondary"
+            text="Add Sub Title"
+            onClick={ e => console.log('Tile clicked') }
+        />
+        <ButtonTile
+            noIcon
+            type="secondary"
+            text="Select Sub Title"
+            onClick={ e => console.log('Tile clicked') }
+        />
     </>
 )
