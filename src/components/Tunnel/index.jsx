@@ -21,7 +21,7 @@ const useTunnel = count => {
    return [tunnels, openTunnel, closeTunnel]
 }
 
-const Tunnels = ({ tunnels, children }) => {
+const Tunnels = ({ mt = 40, tunnels, children }) => {
    return (
       <div>
          {Array.isArray(children) &&
@@ -30,6 +30,7 @@ const Tunnels = ({ tunnels, children }) => {
                   tunnels[index] === 'visible' && {
                      ...tunnel,
                      props: {
+                        mt,
                         ...tunnel.props,
                         ...(tunnels[index + 1] === 'visible' && {
                            partial: true
@@ -44,9 +45,9 @@ const Tunnels = ({ tunnels, children }) => {
    )
 }
 
-const Tunnel = ({ children, ...props }) => {
+const Tunnel = ({ mt, children, ...props }) => {
    return (
-      <StyledTunnel>
+      <StyledTunnel mt={mt}>
          <StyledTunnelPanel {...props}>{children}</StyledTunnelPanel>
       </StyledTunnel>
    )

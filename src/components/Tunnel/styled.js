@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components'
 
-export const StyledTunnel = styled.div`
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   width: 100vw;
-   height: 100vh;
-   position: fixed;
-   background: rgba(0, 0, 0, 0.1);
-`
+export const StyledTunnel = styled.div(
+   ({ mt }) => css`
+      top: ${mt || 0}px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      background: rgba(0, 0, 0, 0.1);
+   `
+)
 
 export const StyledTunnelPanel = styled.div(
    ({ size, layer, partial }) => css`
