@@ -11,6 +11,16 @@ const baseLiStyle = isActive => css`
       font-size: 16px;
       font-weight: 400;
    }
+   &:after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      content: '';
+      position: absolute;
+      background: transparent;
+   }
 `
 
 const checkboxStyle = (size, position) => css`

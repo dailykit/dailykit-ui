@@ -7,6 +7,7 @@ export const StyledCheckbox = styled.div(
       input[type='checkbox'] {
          height: 0;
          width: 0;
+         opacity: 0;
       }
       span {
          width: 16px;

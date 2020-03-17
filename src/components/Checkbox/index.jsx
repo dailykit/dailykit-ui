@@ -4,7 +4,6 @@ import { StyledCheckbox } from './styles'
 import { TickIcon } from '../../assets/icons'
 
 const Checkbox = ({ id, checked, children, onChange }) => {
-   console.log('TCL: Checkbox -> children', children)
    return (
       <StyledCheckbox isChecked={checked}>
          <input type='checkbox' id={id} />
