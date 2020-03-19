@@ -5,6 +5,7 @@ import Text from './Text'
 import TextArea from './TextArea'
 import RadioGroup from './RadioGroup'
 import HelperText from './HelperText'
+import SearchBox from './SearchBox'
 
 const Input = props => {
    switch (props.type) {
@@ -19,4 +20,4 @@ const Input = props => {
    }
 }
 
-export { Input, RadioGroup, HelperText }
+export { Input, RadioGroup, HelperText, SearchBox }

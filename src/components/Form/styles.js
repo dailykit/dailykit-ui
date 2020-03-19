@@ -107,3 +107,29 @@ export const TextAndSelectStyle = styled.div`
       margin-right: 10px;
    }
 `
+
+export const StyledSearchBox = styled.div`
+   background: #ffffff;
+   border: 1px solid #d9e9f1;
+   max-width: 380px;
+   text-align: left;
+   height: 40px;
+   display: flex;
+   align-items: center;
+`
+
+export const StyledIconWrapper = styled.span`
+   height: 40px;
+   width: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`
+
+export const StyledInput = styled.input`
+   border: none;
+   color: #333;
+   width: 100%;
+   outline: none;
+   height: 38px;
+`

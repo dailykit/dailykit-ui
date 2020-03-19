@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input, RadioGroup, HelperText } from '@dailykit/ui'
+import { Input, RadioGroup, HelperText, SearchBox } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -119,6 +119,18 @@ export const RadioButtons = () => {
          options={options}
          active={2}
          onChange={option => console.log(option)}
+      />
+   )
+}
+
+export const SearchBoxField = () => {
+   const [search, setSearch] = React.useState('')
+
+   return (
+      <SearchBox
+         placeholder='Search'
+         value={search}
+         onChange={e => setSearch(e.target.value)}
       />
    )
 }
