@@ -39,8 +39,10 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
                   }
             )}
          {children.hasOwnProperty('props') &&
-            tunnels[0] === 'visible' &&
-            children}
+            tunnels[0] === 'visible' && {
+               ...children,
+               props: { ...children.props, mt }
+            }}
       </div>
    )
 }
