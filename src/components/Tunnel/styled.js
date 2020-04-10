@@ -10,6 +10,7 @@ export const StyledTunnel = styled.div(
       height: 100vh;
       position: fixed;
       background: rgba(0, 0, 0, 0.1);
+      z-index: 10;
    `
 )
 
