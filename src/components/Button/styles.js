@@ -44,6 +44,7 @@ export const StyledIconButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
   ${({ type }) =>
      type === 'outline' &&
      css`
@@ -150,17 +151,17 @@ export const StyledButtonGroup = styled.div(
       display: flex;
       button {
          ${align === 'left' &&
-            css`
-               &:not(:last-child) {
-                  margin-right: 16px;
-               }
-            `}
+         css`
+            &:not(:last-child) {
+               margin-right: 16px;
+            }
+         `}
          ${align === 'right' &&
-            css`
-               &:not(:first-child) {
-                  margin-left: 16px;
-               }
-            `}
+         css`
+            &:not(:first-child) {
+               margin-left: 16px;
+            }
+         `}
       }
    `
 )
