@@ -14,13 +14,28 @@ export const StyledTunnel = styled.div(
    `
 )
 
+const pickSize = size => {
+   switch (size) {
+      case 'full':
+         return '100%'
+      case 'lg':
+         return '75%'
+      case 'md':
+         return '50%'
+      case 'sm':
+         return '25%'
+      default:
+         return '50%'
+   }
+}
+
 export const StyledTunnelPanel = styled.div(
    ({ size, layer, partial }) => css`
       height: 100%;
       background: #fff;
       z-index: ${layer};
       float: ${partial ? 'left' : 'right'};
-      width: ${size === 'lg' ? '70%' : '50%'};
+      width: ${pickSize(size)};
       border-left: 1px solid rgba(0, 0, 0, 0.1);
    `
 )

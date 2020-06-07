@@ -14,7 +14,7 @@ export const TunnelVision = () => {
             Open Tunnel 1
          </TextButton>
          <Tunnels tunnels={tunnels}>
-            <Tunnel layer={1}>
+            <Tunnel layer={1} size='full'>
                <h2>Tunnel 1</h2>
                <TextButton type='solid' onClick={() => openTunnel(2)}>
                   Open Tunnel 2
@@ -34,7 +34,7 @@ export const TunnelVision = () => {
                </TextButton>
             </Tunnel>
 
-            <Tunnel layer={3}>
+            <Tunnel layer={3} size='md'>
                <h2>Tunnel 3</h2>
                <TextButton type='solid' onClick={() => openTunnel(4)}>
                   Open Tunnel 4
@@ -44,7 +44,7 @@ export const TunnelVision = () => {
                </TextButton>
             </Tunnel>
 
-            <Tunnel layer={4}>
+            <Tunnel layer={4} size='sm'>
                <h2>Tunnel 4</h2>
                <TextButton type='outline' onClick={() => closeTunnel(4)}>
                   Close Tunnel 4
