@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input, RadioGroup, HelperText, SearchBox } from '@dailykit/ui'
+import { Input, RadioGroup, HelperText, SearchBox, Number } from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -8,6 +8,10 @@ export default {
 
 const initialState = {
    username: {
+      value: '',
+      error: ''
+   },
+   age: {
       value: '',
       error: ''
    },
@@ -68,6 +72,26 @@ export const Text = () => {
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
          <HelperText type='hint' message='Fill in your username here' />
+      </div>
+   )
+}
+
+export const Numeric = () => {
+   const [state, dispatch] = React.useReducer(reducers, initialState)
+
+   const handleChange = (name, value) => {
+      dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
+   }
+   return (
+      <div>
+         <Input
+            type='number'
+            label='Age'
+            name='age'
+            value={state.age.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <HelperText type='hint' message='Fill in your age here' />
       </div>
    )
 }

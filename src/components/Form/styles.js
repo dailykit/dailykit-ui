@@ -11,7 +11,7 @@ export const Field = styled.div(
          position: absolute;
          color: #888d9d;
          font-size: 14px;
-         top: ${hasValue.length > 0 ? '-8px' : '11px'};
+         top: ${hasValue ? '-8px' : '11px'};
       }
       span[data-type='error'] {
          color: #dc4b4b;
@@ -21,6 +21,7 @@ export const Field = styled.div(
       }
 
       input[type='text'],
+      input[type='number'],
       input[type='password'],
       input[type='email'],
       textarea {

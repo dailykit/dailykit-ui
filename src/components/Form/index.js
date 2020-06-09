@@ -2,6 +2,7 @@ import React from 'react'
 
 import Password from './Password'
 import Text from './Text'
+import Number from './Number'
 import TextArea from './TextArea'
 import RadioGroup from './RadioGroup'
 import HelperText from './HelperText'
@@ -15,6 +16,8 @@ const Input = props => {
          return <Password {...props} />
       case 'textarea':
          return <TextArea {...props} />
+      case 'number':
+         return <Number {...props} />
       default:
          return <Text {...props} />
    }
