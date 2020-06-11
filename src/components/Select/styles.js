@@ -5,8 +5,9 @@ export const StyledSelect = styled.div`
    display: flex;
    align-items: center;
    background: #ffffff;
+   border-radius: 2px;
    box-sizing: border-box;
-   border: 1px dashed #f3f3f3;
+   border: 1px solid #f3f3f3;
    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.13);
 `
 
@@ -25,6 +26,7 @@ export const StyledOption = styled.li`
    align-items: center;
    background: #f3f3f3;
    margin-left: 8px;
+   border-radius: 2px;
    span:first-child {
       font-weight: 500;
       font-size: 16px;
@@ -52,6 +54,7 @@ export const StyledAddOption = styled.div`
    padding: 0 8px;
    cursor: pointer;
    margin-left: 8px;
+   border-radius: 2px;
    align-items: center;
    justify-content: center;
    &:hover {

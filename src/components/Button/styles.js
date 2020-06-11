@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components'
 
 export const StyledTextButton = styled.button`
   height: 40px;
-  padding: 0 28px;
+  padding: 0 16px;
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
   cursor: pointer;
+  border-radius: 2px;
   ${({ type }) =>
      type === 'outline' &&
      css`
@@ -43,8 +44,9 @@ export const StyledIconButton = styled.button`
   border: none;
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  border-radius: 2px;
   align-items: center;
+  justify-content: center;
   ${({ type }) =>
      type === 'outline' &&
      css`
@@ -83,11 +85,12 @@ export const StyledIconButton = styled.button`
 
 export const StyledComboButton = styled.button`
   height: 40px;
-  font-weight: 400;
-  font-size: 16px;
   display: flex;
-  align-items: center;
+  font-size: 16px;
   cursor: pointer;
+  font-weight: 400;
+  align-items: center;
+  border-radius: 2px;
   span {
     width: 40px;
     height: 40px;

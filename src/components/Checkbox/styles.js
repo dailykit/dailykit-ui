@@ -14,6 +14,7 @@ export const StyledCheckbox = styled.div(
          height: 16px;
          display: flex;
          cursor: pointer;
+         border-radius: 1px;
          align-items: center;
          justify-content: center;
          border: 1px solid ${isChecked ? '#28C1F7' : '#d8d8d8'};

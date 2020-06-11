@@ -37,6 +37,7 @@ export const StyledTag = styled.div(
       height: 28px;
       padding: 0 12px;
       font-size: 14px;
+      border-radius: 2px;
       align-items: center;
       display: inline-flex;
       outline: 2px solid #fff;

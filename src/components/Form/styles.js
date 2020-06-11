@@ -54,6 +54,7 @@ export const RadioButton = styled.div`
    padding: 0 12px;
    font-weight: 500;
    font-size: 14px;
+   border-radius: 1.5px;
    display: inline-flex;
    align-items: center;
    justify-content: center;
@@ -117,6 +118,7 @@ export const StyledSearchBox = styled.div`
    height: 40px;
    display: flex;
    align-items: center;
+   border-radius: 2px;
 `
 
 export const StyledIconWrapper = styled.span`
