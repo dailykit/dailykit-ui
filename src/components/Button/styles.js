@@ -74,9 +74,6 @@ export const StyledIconButton = styled.button`
      css`
         border: none;
         background: transparent;
-        svg {
-           stroke: #00a7e1;
-        }
         &:hover {
            background: #f5f5f5;
         }

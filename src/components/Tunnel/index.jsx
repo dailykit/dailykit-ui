@@ -1,6 +1,15 @@
 import React from 'react'
 
-import { StyledTunnel, StyledTunnelPanel } from './styled'
+import {
+   StyledTunnel,
+   StyledTunnelPanel,
+   TunnelHeaderContainer
+} from './styled'
+
+import { TextButton, IconButton } from '../Button/index'
+import Text from '../Text'
+
+import { CloseIcon } from '../../assets/icons'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
@@ -55,4 +64,19 @@ const Tunnel = ({ mt, children, ...props }) => {
    )
 }
 
-export { Tunnels, Tunnel, useTunnel }
+const TunnelHeader = ({ title, next, close, nextAction = 'Next' }) => (
+   <TunnelHeaderContainer>
+      <div>
+         <IconButton onClick={() => close()} type='ghost'>
+            <CloseIcon color='#888D9D' size='24' />
+         </IconButton>
+         <Text as='title'>{title}</Text>
+      </div>
+
+      <TextButton type='solid' onClick={() => next()}>
+         {nextAction}
+      </TextButton>
+   </TunnelHeaderContainer>
+)
+
+export { Tunnels, Tunnel, useTunnel, TunnelHeader }

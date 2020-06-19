@@ -6,6 +6,7 @@ import RemoveIcon from './RemoveIcon'
 import PlusIcon from './PlusIcon'
 import TickIcon from './TickIcon'
 import ArrowRightIcon from './ArrowRightIcon'
+import CloseIcon from './CloseIcon'
 
 export {
    ClearIcon,
@@ -16,4 +17,5 @@ export {
    PlusIcon,
    TickIcon,
    ArrowRightIcon,
+   CloseIcon
 }
