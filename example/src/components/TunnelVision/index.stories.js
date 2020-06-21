@@ -46,7 +46,7 @@ export const TunnelVision = () => {
 
             <Tunnel layer={4} size='sm'>
                <TunnelHeader
-                  title='Tunnel 3'
+                  title='Tunnel 4'
                   right={{ action: () => closeTunnel(4), title: 'Close' }}
                   close={() => closeTunnel(4)}
                   nextAction='Done'
