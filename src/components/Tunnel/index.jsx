@@ -64,7 +64,7 @@ const Tunnel = ({ mt, children, ...props }) => {
    )
 }
 
-const TunnelHeader = ({ title, next, close, nextAction = 'Next' }) => (
+const TunnelHeader = ({ title, close, right }) => (
    <TunnelHeaderContainer>
       <div>
          <IconButton onClick={() => close()} type='ghost'>
@@ -73,9 +73,11 @@ const TunnelHeader = ({ title, next, close, nextAction = 'Next' }) => (
          <Text as='title'>{title}</Text>
       </div>
 
-      <TextButton type='solid' onClick={() => next()}>
-         {nextAction}
-      </TextButton>
+      {right && right.title && right.action && (
+         <TextButton type='solid' onClick={() => right.action()}>
+            {right.title}
+         </TextButton>
+      )}
    </TunnelHeaderContainer>
 )
 

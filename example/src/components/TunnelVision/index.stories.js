@@ -23,7 +23,7 @@ export const TunnelVision = () => {
             <Tunnel layer={1}>
                <TunnelHeader
                   title='Tunnel 1'
-                  next={() => openTunnel(2)}
+                  right={{ action: () => openTunnel(2), title: 'Next' }}
                   close={() => closeTunnel(1)}
                />
             </Tunnel>
@@ -31,7 +31,7 @@ export const TunnelVision = () => {
             <Tunnel layer={2} size='lg'>
                <TunnelHeader
                   title='Tunnel 2'
-                  next={() => openTunnel(3)}
+                  right={{ action: () => openTunnel(3), title: 'Next' }}
                   close={() => closeTunnel(2)}
                />
             </Tunnel>
@@ -39,7 +39,7 @@ export const TunnelVision = () => {
             <Tunnel layer={3} size='md'>
                <TunnelHeader
                   title='Tunnel 3'
-                  next={() => openTunnel(4)}
+                  right={{ action: () => openTunnel(4), title: 'Next' }}
                   close={() => closeTunnel(3)}
                />
             </Tunnel>
@@ -47,7 +47,7 @@ export const TunnelVision = () => {
             <Tunnel layer={4} size='sm'>
                <TunnelHeader
                   title='Tunnel 3'
-                  next={() => closeTunnel(4)}
+                  right={{ action: () => closeTunnel(4), title: 'Close' }}
                   close={() => closeTunnel(4)}
                   nextAction='Done'
                />
