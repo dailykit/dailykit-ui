@@ -42,8 +42,10 @@ export const StyledTunnelPanel = styled.div(
 
 export const TunnelHeaderContainer = styled.div`
    display: flex;
+   height: 64px;
    justify-content: space-between;
-   padding: 30px;
+   align-items: center;
+   padding: 0 16px;
 
    div {
       display: flex;

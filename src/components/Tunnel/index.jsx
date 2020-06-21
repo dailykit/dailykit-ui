@@ -67,10 +67,16 @@ const Tunnel = ({ mt, children, ...props }) => {
 const TunnelHeader = ({ title, close, right }) => (
    <TunnelHeaderContainer>
       <div>
-         <IconButton onClick={() => close()} type='ghost'>
+         <IconButton
+            style={{ marginRight: '5px' }}
+            onClick={() => close()}
+            type='ghost'
+         >
             <CloseIcon color='#888D9D' size='24' />
          </IconButton>
-         <Text as='title'>{title}</Text>
+         <Text noMargin as='h2'>
+            {title}
+         </Text>
       </div>
 
       {right && right.title && right.action && (
