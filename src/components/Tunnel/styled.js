@@ -39,3 +39,16 @@ export const StyledTunnelPanel = styled.div(
       border-left: 1px solid rgba(0, 0, 0, 0.1);
    `
 )
+
+export const TunnelHeaderContainer = styled.div`
+   display: flex;
+   height: 64px;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 16px;
+
+   div {
+      display: flex;
+      align-items: center;
+   }
+`

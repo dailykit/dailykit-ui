@@ -13,7 +13,7 @@ export const StyledH2 = styled.h2`
    font-size: 20px;
    line-height: 30px;
    color: #555b6e;
-   margin: 16px 0 8px 0;
+   margin: ${({ noMargin }) => (noMargin ? 0 : '16px 0 8px 0')};
 `
 
 export const StyledPara = styled.p`

@@ -9,7 +9,9 @@ import {
 } from './styled'
 
 const H1 = props => <StyledH1>{props.children}</StyledH1>
-const H2 = props => <StyledH2>{props.children}</StyledH2>
+const H2 = ({ children, ...props }) => (
+   <StyledH2 {...props}>{children}</StyledH2>
+)
 const Para = props => <StyledPara>{props.children}</StyledPara>
 const Title = props => <StyledTitle>{props.children}</StyledTitle>
 const SubTitle = props => <StyledSubTitle>{props.children}</StyledSubTitle>
