@@ -1,8 +1,14 @@
 import React from 'react'
 
-const useSingleList = initial => {
+const useSingleList = data => {
    const [current, setCurrent] = React.useState({})
-   const [list] = React.useState(initial)
+   const [list, setList] = React.useState([])
+
+   React.useEffect(() => {
+      if (data.length > 0) {
+         setList(data)
+      }
+   }, [data])
 
    const selectOption = (key, value) => {
       const index = list.findIndex(option => option[key] === value)

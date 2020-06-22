@@ -1,8 +1,14 @@
 import React from 'react'
 
-const useMultiList = initial => {
+const useMultiList = data => {
    const [selected, setSelected] = React.useState([])
-   const [list] = React.useState(initial)
+   const [list, setList] = React.useState([])
+
+   React.useEffect(() => {
+      if (data.length > 0) {
+         setList(data)
+      }
+   }, [data])
 
    const selectOption = (key, value) => {
       const option = list.find(option => option[key] === value)
