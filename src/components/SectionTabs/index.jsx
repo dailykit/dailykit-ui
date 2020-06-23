@@ -2,15 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs'
 
-export const SectionTab = ({ title, children }) => {
-   return (
-      <StyledTab>
-         <div>
-            <h3>{title}</h3>
-            {children}
-         </div>
-      </StyledTab>
-   )
+export const SectionTab = ({ children }) => {
+   return <StyledTab>{children}</StyledTab>
 }
 
 export const SectionTabs = styled(Tabs)`
@@ -21,6 +14,7 @@ export const SectionTabs = styled(Tabs)`
 `
 export const SectionTabList = styled(TabList)`
    display: flex;
+   overflow-y: auto;
    padding: 0 20px 0 0;
    flex-direction: column;
 `
@@ -32,15 +26,6 @@ const StyledTab = styled(Tab)`
    &[data-selected] {
       color: #fff;
       background: #555b6e;
-   }
-   > div {
-      height: 100%;
-      padding: 12px;
-      text-align: left;
-      h3 {
-         font-weight: 400;
-         font-size: 16px;
-      }
    }
 `
 export const SectionTabPanels = styled(TabPanels)(
