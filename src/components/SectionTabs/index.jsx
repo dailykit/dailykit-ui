@@ -24,7 +24,7 @@ export const SectionTabList = styled(TabList)`
    padding: 0 20px 0 0;
    flex-direction: column;
 `
-export const StyledTab = styled(Tab)`
+const StyledTab = styled(Tab)`
    border: none;
    cursor: pointer;
    border-radius: 2px;

@@ -14,7 +14,7 @@ export const HorizontalTabList = styled(TabList)`
    display: flex;
    padding: 0 20px 0 0;
 `
-export const StyledTab = styled(Tab)`
+const StyledTab = styled(Tab)`
    border: none;
    height: 32px;
    color: #888d9d;
