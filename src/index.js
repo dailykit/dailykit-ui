@@ -29,6 +29,8 @@ export * from './components/Tiles'
 export * from './components/List'
 export * from './components/Table'
 export * from './components/Button'
+export * from './components/Tabs'
+export * from './components/SectionTabs'
 
 // Hooks
 export * from './hooks'
