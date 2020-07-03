@@ -7,13 +7,22 @@ const AvatarGroup = ({ children, ...props }) => (
    <StyledAvatarGroup {...props}>{children}</StyledAvatarGroup>
 )
 
-const Avatar = ({ title, url, withName, ...props }) => {
-   const getInitials = title => {
-      const length = title.split(' ').length
-      const first = title.split(' ')[0][0]
-      const last = length > 1 ? title.split(' ')[length - 1][0] : ''
-      return `${first}${last}`
+const getInitials = input => {
+   let title = input.trim()
+
+   if (!title) {
+      console.log('--- Error(Avatar): Provided title is empty! ---')
+      throw Error('Provided title is empty!')
    }
+
+   const { length } = title.split(' ')
+
+   const [first] = title
+   const [last] = length > 1 ? title.split(' ')[length - 1] : ['']
+   return `${first}${last}`.toUpperCase()
+}
+
+const Avatar = ({ title, url, withName, ...props }) => {
    return (
       <StyledWrapper withName={withName}>
          <StyledAvatar title={title} {...props}>
