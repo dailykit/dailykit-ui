@@ -34,7 +34,7 @@ const images = [
    }
 ]
 
-export const test = () => {
+export const ImageCarousel = () => {
    /**
     * @param [string | {} | number] images - array of anything with valid length.
     */
