@@ -25,9 +25,13 @@ const SingleSelect = ({
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
-   const [selected, setSelected] = React.useState(
-      defaultValue !== null ? defaultValue - 1 : null
-   )
+   const [selected, setSelected] = React.useState(null)
+
+   React.useEffect(() => {
+      if (defaultValue !== null) {
+         setSelected(defaultValue - 1)
+      }
+   }, [defaultValue])
 
    useClickAway(ref, () => {
       setIsOptionsVisible(false)
