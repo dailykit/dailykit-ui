@@ -16,15 +16,18 @@ import {
 } from '../../../assets/icons'
 
 const SingleSelect = ({
-   options,
+   options = [],
    placeholder,
    selectedOption,
-   searchedOption
+   searchedOption,
+   defaultValue = null
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
-   const [selected, setSelected] = React.useState(null)
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
+   const [selected, setSelected] = React.useState(
+      defaultValue !== null ? defaultValue - 1 : null
+   )
 
    useClickAway(ref, () => {
       setIsOptionsVisible(false)

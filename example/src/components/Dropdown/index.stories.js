@@ -21,6 +21,7 @@ export const Single = () => {
       <div>
          <Dropdown
             type='single'
+            defaultValue={2}
             options={options}
             searchedOption={searchedOption}
             selectedOption={selectedOption}
