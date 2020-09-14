@@ -14,6 +14,7 @@ export default {
 
 export const TunnelVision = () => {
    const [tunnels, openTunnel, closeTunnel] = useTunnel(4)
+
    return (
       <>
          <TextButton type='solid' onClick={() => openTunnel(1)}>

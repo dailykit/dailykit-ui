@@ -18,14 +18,21 @@ const useTunnel = count => {
       setTunnels([...Array(count).fill('hidden')])
    }, [count])
 
-   const openTunnel = layer => {
-      tunnels[layer - 1] = 'visible'
-      setTunnels([...tunnels])
-   }
-   const closeTunnel = layer => {
-      tunnels[layer - 1] = 'hidden'
-      setTunnels([...tunnels])
-   }
+   const openTunnel = React.useCallback(
+      layer => {
+         tunnels[layer - 1] = 'visible'
+         setTunnels([...tunnels])
+      },
+      [tunnels, setTunnels]
+   )
+
+   const closeTunnel = React.useCallback(
+      layer => {
+         tunnels[layer - 1] = 'hidden'
+         setTunnels([...tunnels])
+      },
+      [tunnels, setTunnels]
+   )
 
    return [tunnels, openTunnel, closeTunnel]
 }
