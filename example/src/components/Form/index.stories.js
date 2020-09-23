@@ -1,6 +1,14 @@
 import React from 'react'
 
-import { Input, RadioGroup, HelperText, SearchBox, Number } from '@dailykit/ui'
+import {
+   Input,
+   RadioGroup,
+   HelperText,
+   SearchBox,
+   Text,
+   Number,
+   Spacer
+} from '@dailykit/ui'
 
 export default {
    title: 'Form'
@@ -56,7 +64,7 @@ const reducers = (state, { type, payload }) => {
    }
 }
 
-export const Text = () => {
+export const Textual = () => {
    const [state, dispatch] = React.useReducer(reducers, initialState)
 
    const handleChange = (name, value) => {
@@ -64,14 +72,44 @@ export const Text = () => {
    }
    return (
       <div>
+         <Text as='title'>With Full Access</Text>
+         <Spacer size='8px' />
          <Input
             type='text'
             label='Username'
             name='username'
+            hasReadAccess={true}
+            hasWriteAccess={true}
             value={state.username.value}
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
          <HelperText type='hint' message='Fill in your username here' />
+         <br />
+         <Text as='title'>With Read Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='text'
+            label='Username'
+            name='username'
+            hasReadAccess={true}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            value={state.username.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With No Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='text'
+            label='Username'
+            name='username'
+            hasReadAccess={false}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            value={state.username.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
       </div>
    )
 }
@@ -84,14 +122,44 @@ export const Numeric = () => {
    }
    return (
       <div>
+         <Text as='title'>With Full Access</Text>
          <Input
             type='number'
             label='Age'
             name='age'
+            hasReadAccess={true}
+            hasWriteAccess={true}
             value={state.age.value}
+            fallBackMessage='You shall not pass!'
             onChange={e => handleChange(e.target.name, e.target.value)}
          />
          <HelperText type='hint' message='Fill in your age here' />
+         <br />
+         <Text as='title'>With Read Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='number'
+            label='Age'
+            name='age'
+            hasReadAccess={true}
+            hasWriteAccess={false}
+            value={state.age.value}
+            fallBackMessage='You shall not pass!'
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With No Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='number'
+            label='Age'
+            name='age'
+            hasReadAccess={false}
+            hasWriteAccess={false}
+            value={state.age.value}
+            fallBackMessage='You shall not pass!'
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
       </div>
    )
 }
@@ -103,13 +171,45 @@ export const Password = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <Input
-         type='password'
-         label='Password'
-         name='password'
-         value={state.password.value}
-         onChange={e => handleChange(e.target.name, e.target.value)}
-      />
+      <>
+         <Text as='title'>With Full Access</Text>
+         <Input
+            type='password'
+            label='Password'
+            name='password'
+            hasReadAccess={true}
+            hasWriteAccess={true}
+            value={state.password.value}
+            fallBackMessage='You shall not pass!'
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With Read Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='password'
+            label='Password'
+            name='password'
+            hasReadAccess={true}
+            hasWriteAccess={false}
+            value={state.password.value}
+            fallBackMessage='You shall not pass!'
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With No Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='password'
+            label='Password'
+            name='password'
+            hasReadAccess={false}
+            hasWriteAccess={false}
+            value={state.password.value}
+            fallBackMessage='You shall not pass!'
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+      </>
    )
 }
 
@@ -120,14 +220,50 @@ export const TextArea = () => {
       dispatch({ type: 'SET_FIELD', payload: { field: name, value } })
    }
    return (
-      <Input
-         type='textarea'
-         label='Text Area'
-         name='textarea'
-         rows='5'
-         value={state.textarea.value}
-         onChange={e => handleChange(e.target.name, e.target.value)}
-      />
+      <>
+         <Text as='title'>With Full Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='textarea'
+            label='Text Area'
+            name='textarea'
+            rows='5'
+            value={state.textarea.value}
+            hasReadAccess={true}
+            hasWriteAccess={true}
+            fallBackMessage='You shall not pass!'
+            value={state.textarea.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With Read Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='textarea'
+            label='Text Area'
+            name='textarea'
+            rows='5'
+            hasReadAccess={true}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            value={state.textarea.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+         <br />
+         <Text as='title'>With No Access</Text>
+         <Spacer size='8px' />
+         <Input
+            type='textarea'
+            label='Text Area'
+            name='textarea'
+            rows='5'
+            hasReadAccess={false}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            value={state.textarea.value}
+            onChange={e => handleChange(e.target.name, e.target.value)}
+         />
+      </>
    )
 }
 
@@ -151,10 +287,38 @@ export const SearchBoxField = () => {
    const [search, setSearch] = React.useState('')
 
    return (
-      <SearchBox
-         placeholder='Search'
-         value={search}
-         onChange={e => setSearch(e.target.value)}
-      />
+      <>
+         <Text as='title'>With Full Access</Text>
+         <SearchBox
+            placeholder='Search'
+            value={search}
+            hasReadAccess={true}
+            hasWriteAccess={true}
+            fallBackMessage='You shall not pass!'
+            onChange={e => setSearch(e.target.value)}
+         />
+         <br />
+         <Text as='title'>With Read Access</Text>
+         <Spacer size='8px' />
+         <SearchBox
+            placeholder='Search'
+            value={search}
+            hasReadAccess={true}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            onChange={e => setSearch(e.target.value)}
+         />
+         <br />
+         <Text as='title'>With No Access</Text>
+         <Spacer size='8px' />
+         <SearchBox
+            placeholder='Search'
+            value={search}
+            hasReadAccess={false}
+            hasWriteAccess={false}
+            fallBackMessage='You shall not pass!'
+            onChange={e => setSearch(e.target.value)}
+         />
+      </>
    )
 }

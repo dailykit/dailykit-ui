@@ -31,8 +31,8 @@ export const StyledTextButton = styled.button(
       ${hasAccess === false &&
       css`
          span.locked {
-            top: 57%;
-            left: 53%;
+            top: 50%;
+            left: 50%;
             z-index: 101;
             position: absolute;
             cursor: not-allowed;
@@ -121,12 +121,12 @@ export const StyledIconButton = styled.button(
       ${hasAccess === false &&
       css`
          span.locked {
-            top: 57%;
-            left: 53%;
+            top: 50%;
+            left: 50%;
             z-index: 101;
             position: absolute;
             cursor: not-allowed;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -46%);
          }
          ::before {
             top: 0;
@@ -214,8 +214,8 @@ export const StyledComboButton = styled.button(
       ${hasAccess === false &&
       css`
          span.locked {
-            top: 57%;
-            left: 53%;
+            top: 50%;
+            left: 50%;
             z-index: 101;
             position: absolute;
             cursor: not-allowed;

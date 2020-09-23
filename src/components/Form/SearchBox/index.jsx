@@ -1,15 +1,38 @@
 import React from 'react'
 
-import { SearchIcon } from '../../../assets/icons'
+import { SearchIcon, LockIcon } from '../../../assets/icons'
 import { StyledSearchBox, StyledIconWrapper, StyledInput } from '../styles'
 
-const SearchBox = ({ ...props }) => {
+const SearchBox = ({
+   label,
+   name,
+   hasReadAccess,
+   hasWriteAccess,
+   fallBackMessage,
+   ...props
+}) => {
+   const title =
+      hasWriteAccess === false || hasReadAccess === false
+         ? fallBackMessage || "You don't have access to this field"
+         : null
+
    return (
-      <StyledSearchBox>
+      <StyledSearchBox
+         title={title}
+         hasValue={props.value}
+         hasReadAccess={hasReadAccess}
+         hasWriteAccess={hasWriteAccess}
+      >
          <StyledIconWrapper>
             <SearchIcon color='#888D9D' />
          </StyledIconWrapper>
          <StyledInput {...props} />
+
+         {(hasWriteAccess === false || hasReadAccess === false) && (
+            <span className='locked'>
+               <LockIcon />
+            </span>
+         )}
       </StyledSearchBox>
    )
 }
