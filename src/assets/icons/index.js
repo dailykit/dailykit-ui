@@ -19,3 +19,5 @@ export {
    ArrowRightIcon,
    CloseIcon
 }
+
+export * from './LockIcon.jsx'

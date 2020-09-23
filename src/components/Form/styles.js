@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const Field = styled.div(
-   ({ hasValue }) => css`
+   ({ hasValue, hasReadAccess, hasWriteAccess }) => css`
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -19,7 +19,31 @@ export const Field = styled.div(
          font-size: 14px;
          font-style: italic;
       }
-
+      ${(hasWriteAccess === false || hasReadAccess === false) &&
+      css`
+         span.locked {
+            top: 50%;
+            left: 50%;
+            z-index: 101;
+            position: absolute;
+            cursor: not-allowed;
+            transform: translate(-44%, -44%);
+         }
+         ::before {
+            top: 0;
+            left: 0;
+            content: '';
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2px;
+            cursor: not-allowed;
+            background: ${hasReadAccess === false
+               ? '#e3e3e3'
+               : 'rgba(0, 0, 0, 0.2)'};
+         }
+      `}
       input[type='text'],
       input[type='number'],
       input[type='password'],
@@ -110,16 +134,44 @@ export const TextAndSelectStyle = styled.div`
    }
 `
 
-export const StyledSearchBox = styled.div`
-   background: #ffffff;
-   border: 1px solid #d9e9f1;
-   max-width: 380px;
-   text-align: left;
-   height: 40px;
-   display: flex;
-   align-items: center;
-   border-radius: 2px;
-`
+export const StyledSearchBox = styled.div(
+   ({ hasWriteAccess, hasReadAccess }) => css`
+      background: #ffffff;
+      border: 1px solid #d9e9f1;
+      max-width: 380px;
+      text-align: left;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
+      position: relative;
+      ${(hasWriteAccess === false || hasReadAccess === false) &&
+      css`
+         span.locked {
+            top: 50%;
+            left: 50%;
+            z-index: 101;
+            position: absolute;
+            cursor: not-allowed;
+            transform: translate(-44%, -44%);
+         }
+         ::before {
+            top: 0;
+            left: 0;
+            content: '';
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2px;
+            cursor: not-allowed;
+            background: ${hasReadAccess === false
+               ? '#e3e3e3'
+               : 'rgba(0, 0, 0, 0.2)'};
+         }
+      `}
+   `
+)
 
 export const StyledIconWrapper = styled.span`
    height: 40px;

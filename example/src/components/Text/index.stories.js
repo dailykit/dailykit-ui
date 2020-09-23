@@ -7,7 +7,12 @@ storiesOf('Text', module)
    .add('Headings', () => (
       <div>
          <Text as='h1'>Heading 1</Text>
+         <br />
          <Text as='h2'>Heading 2</Text>
+         <br />
+         <Text as='h3'>Heading 3</Text>
+         <br />
+         <Text as='h4'>Heading 4</Text>
       </div>
    ))
    .add('Titles', () => (

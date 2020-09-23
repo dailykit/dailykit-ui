@@ -3,17 +3,27 @@ import styled from 'styled-components'
 export const StyledH1 = styled.h1`
    font-weight: 500;
    font-size: 24px;
-   line-height: 36px;
    color: #555b6e;
-   margin: 20px 0 12px 0;
 `
 
 export const StyledH2 = styled.h2`
    font-weight: 500;
    font-size: 20px;
-   line-height: 30px;
    color: #555b6e;
-   margin: ${({ noMargin }) => (noMargin ? 0 : '16px 0 8px 0')};
+`
+
+export const StyledH3 = styled.h2`
+   font-weight: 500;
+   font-size: 18px;
+   color: #555b6e;
+`
+
+export const StyledH4 = styled.h2`
+   color: #555b6e;
+   font-size: 16px;
+   font-weight: 500;
+   letter-spacing: 0.3px;
+   text-transform: uppercase;
 `
 
 export const StyledPara = styled.p`

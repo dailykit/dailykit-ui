@@ -11,8 +11,7 @@ const getInitials = input => {
    let title = input.trim()
 
    if (!title) {
-      console.log('--- Error(Avatar): Provided title is empty! ---')
-      throw Error('Provided title is empty!')
+      console.error('--- Error(Avatar): Provided title is empty! ---')
    }
 
    const { length } = title.split(' ')

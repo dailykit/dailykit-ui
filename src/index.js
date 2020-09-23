@@ -22,6 +22,7 @@ export {
 
 // Components
 export * from './components/Tags'
+export * from './components/Spacer'
 export * from './components/Avatar'
 export * from './components/Form'
 export * from './components/Tunnel'

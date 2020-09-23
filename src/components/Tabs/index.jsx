@@ -13,6 +13,7 @@ export const HorizontalTabs = styled(Tabs)`
 export const HorizontalTabList = styled(TabList)`
    display: flex;
    padding: 0 20px 0 0;
+   border-bottom: 1px solid #c9e1ff;
 `
 const StyledTab = styled(Tab)`
    border: none;
