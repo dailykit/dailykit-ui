@@ -21,40 +21,73 @@ const sizeTextSelector = size => {
    }
 }
 
-export const StyledTextButton = styled.button`
-   color: #ffffff;
-   cursor: pointer;
-   border-radius: 2px;
-   ${({ size }) => sizeTextSelector(size)}
-   ${({ type }) =>
-      type === 'outline' &&
+export const StyledTextButton = styled.button(
+   ({ size, type, hasAccess }) => css`
+      color: #ffffff;
+      cursor: pointer;
+      border-radius: 2px;
+      position: relative;
+      ${sizeTextSelector(size)}
+      ${hasAccess === false &&
+      css`
+         span.locked {
+            top: 57%;
+            left: 53%;
+            z-index: 101;
+            position: absolute;
+            cursor: not-allowed;
+            transform: translate(-50%, -50%);
+         }
+         ::before {
+            top: 0;
+            left: 0;
+            content: '';
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2px;
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, 0.2);
+         }
+      `}
+      ${type === 'outline' &&
       css`
          color: #00a7e1;
          background: transparent;
          border: 1px solid #00a7e1;
-         &:hover {
-            color: #fff;
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-         }
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               color: #fff;
+               background: linear-gradient(
+                  180deg,
+                  #28c1f7 -4.17%,
+                  #00a7e1 100%
+               );
+            }
+         `}
       `}
-  ${({ type }) =>
-      type === 'solid' &&
+      ${type === 'solid' &&
       css`
          color: #fff;
          border: none;
          background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
       `}
-  ${({ type }) =>
-      type === 'ghost' &&
+      ${type === 'ghost' &&
       css`
          color: #00a7e1;
          border: none;
          background: transparent;
-         &:hover {
-            background: #f5f5f5;
-         }
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               background: #f5f5f5;
+            }
+         `}
       `}
-`
+   `
+)
 
 const sizeIconSelector = size => {
    switch (size) {
@@ -75,46 +108,79 @@ const sizeIconSelector = size => {
    }
 }
 
-export const StyledIconButton = styled.button`
-   border: none;
-   cursor: pointer;
-   display: flex;
-   border-radius: 2px;
-   align-items: center;
-   justify-content: center;
-   ${({ size }) => sizeIconSelector(size)}
-   ${({ type }) =>
-      type === 'outline' &&
+export const StyledIconButton = styled.button(
+   ({ size, type, hasAccess }) => css`
+      border: none;
+      cursor: pointer;
+      display: flex;
+      border-radius: 2px;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      ${sizeIconSelector(size)}
+      ${hasAccess === false &&
+      css`
+         span.locked {
+            top: 57%;
+            left: 53%;
+            z-index: 101;
+            position: absolute;
+            cursor: not-allowed;
+            transform: translate(-50%, -50%);
+         }
+         ::before {
+            top: 0;
+            left: 0;
+            content: '';
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2px;
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, 0.2);
+         }
+      `}
+      ${type === 'outline' &&
       css`
          background: transparent;
          border: 1px solid #00a7e1;
-         svg {
+         > svg {
             stroke: #00a7e1;
          }
-         &:hover {
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-            svg {
-               stroke: #fff;
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               background: linear-gradient(
+                  180deg,
+                  #28c1f7 -4.17%,
+                  #00a7e1 100%
+               );
+               > svg {
+                  stroke: #fff;
+               }
             }
-         }
+         `}
       `}
-   ${({ type }) =>
-      type === 'solid' &&
+      ${type === 'solid' &&
       css`
          color: #fff;
          border: none;
          background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
       `}
-  ${({ type }) =>
-      type === 'ghost' &&
+      ${type === 'ghost' &&
       css`
          border: none;
          background: transparent;
-         &:hover {
-            background: #f5f5f5;
-         }
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               background: #f5f5f5;
+            }
+         `}
       `}
-`
+   `
+)
 
 const sizeComboSelector = size => {
    switch (size) {
@@ -137,21 +203,45 @@ const sizeComboSelector = size => {
    }
 }
 
-export const StyledComboButton = styled.button`
-   display: flex;
-   cursor: pointer;
-   border-radius: 2px;
-   align-items: center;
-   ${({ size }) => sizeComboSelector(size)}
-   span {
+export const StyledComboButton = styled.button(
+   ({ size, position, type, hasAccess }) => css`
       display: flex;
-      height: inherit;
+      cursor: pointer;
+      border-radius: 2px;
+      position: relative;
       align-items: center;
-      justify-content: center;
-      width: ${({ size }) => (size === 'sm' ? '32px' : '40px')};
-   }
-   ${({ position, size }) =>
-      position === 'right'
+      ${sizeComboSelector(size)}
+      ${hasAccess === false &&
+      css`
+         span.locked {
+            top: 57%;
+            left: 53%;
+            z-index: 101;
+            position: absolute;
+            cursor: not-allowed;
+            transform: translate(-50%, -50%);
+         }
+         ::before {
+            top: 0;
+            left: 0;
+            content: '';
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2px;
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, 0.2);
+         }
+      `}
+      span {
+         display: flex;
+         height: inherit;
+         align-items: center;
+         justify-content: center;
+         width: ${size === 'sm' ? '32px' : '40px'};
+      }
+      ${position === 'right'
          ? css`
               padding: 0 0 0 ${size === 'sm' ? '8px' : '14px'};
            `
@@ -159,47 +249,55 @@ export const StyledComboButton = styled.button`
               padding: 0 ${size === 'sm' ? '8px' : '14px'} 0 0;
            `}
 
-   ${({ type }) =>
-      type === 'outline' &&
+      ${type === 'outline' &&
       css`
          color: #00a7e1;
          background: transparent;
          border: 1px solid #00a7e1;
-         svg {
+         > svg {
             stroke: #00a7e1;
          }
-         &:hover {
-            color: #fff;
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-            svg {
-               stroke: #fff;
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               color: #fff;
+               background: linear-gradient(
+                  180deg,
+                  #28c1f7 -4.17%,
+                  #00a7e1 100%
+               );
+               > svg {
+                  stroke: #fff;
+               }
             }
-         }
+         `}
       `}
-  ${({ type }) =>
-      type === 'solid' &&
+      ${type === 'solid' &&
       css`
          color: #fff;
          border: none;
          background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-         svg {
+         > svg {
             stroke: #fff;
          }
       `}
-  ${({ type }) =>
-      type === 'ghost' &&
+      ${type === 'ghost' &&
       css`
          color: #00a7e1;
          border: none;
          background: transparent;
-         svg {
+         > svg {
             stroke: #00a7e1;
          }
-         &:hover {
-            background: #f5f5f5;
-         }
+         ${hasAccess !== false &&
+         css`
+            &:hover {
+               background: #f5f5f5;
+            }
+         `}
       `}
-`
+   `
+)
 
 export const StyledButtonGroup = styled.div(
    ({ align }) => css`
