@@ -1,5 +1,4 @@
 import React from 'react'
-import { useClickAway } from 'react-use'
 
 import {
    StyledSelect,
@@ -14,6 +13,8 @@ import {
    ArrowDownIcon,
    ArrowUpIcon
 } from '../../../assets/icons'
+
+import { useOnClickOutside } from '../../../hooks'
 
 const SingleSelect = ({
    options = [],
@@ -33,7 +34,7 @@ const SingleSelect = ({
       }
    }, [defaultValue])
 
-   useClickAway(ref, () => {
+   useOnClickOutside(ref, () => {
       setIsOptionsVisible(false)
    })
 
