@@ -1,5 +1,4 @@
 import React from 'react'
-import { useClickAway } from 'react-use'
 
 import {
    StyledSelect,
@@ -16,6 +15,8 @@ import {
    ArrowDownIcon,
    ArrowUpIcon
 } from '../../../assets/icons'
+
+import { useOnClickOutside } from '../../../hooks'
 
 const optionExists = (options, item) => {
    for (let option of options) {
@@ -38,7 +39,7 @@ const MultiSelect = ({
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
    const [hiddenOptions, setHiddenOptions] = React.useState(false)
 
-   useClickAway(ref, () => {
+   useOnClickOutside(ref, () => {
       setIsOptionsVisible(false)
       setHiddenOptions(false)
    })
