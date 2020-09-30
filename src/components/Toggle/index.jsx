@@ -2,7 +2,7 @@ import React from 'react'
 
 import { StyledCheckbox, Label, Input, Checkbox } from './styles'
 
-const Toggle = ({ label, checked, setChecked }) => {
+const Toggle = ({ isDisabled, label, checked, setChecked }) => {
    return (
       <StyledCheckbox>
          <span
@@ -17,6 +17,7 @@ const Toggle = ({ label, checked, setChecked }) => {
             <Input
                type='checkbox'
                checked={checked}
+               isDisabled={isDisabled}
                onChange={e => {
                   setChecked(e.target.checked)
                }}

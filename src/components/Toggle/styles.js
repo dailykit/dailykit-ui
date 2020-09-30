@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledCheckbox = styled.div`
    display: flex;
@@ -14,22 +14,42 @@ export const StyledCheckbox = styled.div`
 
 export const Label = styled.label``
 
-export const Input = styled.input`
-   width: 0;
-   height: 0;
-   display: none;
-   &:checked ~ span {
-      background: linear-gradient(
-         270deg,
-         rgba(40, 193, 247, 0.8) 26.67%,
-         rgba(0, 167, 225, 0.8) 100%
-      );
-   }
-   &:checked ~ span:after {
-      transform: translateX(13px);
-      background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-   }
-`
+export const Input = styled.input(
+   ({ isDisabled }) => css`
+      width: 0;
+      height: 0;
+      display: none;
+      &:checked ~ span {
+         ${isDisabled
+            ? css`
+                 background: linear-gradient(
+                    270deg,
+                    rgba(228, 228, 228, 0.8) 26.67%,
+                    rgba(173, 173, 173, 0.8) 100%
+                 );
+              `
+            : css`
+                 background: linear-gradient(
+                    270deg,
+                    rgba(40, 193, 247, 0.8) 26.67%,
+                    rgba(0, 167, 225, 0.8) 100%
+                 );
+              `}
+      }
+      &:checked ~ span:after {
+         transform: translateX(13px);
+         background: ${isDisabled
+            ? css`
+                 background: linear-gradient(
+                    180deg,
+                    #dadada -4.17%,
+                    #a3a3a3 100%
+                 );
+              `
+            : css`linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);`};
+      }
+   `
+)
 
 export const Checkbox = styled.span`
    width: 32px;
@@ -40,8 +60,8 @@ export const Checkbox = styled.span`
    cursor: pointer;
    background: linear-gradient(
       270deg,
-      rgba(173, 173, 173, 0.8) 26.67%,
-      rgba(228, 228, 228, 0.8) 100%
+      rgba(228, 228, 228, 0.8) 26.67%,
+      rgba(173, 173, 173, 0.8) 100%
    );
    &:after {
       left: 0;
