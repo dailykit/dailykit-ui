@@ -32,6 +32,7 @@ export * from './components/Table'
 export * from './components/Button'
 export * from './components/Tabs'
 export * from './components/SectionTabs'
+export * from './components/Flex'
 
 // Hooks
 export * from './hooks'
