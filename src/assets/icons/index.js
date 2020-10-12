@@ -20,4 +20,9 @@ export {
    CloseIcon
 }
 
-export * from './LockIcon.jsx'
+export * from './Up'
+export * from './Down'
+export * from './Check'
+export * from './Info'
+export * from './Error'
+export * from './LockIcon'
