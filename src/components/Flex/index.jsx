@@ -4,6 +4,7 @@ export const Flex = props => (
    <div
       className={props.className}
       style={{
+         ...props.style,
          display: props.container ? 'flex' : 'block',
          justifyContent: props.justifyContent || 'flex-start',
          flexDirection: props.flexDirection || 'row',

@@ -33,6 +33,7 @@ export * from './components/Button'
 export * from './components/Tabs'
 export * from './components/SectionTabs'
 export * from './components/Flex'
+export * from './components/Filler'
 
 // Hooks
 export * from './hooks'
