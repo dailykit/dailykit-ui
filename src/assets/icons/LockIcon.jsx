@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const LockIcon = ({ size = 24, color = '#fff' }) => (
+export const LockIcon = ({ size = 24, color = '#555B6E' }) => (
    <svg
       width={size}
       height={size}

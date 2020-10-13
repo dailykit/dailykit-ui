@@ -5,6 +5,45 @@ const Styles = {
       display: flex;
       flex-direction: column;
    `,
+   Field: styled.section(
+      ({ hasReadAccess, hasWriteAccess }) => css`
+         position: relative;
+         textarea,
+         input[type='time'],
+         input[type='date'],
+         input[type='text'],
+         input[type='number'],
+         input[type='password'],
+         select {
+            width: 100%;
+         }
+         ${(hasWriteAccess === false || hasReadAccess === false) &&
+         css`
+            span.locked {
+               top: 50%;
+               left: 50%;
+               z-index: 101;
+               position: absolute;
+               cursor: not-allowed;
+               transform: translate(-44%, -44%);
+            }
+            ::before {
+               top: 0;
+               left: 0;
+               content: '';
+               z-index: 100;
+               width: 100%;
+               height: 100%;
+               position: absolute;
+               border-radius: 4px;
+               cursor: not-allowed;
+               background: ${hasReadAccess === false
+                  ? '#ececec'
+                  : 'rgba(83, 82, 82, 0.1)'};
+            }
+         `}
+      `
+   ),
    Label: styled.label`
       color: #57567a;
       font-size: 14px;
@@ -28,6 +67,7 @@ const Styles = {
    ),
    Number: styled.input(
       ({ hasError }) => css`
+         width: 100%;
          height: 40px;
          padding: 0 12px;
          font-size: 16px;
@@ -147,21 +187,26 @@ const Styles = {
       }
    `,
    Range: styled.section`
+      width: 100%;
       display: flex;
       align-items: center;
-      input {
-         width: 50%;
+      section {
+         flex: 1;
          :first-child {
-            border-right: none;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            :focus {
-               border-right: 2px solid #799ef4;
+            input {
+               border-right: none;
+               border-top-right-radius: 0;
+               border-bottom-right-radius: 0;
+               :focus {
+                  border-right: 2px solid #799ef4;
+               }
             }
          }
          :last-child {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
+            input {
+               border-top-left-radius: 0;
+               border-bottom-left-radius: 0;
+            }
          }
       }
    `,
@@ -180,8 +225,10 @@ const Styles = {
          :hover:not(:focus-within) {
             border: 1px solid #ccc1c1;
          }
-         input {
+         section {
             flex: 1;
+         }
+         input {
             border: none;
             height: 36px;
             :focus {
@@ -287,8 +334,12 @@ const Styles = {
       `
    ),
    TextSelect: styled.section`
+      width: 100%;
       display: flex;
       align-items: center;
+      section:first-child {
+         flex: 1;
+      }
       input {
          border-right: none;
          border-top-right-radius: 0;

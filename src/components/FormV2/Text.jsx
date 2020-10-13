@@ -1,27 +1,52 @@
-import React from "react";
+import React from 'react'
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
-import Styles from "./styles";
+import Styles from './styles'
+import { LockIcon } from '../../assets/icons'
 
-export const Text = ({ id, name, hasError, placeholder, ...rest }) => {
-  return (
-    <Styles.Text
-      id={id}
-      name={name}
-      type="text"
-      hasError={hasError}
-      placeholder={placeholder}
-      {...rest}
-    />
-  );
-};
+export const Text = ({
+   id,
+   name,
+   hasError,
+   placeholder,
+   hasReadAccess = true,
+   hasWriteAccess = true,
+   fallBackMessage = "You don't have access to this field",
+   ...rest
+}) => {
+   const title =
+      hasWriteAccess === false || hasReadAccess === false
+         ? fallBackMessage
+         : null
+   return (
+      <Styles.Field
+         title={title}
+         hasReadAccess={hasReadAccess}
+         hasWriteAccess={hasWriteAccess}
+      >
+         <Styles.Text
+            id={id}
+            name={name}
+            type='text'
+            hasError={hasError}
+            placeholder={placeholder}
+            {...rest}
+         />
+         {(hasWriteAccess === false || hasReadAccess === false) && (
+            <span className='locked'>
+               <LockIcon />
+            </span>
+         )}
+      </Styles.Field>
+   )
+}
 
 Text.propTypes = {
-  hasError: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired
-};
+   hasError: PropTypes.bool,
+   id: PropTypes.string.isRequired,
+   name: PropTypes.string.isRequired,
+   value: PropTypes.string.isRequired,
+   onChange: PropTypes.func.isRequired,
+   placeholder: PropTypes.string.isRequired
+}

@@ -3,16 +3,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Styles from './styles'
+import { LockIcon } from '../../assets/icons'
 
-export const Select = ({ id, name, options = [], placeholder, ...rest }) => {
+export const Select = ({
+   id,
+   name,
+   options = [],
+   placeholder,
+   hasReadAccess = true,
+   hasWriteAccess = true,
+   fallBackMessage = "You don't have access to this field",
+   ...rest
+}) => {
+   const title =
+      hasWriteAccess === false || hasReadAccess === false
+         ? fallBackMessage
+         : null
    return (
-      <Styles.Select id={id} name={name} type='text' {...rest}>
-         {options.map(option => (
-            <option key={option.id} value={option.title}>
-               {option.title}
-            </option>
-         ))}
-      </Styles.Select>
+      <Styles.Field
+         title={title}
+         hasReadAccess={hasReadAccess}
+         hasWriteAccess={hasWriteAccess}
+      >
+         <Styles.Select id={id} name={name} type='text' {...rest}>
+            {options.map(option => (
+               <option key={option.id} value={option.title}>
+                  {option.title}
+               </option>
+            ))}
+         </Styles.Select>
+         {(hasWriteAccess === false || hasReadAccess === false) && (
+            <span className='locked'>
+               <LockIcon />
+            </span>
+         )}
+      </Styles.Field>
    )
 }
 
