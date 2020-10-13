@@ -5,8 +5,18 @@ import { Form, useField, Spacer } from '@dailykit/ui'
 
 const validateUsername = value => {
    const text = value.trim()
-   if (text.length < 2) return false
-   return true
+   let isValid = true
+   let errors = []
+   if (text.length < 3) {
+      isValid = false
+      errors = [...errors, 'Must have atleast two letters.']
+   }
+   const hasNumerics = new RegExp(/.*[0-9].*/g)
+   if (hasNumerics.test(text)) {
+      isValid = false
+      errors = [...errors, 'Username must not contain numerics.']
+   }
+   return { isValid, errors }
 }
 
 storiesOf('Form v2', module)
@@ -28,9 +38,11 @@ storiesOf('Form v2', module)
                hasError={meta.isTouched && !meta.isValid}
                {...inputProps}
             />
-            {meta.isTouched && !meta.isValid && (
-               <Form.Error>Must be atleast 2 letters.</Form.Error>
-            )}
+            {meta.isTouched &&
+               !meta.isValid &&
+               meta.errors.map((error, index) => (
+                  <Form.Error key={index}>{error}</Form.Error>
+               ))}
          </Form.Group>
       )
    })

@@ -6,6 +6,7 @@ export const useField = (
 ) => {
    const [value, setValue] = React.useState(initial)
    const [meta, setMeta] = React.useState({
+      error: [],
       isValid: false,
       isTouched: false,
       isFocused: false
@@ -42,7 +43,10 @@ export const useField = (
                ...meta,
                isTouched: true,
                isFocused: false,
-               ...(validator && { isValid: validator(value) })
+               ...(validator && {
+                  isValid: validator(value).isValid,
+                  errors: validator(value).errors
+               })
             }))
             if (invokeOnBlur) {
                invokeOnBlur(e)
