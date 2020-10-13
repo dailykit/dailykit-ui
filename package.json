@@ -16,7 +16,8 @@
       "build": "rollup -c",
       "start": "rollup -c -w",
       "prepare": "yarn run build",
-      "predeploy": "cd example && yarn install && yarn run build"
+      "predeploy": "cd example && yarn install && yarn run build",
+      "dev": "concurrently \"yarn start\" \"cd example && yarn story\""
    },
    "peerDependencies": {
       "@reach/tabs": "^0.10.4",
@@ -44,5 +45,8 @@
    },
    "files": [
       "dist"
-   ]
+   ],
+   "dependencies": {
+      "concurrently": "^5.3.0"
+   }
 }
