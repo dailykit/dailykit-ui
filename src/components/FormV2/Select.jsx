@@ -13,7 +13,7 @@ export const Select = ({
    hasReadAccess = true,
    hasWriteAccess = true,
    fallBackMessage = "You don't have access to this field",
-   ...rest
+   ...props
 }) => {
    const title =
       hasWriteAccess === false || hasReadAccess === false
@@ -25,7 +25,7 @@ export const Select = ({
          hasReadAccess={hasReadAccess}
          hasWriteAccess={hasWriteAccess}
       >
-         <Styles.Select id={id} name={name} type='text' {...rest}>
+         <Styles.Select id={id} name={name} {...props}>
             {options.map(option => (
                <option key={option.id} value={option.title}>
                   {option.title}

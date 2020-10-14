@@ -24,7 +24,7 @@ export const Toggle = ({ name, children, ...props }) => {
 Toggle.propTypes = {
    name: PropTypes.string,
    checked: PropTypes.bool.isRequired,
-   setChecked: PropTypes.func.isRequired,
+   onChange: PropTypes.func.isRequired,
    children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node

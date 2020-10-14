@@ -17,7 +17,7 @@ export const Stepper = ({
    hasWriteAccess = true,
    fallBackMessage = "You don't have access to this field"
 }) => {
-   const increment = () => onChange(value + 1)
+   const increment = () => onChange(value ? value + 1 : 1)
    const decrement = () => value > 0 && onChange(value - 1)
    const title =
       hasWriteAccess === false || hasReadAccess === false
