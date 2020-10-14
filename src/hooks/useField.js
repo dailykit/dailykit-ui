@@ -6,7 +6,7 @@ export const useField = (
 ) => {
    const [value, setValue] = React.useState(initial)
    const [meta, setMeta] = React.useState({
-      error: [],
+      errors: [],
       isValid: false,
       isTouched: false,
       isFocused: false
@@ -49,7 +49,12 @@ export const useField = (
                })
             }))
             if (invokeOnBlur) {
-               invokeOnBlur(e)
+               if (validator && validator(value).isValid) {
+                  return invokeOnBlur(e)
+               } else if (validator && !validator(value).isValid) {
+                  return
+               }
+               return invokeOnBlur(e)
             }
          }
       }
