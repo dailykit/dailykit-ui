@@ -10,6 +10,7 @@ export const CheckboxField = () => {
       <React.Fragment>
          <Flex
             container
+            as='header'
             width='480px'
             alignItems='center'
             justifyContent='space-between'
