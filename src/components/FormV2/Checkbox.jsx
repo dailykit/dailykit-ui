@@ -10,13 +10,13 @@ export const Checkbox = ({ name, children, ...props }) => {
       <Styles.Checkbox>
          <input
             readOnly
+            id={name}
             name={name}
-            id='checkbox'
             type='checkbox'
             checked={props.value}
             onChange={props.onChange}
          />
-         <label htmlFor='checkbox' tabIndex='-1'>
+         <label htmlFor={name} tabIndex='-1'>
             <CheckIcon size='16' color='#fff' />
          </label>
          <span onClick={props.onChange}>{children}</span>
@@ -26,8 +26,8 @@ export const Checkbox = ({ name, children, ...props }) => {
 
 Checkbox.propTypes = {
    name: PropTypes.string,
-   checked: PropTypes.bool.isRequired,
-   setChecked: PropTypes.func.isRequired,
+   value: PropTypes.bool.isRequired,
+   onChange: PropTypes.func.isRequired,
    children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node

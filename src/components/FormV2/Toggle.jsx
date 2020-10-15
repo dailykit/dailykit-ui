@@ -10,20 +10,20 @@ export const Toggle = ({ name, children, ...props }) => {
          <span onClick={props.onChange}>{children}</span>
          <input
             readOnly
+            id={name}
             name={name}
-            id='checkbox'
             type='checkbox'
             checked={props.value}
             onChange={props.onChange}
          />
-         <label htmlFor='checkbox' />
+         <label htmlFor={name} />
       </Styles.Toggle>
    )
 }
 
 Toggle.propTypes = {
    name: PropTypes.string,
-   checked: PropTypes.bool.isRequired,
+   value: PropTypes.bool.isRequired,
    onChange: PropTypes.func.isRequired,
    children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),

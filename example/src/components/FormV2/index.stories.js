@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Form, useField, Spacer, Text } from '@dailykit/ui'
+import { Form, Spacer, Text } from '@dailykit/ui'
 
 const validateUsername = value => {
    const text = value.trim()
@@ -701,7 +701,7 @@ const initialState = {
       value: 0
    },
    first_time: {
-      value: true
+      value: false
    },
    containers: {
       value: ''
