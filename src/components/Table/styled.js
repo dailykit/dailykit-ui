@@ -19,7 +19,7 @@ export const StyledTableBody = styled.tbody`
    display: table-row-group;
    tr {
       :hover {
-         background: #f3f3f3;
+         background: ${props => props.noHoverEffect ? 'none' : '#f3f3f3'};
       }
    }
    td {
