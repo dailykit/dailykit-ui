@@ -16,10 +16,20 @@ export const Stepper = ({
    hasReadAccess = true,
    hasWriteAccess = true,
    fallBackMessage = "You don't have access to this field",
+   onBlur,
    ...props
 }) => {
-   const increment = () => onChange(value ? value + 1 : 1)
-   const decrement = () => value > 0 && onChange(value - 1)
+   const increment = () => {
+      const value = value ? value + 1 : 1
+      onChange(value)
+      onBlur(value)
+   }
+
+   const decrement = () => {
+      const value = value > 0 && value - 1
+      onChange(value)
+      onBlur(value)
+   }
    const title =
       hasWriteAccess === false || hasReadAccess === false
          ? fallBackMessage
@@ -38,6 +48,7 @@ export const Stepper = ({
                value={value}
                placeholder={placeholder}
                onChange={e => onChange(e.target.value)}
+               onBlur={e => onBlur(e.target.value)}
                {...props}
             />
             <div>
