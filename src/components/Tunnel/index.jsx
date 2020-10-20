@@ -1,13 +1,11 @@
 import React from 'react'
 
-import {
-   StyledTunnel,
-   StyledTunnelPanel,
-   TunnelHeaderContainer
-} from './styled'
+import { StyledTunnel, StyledTunnelPanel } from './styled'
 
-import { TextButton, IconButton } from '../Button/index'
 import Text from '../Text'
+import { Flex } from '../Flex'
+import { Spacer } from '../Spacer'
+import { TextButton, IconButton } from '../Button'
 
 import { CloseIcon } from '../../assets/icons'
 
@@ -71,9 +69,21 @@ const Tunnel = ({ mt, children, ...props }) => {
    )
 }
 
-const TunnelHeader = ({ title, close, right }) => (
-   <TunnelHeaderContainer>
-      <div>
+const TunnelHeader = ({
+   title,
+   close,
+   right,
+   tooltip = null,
+   description = null
+}) => (
+   <Flex
+      container
+      height='64px'
+      padding='0 16px'
+      alignItems='center'
+      justifyContent='space-between'
+   >
+      <Flex container alignItems='center'>
          <IconButton
             style={{ marginRight: '5px' }}
             onClick={() => close()}
@@ -81,17 +91,22 @@ const TunnelHeader = ({ title, close, right }) => (
          >
             <CloseIcon color='#888D9D' size='24' />
          </IconButton>
-         <Text noMargin as='h2'>
-            {title}
-         </Text>
-      </div>
+         <Spacer size='8px' xAxis />
+         <Flex>
+            <Flex container alignItems='center'>
+               <Text as='h2'>{title}</Text>
+               {tooltip}
+            </Flex>
+            {description && <Text as='p'>{description}</Text>}
+         </Flex>
+      </Flex>
 
       {right && right.title && right.action && (
          <TextButton type='solid' onClick={() => right.action()}>
             {right.title}
          </TextButton>
       )}
-   </TunnelHeaderContainer>
+   </Flex>
 )
 
 export { Tunnels, Tunnel, useTunnel, TunnelHeader }

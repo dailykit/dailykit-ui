@@ -27,7 +27,7 @@ export const StyledH4 = styled.h2`
 `
 
 export const StyledPara = styled.p`
-   font-weight: 500;
+   font-weight: 400;
    font-size: 16px;
    line-height: 24px;
    color: #555b6e;

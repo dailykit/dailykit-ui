@@ -3,6 +3,7 @@ import React from 'react'
 import {
    Tunnels,
    Tunnel,
+   InfoIcon,
    useTunnel,
    TextButton,
    TunnelHeader
@@ -24,8 +25,10 @@ export const TunnelVision = () => {
             <Tunnel layer={1}>
                <TunnelHeader
                   title='Tunnel 1'
-                  right={{ action: () => openTunnel(2), title: 'Next' }}
                   close={() => closeTunnel(1)}
+                  description='This is a description'
+                  tooltip={<InfoIcon color='#a4a4a4' />}
+                  right={{ action: () => openTunnel(2), title: 'Next' }}
                />
             </Tunnel>
 
