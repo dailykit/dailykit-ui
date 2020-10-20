@@ -22,7 +22,8 @@ const StyledTab = styled(Tab)`
    border: none;
    cursor: pointer;
    border-radius: 2px;
-   background: transparent;
+   background: #fff;
+   margin-bottom: 8px;
    &[data-selected] {
       color: #fff;
       background: #555b6e;
