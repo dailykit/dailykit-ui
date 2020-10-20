@@ -15,7 +15,8 @@ export const Stepper = ({
    onChange,
    hasReadAccess = true,
    hasWriteAccess = true,
-   fallBackMessage = "You don't have access to this field"
+   fallBackMessage = "You don't have access to this field",
+   ...props
 }) => {
    const increment = () => onChange(value ? value + 1 : 1)
    const decrement = () => value > 0 && onChange(value - 1)
@@ -37,6 +38,7 @@ export const Stepper = ({
                value={value}
                placeholder={placeholder}
                onChange={e => onChange(e.target.value)}
+               {...props}
             />
             <div>
                <button onClick={increment}>
