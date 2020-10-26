@@ -15,7 +15,7 @@ import {
    StyledMSL111
 } from './styled'
 
-const ListItem = ({ type, children, ...props }) => {
+export const ListItem = ({ type, children, ...props }) => {
    switch (type) {
       case 'SSL1':
          return (
@@ -194,5 +194,3 @@ const ListItem = ({ type, children, ...props }) => {
          )
    }
 }
-
-export default ListItem

@@ -7,6 +7,11 @@ export const StyledList = styled.div(
       }
    `
 )
+
+export const StyledListLabel = styled.span`
+   color: #57567a;
+   font-size: 14px;
+`
 export const StyledSearch = styled.div(
    () => css`
       height: 40px;

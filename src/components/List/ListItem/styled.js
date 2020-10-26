@@ -29,7 +29,11 @@ const checkboxStyle = (size, position) => css`
       flex-shrink: 0;
       width: ${size}px;
       height: ${size}px;
+      align-items: center;
       justify-content: center;
+      input {
+         display: none;
+      }
    }
 `
 
