@@ -28,7 +28,10 @@ export const TunnelVision = () => {
                   close={() => closeTunnel(1)}
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
-                  right={{ action: () => openTunnel(2), title: 'Next' }}
+                  right={{
+                     title: 'Next',
+                     action: () => openTunnel(2)
+                  }}
                />
             </Tunnel>
 
@@ -43,7 +46,10 @@ export const TunnelVision = () => {
             <Tunnel layer={3} size='md'>
                <TunnelHeader
                   title='Tunnel 3'
-                  right={{ action: () => openTunnel(4), title: 'Next' }}
+                  right={{
+                     title: 'Next',
+                     action: () => openTunnel(4)
+                  }}
                   close={() => closeTunnel(3)}
                />
             </Tunnel>
@@ -51,7 +57,10 @@ export const TunnelVision = () => {
             <Tunnel layer={4} size='sm'>
                <TunnelHeader
                   title='Tunnel 4'
-                  right={{ action: () => closeTunnel(4), title: 'Close' }}
+                  right={{
+                     title: 'Close',
+                     action: () => closeTunnel(4)
+                  }}
                   close={() => closeTunnel(4)}
                   nextAction='Done'
                />
