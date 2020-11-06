@@ -12,13 +12,21 @@ export const TextButton = ({ children, ...props }) => {
       <Styles.TextButton
          {...props}
          title={props?.disabled ? 'Disabled' : title}
-         disabled={props?.hasAccess === false || props?.disabled}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children}
-         {props?.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children}
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
       </Styles.TextButton>
    )
@@ -33,13 +41,21 @@ export const IconButton = ({ children, ...props }) => {
       <Styles.IconButton
          {...props}
          title={props?.disabled ? 'Disabled' : title}
-         disabled={props?.hasAccess === false || props?.disabled}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children}
-         {props?.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children}
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
       </Styles.IconButton>
    )
@@ -57,14 +73,22 @@ export const ComboButton = ({ children, ...props }) => {
             position={position}
             {...props}
             title={props?.disabled ? 'Disabled' : title}
-            disabled={props?.hasAccess === false || props?.disabled}
+            disabled={
+               props?.hasAccess === false || props?.disabled || props?.isLoading
+            }
          >
-            <span>{children[0]}</span>
-            {children[1]}
-            {props?.hasAccess === false && (
-               <span className='locked'>
-                  <LockIcon />
-               </span>
+            {props?.isLoading ? (
+               <Loader type={props?.type} />
+            ) : (
+               <>
+                  <span>{children[0]}</span>
+                  {children[1]}
+                  {props?.hasAccess === false && (
+                     <span className='locked'>
+                        <LockIcon />
+                     </span>
+                  )}
+               </>
             )}
          </Styles.ComboButton>
       )
@@ -74,14 +98,22 @@ export const ComboButton = ({ children, ...props }) => {
          position={position}
          {...props}
          title={props?.disabled ? 'Disabled' : title}
-         disabled={props?.hasAccess === false || props?.disabled}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children[0]}
-         <span>{children[1]}</span>
-         {props?.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children[0]}
+               <span>{children[1]}</span>
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
       </Styles.ComboButton>
    )
@@ -90,3 +122,14 @@ export const ComboButton = ({ children, ...props }) => {
 export const ButtonGroup = ({ children, ...props }) => (
    <Styles.ButtonGroup {...props}>{children}</Styles.ButtonGroup>
 )
+
+const Loader = props => {
+   return (
+      <Styles.Loader {...props}>
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+      </Styles.Loader>
+   )
+}

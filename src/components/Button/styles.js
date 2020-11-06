@@ -23,12 +23,12 @@ const sizeTextSelector = size => {
 
 export const Styles = {
    TextButton: styled.button(
-      ({ size, type, disabled, hasAccess }) => css`
+      ({ size, type, disabled, isLoading, hasAccess }) => css`
          color: #ffffff;
-         cursor: pointer;
          border-radius: 2px;
          position: relative;
          ${sizeTextSelector(size)}
+         cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          ${hasAccess === false &&
          css`
             span.locked {
@@ -68,6 +68,11 @@ export const Styles = {
                   );
                }
             `}
+            &:hover {
+               .loader__divs {
+                  background: #fff;
+               }
+            }
          `}
          ${type === 'solid' &&
          css`
@@ -89,6 +94,7 @@ export const Styles = {
          `}
          ${hasAccess !== false &&
          disabled &&
+         !isLoading &&
          css`
             cursor: not-allowed;
             ${type === 'solid' &&
@@ -116,15 +122,15 @@ export const Styles = {
       `
    ),
    IconButton: styled.button(
-      ({ size, type, disabled, hasAccess }) => css`
+      ({ size, type, disabled, isLoading, hasAccess }) => css`
          border: none;
-         cursor: pointer;
          display: flex;
          border-radius: 2px;
          position: relative;
          align-items: center;
          justify-content: center;
-         ${sizeIconSelector(size)}
+         cursor: ${isLoading ? 'not-allowed' : 'pointer'};
+         ${sizeIconSelector(size, isLoading)}
          ${hasAccess === false &&
          css`
             span.locked {
@@ -168,6 +174,11 @@ export const Styles = {
                   }
                }
             `}
+            &:hover {
+               .loader__divs {
+                  background: #fff;
+               }
+            }
          `}
          ${type === 'solid' &&
          css`
@@ -186,8 +197,10 @@ export const Styles = {
                }
             `}
          `}
+         
          ${hasAccess !== false &&
          disabled &&
+         !isLoading &&
          css`
             cursor: not-allowed;
             ${type === 'solid' &&
@@ -221,12 +234,17 @@ export const Styles = {
       `
    ),
    ComboButton: styled.button(
-      ({ size, position, type, disabled, hasAccess }) => css`
+      ({ size, position, type, disabled, isLoading, hasAccess }) => css`
          display: flex;
-         cursor: pointer;
          border-radius: 2px;
          position: relative;
          align-items: center;
+         cursor: ${isLoading ? 'not-allowed' : 'pointer'};
+         ${isLoading &&
+         css`
+            justify-content: center;
+            padding: 0 14px !important;
+         `};
          ${sizeComboSelector(size)}
          ${hasAccess === false &&
          css`
@@ -288,6 +306,11 @@ export const Styles = {
                   }
                }
             `}
+            &:hover {
+               .loader__divs {
+                  background: #fff;
+               }
+            }
          `}
          ${type === 'solid' &&
          css`
@@ -315,6 +338,7 @@ export const Styles = {
          `}
          ${hasAccess !== false &&
          disabled &&
+         !isLoading &&
          css`
             cursor: not-allowed;
             ${type === 'solid' &&
@@ -369,23 +393,81 @@ export const Styles = {
             `}
          }
       `
+   ),
+   Loader: styled.div(
+      ({ type }) => css`
+         display: inline-block;
+         position: relative;
+         width: 57px;
+         height: 100%;
+         > div {
+            position: absolute;
+            top: 50%;
+            margin-top: -5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: ${type === 'solid' ? '#fff' : '#95d3f3'};
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+         }
+         div:nth-child(1) {
+            left: 8px;
+            animation: lds-ellipsis1 0.6s infinite;
+         }
+         div:nth-child(2) {
+            left: 8px;
+            animation: lds-ellipsis2 0.6s infinite;
+         }
+         div:nth-child(3) {
+            left: 24px;
+            animation: lds-ellipsis2 0.6s infinite;
+         }
+         div:nth-child(4) {
+            left: 40px;
+            animation: lds-ellipsis3 0.6s infinite;
+         }
+         @keyframes lds-ellipsis1 {
+            0% {
+               transform: scale(0);
+            }
+            100% {
+               transform: scale(1);
+            }
+         }
+         @keyframes lds-ellipsis3 {
+            0% {
+               transform: scale(1);
+            }
+            100% {
+               transform: scale(0);
+            }
+         }
+         @keyframes lds-ellipsis2 {
+            0% {
+               transform: translate(0, 0);
+            }
+            100% {
+               transform: translate(16px, 0);
+            }
+         }
+      `
    )
 }
 
-const sizeIconSelector = size => {
+const sizeIconSelector = (size, isLoading) => {
    switch (size) {
       case 'sm':
          return css`
             ${dimensions({
                h: '32px',
-               w: '32px'
+               w: isLoading ? 'auto' : '32px'
             })}
          `
       default:
          return css`
             ${dimensions({
                h: '40px',
-               w: '40px'
+               w: isLoading ? 'auto' : '40px'
             })}
          `
    }
