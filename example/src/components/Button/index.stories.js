@@ -26,6 +26,9 @@ storiesOf('Button', module)
             >
                Locked
             </TextButton>
+            <TextButton disabled type='solid'>
+               Disabled
+            </TextButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -36,6 +39,9 @@ storiesOf('Button', module)
             <TextButton type='outline' hasAccess={false}>
                Locked
             </TextButton>
+            <TextButton type='outline' disabled>
+               Disabled
+            </TextButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -45,6 +51,9 @@ storiesOf('Button', module)
             <TextButton type='ghost'>Ghost Button</TextButton>
             <TextButton type='ghost' hasAccess={false}>
                Locked
+            </TextButton>
+            <TextButton type='ghost' disabled>
+               Disabled
             </TextButton>
          </ButtonGroup>
       </>
@@ -61,6 +70,9 @@ storiesOf('Button', module)
             <IconButton type='solid' hasAccess={false}>
                <PlusIcon />
             </IconButton>
+            <IconButton type='solid' disabled>
+               <PlusIcon />
+            </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -73,6 +85,9 @@ storiesOf('Button', module)
             <IconButton type='outline' hasAccess={false}>
                <SearchIcon />
             </IconButton>
+            <IconButton type='outline' disabled>
+               <SearchIcon />
+            </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -83,6 +98,9 @@ storiesOf('Button', module)
                <SearchIcon />
             </IconButton>
             <IconButton type='ghost' hasAccess={false}>
+               <SearchIcon />
+            </IconButton>
+            <IconButton type='ghost' disabled>
                <SearchIcon />
             </IconButton>
          </ButtonGroup>
@@ -100,6 +118,9 @@ storiesOf('Button', module)
             <ComboButton type='solid' hasAccess={false}>
                <SearchIcon color='#fff' /> Search
             </ComboButton>
+            <ComboButton type='solid' disabled>
+               <SearchIcon color='#fff' /> Search
+            </ComboButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -115,6 +136,10 @@ storiesOf('Button', module)
                Add Ingredient
                <PlusIcon />
             </ComboButton>
+            <ComboButton type='outline' disabled>
+               Add Ingredient
+               <PlusIcon />
+            </ComboButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -127,6 +152,10 @@ storiesOf('Button', module)
                Clear Filters
             </ComboButton>
             <ComboButton type='ghost' hasAccess={false}>
+               <ClearIcon />
+               Clear Filters
+            </ComboButton>
+            <ComboButton type='ghost' disabled>
                <ClearIcon />
                Clear Filters
             </ComboButton>

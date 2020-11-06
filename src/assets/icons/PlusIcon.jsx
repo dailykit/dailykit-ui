@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlusIcon = ({ size = 18, color = '#fff' }) => (
+const PlusIcon = ({ size = 18, color = '#555b6e' }) => (
    <svg
       xmlns='http://www.w3.org/2000/svg'
       width={size}
