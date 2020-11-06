@@ -1,99 +1,135 @@
 import React from 'react'
 
-import {
-   StyledTextButton,
-   StyledIconButton,
-   StyledComboButton,
-   StyledButtonGroup
-} from './styles'
+import { Styles } from './styles'
 import { LockIcon } from '../../assets/icons'
 
 export const TextButton = ({ children, ...props }) => {
    const title =
-      props.hasAccess === false
-         ? props.fallBackMessage || "You don't have access to this action"
-         : children
+      props?.hasAccess === false
+         ? props?.fallBackMessage || "You don't have access to this action"
+         : props?.title || ''
    return (
-      <StyledTextButton
+      <Styles.TextButton
          {...props}
-         disabled={props.hasAccess === false}
-         title={title}
+         title={props?.disabled ? 'Disabled' : title}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children}
-         {props.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children}
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
-      </StyledTextButton>
+      </Styles.TextButton>
    )
 }
 
 export const IconButton = ({ children, ...props }) => {
    const title =
-      props.hasAccess === false
-         ? props.fallBackMessage || "You don't have access to this action"
-         : null
+      props?.hasAccess === false
+         ? props?.fallBackMessage || "You don't have access to this action"
+         : props?.title || ''
    return (
-      <StyledIconButton
+      <Styles.IconButton
          {...props}
-         disabled={props.hasAccess === false}
-         title={title}
+         title={props?.disabled ? 'Disabled' : title}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children}
-         {props.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children}
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
-      </StyledIconButton>
+      </Styles.IconButton>
    )
 }
 
 export const ComboButton = ({ children, ...props }) => {
    const position = typeof children[0] === 'string' ? 'right' : 'left'
    const title =
-      props.hasAccess === false
-         ? props.fallBackMessage || "You don't have access to this action"
-         : position === 'left'
-         ? children[1]
-         : children[0]
+      props?.hasAccess === false
+         ? props?.fallBackMessage || "You don't have access to this action"
+         : props?.title || ''
    if (position === 'left') {
       return (
-         <StyledComboButton
+         <Styles.ComboButton
             position={position}
             {...props}
-            title={title}
-            disabled={props.hasAccess === false}
+            title={props?.disabled ? 'Disabled' : title}
+            disabled={
+               props?.hasAccess === false || props?.disabled || props?.isLoading
+            }
          >
-            <span>{children[0]}</span>
-            {children[1]}
-            {props.hasAccess === false && (
-               <span className='locked'>
-                  <LockIcon />
-               </span>
+            {props?.isLoading ? (
+               <Loader type={props?.type} />
+            ) : (
+               <>
+                  <span>{children[0]}</span>
+                  {children[1]}
+                  {props?.hasAccess === false && (
+                     <span className='locked'>
+                        <LockIcon />
+                     </span>
+                  )}
+               </>
             )}
-         </StyledComboButton>
+         </Styles.ComboButton>
       )
    }
    return (
-      <StyledComboButton
+      <Styles.ComboButton
          position={position}
          {...props}
-         title={title}
-         disabled={props.hasAccess === false}
+         title={props?.disabled ? 'Disabled' : title}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
       >
-         {children[0]}
-         <span>{children[1]}</span>
-         {props.hasAccess === false && (
-            <span className='locked'>
-               <LockIcon />
-            </span>
+         {props?.isLoading ? (
+            <Loader type={props?.type} />
+         ) : (
+            <>
+               {children[0]}
+               <span>{children[1]}</span>
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
          )}
-      </StyledComboButton>
+      </Styles.ComboButton>
    )
 }
 
 export const ButtonGroup = ({ children, ...props }) => (
-   <StyledButtonGroup {...props}>{children}</StyledButtonGroup>
+   <Styles.ButtonGroup {...props}>{children}</Styles.ButtonGroup>
 )
+
+const Loader = props => {
+   return (
+      <Styles.Loader {...props}>
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+         <div className='loader__divs' />
+      </Styles.Loader>
+   )
+}

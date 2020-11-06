@@ -84,11 +84,7 @@ const TunnelHeader = ({
       justifyContent='space-between'
    >
       <Flex container alignItems='center'>
-         <IconButton
-            style={{ marginRight: '5px' }}
-            onClick={() => close()}
-            type='ghost'
-         >
+         <IconButton type='ghost' onClick={() => close()}>
             <CloseIcon color='#888D9D' size='24' />
          </IconButton>
          <Spacer size='8px' xAxis />
@@ -102,7 +98,12 @@ const TunnelHeader = ({
       </Flex>
 
       {right && right.title && right.action && (
-         <TextButton type='solid' onClick={() => right.action()}>
+         <TextButton
+            type='solid'
+            onClick={right.action}
+            {...(right?.disabled && { disabled: right.disabled })}
+            {...(right?.isLoading && { isLoading: right.isLoading })}
+         >
             {right.title}
          </TextButton>
       )}

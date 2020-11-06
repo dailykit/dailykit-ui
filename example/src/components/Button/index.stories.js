@@ -26,6 +26,12 @@ storiesOf('Button', module)
             >
                Locked
             </TextButton>
+            <TextButton disabled type='solid'>
+               Disabled
+            </TextButton>
+            <TextButton isLoading={true} type='solid'>
+               Loading
+            </TextButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -36,6 +42,12 @@ storiesOf('Button', module)
             <TextButton type='outline' hasAccess={false}>
                Locked
             </TextButton>
+            <TextButton type='outline' disabled>
+               Disabled
+            </TextButton>
+            <TextButton isLoading={true} type='outline'>
+               Loading
+            </TextButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -45,6 +57,12 @@ storiesOf('Button', module)
             <TextButton type='ghost'>Ghost Button</TextButton>
             <TextButton type='ghost' hasAccess={false}>
                Locked
+            </TextButton>
+            <TextButton type='ghost' disabled>
+               Disabled
+            </TextButton>
+            <TextButton isLoading={true} type='ghost'>
+               Loading
             </TextButton>
          </ButtonGroup>
       </>
@@ -61,6 +79,12 @@ storiesOf('Button', module)
             <IconButton type='solid' hasAccess={false}>
                <PlusIcon />
             </IconButton>
+            <IconButton type='solid' disabled>
+               <PlusIcon />
+            </IconButton>
+            <IconButton isLoading={true} type='solid'>
+               <PlusIcon />
+            </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -73,6 +97,12 @@ storiesOf('Button', module)
             <IconButton type='outline' hasAccess={false}>
                <SearchIcon />
             </IconButton>
+            <IconButton type='outline' disabled>
+               <SearchIcon />
+            </IconButton>
+            <IconButton isLoading={true} type='outline'>
+               <PlusIcon />
+            </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -84,6 +114,12 @@ storiesOf('Button', module)
             </IconButton>
             <IconButton type='ghost' hasAccess={false}>
                <SearchIcon />
+            </IconButton>
+            <IconButton type='ghost' disabled>
+               <SearchIcon />
+            </IconButton>
+            <IconButton isLoading={true} type='ghost'>
+               <PlusIcon />
             </IconButton>
          </ButtonGroup>
       </>
@@ -98,6 +134,12 @@ storiesOf('Button', module)
                <SearchIcon color='#fff' /> Search
             </ComboButton>
             <ComboButton type='solid' hasAccess={false}>
+               <SearchIcon color='#fff' /> Search
+            </ComboButton>
+            <ComboButton type='solid' disabled>
+               <SearchIcon color='#fff' /> Search
+            </ComboButton>
+            <ComboButton isLoading={true} type='solid'>
                <SearchIcon color='#fff' /> Search
             </ComboButton>
          </ButtonGroup>
@@ -115,6 +157,13 @@ storiesOf('Button', module)
                Add Ingredient
                <PlusIcon />
             </ComboButton>
+            <ComboButton type='outline' disabled>
+               Add Ingredient
+               <PlusIcon />
+            </ComboButton>
+            <ComboButton isLoading={true} type='outline'>
+               <SearchIcon color='#fff' /> Search
+            </ComboButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
@@ -129,6 +178,13 @@ storiesOf('Button', module)
             <ComboButton type='ghost' hasAccess={false}>
                <ClearIcon />
                Clear Filters
+            </ComboButton>
+            <ComboButton type='ghost' disabled>
+               <ClearIcon />
+               Clear Filters
+            </ComboButton>
+            <ComboButton isLoading={true} type='ghost'>
+               <SearchIcon color='#fff' /> Search
             </ComboButton>
          </ButtonGroup>
       </>

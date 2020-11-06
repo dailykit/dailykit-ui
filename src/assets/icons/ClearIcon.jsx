@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ClearIcon = ({ size = 14, color = '#000' }) => (
+const ClearIcon = ({ size = 18, color = '#555b6e' }) => (
    <svg
       xmlns='http://www.w3.org/2000/svg'
       width={size}
