@@ -27,7 +27,10 @@ export const Select = ({
       >
          <Styles.Select id={id} name={name} {...props}>
             {options.map(option => (
-               <option key={option.id} value={option.title}>
+               <option
+                  key={option.id}
+                  value={Boolean(option?.value) ? option.value : option.title}
+               >
                   {option.title}
                </option>
             ))}
