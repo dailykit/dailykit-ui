@@ -498,16 +498,19 @@ storiesOf('Form v2', module)
    .add('Select', () => {
       const [state, dispatch] = React.useReducer(reducers, initialState)
 
-      const onChange = e =>
+      const onChange = e => {
+         console.log('Selected Option:', e.target.value)
          dispatch({
             type: 'SET_FIELD',
             payload: { field: 'nationality', value: e.target.value }
          })
+      }
 
       const [options] = React.useState([
-         { id: 1, title: 'Indian' },
-         { id: 2, title: 'American' },
-         { id: 3, title: 'Australian' }
+         { id: 1, value: ' ', title: 'Select your nationality' },
+         { id: 2, value: 'IN', title: 'Indian' },
+         { id: 3, value: 'US', title: 'American' },
+         { id: 4, value: 'AUS', title: 'Australian' }
       ])
 
       return (
@@ -523,9 +526,7 @@ storiesOf('Form v2', module)
                   name='nationality'
                   options={options}
                   onChange={onChange}
-                  value={state.nationality.value}
                   placeholder='Choose your nationality'
-                  defaultValue={state.nationality.value}
                />
             </Form.Group>
             <Spacer size='24px' />
@@ -634,7 +635,8 @@ storiesOf('Form v2', module)
    .add('Text w/ Select', () => {
       const [state, dispatch] = React.useReducer(reducers, initialState)
 
-      const onChange = (e, field) =>
+      const onChange = (e, field) => {
+         console.log('Selected Option:', e.target.value)
          dispatch({
             type: 'SET_FIELD',
             payload: {
@@ -645,11 +647,13 @@ storiesOf('Form v2', module)
                      : e.target.value
             }
          })
+      }
 
       const [options] = React.useState([
-         { id: 1, title: 'gm' },
-         { id: 2, title: 'kg' },
-         { id: 3, title: 'mm' }
+         { id: 1, value: ' ', title: 'Select Unit' },
+         { id: 2, value: 'gm', title: 'gm' },
+         { id: 3, value: 'kg', title: 'kg' },
+         { id: 4, value: 'mm', title: 'mm' }
       ])
 
       return (
@@ -671,7 +675,6 @@ storiesOf('Form v2', module)
                   options={options}
                   value={state.unit.value}
                   placeholder='Choose your unit'
-                  defaultValue={state.unit.value}
                   onChange={e => onChange(e, 'unit')}
                />
             </Form.TextSelect>
