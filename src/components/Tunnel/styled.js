@@ -37,5 +37,12 @@ export const StyledTunnelPanel = styled.div(
       float: ${partial ? 'left' : 'right'};
       width: ${pickSize(size)};
       border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+      @media only screen and (max-width: 1023px) and (min-width: 569px) {
+         width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
+      }
+      @media only screen and (max-width: 568px) {
+         width: ${pickSize('full')};
+      }
    `
 )
