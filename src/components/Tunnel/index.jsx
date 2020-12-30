@@ -8,6 +8,7 @@ import { Spacer } from '../Spacer'
 import { TextButton, IconButton } from '../Button'
 
 import { CloseIcon } from '../../assets/icons'
+import { useTransition } from 'react-spring'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
@@ -39,11 +40,14 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
    return (
       <div>
          {Array.isArray(children) &&
-            children.map(
-               (tunnel, index) =>
+            children.map((tunnel, index) => {
+               console.log(tunnel, index)
+
+               return (
                   tunnels[index] === 'visible' && {
                      ...tunnel,
                      props: {
+                        tunnels,
                         mt,
                         ...tunnel.props,
                         ...(tunnels[index + 1] === 'visible' && {
@@ -51,7 +55,8 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
                         })
                      }
                   }
-            )}
+               )
+            })}
          {children.hasOwnProperty('props') &&
             tunnels[0] === 'visible' && {
                ...children,
@@ -62,10 +67,25 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
 }
 
 const Tunnel = ({ mt, children, ...props }) => {
+   const transitions = useTransition(props.layer, null, {
+      from: { transform: `translateX(50px)`, opacity: 0 },
+      enter: { transform: `translateX(0px)`, opacity: 1 },
+      leave: { transform: `translateY(50px)`, opacity: 1 }
+   })
+
    return (
-      <StyledTunnel mt={mt}>
-         <StyledTunnelPanel {...props}>{children}</StyledTunnelPanel>
-      </StyledTunnel>
+      <>
+         {transitions.map(
+            ({ item, key, props }) =>
+               item && (
+                  <StyledTunnel mt={mt} style={props} key={key}>
+                     <StyledTunnelPanel {...props}>
+                        {children}
+                     </StyledTunnelPanel>
+                  </StyledTunnel>
+               )
+         )}
+      </>
    )
 }
 

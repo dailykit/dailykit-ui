@@ -47,6 +47,7 @@
       "dist"
    ],
    "dependencies": {
-      "concurrently": "^5.3.0"
+      "concurrently": "^5.3.0",
+      "react-spring": "^8.0.27"
    }
 }

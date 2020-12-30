@@ -1,6 +1,7 @@
+import { animated } from 'react-spring'
 import styled, { css } from 'styled-components'
 
-export const StyledTunnel = styled.div(
+export const StyledTunnel = styled(animated.div)(
    ({ mt }) => css`
       top: ${mt || 0}px;
       left: 0;
