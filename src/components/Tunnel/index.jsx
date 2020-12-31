@@ -9,6 +9,7 @@ import { TextButton, IconButton } from '../Button'
 
 import { CloseIcon } from '../../assets/icons'
 import { useTransition } from 'react-spring'
+import { animated } from 'react-spring'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
@@ -41,8 +42,6 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
       <div>
          {Array.isArray(children) &&
             children.map((tunnel, index) => {
-               console.log(tunnel, index)
-
                return (
                   tunnels[index] === 'visible' && {
                      ...tunnel,
@@ -67,24 +66,24 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
 }
 
 const Tunnel = ({ mt, children, ...props }) => {
-   const transitions = useTransition(props.layer, null, {
-      from: { transform: `translateX(50px)`, opacity: 0 },
-      enter: { transform: `translateX(0px)`, opacity: 1 },
-      leave: { transform: `translateY(50px)`, opacity: 1 }
-   })
-
+   const [{ item, key, state, props: animatedProps }] = useTransition(
+      props.tunnels[props.layer],
+      null,
+      {
+         from: { transform: `translateX(50px)`, opacity: 0 },
+         enter: { transform: `translateX(0px)`, opacity: 1 },
+         leave: { transform: `translateY(50px)`, opacity: 0 }
+      }
+   )
    return (
       <>
-         {transitions.map(
-            ({ item, key, props }) =>
-               item && (
-                  <StyledTunnel mt={mt} style={props} key={key}>
-                     <StyledTunnelPanel {...props}>
-                        {children}
-                     </StyledTunnelPanel>
-                  </StyledTunnel>
-               )
-         )}
+         <StyledTunnel mt={mt}>
+            <StyledTunnelPanel {...props}>
+               <animated.div style={animatedProps} key={key}>
+                  {children}
+               </animated.div>
+            </StyledTunnelPanel>
+         </StyledTunnel>
       </>
    )
 }
