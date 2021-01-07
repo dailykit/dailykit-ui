@@ -11,19 +11,28 @@ export const SectionTabs = styled(Tabs)`
    height: 100%;
    display: grid;
    grid-template-columns: 280px 1fr;
+   @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr;
+      height: auto;
+   }
 `
 export const SectionTabList = styled(TabList)`
    display: flex;
    overflow-y: auto;
    padding: 0 20px 0 0;
    flex-direction: column;
+   @media screen and (max-width: 767px) {
+      flex-direction: row;
+   }
 `
+
 const StyledTab = styled(Tab)`
    border: none;
+   min-width: fit-content;
    cursor: pointer;
    border-radius: 2px;
    background: #fff;
-   margin-bottom: 8px;
+   margin: 0px 0px 8px 8px;
    &[data-selected] {
       color: #fff;
       background: #555b6e;
@@ -40,7 +49,7 @@ export const SectionTabPanels = styled(TabPanels)(
 )
 
 export const SectionTabPanel = styled(TabPanel)`
-   height: 100%;
+   height: 100vh;
    padding: 16px;
    overflow-y: auto;
    background: #fff;

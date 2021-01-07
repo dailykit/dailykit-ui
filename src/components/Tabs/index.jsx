@@ -12,12 +12,14 @@ export const HorizontalTabs = styled(Tabs)`
 `
 export const HorizontalTabList = styled(TabList)`
    display: flex;
+   overflow-x: auto;
    padding: 0 20px 0 0;
    border-bottom: 1px solid #c9e1ff;
 `
 const StyledTab = styled(Tab)`
    border: none;
    height: 32px;
+   min-width: fit-content;
    color: #888d9d;
    font-size: 16px;
    margin-right: 14px;
