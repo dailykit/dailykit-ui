@@ -3,7 +3,7 @@ import React from 'react'
 import { Flex } from '../../'
 import { MoveIcon, UpIcon, DownIcon } from '../../assets/icons'
 
-import { StyledWrapper, StyledHead, StyledBody } from './styled'
+import { StyledWrapper, StyledHead, StyledBody, StyledIcon } from './styled'
 
 const Collapsible = ({ head, body, defaultOpen, isDraggable }) => {
    const [isOpen, setIsOpen] = React.useState(!!defaultOpen)
@@ -11,11 +11,11 @@ const Collapsible = ({ head, body, defaultOpen, isDraggable }) => {
    return (
       <StyledWrapper>
          <StyledHead onClick={() => setIsOpen(!isOpen)}>
-            <Flex container alignItems='center'>
+            <Flex container alignItems='center' width='100%'>
                {isDraggable && (
-                  <Flex margin='0 8px 0 0'>
+                  <StyledIcon>
                      <MoveIcon />
-                  </Flex>
+                  </StyledIcon>
                )}
                {head}
             </Flex>

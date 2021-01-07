@@ -23,3 +23,8 @@ export const StyledBody = styled.div`
    border-top: 1px solid #ececec;
    display: ${props => (props.hidden ? 'none' : 'block')};
 `
+
+export const StyledIcon = styled.span`
+   cursor: grab;
+   margin-right: 8px;
+`
