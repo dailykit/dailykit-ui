@@ -33,12 +33,6 @@ storiesOf('Tabs', module).add('Section Tabs', () => {
       >
          <SectionTabs>
             <SectionTabList>
-               <SectionTabsListHeader>
-                  <Text as='title'>Processings(2)</Text>
-                  <IconButton type='outline'>
-                     <PlusIcon />
-                  </IconButton>
-               </SectionTabsListHeader>
                <SectionTab>
                   <div style={containerStyle}>
                      <Avatar withName title='Tab With Avatar' />
