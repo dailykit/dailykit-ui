@@ -6,8 +6,19 @@ import Select from './components/Select'
 import Card from './components/Card'
 import Text from './components/Text'
 import Loader from './components/Loader'
+import Collapsible from './components/Collapsible'
 
-export { Toggle, Checkbox, Popup, Dropdown, Select, Card, Text, Loader }
+export {
+   Toggle,
+   Checkbox,
+   Popup,
+   Dropdown,
+   Select,
+   Card,
+   Text,
+   Loader,
+   Collapsible
+}
 
 // Components
 export * from './components/Tags'
