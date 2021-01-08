@@ -1,5 +1,5 @@
 import React from 'react'
-import { Collapsible } from '@dailykit/ui'
+import { Collapsible, Flex, Text } from '@dailykit/ui'
 
 export default {
    title: 'Collapsible'
@@ -11,8 +11,30 @@ export const CollapsibleCards = () => {
          {[1, 2, 3].map(i => (
             <Collapsible
                key={i}
-               head={<p style={{ margin: '10px 0' }}>Head</p>}
-               body={<p style={{ margin: '10px 0' }}>Body</p>}
+               title={i !== 2 ? 'Title' : ''}
+               head={
+                  <Flex
+                     margin='10px 0'
+                     container
+                     alignItems='center'
+                     justifyContent='space-between'
+                     width='100%'
+                  >
+                     <Text as='title'> Head </Text>
+                     <Text as='p'> Actions </Text>
+                  </Flex>
+               }
+               body={
+                  <Flex
+                     margin='10px 0'
+                     container
+                     alignItems='center'
+                     justifyContent='space-between'
+                  >
+                     <Text as='title'> Body </Text>
+                     <Text as='p'> Actions </Text>
+                  </Flex>
+               }
                defaultOpen={i === 1}
                isDraggable={i !== 1}
             />

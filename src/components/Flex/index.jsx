@@ -4,6 +4,7 @@ export const Flex = styled.div(
    props =>
       css`
          display: ${props.container ? 'flex' : 'block'};
+         ${props.cursor && `cursor: ${props.cursor}`};
          ${props.flex && `flex: ${props.flex}`};
          ${props.width && `width: ${props.width}`};
          ${props.margin && `margin: ${props.margin}`};
