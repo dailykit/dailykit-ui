@@ -13,7 +13,6 @@ export const StyledWrapper = styled.div`
 
 export const StyledHead = styled.div`
    align-items: center;
-   cursor: pointer;
    display: flex;
    flex-direction: row;
    justify-content: space-between;

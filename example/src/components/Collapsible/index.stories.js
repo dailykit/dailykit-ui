@@ -11,6 +11,7 @@ export const CollapsibleCards = () => {
          {[1, 2, 3].map(i => (
             <Collapsible
                key={i}
+               title={i !== 2 ? 'Title' : ''}
                head={
                   <Flex
                      margin='10px 0'
