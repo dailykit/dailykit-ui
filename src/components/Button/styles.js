@@ -34,7 +34,7 @@ export const Styles = {
             span.locked {
                top: 50%;
                left: 50%;
-               z-index: 101;
+               z-index: 10;
                position: absolute;
                cursor: not-allowed;
                transform: translate(-50%, -50%);
@@ -43,7 +43,7 @@ export const Styles = {
                top: 0;
                left: 0;
                content: '';
-               z-index: 100;
+               z-index: 9;
                width: 100%;
                height: 100%;
                position: absolute;
@@ -136,7 +136,7 @@ export const Styles = {
             span.locked {
                top: 50%;
                left: 50%;
-               z-index: 101;
+               z-index: 10;
                position: absolute;
                cursor: not-allowed;
                transform: translate(-50%, -46%);
@@ -145,7 +145,7 @@ export const Styles = {
                top: 0;
                left: 0;
                content: '';
-               z-index: 100;
+               z-index: 9;
                width: 100%;
                height: 100%;
                position: absolute;
@@ -251,7 +251,7 @@ export const Styles = {
             span.locked {
                top: 50%;
                left: 50%;
-               z-index: 101;
+               z-index: 10;
                position: absolute;
                cursor: not-allowed;
                transform: translate(-50%, -50%);
@@ -260,7 +260,7 @@ export const Styles = {
                top: 0;
                left: 0;
                content: '';
-               z-index: 100;
+               z-index: 9;
                width: 100%;
                height: 100%;
                position: absolute;

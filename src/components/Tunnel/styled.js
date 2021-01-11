@@ -10,7 +10,7 @@ export const StyledTunnel = styled.div(
       height: 100vh;
       position: fixed;
       background: rgba(0, 0, 0, 0.1);
-      z-index: 10;
+      z-index: 1000;
    `
 )
 
@@ -30,10 +30,9 @@ const pickSize = size => {
 }
 
 export const StyledTunnelPanel = styled.div(
-   ({ size, layer, partial }) => css`
+   ({ size, partial }) => css`
       height: 100%;
       background: #fff;
-      z-index: ${layer};
       float: ${partial ? 'left' : 'right'};
       width: ${pickSize(size)};
       border-left: 1px solid rgba(0, 0, 0, 0.1);
