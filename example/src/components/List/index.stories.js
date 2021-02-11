@@ -40,7 +40,10 @@ storiesOf('List', module)
                />
             )}
             <ListHeader type='SSL1' label='Ingredient' />
-            <ListOptions>
+            <ListOptions
+               search={search}
+               onCreate={() => console.log(`Created ${search}`)}
+            >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
                   .map(option => (
@@ -227,7 +230,10 @@ storiesOf('List', module)
                </TagGroup>
             )}
             <ListHeader type='MSL1' label='Ingredients' />
-            <ListOptions>
+            <ListOptions
+               search={search}
+               onCreate={() => console.log(`Created ${search}`)}
+            >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
                   .map(option => (

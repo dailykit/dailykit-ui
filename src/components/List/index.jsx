@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Flex } from '../Flex'
-import { SearchIcon } from '../../assets/icons'
+import { ComboButton } from '../Button'
+import { PlusIcon, SearchIcon } from '../../assets/icons'
 import {
    StyledList,
    StyledSearch,
@@ -121,6 +122,29 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
    )
 }
 
-export const ListOptions = ({ children, ...props }) => (
-   <StyledOptions {...props}>{children}</StyledOptions>
-)
+export const ListOptions = ({ search, children, onCreate, ...props }) => {
+   const text = React.useMemo(() => {
+      return search
+         ? `Add ${search.slice(0, 1).toUpperCase() + search.slice(1)}`
+         : ''
+   }, [search])
+
+   return (
+      <StyledOptions {...props}>
+         {children.length ? (
+            children
+         ) : (
+            <>
+               {search && onCreate && (
+                  <Flex padding='0px 0px 0px 14px'>
+                     <ComboButton size='sm' type='solid' onClick={onCreate}>
+                        {text}
+                        <PlusIcon color='#fff' size={12} />
+                     </ComboButton>
+                  </Flex>
+               )}
+            </>
+         )}
+      </StyledOptions>
+   )
+}
