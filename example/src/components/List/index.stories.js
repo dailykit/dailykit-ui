@@ -42,7 +42,7 @@ storiesOf('List', module)
             <ListHeader type='SSL1' label='Ingredient' />
             <ListOptions
                search={search}
-               onCreate={() => console.log(`Created ${search}`)}
+               handleOnCreate={() => console.log(`Created ${search}`)}
             >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
@@ -232,7 +232,7 @@ storiesOf('List', module)
             <ListHeader type='MSL1' label='Ingredients' />
             <ListOptions
                search={search}
-               onCreate={() => console.log(`Created ${search}`)}
+               handleOnCreate={() => console.log(`Created ${search}`)}
             >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
