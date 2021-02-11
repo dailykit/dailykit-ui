@@ -122,7 +122,7 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
    )
 }
 
-export const ListOptions = ({ search, children, onCreate, ...props }) => {
+export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
    const text = React.useMemo(() => {
       return search
          ? `Add ${search.slice(0, 1).toUpperCase() + search.slice(1)}`
@@ -135,9 +135,13 @@ export const ListOptions = ({ search, children, onCreate, ...props }) => {
             children
          ) : (
             <>
-               {search && onCreate && (
+               {search && handleOnCreate && (
                   <Flex padding='0px 0px 0px 14px'>
-                     <ComboButton size='sm' type='solid' onClick={onCreate}>
+                     <ComboButton
+                        size='sm'
+                        type='solid'
+                        onClick={handleOnCreate}
+                     >
                         {text}
                         <PlusIcon color='#fff' size={12} />
                      </ComboButton>
