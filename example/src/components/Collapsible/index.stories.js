@@ -12,6 +12,7 @@ export const CollapsibleCards = () => {
             <Collapsible
                key={i}
                title={i !== 2 ? 'Title' : ''}
+               isHeadClickable={i !== 1}
                head={
                   <Flex
                      margin='10px 0'
