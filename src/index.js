@@ -7,7 +7,7 @@ import Card from './components/Card'
 import Text from './components/Text'
 import Loader from './components/Loader'
 import Collapsible from './components/Collapsible'
-
+import ToolTip from './components/ToolTip'
 export {
    Toggle,
    Checkbox,
@@ -17,7 +17,8 @@ export {
    Card,
    Text,
    Loader,
-   Collapsible
+   Collapsible,
+   ToolTip
 }
 
 // Components

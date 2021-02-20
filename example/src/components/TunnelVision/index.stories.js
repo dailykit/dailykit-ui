@@ -14,7 +14,7 @@ export default {
 }
 
 export const TunnelVision = () => {
-   const [tunnels, openTunnel, closeTunnel] = useTunnel(4)
+   const [tunnels, openTunnel, closeTunnel,visible] = useTunnel(4)
 
    return (
       <>
@@ -22,7 +22,7 @@ export const TunnelVision = () => {
             Open Tunnel 1
          </TextButton>
          <Tunnels tunnels={tunnels}>
-            <Tunnel layer={1}>
+            <Tunnel layer={1} visible={visible}>
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeTunnel(1)}

@@ -8,16 +8,22 @@ export const TextButton = ({ children, ...props }) => {
       props?.hasAccess === false
          ? props?.fallBackMessage || "You don't have access to this action"
          : props?.title || ''
+
    return (
       <Styles.TextButton
          {...props}
-         title={props?.disabled ? 'Disabled' : title}
+         title={props?.disabled ? 'Disabled' : title
+        
+         }
          disabled={
             props?.hasAccess === false || props?.disabled || props?.isLoading
          }
       >
          {props?.isLoading ? (
-            <Loader type={props?.type} />
+            <>
+            <Spinner type={props?.type} />
+            {children}
+            </>
          ) : (
             <>
                {children}
@@ -123,7 +129,7 @@ export const ButtonGroup = ({ children, ...props }) => (
    <Styles.ButtonGroup {...props}>{children}</Styles.ButtonGroup>
 )
 
-const Loader = props => {
+const Loader_ = props => {
    return (
       <Styles.Loader {...props}>
          <div className='loader__divs' />
@@ -131,5 +137,16 @@ const Loader = props => {
          <div className='loader__divs' />
          <div className='loader__divs' />
       </Styles.Loader>
+   )
+}
+
+const Spinner = props => {
+   return (
+      <Styles.Spinner {...props}>
+         <div className='spinner__divs' />
+         <div className='spinner__divs' />
+         <div className='spinner__divs' />
+         <div className='spinner__divs' />
+      </Styles.Spinner>
    )
 }

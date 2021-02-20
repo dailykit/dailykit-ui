@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CloseIcon = ({ size = 16, color = '#888D9D', marginTop = '5px' }) => (
+ const CloseIconv2 = ({ size = 16, color = '#888D9D', marginTop = '5px' }) => (
    <svg
-      width='10'
-      height='10'
+      width='13'
+      height='25'
       viewBox='0 0 10 10'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -17,4 +17,4 @@ const CloseIcon = ({ size = 16, color = '#888D9D', marginTop = '5px' }) => (
    </svg>
 )
 
-export default CloseIcon
+export default CloseIconv2

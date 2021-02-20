@@ -8,7 +8,7 @@ import TickIcon from './TickIcon'
 import ArrowRightIcon from './ArrowRightIcon'
 import CloseIcon from './CloseIcon'
 import MoveIcon from './MoveIcon'
-
+import CloseIconv2 from './CloseIconv2'
 export {
    ClearIcon,
    SearchIcon,
@@ -19,7 +19,9 @@ export {
    TickIcon,
    ArrowRightIcon,
    CloseIcon,
-   MoveIcon
+   MoveIcon,
+   CloseIconv2
+
 }
 
 export * from './Up'

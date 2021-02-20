@@ -30,13 +30,39 @@ const pickSize = size => {
 }
 
 export const StyledTunnelPanel = styled.div(
-   ({ size, partial }) => css`
+   ({ size, partial, visible }) => css`
       height: 100%;
       background: #fff;
       float: ${partial ? 'left' : 'right'};
       width: ${pickSize(size)};
       border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 20px 0px 0px 0px;
+      ${visible &&
+      css`
+         @keyframes transformOpen {
+            from {
+               transform: translateX(100%);
+            }
+            to {
+               transform: translateX(0%);
+            }
+         }
 
+         animation: transformOpen 1s ease-in-out;
+      `}
+
+      ${!visible &&
+      css`
+         @keyframes transformClose {
+            from {
+               transform: translateX(0%);
+            }
+            to {
+               transform: translateX(100%);
+            }
+         }
+         transition: transformClose 1s ease-in-out;
+      `}
       @media only screen and (max-width: 1023px) and (min-width: 569px) {
          width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
       }
@@ -45,3 +71,16 @@ export const StyledTunnelPanel = styled.div(
       }
    `
 )
+
+export const CloseButtonContainer = styled.div`
+   border-radius: 13px;
+   width: 26px;
+   height: 26px;
+   background: #f3f3f3;
+   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3),
+      -1px -1px 2px rgba(206, 206, 205, 0.5),
+      inset -1px 1px 2px rgba(206, 206, 205, 0.2),
+      inset 1px -1px 2px rgba(206, 206, 205, 0.2),
+      inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+      inset 1px 1px 3px rgba(206, 206, 205, 0.9);
+`

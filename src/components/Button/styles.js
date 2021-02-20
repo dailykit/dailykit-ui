@@ -1,4 +1,12 @@
 import styled, { css } from 'styled-components'
+const primaryColor = '#165CDA'
+const primaryBackgroundColor = '#367BF5'
+const primaryBorderColor = '#367BF5'
+const secondaryColor = '#367BF5'
+const secondaryBackgroundColor = '#EBF1F4'
+const primarySolidColor = '#FFFFFF'
+const primarySolidBackgroundColor = '#367BF5'
+const primarySolidHoverBackgroundColor = '#165CDA'
 
 const dimensions = ({ h, p, w, fW, fS }) => css`
    width: ${w || 'auto'};
@@ -24,105 +32,140 @@ const sizeTextSelector = size => {
 export const Styles = {
    TextButton: styled.button(
       ({ size, type, disabled, isLoading, hasAccess }) => css`
-         color: #ffffff;
+    
+         color: red;
          border-radius: 2px;
          position: relative;
          ${sizeTextSelector(size)}
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -50%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-               background: rgba(0, 0, 0, 0.2);
-            }
-         `}
-         ${type === 'outline' &&
-         css`
-            color: #00a7e1;
-            background: transparent;
-            border: 1px solid #00a7e1;
-            ${hasAccess !== false &&
+         ${
+            hasAccess === false &&
             css`
-               &:hover {
-                  color: #fff;
-                  background: linear-gradient(
-                     180deg,
-                     #28c1f7 -4.17%,
-                     #00a7e1 100%
-                  );
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -50%);
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: #fff;
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  border-radius: 2px;
+                  cursor: not-allowed;
+                  background: ;
                }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: #fff;
-            border: none;
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-         `}
-         ${type === 'ghost' &&
-         css`
-            color: #00a7e1;
-            border: none;
-            background: transparent;
-            ${hasAccess !== false &&
+            `
+         }
+         ${
+            type === 'outline' &&
             css`
+               color: #367bf5;
+               background: transparent;
+               border: 1px solid #367bf5;
+
+               font-style: normal;
+               font-weight: 500;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     color: ${props => props.color || primaryBorderColor};
+                     border: 2px solid ${primaryBorderColor};
+                     background: transparent;
+                     border-radius: 2px;
+                  }
+               `}
                &:hover {
-                  background: #f5f5f5;
+                  .loader__divs {
+                     background: red;
+                  }
                }
-            `}
-         `}
-         ${hasAccess !== false &&
-         disabled &&
-         !isLoading &&
-         css`
+            `
+         }
+         ${
+            type === 'solid' &&
+            css`
+               color: ${props => props.color || primarySolidColor};
+               border: none;
+               background: ${props =>
+                  props.background || primarySolidBackgroundColor};
+               &:hover {
+                  background: ${props => props.background || primaryColor};
+               }
+            `
+         }
+         ${
+            type === 'ghost' &&
+            css`
+               color: ${props => props.color || primarySolidBackgroundColor};
+               border: none;
+               background: transparent;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                  }
+               `}
+            `
+         }
+         ${
+            hasAccess !== false &&
+            disabled &&
+            !isLoading &&
+            css`
             cursor: not-allowed;
-            ${type === 'solid' &&
-            css`
-               background: #b7aaaa;
-            `}
-            ${type === 'outline' &&
-            css`
-               color: #776d6d;
-               border: 1px solid #b7aaaa;
-               :hover {
+            ${
+               type === 'solid' &&
+               css`
+                  margin: 0px 8px;
+                  opacity: 0.5;
+                  background: ${props =>
+                     props.background || primarySolidBackgroundColor};
+               `
+            }
+            ${
+               type === 'outline' &&
+               css`
+                  padding: 4px;
                   color: #776d6d;
-                  background: transparent;
-               }
-            `}
-            ${type === 'ghost' &&
-            css`
-               color: #776d6d;
-               :hover {
+                  border: 1px solid #b7aaaa;
+                  :hover {
+                     color: #776d6d;
+                     background: transparent;
+                  }
+               `
+            }
+            ${
+               type === 'ghost' &&
+               css`
                   color: #776d6d;
-                  background: transparent;
-               }
-            `}
-         `}
+                  :hover {
+                     color: #776d6d;
+                     background: transparent;
+                  }
+               `
+            }
+         `
+         }
       `
    ),
    IconButton: styled.button(
-      ({ size, type, disabled, isLoading, hasAccess }) => css`
+      ({
+         size,
+         type,
+         disabled,
+         isLoading,
+         hasAccess,
+         color,
+         backgoundColor,
+         round
+      }) => css`
          border: none;
          display: flex;
          border-radius: 2px;
@@ -131,106 +174,136 @@ export const Styles = {
          justify-content: center;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          ${sizeIconSelector(size, isLoading)}
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -46%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-               background: rgba(0, 0, 0, 0.2);
-            }
-         `}
-         ${type === 'outline' &&
-         css`
-            background: transparent;
-            border: 1px solid #00a7e1;
-            > svg {
-               stroke: #00a7e1;
-            }
-            ${hasAccess !== false &&
+         ${
+            hasAccess === false &&
             css`
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -46%);
+               }
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  border-radius: 2px;
+                  cursor: not-allowed;
+                  background: rgba(0, 0, 0, 0.2);
+               }
+            `
+         }
+
+${
+   round &&
+   css`
+      border-radius: 20px;
+   `
+}
+
+         ${
+            type === 'outline' &&
+            css`
+               background: transparent;
+               border: 1px solid #00a7e1;
+               > svg {
+                  stroke: #00a7e1;
+               }
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: linear-gradient(
+                        180deg,
+                        #28c1f7 -4.17%,
+                        #00a7e1 100%
+                     );
+                     color: #367bf5;
+
+                     > svg {
+                        stroke: #fff;
+                     }
+                  }
+               `}
                &:hover {
-                  background: linear-gradient(
-                     180deg,
-                     #28c1f7 -4.17%,
-                     #00a7e1 100%
-                  );
-                  > svg {
-                     stroke: #fff;
+                  .loader__divs {
+                     background: #fff;
                   }
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: #fff;
-               }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: #fff;
-            border: none;
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-         `}
-         ${type === 'ghost' &&
-         css`
-            border: none;
-            background: transparent;
-            ${hasAccess !== false &&
+            `
+         }
+         ${
+            type === 'solid' &&
             css`
-               &:hover {
-                  background: #f5f5f5;
-               }
-            `}
-         `}
+               color: #fff;
+               border: none;
+               background: linear-gradient(
+                  180deg,
+                  #28c1f7 -4.17%,
+                  #00a7e1 100%
+               );
+            `
+         }
+         ${
+            type === 'ghost' &&
+            css`
+               border: none;
+               background: transparent;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                  }
+               `}
+            `
+         }
          
-         ${hasAccess !== false &&
-         disabled &&
-         !isLoading &&
-         css`
+         ${
+            hasAccess !== false &&
+            disabled &&
+            !isLoading &&
+            css`
             cursor: not-allowed;
-            ${type === 'solid' &&
-            css`
-               background: #b7aaaa;
-            `}
-            ${type === 'outline' &&
-            css`
-               border: 1px solid #b7aaaa;
-               > svg {
-                  stroke: #776d6d;
-               }
-               &:hover {
-                  background: transparent;
+            ${
+               type === 'solid' &&
+               css`
+                  background: #b7aaaa;
+               `
+            }
+            ${
+               type === 'outline' &&
+               css`
+                  border: 1px solid #b7aaaa;
                   > svg {
                      stroke: #776d6d;
                   }
-               }
-            `}
-            ${type === 'ghost' &&
-            css`
-               :hover {
-                  color: #776d6d;
-                  background: transparent;
-               }
-               > svg {
-                  stroke: #776d6d;
-               }
-            `}
-         `}
+                  &:hover {
+                     background: transparent;
+                     > svg {
+                        stroke: #776d6d;
+                     }
+                  }
+               `
+            }
+            ${
+               type === 'ghost' &&
+               css`
+                  :hover {
+                     color: #776d6d;
+                     background: transparent;
+                  }
+                  > svg {
+                     stroke: #776d6d;
+                  }
+               `
+            }
+         `
+         }
       `
    ),
    ComboButton: styled.button(
@@ -240,35 +313,39 @@ export const Styles = {
          position: relative;
          align-items: center;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
-         ${isLoading &&
-         css`
-            justify-content: center;
-            padding: 0 14px !important;
-         `};
+         ${
+            isLoading &&
+            css`
+               justify-content: center;
+               padding: 0 14px !important;
+            `
+         };
          ${sizeComboSelector(size)}
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -50%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-               background: rgba(0, 0, 0, 0.2);
-            }
-         `}
+         ${
+            hasAccess === false &&
+            css`
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -50%);
+               }
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  border-radius: 2px;
+                  cursor: not-allowed;
+                  background: rgba(0, 0, 0, 0.2);
+               }
+            `
+         }
          span {
             display: flex;
             height: inherit;
@@ -276,103 +353,123 @@ export const Styles = {
             justify-content: center;
             width: ${size === 'sm' ? '32px' : '40px'};
          }
-         ${position === 'right'
-            ? css`
-                 padding: 0 0 0 ${size === 'sm' ? '8px' : '14px'};
-              `
-            : css`
-                 padding: 0 ${size === 'sm' ? '8px' : '14px'} 0 0;
-              `}
+         ${
+            position === 'right'
+               ? css`
+                    padding: 0 0 0 ${size === 'sm' ? '8px' : '14px'};
+                 `
+               : css`
+                    padding: 0 ${size === 'sm' ? '8px' : '14px'} 0 0;
+                 `
+         }
 
-         ${type === 'outline' &&
-         css`
-            color: #00a7e1;
-            background: transparent;
-            border: 1px solid #00a7e1;
-            span > svg {
-               stroke: #555b6e;
-            }
-            ${hasAccess !== false &&
+         ${
+            type === 'outline' &&
             css`
+               color: #00a7e1;
+               background: transparent;
+               border: 1px solid #00a7e1;
+               span > svg {
+                  stroke: #555b6e;
+               }
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     color: #fff;
+                     background: linear-gradient(
+                        180deg,
+                        #28c1f7 -4.17%,
+                        #00a7e1 100%
+                     );
+                     span > svg {
+                        stroke: #fff;
+                     }
+                  }
+               `}
                &:hover {
-                  color: #fff;
-                  background: linear-gradient(
-                     180deg,
-                     #28c1f7 -4.17%,
-                     #00a7e1 100%
-                  );
-                  span > svg {
-                     stroke: #fff;
+                  .loader__divs {
+                     background: #fff;
                   }
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: #fff;
+            `
+         }
+         ${
+            type === 'solid' &&
+            css`
+               color: #fff;
+               border: none;
+               background: linear-gradient(
+                  180deg,
+                  #28c1f7 -4.17%,
+                  #00a7e1 100%
+               );
+               > svg {
+                  stroke: #fff;
                }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: #fff;
-            border: none;
-            background: linear-gradient(180deg, #28c1f7 -4.17%, #00a7e1 100%);
-            > svg {
-               stroke: #fff;
-            }
-         `}
-         ${type === 'ghost' &&
-         css`
-            color: #00a7e1;
-            border: none;
-            background: transparent;
-            > svg {
-               stroke: #00a7e1;
-            }
-            ${hasAccess !== false &&
+            `
+         }
+         ${
+            type === 'ghost' &&
             css`
-               &:hover {
-                  background: #f5f5f5;
-               }
-            `}
-         `}
-         ${hasAccess !== false &&
-         disabled &&
-         !isLoading &&
-         css`
-            cursor: not-allowed;
-            ${type === 'solid' &&
-            css`
-               background: #b7aaaa;
-            `}
-            ${type === 'outline' &&
-            css`
-               color: #776d6d;
+               color: #00a7e1;
+               border: none;
                background: transparent;
-               border: 1px solid #b7aaaa;
-               span > svg {
-                  stroke: #776d6d;
+               > svg {
+                  stroke: #00a7e1;
                }
-               &:hover {
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                  }
+               `}
+            `
+         }
+         ${
+            hasAccess !== false &&
+            disabled &&
+            !isLoading &&
+            css`
+            cursor: not-allowed;
+            ${
+               type === 'solid' &&
+               css`
+                  background: #b7aaaa;
+               `
+            }
+            ${
+               type === 'outline' &&
+               css`
                   color: #776d6d;
                   background: transparent;
+                  border: 1px solid #b7aaaa;
                   span > svg {
                      stroke: #776d6d;
                   }
-               }
-            `}
-            ${type === 'ghost' &&
-            css`
-               color: #776d6d;
-               :hover {
+                  &:hover {
+                     color: #776d6d;
+                     background: transparent;
+                     span > svg {
+                        stroke: #776d6d;
+                     }
+                  }
+               `
+            }
+            ${
+               type === 'ghost' &&
+               css`
                   color: #776d6d;
-                  background: transparent;
-               }
-               span > svg {
-                  stroke: #776d6d;
-               }
-            `}
-         `}
+                  :hover {
+                     color: #776d6d;
+                     background: transparent;
+                  }
+                  span > svg {
+                     stroke: #776d6d;
+                  }
+               `
+            }
+         `
+         }
       `
    ),
    ButtonGroup: styled.div(
@@ -448,6 +545,29 @@ export const Styles = {
             }
             100% {
                transform: translate(16px, 0);
+            }
+         }
+      `
+   ),
+   Spinner: styled.div(
+      ({ type, spinnerColor }) => css`
+         display: inline-block;
+         position: relative;
+         width: 16px;
+         height: 16px;
+         border: 1px solid transparent;
+         border-radius: 50%;
+         border-top: 1px solid
+            ${type == 'solid' ? primarySolidColor : primarySolidBackgroundColor};
+         animation: spin 2s linear infinite;
+         right: 5px;
+         top: 1px;
+         @keyframes spin {
+            0% {
+               transform: rotate(0deg);
+            }
+            100% {
+               transform: rotate(360deg);
             }
          }
       `

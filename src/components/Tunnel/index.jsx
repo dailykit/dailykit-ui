@@ -1,16 +1,18 @@
 import React from 'react'
 
-import { StyledTunnel, StyledTunnelPanel } from './styled'
+import { StyledTunnel, StyledTunnelPanel, CloseButtonContainer } from './styled'
 
 import Text from '../Text'
 import { Flex } from '../Flex'
 import { Spacer } from '../Spacer'
 import { TextButton, IconButton } from '../Button'
 
-import { CloseIcon } from '../../assets/icons'
+import { CloseIconv2 } from '../../assets/icons'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
+
+   const [visible, setVisible] = React.useState(false)
 
    React.useEffect(() => {
       setTunnels([...Array(count).fill('hidden')])
@@ -20,19 +22,26 @@ const useTunnel = count => {
       layer => {
          tunnels[layer - 1] = 'visible'
          setTunnels([...tunnels])
+         setVisible(true)
+         setClosed(false)
+         console.log(tunnels)
       },
-      [tunnels, setTunnels]
+      [tunnels, setTunnels, visible, setVisible]
    )
 
    const closeTunnel = React.useCallback(
       layer => {
          tunnels[layer - 1] = 'hidden'
          setTunnels([...tunnels])
-      },
-      [tunnels, setTunnels]
-   )
+         setVisible(false)
 
-   return [tunnels, openTunnel, closeTunnel]
+         console.log(tunnels)
+      },
+      [tunnels, setTunnels, visible, setVisible]
+   )
+   console.log(visible + ' tunnel open')
+
+   return [tunnels, openTunnel, closeTunnel, visible]
 }
 
 const Tunnels = ({ mt = 40, tunnels, children }) => {
@@ -61,10 +70,21 @@ const Tunnels = ({ mt = 40, tunnels, children }) => {
    )
 }
 
-const Tunnel = ({ mt, children, ...props }) => {
+const Tunnel = ({ mt, visible, closed, children, ...props }) => {
+   let drawerClasses = 'side-tunnelclosed'
+   if (visible) {
+      drawerClasses = 'side-tunnelopen'
+   }
+
    return (
       <StyledTunnel mt={mt}>
-         <StyledTunnelPanel {...props}>{children}</StyledTunnelPanel>
+         <StyledTunnelPanel
+            className={drawerClasses}
+            visible={visible}
+            {...props}
+         >
+            {children}
+         </StyledTunnelPanel>
       </StyledTunnel>
    )
 }
@@ -84,16 +104,16 @@ const TunnelHeader = ({
       justifyContent='space-between'
    >
       <Flex container alignItems='center'>
-         <IconButton type='ghost' onClick={() => close()}>
-            <CloseIcon color='#888D9D' size='24' />
+         <IconButton type='ghost' onClick={() => close()} round>
+            <CloseButtonContainer>
+               <CloseIconv2 color='#888D9D' size='13' />
+            </CloseButtonContainer>
          </IconButton>
          <Spacer size='8px' xAxis />
          <Flex>
             <Flex container alignItems='center'>
-               <Text as='h2'>{title}</Text>
-               {tooltip}
+               <Text as='h1'>{title}</Text>
             </Flex>
-            {description && <Text as='p'>{description}</Text>}
          </Flex>
       </Flex>
 
