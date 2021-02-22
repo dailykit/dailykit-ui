@@ -8,6 +8,7 @@ import Text from './components/Text'
 import Loader from './components/Loader'
 import Collapsible from './components/Collapsible'
 import ToolTip from './components/ToolTip'
+import RichTextEditor from './components/RichTextEditor'
 export {
    Toggle,
    Checkbox,
@@ -18,7 +19,8 @@ export {
    Text,
    Loader,
    Collapsible,
-   ToolTip
+   ToolTip,
+   RichTextEditor
 }
 
 // Components
