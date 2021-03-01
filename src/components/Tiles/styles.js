@@ -130,3 +130,15 @@ export const StyledButtonTile = styled.button`
    border-radius: 2px;
    ${props => extendedButtonTileStyle(props.type, props.size)};
 `
+
+export const StyledOptionTile = styled.button`
+   background: #fff;
+   padding: 16px;
+   width: 100%;
+   border: 1px solid #cecece;
+   cursor: pointer;
+
+   &:hover {
+      background: #efefef;
+   }
+`
