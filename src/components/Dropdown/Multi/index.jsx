@@ -31,7 +31,9 @@ const MultiSelect = ({
    options,
    placeholder,
    selectedOption,
-   searchedOption
+   searchedOption,
+   defaultOptions = [],
+   defaultIds = []
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
@@ -67,6 +69,21 @@ const MultiSelect = ({
       // Update selected options
       setSelectedOptions([...withRemoved])
    }
+
+   React.useEffect(() => {
+      if (defaultOptions.length) {
+         setSelectedOptions(defaultOptions)
+      }
+   }, [defaultOptions])
+
+   React.useEffect(() => {
+      if (defaultIds.length) {
+         const result = options.filter(option =>
+            defaultIds.includes(option?.id)
+         )
+         setSelectedOptions(result)
+      }
+   }, [defaultIds])
 
    return (
       <StyledSelect ref={ref}>
