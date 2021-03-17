@@ -333,10 +333,11 @@ storiesOf('Form v2', module)
                   borderLess
                   inline
                   unitText='min'
+                  width='170px'
                   id='containers'
                   name='containers'
                   value={state.containers.value}
-                  placeholder='Enter the containers'
+                  placeholder='enter cooking Time'
                   onChange={value => onChange(value)}
                />
             </Form.Group>

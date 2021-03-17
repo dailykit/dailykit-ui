@@ -41,16 +41,13 @@ export const Stepper = ({
                onChange={e => onChange(e.target.value)}
             />
             <div>
-               <div>
-                  <button onClick={increment}>
-                     <UpIcon />
-                  </button>
-                  <button onClick={decrement}>
-                     <DownIcon />
-                  </button>
-               </div>
-
-               <span>{unitText && unitText}</span>
+               <button onClick={increment}>
+                  <UpIcon />
+               </button>
+               <button onClick={decrement}>
+                  <DownIcon />
+               </button>
+               {unitText && <span>{unitText}</span>}
             </div>
          </Styles.Stepper>
          {(hasWriteAccess === false || hasReadAccess === false) && (

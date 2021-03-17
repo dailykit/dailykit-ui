@@ -229,10 +229,12 @@ const Styles = {
       }
    `,
    Stepper: styled.section(
-      ({ hasError, borderLess }) => css`
+      ({ hasError, borderLess, inline, width }) => css`
+         display: flex;
          align-items: center;
          height: 40px;
          font-size: 16px;
+         font-weight: 500;
          border-radius: 4px;
          border: ${borderLess
             ? 'none'
@@ -242,14 +244,15 @@ const Styles = {
             border: ${borderLess ? 'none' : `2px solid #799ef4`};
          }
          :hover:not(:focus-within) {
-            border: ${borderLess ? 'none' : `1px solid #ccc1c1`};
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
          }
          section {
-            flex: 1;
+            flex: ${inline ? null : 1};
          }
          input {
             border: none;
             height: 36px;
+            width: ${`${width ? width : null}  !important`};
             :focus {
                outline: none;
                border: none;
@@ -265,24 +268,29 @@ const Styles = {
          }
          div {
             height: 36px;
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
-            div {
-               display: flex;
-               flex-direction: column;
-               button {
-                  outline: none;
-                  width: 24px;
-                  height: 10px;
-                  border: none;
-                  background: none;
+            grid-template-areas:
+               'arrowUp unitText'
+               'arrowDown unitText';
+            button {
+               width: 24px;
+               height: 18px;
+               border: none;
+               background: none;
+               grid-area: arrow;
+               :first-of-type {
+                  grid-area: arrowUp;
+               }
+               :last-of-type {
+                  grid-area: arrowDown;
                }
             }
+
             span {
-               font-size: 16px;
-               font-weight: 500;
-               color: #000;
+               grid-area: unitText;
+               padding: 0px 16px;
             }
          }
       `
