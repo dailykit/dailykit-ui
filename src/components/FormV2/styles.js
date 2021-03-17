@@ -50,18 +50,34 @@ const Styles = {
       margin-bottom: 4px;
    `,
    Text: styled.input(
-      ({ hasError }) => css`
-         height: 40px;
-         padding: 0 12px;
-         font-size: 16px;
+      ({
+         hasError,
+         borderLess,
+         hidePlaceholder,
+         textAlign = 'left',
+         fontSize = '16px',
+         fontWeight = 'normal',
+         padding = '0 12px',
+         height = '40px'
+      }) => css`
+         height: ${height};
+         padding: ${padding};
          border-radius: 4px;
-         border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+         text-align: ${textAlign};
+         font-size: ${fontSize};
+         font-weight: ${fontWeight};
+         border: ${borderLess
+            ? 'none'
+            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
          :focus {
             outline: none;
-            border: 2px solid #799ef4;
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
+         }
+         :focus::placeholder {
+            color: ${hidePlaceholder ? 'transparent' : null};
          }
          :hover:not(:focus) {
-            border: 1px solid #ccc1c1;
+            border: ${borderLess ? 'none' : `1px solid #ccc1c1`};
          }
       `
    ),
@@ -103,23 +119,25 @@ const Styles = {
          }
       `
    ),
-   Error: styled.section`
-      display: flex;
-      margin-top: 4px;
-      align-items: center;
-      span {
-         height: 20px;
-         width: 20px;
+   Error: styled.section(
+      ({ fontSize = '12px', color = '#FF5A52' }) => css`
          display: flex;
-         margin-right: 4px;
+         margin-top: 4px;
          align-items: center;
-         justify-content: center;
-      }
-      p {
-         color: #c82727;
-         font-size: 14px;
-      }
-   `,
+         span {
+            height: 20px;
+            width: 20px;
+            display: flex;
+            margin-right: 4px;
+            align-items: center;
+            justify-content: center;
+         }
+         p {
+            color: ${color};
+            font-size: ${fontSize};
+         }
+      `
+   ),
    Hint: styled.section`
       display: flex;
       margin-top: 4px;
@@ -211,19 +229,20 @@ const Styles = {
       }
    `,
    Stepper: styled.section(
-      ({ hasError }) => css`
-         display: flex;
+      ({ hasError, borderLess }) => css`
          align-items: center;
          height: 40px;
          font-size: 16px;
          border-radius: 4px;
-         border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+         border: ${borderLess
+            ? 'none'
+            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
          :focus-within {
             outline: none;
-            border: 2px solid #799ef4;
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
          }
          :hover:not(:focus-within) {
-            border: 1px solid #ccc1c1;
+            border: ${borderLess ? 'none' : `1px solid #ccc1c1`};
          }
          section {
             flex: 1;
@@ -238,20 +257,32 @@ const Styles = {
             :hover:not(:focus) {
                border: none;
             }
+            ::-webkit-outer-spin-button,
+            ::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+               margin: 0;
+            }
          }
          div {
             height: 36px;
             display: flex;
-            flex-direction: column;
-            border-left: 1px solid #e3e3e3;
-            button {
-               width: 24px;
-               height: 18px;
-               border: none;
-               background: none;
-               :first-child {
-                  border-bottom: 1px solid #e3e3e3;
+            justify-content: center;
+            align-items: center;
+            div {
+               display: flex;
+               flex-direction: column;
+               button {
+                  outline: none;
+                  width: 24px;
+                  height: 10px;
+                  border: none;
+                  background: none;
                }
+            }
+            span {
+               font-size: 16px;
+               font-weight: 500;
+               color: #000;
             }
          }
       `

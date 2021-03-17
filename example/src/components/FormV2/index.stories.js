@@ -45,6 +45,35 @@ storiesOf('Form v2', module)
 
       return (
          <>
+            <Text as='h3'>New Design </Text>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Text
+                  id='username'
+                  name='username'
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={state.username.value}
+                  placeholder='enter recipe'
+                  borderLess
+                  textAlign='center'
+                  fontSize='40px'
+                  fontWeight='500'
+                  padding='12px 12px'
+                  height='48px'
+                  hidePlaceholder
+                  hasError={
+                     state.username.meta.isTouched &&
+                     !state.username.meta.isValid
+                  }
+               />
+               {state.username.meta.isTouched &&
+                  !state.username.meta.isValid &&
+                  state.username.meta.errors.map((error, index) => (
+                     <Form.Error key={index}>{error}</Form.Error>
+                  ))}
+            </Form.Group>
+            <Spacer size='24px' />
             <Text as='h3'>With Full Access</Text>
             <Spacer size='16px' />
             <Form.Group>
@@ -297,6 +326,22 @@ storiesOf('Form v2', module)
 
       return (
          <>
+            <Text as='h3'>New design</Text>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Stepper
+                  borderLess
+                  inline
+                  unitText='min'
+                  id='containers'
+                  name='containers'
+                  value={state.containers.value}
+                  placeholder='Enter the containers'
+                  onChange={value => onChange(value)}
+               />
+            </Form.Group>
+            <Spacer size='24px' />
+
             <Text as='h3'>With Full Access</Text>
             <Spacer size='16px' />
             <Form.Group>

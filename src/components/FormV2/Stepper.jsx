@@ -13,9 +13,11 @@ export const Stepper = ({
    hasError,
    placeholder,
    onChange,
+   unitText,
    hasReadAccess = true,
    hasWriteAccess = true,
-   fallBackMessage = "You don't have access to this field"
+   fallBackMessage = "You don't have access to this field",
+   ...rest
 }) => {
    const increment = () => onChange(value ? value + 1 : 1)
    const decrement = () => value > 0 && onChange(value - 1)
@@ -29,7 +31,7 @@ export const Stepper = ({
          hasReadAccess={hasReadAccess}
          hasWriteAccess={hasWriteAccess}
       >
-         <Styles.Stepper hasError={hasError}>
+         <Styles.Stepper hasError={hasError} {...rest}>
             <Number
                id={id}
                name={name}
@@ -39,12 +41,16 @@ export const Stepper = ({
                onChange={e => onChange(e.target.value)}
             />
             <div>
-               <button onClick={increment}>
-                  <UpIcon />
-               </button>
-               <button onClick={decrement}>
-                  <DownIcon />
-               </button>
+               <div>
+                  <button onClick={increment}>
+                     <UpIcon />
+                  </button>
+                  <button onClick={decrement}>
+                     <DownIcon />
+                  </button>
+               </div>
+
+               <span>{unitText && unitText}</span>
             </div>
          </Styles.Stepper>
          {(hasWriteAccess === false || hasReadAccess === false) && (
