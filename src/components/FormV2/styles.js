@@ -1,5 +1,16 @@
 import styled, { css } from 'styled-components'
 
+const selectToggleColor = variant => {
+   switch (variant) {
+      case 'dark':
+         return '#000000'
+      case 'green':
+         return '#60D77A'
+      default:
+         return '#367BF5'
+   }
+}
+
 const Styles = {
    Section: styled.section`
       display: flex;
@@ -155,55 +166,52 @@ const Styles = {
          font-size: 14px;
       }
    `,
-   Toggle: styled.section`
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      span {
-         color: #43455a;
-         cursor: pointer;
-      }
-      label {
-         width: 36px;
-         height: 20px;
-         cursor: pointer;
-         border-radius: 20px;
-         background: #d1cece;
-         display: inline-block;
-         position: relative;
-         :after {
-            top: -2px;
-            left: -2px;
-            content: '';
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            border-radius: 20px;
-            background: #a99d9d;
-            transition: transform 0.1s linear;
+
+   Toggle: styled.section(
+      ({ size = 36, variant, iconWithText }) => css`
+         display: flex;
+         align-items: center;
+         justify-content: ${iconWithText ? 'flex-start' : 'space-between'};
+
+         span {
+            color: #43455a;
+            cursor: pointer;
+            padding-right: 12px;
          }
-      }
-      input {
-         opacity: 0;
-         width: 0;
-         height: 0;
-         :checked ~ label {
-            background: linear-gradient(
-               270deg,
-               rgba(40, 193, 247, 0.8) 26.67%,
-               rgba(0, 167, 225, 0.8) 100%
-            );
+         label {
+            width: ${size}px;
+            height: ${size * 0.5}px;
+            cursor: pointer;
+            border-radius: ${size * 0.38}px;
+            background: #d1cece;
+            display: inline-block;
+            position: relative;
             :after {
-               transform: translateX(16px);
-               background: linear-gradient(
-                  180deg,
-                  #28c1f7 -4.17%,
-                  #00a7e1 100%
-               );
+               top: ${size * 0.06}px;
+               left: ${size * 0.1}px;
+               bottom: ${size * 0.05}px;
+               content: '';
+               width: ${size * 0.38}px;
+               height: ${size * 0.38}px;
+               position: absolute;
+               border-radius: ${size * 0.42}px;
+               background: #fff;
+               transition: transform 0.1s linear;
             }
          }
-      }
-   `,
+         input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            :checked ~ label {
+               background: ${selectToggleColor(variant)};
+               :after {
+                  transform: ${`translateX(${size * 0.42}px)`};
+               }
+            }
+         }
+      `
+   ),
    Range: styled.section`
       width: 100%;
       display: flex;

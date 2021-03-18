@@ -304,15 +304,44 @@ storiesOf('Form v2', module)
          })
 
       return (
-         <Form.Group>
-            <Form.Toggle
-               name='first_time'
-               onChange={onChange}
-               value={state.first_time.value}
-            >
-               First time participant?
-            </Form.Toggle>
-         </Form.Group>
+         <>
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  value={state.first_time.value}
+                  size={48}
+               >
+                  Blue
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  variant='green'
+                  value={state.first_time.value}
+               >
+                  Green
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  iconWithText
+                  disabled
+                  variant='dark'
+                  value={state.first_time.value}
+               >
+                  Dark
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+         </>
       )
    })
    .add('Stepper', () => {
