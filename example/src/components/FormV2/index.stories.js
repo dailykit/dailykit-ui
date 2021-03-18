@@ -45,6 +45,37 @@ storiesOf('Form v2', module)
 
       return (
          <>
+            <Text as='h3'>New Design </Text>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Text
+                  id='username'
+                  name='username'
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={state.username.value}
+                  placeholder='enter recipe'
+                  borderLess
+                  textAlign='center'
+                  fontSize='40px'
+                  fontWeight='500'
+                  padding='12px 12px'
+                  height='48px'
+                  hidePlaceholder
+                  hasError={
+                     state.username.meta.isTouched &&
+                     !state.username.meta.isValid
+                  }
+               />
+               {state.username.meta.isTouched &&
+                  !state.username.meta.isValid &&
+                  state.username.meta.errors.map((error, index) => (
+                     <Form.Error justifyContent='center' key={index}>
+                        {error}
+                     </Form.Error>
+                  ))}
+            </Form.Group>
+            <Spacer size='24px' />
             <Text as='h3'>With Full Access</Text>
             <Spacer size='16px' />
             <Form.Group>
@@ -275,15 +306,44 @@ storiesOf('Form v2', module)
          })
 
       return (
-         <Form.Group>
-            <Form.Toggle
-               name='first_time'
-               onChange={onChange}
-               value={state.first_time.value}
-            >
-               First time participant?
-            </Form.Toggle>
-         </Form.Group>
+         <>
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  value={state.first_time.value}
+                  size={48}
+               >
+                  Blue
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  variant='green'
+                  value={state.first_time.value}
+               >
+                  Green
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+
+            <Form.Group>
+               <Form.Toggle
+                  name='first_time'
+                  onChange={onChange}
+                  iconWithText
+                  disabled
+                  variant='dark'
+                  value={state.first_time.value}
+               >
+                  Dark
+               </Form.Toggle>
+            </Form.Group>
+            <Spacer size='24px' />
+         </>
       )
    })
    .add('Stepper', () => {
@@ -297,6 +357,23 @@ storiesOf('Form v2', module)
 
       return (
          <>
+            <Text as='h3'>New design</Text>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Stepper
+                  borderLess
+                  inline
+                  unitText='min'
+                  width='170px'
+                  id='containers'
+                  name='containers'
+                  value={state.containers.value}
+                  placeholder='enter cooking Time'
+                  onChange={value => onChange(value)}
+               />
+            </Form.Group>
+            <Spacer size='24px' />
+
             <Text as='h3'>With Full Access</Text>
             <Spacer size='16px' />
             <Form.Group>
