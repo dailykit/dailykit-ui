@@ -131,10 +131,15 @@ const Styles = {
       `
    ),
    Error: styled.section(
-      ({ fontSize = '12px', color = '#FF5A52' }) => css`
+      ({
+         fontSize = '12px',
+         color = '#FF5A52',
+         justifyContent = 'flex-start'
+      }) => css`
          display: flex;
          margin-top: 4px;
          align-items: center;
+         justify-content: ${justifyContent};
          span {
             height: 20px;
             width: 20px;

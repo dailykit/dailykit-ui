@@ -70,7 +70,9 @@ storiesOf('Form v2', module)
                {state.username.meta.isTouched &&
                   !state.username.meta.isValid &&
                   state.username.meta.errors.map((error, index) => (
-                     <Form.Error key={index}>{error}</Form.Error>
+                     <Form.Error justifyContent='center' key={index}>
+                        {error}
+                     </Form.Error>
                   ))}
             </Form.Group>
             <Spacer size='24px' />
