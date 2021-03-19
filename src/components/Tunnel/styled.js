@@ -31,6 +31,7 @@ const pickSize = size => {
 
 export const StyledTunnelPanel = styled.div(
    ({ size, partial, visible }) => css`
+      margin-top: 4px;
       height: 100%;
       background: #fff;
       float: ${partial ? 'left' : 'right'};
@@ -83,4 +84,9 @@ export const CloseButtonContainer = styled.div`
       inset 1px -1px 2px rgba(206, 206, 205, 0.2),
       inset -1px -1px 2px rgba(255, 255, 255, 0.9),
       inset 1px 1px 3px rgba(206, 206, 205, 0.9);
+`
+export const StyledText = styled.h1`
+   color: #202020;
+   font-weight: 500;
+   font-size: 23px;
 `

@@ -12,17 +12,15 @@ export const TextButton = ({ children, ...props }) => {
    return (
       <Styles.TextButton
          {...props}
-         title={props?.disabled ? 'Disabled' : title
-        
-         }
+         title={props?.disabled ? 'Disabled' : title}
          disabled={
             props?.hasAccess === false || props?.disabled || props?.isLoading
          }
       >
          {props?.isLoading ? (
             <>
-            <Spinner type={props?.type} />
-            {children}
+               <Spinner type={props?.type} />
+               {children}
             </>
          ) : (
             <>
@@ -129,7 +127,7 @@ export const ButtonGroup = ({ children, ...props }) => (
    <Styles.ButtonGroup {...props}>{children}</Styles.ButtonGroup>
 )
 
-const Loader_ = props => {
+const Loader = props => {
    return (
       <Styles.Loader {...props}>
          <div className='loader__divs' />

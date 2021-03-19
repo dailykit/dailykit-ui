@@ -1,8 +1,11 @@
 import React from 'react'
 
-import { StyledTunnel, StyledTunnelPanel, CloseButtonContainer } from './styled'
-
-import Text from '../Text'
+import {
+   StyledTunnel,
+   StyledTunnelPanel,
+   CloseButtonContainer,
+   StyledText
+} from './styled'
 import { Flex } from '../Flex'
 import { Spacer } from '../Spacer'
 import { TextButton, IconButton } from '../Button'
@@ -23,8 +26,6 @@ const useTunnel = count => {
          tunnels[layer - 1] = 'visible'
          setTunnels([...tunnels])
          setVisible(true)
-         setClosed(false)
-         console.log(tunnels)
       },
       [tunnels, setTunnels, visible, setVisible]
    )
@@ -34,17 +35,14 @@ const useTunnel = count => {
          tunnels[layer - 1] = 'hidden'
          setTunnels([...tunnels])
          setVisible(false)
-
-         console.log(tunnels)
       },
       [tunnels, setTunnels, visible, setVisible]
    )
-   console.log(visible + ' tunnel open')
 
    return [tunnels, openTunnel, closeTunnel, visible]
 }
 
-const Tunnels = ({ mt = 40, tunnels, children }) => {
+const Tunnels = ({ mt = 114, tunnels, children }) => {
    return (
       <div>
          {Array.isArray(children) &&
@@ -98,10 +96,10 @@ const TunnelHeader = ({
 }) => (
    <Flex
       container
-      height='64px'
-      padding='0 16px'
-      alignItems='center'
+      height='80px'
+      padding='16px'
       justifyContent='space-between'
+      style={{ border: '1px solid #e4e4e4' }}
    >
       <Flex container alignItems='center'>
          <IconButton type='ghost' onClick={() => close()} round>
@@ -109,16 +107,15 @@ const TunnelHeader = ({
                <CloseIconv2 color='#888D9D' size='13' />
             </CloseButtonContainer>
          </IconButton>
-         <Spacer size='8px' xAxis />
+         <Spacer size='16px' xAxis />
          <Flex>
-            <Flex container alignItems='center'>
-               <Text as='h1'>{title}</Text>
-            </Flex>
+            <StyledText as='h1'>{title}</StyledText>
          </Flex>
       </Flex>
 
       {right && right.title && right.action && (
          <TextButton
+            size='sm'
             type='solid'
             onClick={right.action}
             {...(right?.disabled && { disabled: right.disabled })}
