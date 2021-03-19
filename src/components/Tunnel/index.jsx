@@ -1,16 +1,11 @@
 import React from 'react'
 
-import {
-   StyledTunnel,
-   StyledTunnelPanel,
-   CloseButtonContainer,
-   StyledText
-} from './styled'
+import { StyledTunnel, StyledTunnelPanel, StyledText } from './styled'
 import { Flex } from '../Flex'
 import { Spacer } from '../Spacer'
 import { TextButton, IconButton } from '../Button'
 
-import { CloseIconv2 } from '../../assets/icons'
+import { RoundedCloseIcon } from '../../assets/icons'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
@@ -104,9 +99,7 @@ const TunnelHeader = ({
    >
       <Flex container alignItems='center'>
          <IconButton type='ghost' onClick={() => close()} round>
-            <CloseButtonContainer>
-               <CloseIconv2 color='#888D9D' size='13' />
-            </CloseButtonContainer>
+            <RoundedCloseIcon />
          </IconButton>
          <Spacer size='16px' xAxis />
          <Flex>
