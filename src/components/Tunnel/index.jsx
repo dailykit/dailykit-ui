@@ -99,7 +99,8 @@ const TunnelHeader = ({
       height='80px'
       padding='16px'
       justifyContent='space-between'
-      style={{ border: '1px solid #e4e4e4' }}
+      alignItems='flex-start'
+      style={{ borderBottom: '1px solid #e4e4e4' }}
    >
       <Flex container alignItems='center'>
          <IconButton type='ghost' onClick={() => close()} round>
