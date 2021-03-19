@@ -36,8 +36,7 @@ export const StyledTunnelPanel = styled.div(
       background: #fff;
       float: ${partial ? 'left' : 'right'};
       width: ${pickSize(size)};
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 20px 0px 0px 0px;
+      border-radius: 14px 0px 0px 0px;
       ${visible &&
       css`
          @keyframes transformOpen {
