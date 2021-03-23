@@ -120,7 +120,7 @@ const extendedButtonTileStyle = (type = 'primary', size = 'sm') => {
             justify-content: center;
             align-items: center;
             > div {
-               margin-top: 20px;
+               margin-top: 16px;
             }
          `
       default:
