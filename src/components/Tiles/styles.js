@@ -113,6 +113,16 @@ const extendedButtonTileStyle = (type = 'primary', size = 'sm') => {
                margin-left: 11px;
             }
          `
+      case 'uploadImage':
+         return css`
+            height: 220px;
+            width: 380px;
+            justify-content: center;
+            align-items: center;
+            > div {
+               margin-top: 20px;
+            }
+         `
       default:
          extendedButtonTileStyle()
    }
@@ -122,13 +132,20 @@ export const StyledButtonTile = styled.button`
    background: #ffffff;
    border: 1px solid #f3f3f3;
    box-sizing: border-box;
-   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.13);
-   color: #555b6e;
+   color: #919699;
    cursor: pointer;
+   outline: none;
    width: 100%;
-   font-size: 16px;
+   font-size: 20px;
+   font-weight: 500;
    border-radius: 2px;
    ${props => extendedButtonTileStyle(props.type, props.size)};
+   box-shadow: -1px 1px 2px rgba(184, 184, 184, 0.2),
+      1px -1px 2px rgba(184, 184, 184, 0.2),
+      -1px -1px 2px rgba(255, 255, 255, 0.9),
+      1px 1px 3px rgba(184, 184, 184, 0.9),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+      inset -1px -1px 2px rgba(184, 184, 184, 0.5);
 `
 
 export const StyledOptionTile = styled.button`

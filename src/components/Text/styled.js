@@ -26,6 +26,7 @@ export const StyledH3 = styled.h3`
    font-weight: 500;
    font-size: 20px;
    line-height: 24px;
+   color: #202020;
 `
 
 export const StyledH4 = styled.h4`
@@ -87,7 +88,7 @@ export const StyledPara = styled.p`
 
 export const StyledTitle = styled.span`
    font-weight: 500;
-   font-size: 18px;
+   font-size: 20px;
    line-height: 27px;
    color: #919699;
    display: block;
