@@ -316,16 +316,7 @@ export const Styles = {
             height: inherit;
             align-items: center;
             justify-content: center;
-            width: ${size === 'sm' ? '32px' : '40px'};
-         }
-         ${
-            position === 'right'
-               ? css`
-                    padding: 0 0 0 ${size === 'sm' ? '8px' : '14px'};
-                 `
-               : css`
-                    padding: 0 ${size === 'sm' ? '8px' : '14px'} 0 0;
-                 `
+            padding : ${position === 'right' ? '0 0 0 10px' : '0 10px 0 0'}
          }
 
          ${
