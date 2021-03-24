@@ -35,6 +35,29 @@ storiesOf('Button', module)
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
+            <TextButton type='solid' variant='secondary' size='sm'>
+               Solid Button
+            </TextButton>
+            <TextButton type='solid' variant='secondary'>
+               Solid Button
+            </TextButton>
+            <TextButton
+               type='solid'
+               variant='secondary'
+               hasAccess={false}
+               fallBackMessage='you no go!'
+            >
+               Locked
+            </TextButton>
+            <TextButton disabled type='solid' variant='secondary'>
+               Disabled
+            </TextButton>
+            <TextButton isLoading={true} type='solid' variant='secondary'>
+               Loading
+            </TextButton>
+         </ButtonGroup>
+         <br />
+         <ButtonGroup align='left'>
             <TextButton type='outline' size='sm'>
                Outline Button
             </TextButton>
@@ -83,6 +106,24 @@ storiesOf('Button', module)
                <PlusIcon />
             </IconButton>
             <IconButton isLoading={true} type='solid'>
+               <PlusIcon />
+            </IconButton>
+         </ButtonGroup>
+         <br />
+         <ButtonGroup align='left'>
+            <IconButton type='solid' variant='secondary' size='sm'>
+               <PlusIcon />
+            </IconButton>
+            <IconButton type='solid' variant='secondary'>
+               <PlusIcon />
+            </IconButton>
+            <IconButton type='solid' variant='secondary' hasAccess={false}>
+               <PlusIcon />
+            </IconButton>
+            <IconButton type='solid' variant='secondary' disabled>
+               <PlusIcon />
+            </IconButton>
+            <IconButton isLoading={true} type='solid' variant='secondary'>
                <PlusIcon />
             </IconButton>
          </ButtonGroup>

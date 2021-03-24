@@ -19,7 +19,9 @@ export const TextButton = ({ children, ...props }) => {
       >
          {props?.isLoading ? (
             <>
-               <Spinner type={props?.type} />
+               <span data-type='spinner'>
+                  <Spinner type={props?.type} variant={props?.variant} />
+               </span>
                {children}
             </>
          ) : (
@@ -50,7 +52,7 @@ export const IconButton = ({ children, ...props }) => {
          }
       >
          {props?.isLoading ? (
-            <Loader type={props?.type} />
+            <Spinner type={props?.type} variant={props?.variant} />
          ) : (
             <>
                {children}
@@ -82,7 +84,7 @@ export const ComboButton = ({ children, ...props }) => {
             }
          >
             {props?.isLoading ? (
-               <Loader type={props?.type} />
+               <Spinner type={props?.type} variant={props?.variant} />
             ) : (
                <>
                   <span>{children[0]}</span>
@@ -107,7 +109,7 @@ export const ComboButton = ({ children, ...props }) => {
          }
       >
          {props?.isLoading ? (
-            <Loader type={props?.type} />
+            <Spinner type={props?.type} variant={props?.variant} />
          ) : (
             <>
                {children[0]}

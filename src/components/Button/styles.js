@@ -1,13 +1,9 @@
 import styled, { css } from 'styled-components'
-const primaryColor = '#165CDA'
-const primaryBackgroundColor = '#367BF5'
-const primaryBorderColor = '#367BF5'
-const secondaryColor = '#367BF5'
-const secondaryBackgroundColor = '#EBF1F4'
-const primarySolidColor = '#FFFFFF'
-const primarySolidBackgroundColor = '#367BF5'
-const primarySolidHoverBackgroundColor = '#165CDA'
 
+const colors = {
+   primary: { light: '#367BF5', deep: '#165CDA' },
+   secondary: { light: '#EBF1F4', deep: '#DFF4FF' }
+}
 const dimensions = ({ h, p, w, fW, fS }) => css`
    width: ${w || 'auto'};
    height: ${h || 'auto'};
@@ -20,24 +16,39 @@ const sizeTextSelector = size => {
    switch (size) {
       case 'sm':
          return css`
-            ${dimensions({ h: '32px', p: '0 8px', fW: '400', fS: '14px' })}
+            ${dimensions({
+               h: '32px',
+               p: '7px 20px 8px 20px',
+               fW: '500',
+               fS: '14px'
+            })}
          `
       default:
          return css`
-            ${dimensions({ h: '40px', p: '0 16px', fW: '400', fS: '16px' })}
+            ${dimensions({ h: '48px', p: '12px 24px', fW: '500', fS: '16px' })}
          `
    }
 }
-
+const { primary, secondary } = colors
 export const Styles = {
    TextButton: styled.button(
-      ({ size, type, disabled, isLoading, hasAccess }) => css`
-    
-         color: red;
+      ({
+         size,
+         type,
+         disabled,
+         isLoading,
+         hasAccess,
+         variant = 'primary'
+      }) => css`
+         color: #fff;
          border-radius: 2px;
          position: relative;
          ${sizeTextSelector(size)}
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
+         >span[data-type='spinner'] {
+            padding-right :10px;
+         }
+
          ${
             hasAccess === false &&
             css`
@@ -66,17 +77,16 @@ export const Styles = {
          ${
             type === 'outline' &&
             css`
-               color: #367bf5;
+               color: ${primary.light};
                background: transparent;
-               border: 1px solid #367bf5;
-
+               border: 1px solid ${primary.light};
                font-style: normal;
                font-weight: 500;
                ${hasAccess !== false &&
                css`
                   &:hover {
-                     color: ${props => props.color || primaryBorderColor};
-                     border: 2px solid ${primaryBorderColor};
+                     color: ${props => props.color || primary.deep};
+                     border: 1px solid ${primary.deep};
                      background: transparent;
                      border-radius: 2px;
                   }
@@ -91,70 +101,51 @@ export const Styles = {
          ${
             type === 'solid' &&
             css`
-               color: ${props => props.color || primarySolidColor};
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
                border: none;
-               background: ${props =>
-                  props.background || primarySolidBackgroundColor};
+               background: ${variant === 'secondary'
+                  ? secondary.light
+                  : primary.light};
                &:hover {
-                  background: ${props => props.background || primaryColor};
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
                }
             `
          }
          ${
             type === 'ghost' &&
             css`
-               color: ${props => props.color || primarySolidBackgroundColor};
+               color: ${props => props.color || primary.light};
                border: none;
                background: transparent;
                ${hasAccess !== false &&
                css`
                   &:hover {
                      background: #f5f5f5;
+                     color: ${primary.deep};
                   }
                `}
             `
          }
          ${
-            hasAccess !== false &&
-            disabled &&
-            !isLoading &&
-            css`
-            cursor: not-allowed;
-            ${
-               type === 'solid' &&
-               css`
-                  margin: 0px 8px;
-                  opacity: 0.5;
-                  background: ${props =>
-                     props.background || primarySolidBackgroundColor};
-               `
-            }
-            ${
-               type === 'outline' &&
-               css`
-                  padding: 4px;
-                  color: #776d6d;
-                  border: 1px solid #b7aaaa;
-                  :hover {
-                     color: #776d6d;
-                     background: transparent;
-                  }
-               `
-            }
-            ${
-               type === 'ghost' &&
-               css`
-                  color: #776d6d;
-                  :hover {
-                     color: #776d6d;
-                     background: transparent;
-                  }
-               `
-            }
-         `
+            hasAccess || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
          }
       `
    ),
+
    IconButton: styled.button(
       ({
          size,
@@ -162,9 +153,7 @@ export const Styles = {
          disabled,
          isLoading,
          hasAccess,
-         color,
-         backgoundColor,
-         round
+         variant = 'primary'
       }) => css`
          border: none;
          display: flex;
@@ -195,38 +184,24 @@ export const Styles = {
                   position: absolute;
                   border-radius: 2px;
                   cursor: not-allowed;
-                  background: rgba(0, 0, 0, 0.2);
                }
             `
          }
-
-${
-   round &&
-   css`
-      border-radius: 20px;
-   `
-}
 
          ${
             type === 'outline' &&
             css`
                background: transparent;
-               border: 1px solid #00a7e1;
+               border: 1px solid ${primary.light};
                > svg {
-                  stroke: #00a7e1;
+                  stroke: ${primary.light};
                }
                ${hasAccess !== false &&
                css`
                   &:hover {
-                     background: linear-gradient(
-                        180deg,
-                        #28c1f7 -4.17%,
-                        #00a7e1 100%
-                     );
-                     color: #367bf5;
-
+                     color: ${primary.deep};
                      > svg {
-                        stroke: #fff;
+                        stroke: ${primary.deep};
                      }
                   }
                `}
@@ -240,13 +215,20 @@ ${
          ${
             type === 'solid' &&
             css`
-               color: #fff;
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
                border: none;
-               background: linear-gradient(
-                  180deg,
-                  #28c1f7 -4.17%,
-                  #00a7e1 100%
-               );
+               background: ${variant === 'secondary'
+                  ? secondary.light
+                  : primary.light};
+               > svg {
+                  stroke: ${variant === 'secondary' ? primary.light : '#fff'};
+               }
+               &:hover {
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
+               }
             `
          }
          ${
@@ -256,6 +238,9 @@ ${
                background: transparent;
                ${hasAccess !== false &&
                css`
+                  > svg {
+                     stroke: ${primary.light};
+                  }
                   &:hover {
                      background: #f5f5f5;
                   }
@@ -264,50 +249,31 @@ ${
          }
          
          ${
-            hasAccess !== false &&
-            disabled &&
-            !isLoading &&
-            css`
-            cursor: not-allowed;
-            ${
-               type === 'solid' &&
-               css`
-                  background: #b7aaaa;
-               `
-            }
-            ${
-               type === 'outline' &&
-               css`
-                  border: 1px solid #b7aaaa;
-                  > svg {
-                     stroke: #776d6d;
-                  }
-                  &:hover {
-                     background: transparent;
-                     > svg {
-                        stroke: #776d6d;
-                     }
-                  }
-               `
-            }
-            ${
-               type === 'ghost' &&
-               css`
-                  :hover {
-                     color: #776d6d;
-                     background: transparent;
-                  }
-                  > svg {
-                     stroke: #776d6d;
-                  }
-               `
-            }
-         `
+            hasAccess || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
          }
       `
    ),
    ComboButton: styled.button(
-      ({ size, position, type, disabled, isLoading, hasAccess }) => css`
+      ({
+         size,
+         position,
+         type,
+         disabled,
+         isLoading,
+         hasAccess,
+         variant = 'primary'
+      }) => css`
          display: flex;
          border-radius: 2px;
          position: relative;
@@ -342,7 +308,6 @@ ${
                   position: absolute;
                   border-radius: 2px;
                   cursor: not-allowed;
-                  background: rgba(0, 0, 0, 0.2);
                }
             `
          }
@@ -366,23 +331,18 @@ ${
          ${
             type === 'outline' &&
             css`
-               color: #00a7e1;
+               color: ${primary.light};
                background: transparent;
-               border: 1px solid #00a7e1;
+               border: 1px solid ${primary.light};
                span > svg {
-                  stroke: #555b6e;
+                  stroke: ${primary.light};
                }
                ${hasAccess !== false &&
                css`
                   &:hover {
-                     color: #fff;
-                     background: linear-gradient(
-                        180deg,
-                        #28c1f7 -4.17%,
-                        #00a7e1 100%
-                     );
+                     color: ${primary.deep};
                      span > svg {
-                        stroke: #fff;
+                        stroke: ${primary.deep};
                      }
                   }
                `}
@@ -396,26 +356,29 @@ ${
          ${
             type === 'solid' &&
             css`
-               color: #fff;
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
                border: none;
-               background: linear-gradient(
-                  180deg,
-                  #28c1f7 -4.17%,
-                  #00a7e1 100%
-               );
-               > svg {
-                  stroke: #fff;
+               background: ${variant === 'secondary'
+                  ? secondary.light
+                  : primary.light};
+
+               &:hover {
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
                }
             `
          }
+
          ${
             type === 'ghost' &&
             css`
-               color: #00a7e1;
+               color: ${props => props.color || primary.light};
                border: none;
                background: transparent;
-               > svg {
-                  stroke: #00a7e1;
+               span > svg {
+                  stroke: ${primary.light};
                }
                ${hasAccess !== false &&
                css`
@@ -426,49 +389,18 @@ ${
             `
          }
          ${
-            hasAccess !== false &&
-            disabled &&
-            !isLoading &&
-            css`
-            cursor: not-allowed;
-            ${
-               type === 'solid' &&
-               css`
-                  background: #b7aaaa;
-               `
-            }
-            ${
-               type === 'outline' &&
-               css`
-                  color: #776d6d;
-                  background: transparent;
-                  border: 1px solid #b7aaaa;
-                  span > svg {
-                     stroke: #776d6d;
-                  }
-                  &:hover {
-                     color: #776d6d;
-                     background: transparent;
-                     span > svg {
-                        stroke: #776d6d;
-                     }
-                  }
-               `
-            }
-            ${
-               type === 'ghost' &&
-               css`
-                  color: #776d6d;
-                  :hover {
-                     color: #776d6d;
-                     background: transparent;
-                  }
-                  span > svg {
-                     stroke: #776d6d;
-                  }
-               `
-            }
-         `
+            hasAccess || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
          }
       `
    ),
@@ -550,18 +482,18 @@ ${
       `
    ),
    Spinner: styled.div(
-      ({ type, spinnerColor }) => css`
+      ({ type, variant }) => css`
          display: inline-block;
          position: relative;
-         width: 16px;
-         height: 16px;
+         width: 14px;
+         height: 14px;
          border: 1px solid transparent;
          border-radius: 50%;
          border-top: 1px solid
-            ${type == 'solid' ? primarySolidColor : primarySolidBackgroundColor};
+            ${type === 'solid' && variant !== 'secondary'
+               ? '#fff'
+               : primary.light};
          animation: spin 2s linear infinite;
-         right: 5px;
-         top: 1px;
          @keyframes spin {
             0% {
                transform: rotate(0deg);
@@ -580,14 +512,14 @@ const sizeIconSelector = (size, isLoading) => {
          return css`
             ${dimensions({
                h: '32px',
-               w: isLoading ? 'auto' : '32px'
+               w: '36px'
             })}
          `
       default:
          return css`
             ${dimensions({
-               h: '40px',
-               w: isLoading ? 'auto' : '40px'
+               h: '48px',
+               w: '52px'
             })}
          `
    }
@@ -599,16 +531,18 @@ const sizeComboSelector = size => {
          return css`
             ${dimensions({
                h: '32px',
-               fW: '400',
-               fS: '14px'
+               fW: '500',
+               fS: '14px',
+               p: '7px 20px 8px 20px'
             })}
          `
       default:
          return css`
             ${dimensions({
-               h: '40px',
-               fW: '400',
-               fS: '16px'
+               h: '48px',
+               fW: '500',
+               fS: '16px',
+               p: '12px 24px'
             })}
          `
    }
