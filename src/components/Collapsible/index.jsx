@@ -5,12 +5,19 @@ import { MoveIcon, UpIcon, DownIcon } from '../../assets/icons'
 
 import { StyledWrapper, StyledHead, StyledBody, StyledIcon } from './styled'
 
-const Collapsible = ({ title, head, body, defaultOpen, isDraggable }) => {
+const Collapsible = ({
+   title,
+   head,
+   body,
+   defaultOpen,
+   isDraggable,
+   isHeadClickable
+}) => {
    const [isOpen, setIsOpen] = React.useState(!!defaultOpen)
 
    return (
       <StyledWrapper>
-         <StyledHead>
+         <StyledHead onClick={() => isHeadClickable && setIsOpen(!isOpen)}>
             <Flex container alignItems='center' width='100%'>
                {isDraggable && (
                   <StyledIcon>
@@ -21,7 +28,10 @@ const Collapsible = ({ title, head, body, defaultOpen, isDraggable }) => {
                   <Flex
                      cursor='pointer'
                      margin='0 16px 0 0'
-                     onClick={() => setIsOpen(!isOpen)}
+                     onClick={e => {
+                        e.stopPropagation()
+                        setIsOpen(!isOpen)
+                     }}
                   >
                      <Text as='title'> {title} </Text>
                   </Flex>

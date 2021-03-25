@@ -20,6 +20,7 @@ export const StyledOptions = styled.div`
    padding: 4px 0;
    background: #fff;
    border: 1px solid rgba(0, 0, 0, 0.1);
+   z-index: 2;
 `
 
 export const StyledOption = styled.div(
@@ -87,11 +88,11 @@ export const StyledSelected = styled.div(
                display: none;
             }
             ${selected !== null &&
-               css`
-                  &:hover:after {
-                     display: block;
-                  }
-               `}
+            css`
+               &:hover:after {
+                  display: block;
+               }
+            `}
          }
       }
       > span {

@@ -1,5 +1,16 @@
 import styled, { css } from 'styled-components'
 
+const selectToggleColor = variant => {
+   switch (variant) {
+      case 'dark':
+         return '#000000'
+      case 'green':
+         return '#60D77A'
+      default:
+         return '#367BF5'
+   }
+}
+
 const Styles = {
    Section: styled.section`
       display: flex;
@@ -50,18 +61,34 @@ const Styles = {
       margin-bottom: 4px;
    `,
    Text: styled.input(
-      ({ hasError }) => css`
-         height: 40px;
-         padding: 0 12px;
-         font-size: 16px;
+      ({
+         hasError,
+         borderLess,
+         hidePlaceholder,
+         textAlign = 'left',
+         fontSize = '16px',
+         fontWeight = 'normal',
+         padding = '0 12px',
+         height = '40px'
+      }) => css`
+         height: ${height};
+         padding: ${padding};
          border-radius: 4px;
-         border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+         text-align: ${textAlign};
+         font-size: ${fontSize};
+         font-weight: ${fontWeight};
+         border: ${borderLess
+            ? 'none'
+            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
          :focus {
             outline: none;
-            border: 2px solid #799ef4;
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
+         }
+         :focus::placeholder {
+            color: ${hidePlaceholder ? 'transparent' : null};
          }
          :hover:not(:focus) {
-            border: 1px solid #ccc1c1;
+            border: ${borderLess ? 'none' : `1px solid #ccc1c1`};
          }
       `
    ),
@@ -103,23 +130,30 @@ const Styles = {
          }
       `
    ),
-   Error: styled.section`
-      display: flex;
-      margin-top: 4px;
-      align-items: center;
-      span {
-         height: 20px;
-         width: 20px;
+   Error: styled.section(
+      ({
+         fontSize = '12px',
+         color = '#FF5A52',
+         justifyContent = 'flex-start'
+      }) => css`
          display: flex;
-         margin-right: 4px;
+         margin-top: 4px;
          align-items: center;
-         justify-content: center;
-      }
-      p {
-         color: #c82727;
-         font-size: 14px;
-      }
-   `,
+         justify-content: ${justifyContent};
+         span {
+            height: 20px;
+            width: 20px;
+            display: flex;
+            margin-right: 4px;
+            align-items: center;
+            justify-content: center;
+         }
+         p {
+            color: ${color};
+            font-size: ${fontSize};
+         }
+      `
+   ),
    Hint: styled.section`
       display: flex;
       margin-top: 4px;
@@ -137,55 +171,52 @@ const Styles = {
          font-size: 14px;
       }
    `,
-   Toggle: styled.section`
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      span {
-         color: #43455a;
-         cursor: pointer;
-      }
-      label {
-         width: 36px;
-         height: 20px;
-         cursor: pointer;
-         border-radius: 20px;
-         background: #d1cece;
-         display: inline-block;
-         position: relative;
-         :after {
-            top: -2px;
-            left: -2px;
-            content: '';
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            border-radius: 20px;
-            background: #a99d9d;
-            transition: transform 0.1s linear;
+
+   Toggle: styled.section(
+      ({ size = 36, variant, iconWithText }) => css`
+         display: flex;
+         align-items: center;
+         justify-content: ${iconWithText ? 'flex-start' : 'space-between'};
+
+         span {
+            color: #43455a;
+            cursor: pointer;
+            padding-right: 12px;
          }
-      }
-      input {
-         opacity: 0;
-         width: 0;
-         height: 0;
-         :checked ~ label {
-            background: linear-gradient(
-               270deg,
-               rgba(40, 193, 247, 0.8) 26.67%,
-               rgba(0, 167, 225, 0.8) 100%
-            );
+         label {
+            width: ${size}px;
+            height: ${size * 0.5}px;
+            cursor: pointer;
+            border-radius: ${size * 0.38}px;
+            background: #d1cece;
+            display: inline-block;
+            position: relative;
             :after {
-               transform: translateX(16px);
-               background: linear-gradient(
-                  180deg,
-                  #28c1f7 -4.17%,
-                  #00a7e1 100%
-               );
+               top: ${size * 0.06}px;
+               left: ${size * 0.1}px;
+               bottom: ${size * 0.05}px;
+               content: '';
+               width: ${size * 0.38}px;
+               height: ${size * 0.38}px;
+               position: absolute;
+               border-radius: ${size * 0.42}px;
+               background: #fff;
+               transition: transform 0.1s linear;
             }
          }
-      }
-   `,
+         input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            :checked ~ label {
+               background: ${selectToggleColor(variant)};
+               :after {
+                  transform: ${`translateX(${size * 0.42}px)`};
+               }
+            }
+         }
+      `
+   ),
    Range: styled.section`
       width: 100%;
       display: flex;
@@ -211,26 +242,30 @@ const Styles = {
       }
    `,
    Stepper: styled.section(
-      ({ hasError }) => css`
+      ({ hasError, borderLess, inline, width }) => css`
          display: flex;
          align-items: center;
          height: 40px;
          font-size: 16px;
+         font-weight: 500;
          border-radius: 4px;
-         border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+         border: ${borderLess
+            ? 'none'
+            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
          :focus-within {
             outline: none;
-            border: 2px solid #799ef4;
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
          }
          :hover:not(:focus-within) {
-            border: 1px solid #ccc1c1;
+            border: ${borderLess ? 'none' : `2px solid #799ef4`};
          }
          section {
-            flex: 1;
+            flex: ${inline ? null : 1};
          }
          input {
             border: none;
             height: 36px;
+            width: ${`${width ? width : null}  !important`};
             :focus {
                outline: none;
                border: none;
@@ -238,20 +273,37 @@ const Styles = {
             :hover:not(:focus) {
                border: none;
             }
+            ::-webkit-outer-spin-button,
+            ::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+               margin: 0;
+            }
          }
          div {
             height: 36px;
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid #e3e3e3;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-areas:
+               'arrowUp unitText'
+               'arrowDown unitText';
             button {
                width: 24px;
                height: 18px;
                border: none;
                background: none;
-               :first-child {
-                  border-bottom: 1px solid #e3e3e3;
+               grid-area: arrow;
+               :first-of-type {
+                  grid-area: arrowUp;
                }
+               :last-of-type {
+                  grid-area: arrowDown;
+               }
+            }
+
+            span {
+               grid-area: unitText;
+               padding: 0px 16px;
             }
          }
       `

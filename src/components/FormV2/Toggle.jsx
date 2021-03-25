@@ -6,8 +6,8 @@ import Styles from './styles'
 
 export const Toggle = ({ name, children, ...props }) => {
    return (
-      <Styles.Toggle>
-         <span onClick={props.onChange}>{children}</span>
+      <Styles.Toggle {...props}>
+         <span onClick={props.onChange}> {children}</span>
          <input
             readOnly
             id={name}

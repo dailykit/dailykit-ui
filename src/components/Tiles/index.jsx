@@ -1,7 +1,5 @@
-import DashboardTile from './DashboardTile';
-import ButtonTile from './ButtonTile';
+import DashboardTile from './DashboardTile'
+import ButtonTile from './ButtonTile'
+import OptionTile from './OptionTile'
 
-export {
-    DashboardTile,
-    ButtonTile
-}
+export { DashboardTile, ButtonTile, OptionTile }

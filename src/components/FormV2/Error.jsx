@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import Styles from './styles'
 import { ErrorIcon } from '../../assets/icons'
 
-export const Error = ({ children }) => {
+export const Error = ({ children, ...props }) => {
    return (
-      <Styles.Error>
+      <Styles.Error {...props}>
          <span>
             <ErrorIcon size={16} color='#c82727' />
          </span>

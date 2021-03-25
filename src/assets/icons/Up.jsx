@@ -1,17 +1,18 @@
-import React from "react";
+import React from 'react'
 
-export const UpIcon = ({ size = 18, color = "#000000" }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke={color}
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M18 15l-6-6-6 6" />
-  </svg>
-);
+export const UpIcon = ({ size = 9, color = '#202020' }) => (
+   <svg
+      width={size}
+      height={size}
+      viewBox='0 0 9 6'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+   >
+      <path
+         d='M1.5 5L4.5 2L7.5 5'
+         stroke={color}
+         stroke-width='2'
+         stroke-linecap='round'
+      />
+   </svg>
+)

@@ -82,6 +82,7 @@ export const StyledOptions = styled.div(
       padding: 4px 0;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 2;
    `
 )
 
