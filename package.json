@@ -1,6 +1,6 @@
 {
    "name": "@dailykit/ui",
-   "version": "0.8.22",
+   "version": "0.8.23",
    "description": "Component Library for DailyOS",
    "author": "prvnbist",
    "license": "MIT",
@@ -47,6 +47,10 @@
       "dist"
    ],
    "dependencies": {
-      "concurrently": "^5.3.0"
+      "@storybook/cli": "^6.1.18",
+      "concurrently": "^5.3.0",
+      "draftjs-to-html": "^0.9.1",
+      "global": "^4.4.0",
+      "html-to-draftjs": "^1.5.0"
    }
 }
