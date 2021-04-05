@@ -9,6 +9,8 @@ import ArrowRightIcon from './ArrowRightIcon'
 import CloseIcon from './CloseIcon'
 import MoveIcon from './MoveIcon'
 import CameraIcon from './CameraIcon'
+import CloseIconv2 from './CloseIconv2'
+import RoundedCloseIcon from './RoundedClose'
 export {
    ClearIcon,
    SearchIcon,
@@ -21,6 +23,8 @@ export {
    CloseIcon,
    MoveIcon,
    CameraIcon
+   CloseIconv2,
+   RoundedCloseIcon
 }
 
 export * from './Up'
