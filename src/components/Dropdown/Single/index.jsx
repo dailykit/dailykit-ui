@@ -4,24 +4,29 @@ import {
    StyledSelect,
    StyledOptions,
    StyledOption,
-   StyledSelected
+   StyledSelected,
+   StyledButton
 } from './styles'
 
 import {
-   ClearIcon,
    SearchIcon,
    ArrowDownIcon,
-   ArrowUpIcon
+   ArrowUpIcon,
+   PlusIcon
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
+import NoItemFound from './NoItemFound'
 
 const SingleSelect = ({
    options = [],
    placeholder,
    selectedOption,
    searchedOption,
-   defaultValue = null
+   defaultValue = null,
+   typeName,
+   addOption,
+   variant
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
@@ -34,36 +39,64 @@ const SingleSelect = ({
       }
    }, [defaultValue])
 
+   const matchedOptions = options.filter(o =>
+      o.title.toLowerCase().includes(keyword)
+   )
+
    useOnClickOutside(ref, () => {
+      if (matchedOptions.length) {
+         setKeyword('')
+      }
       setIsOptionsVisible(false)
    })
 
    return (
-      <StyledSelect ref={ref}>
-         <StyledSelected selected={selected}>
-            <div onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
+      <StyledSelect
+         ref={ref}
+         variant={variant}
+         isOptionsVisible={isOptionsVisible}
+      >
+         <StyledSelected
+            selected={selected}
+            isOptionsVisible={isOptionsVisible}
+         >
+            <div>
                {selected !== null ? (
                   <>
-                     <span data-type='text' title={options[selected].title}>
+                     <span
+                        data-type='text'
+                        title={options[selected].title}
+                        onClick={() => {
+                           setKeyword('')
+                           setSelected(null)
+                           setIsOptionsVisible(true)
+                        }}
+                     >
                         {options[selected].title}
-                     </span>
-                     <span data-type='icon' onClick={() => setSelected(null)}>
-                        <ClearIcon />
                      </span>
                   </>
                ) : (
                   <>
-                     <span data-type='icon'>
-                        <SearchIcon />
-                     </span>
+                     {isOptionsVisible && (
+                        <span data-type='icon'>
+                           <SearchIcon color='#919699' size='12px' />
+                        </span>
+                     )}
                      <input
                         type='text'
                         value={keyword}
-                        placeholder={placeholder}
+                        placeholder={
+                           typeName
+                              ? `${
+                                   isOptionsVisible ? 'search' : 'select'
+                                } ${typeName} type`
+                              : `${placeholder}`
+                        }
                         onChange={e =>
                            searchedOption(e.target.value) ||
                            setKeyword(e.target.value.toLowerCase())
                         }
+                        onFocus={() => setIsOptionsVisible(true)}
                      />
                   </>
                )}
@@ -73,12 +106,9 @@ const SingleSelect = ({
             </span>
          </StyledSelected>
          {isOptionsVisible && (
-            <StyledOptions>
-               {options
-                  .filter(option =>
-                     option.title.toLowerCase().includes(keyword)
-                  )
-                  .map((option, index) => (
+            <>
+               <StyledOptions matchedOptions={matchedOptions}>
+                  {matchedOptions.map((option, index) => (
                      <StyledOption
                         key={option.id}
                         title={option.title}
@@ -90,11 +120,23 @@ const SingleSelect = ({
                            setIsOptionsVisible(!isOptionsVisible)
                         }}
                      >
-                        <span>{option.title}</span>
-                        {option.description && <p>{option.description}</p>}
+                        <div>
+                           <span>{option.title}</span>
+                           {option.description && <p>{option.description}</p>}
+                        </div>
                      </StyledOption>
                   ))}
-            </StyledOptions>
+                  {!matchedOptions.length && <NoItemFound name={typeName} />}
+                  {!matchedOptions.length && (
+                     <StyledButton onClick={addOption}>
+                        <PlusIcon color='#367BF5' />{' '}
+                        <span>
+                           add {keyword} {typeName && `as ${typeName}`}
+                        </span>
+                     </StyledButton>
+                  )}
+               </StyledOptions>
+            </>
          )}
       </StyledSelect>
    )

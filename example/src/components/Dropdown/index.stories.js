@@ -27,6 +27,16 @@ export const Single = () => {
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
          />
+         <br />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            addOption={() => console.log('Item added')}
+            options={options}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+         />
       </div>
    )
 }

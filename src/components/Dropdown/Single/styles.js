@@ -1,43 +1,56 @@
 import styled, { css } from 'styled-components'
 
-export const StyledSelect = styled.div`
-   height: 40px;
-   width: auto;
-   display: flex;
-   align-items: center;
-   position: relative;
-   cursor: pointer;
-   background: #fff;
-`
+export const StyledSelect = styled.div(
+   ({ variant, isOptionsVisible }) => css`
+      height: 18px;
+      width: ${variant === 'revamp' ? 'fit-content' : '100%'};
+      min-width: ${isOptionsVisible ? '200px' : null};
+      display: flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      background: #fff;
+   `
+)
 
-export const StyledOptions = styled.div`
-   position: absolute;
-   max-height: 180px;
-   height: auto;
-   overflow-y: auto;
-   top: 40px;
-   width: 100%;
-   padding: 4px 0;
-   background: #fff;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   z-index: 2;
-`
+export const StyledOptions = styled.div(
+   ({ matchedOptions }) => css`
+      position: absolute;
+      max-height: 180px;
+      height: auto;
+      overflow-y: auto;
+      top: 20px;
+      width: 100%;
+      padding: 4px;
+      background: #fff;
+      box-shadow: ${matchedOptions.length
+         ? `0px 4px 6px rgba(0, 0, 0, 0.15)`
+         : null};
+      z-index: 2;
+   `
+)
 
 export const StyledOption = styled.div(
-   ({ isSelected }) => css`
-      padding: 8px 12px;
+   () => css`
       display: flex;
       align-items: flex-start;
       flex-direction: column;
       cursor: pointer;
-      ${isSelected && `background: rgba(0, 0, 0, 0.1);`}
-      &:hover {
-         background: rgba(0, 0, 0, 0.1);
-      }
-      p {
-         margin-top: 2px;
-         font-size: 13px;
-         opacity: 0.7;
+      margin: 6px 10px;
+      color: #202020;
+      > div {
+         background: #ebf1f4;
+         width: 100%;
+         border-radius: 4px;
+         font-size: 12px;
+         padding: 8px;
+         > span {
+            font-weight: 700;
+            margin-bottom: 4px;
+         }
+         > p {
+            font-weight: 400;
+         }
       }
    `
 )
@@ -46,35 +59,37 @@ export const StyledSelected = styled.div(
    ({ selected }) => css`
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 40px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      &:focus-within {
-         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-      }
+      grid-template-columns: 1fr 20px;
       div {
-         height: 40px;
+         height: 18px;
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: ${selected !== null ? '1fr 40px' : '40px 1fr'};
+         grid-template-columns: 1fr 20px;
+         grid-template-areas: 'input search';
          input {
-            height: 39px;
+            height: 18px;
             width: 100%;
             border: none;
             font-size: 14px;
+            font-weight: 500;
+            grid-area: input;
             &:focus {
                outline: none;
             }
          }
          span[data-type='text'] {
-            padding-left: 12px;
+            color: #202020;
+            font-weight: 500;
+            font-size: 16px;
          }
          span[data-type='icon'] {
-            height: 40px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            grid-area: search;
             &:after {
                content: '';
                position: absolute;
@@ -116,5 +131,18 @@ export const StyledSelected = styled.div(
             display: block;
          }
       }
+   `
+)
+export const StyledButton = styled.button(
+   () => css`
+      width: 100%;
+      overflow-x: auto;
+      background-color: #ebf1f4;
+      color: #367bf5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 8px 20px;
    `
 )

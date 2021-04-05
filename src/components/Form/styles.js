@@ -75,21 +75,32 @@ export const Field = styled.div(
 
 export const RadioButton = styled.div`
    height: 40px;
-   padding: 0 12px;
-   font-weight: 500;
+   padding: 0 32px;
    font-size: 14px;
-   border-radius: 1.5px;
+   border-radius: 2px;
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   color: ${props => (props.active ? '#FFFFFF' : ' #555B6E')};
-   background: ${props =>
+   font-weight: ${props => (props.active ? 700 : 'normal')};
+   color: ${props => (props.active ? '#367BF5' : '#202020')};
+   background: ${props => (props.active ? '#F6F6F6' : '#F9F9F9')};
+   box-shadow: ${props =>
       props.active
-         ? 'linear-gradient(180deg, #28C1F7 -4.17%, #00A7E1 100%)'
-         : '#F3F3F3'};
+         ? `1px 1px 2px rgba(255, 255, 255, 0.3),
+      -1px -1px 2px rgba(182, 182, 182, 0.5),
+      inset -1px 1px 2px rgba(182, 182, 182, 0.2),
+      inset 1px -1px 2px rgba(182, 182, 182, 0.2),
+      inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+      inset 1px 1px 3px rgba(182, 182, 182, 0.9);`
+         : `-1px 1px 2px rgba(207, 207, 207, 0.2),
+      1px -1px 2px rgba(207, 207, 207, 0.2),
+      -1px -1px 2px rgba(255, 255, 255, 0.9),
+      1px 1px 3px rgba(207, 207, 207, 0.9),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+      inset -1px -1px 2px rgba(207, 207, 207, 0.5);`};
 
    &:not(:last-child) {
-      margin-right: 2px;
+      margin-right: 5px;
    }
 
    &:hover {

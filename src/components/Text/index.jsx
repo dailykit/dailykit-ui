@@ -7,7 +7,11 @@ import {
    StyledH4,
    StyledPara,
    StyledTitle,
-   StyledSubTitle
+   StyledSubTitle,
+   StyledHelpText,
+   StyledText1,
+   StyledText2,
+   StyledText3
 } from './styled'
 
 const H1 = props => <StyledH1>{props.children}</StyledH1>
@@ -23,6 +27,10 @@ const H4 = ({ children, ...props }) => (
 const Para = props => <StyledPara>{props.children}</StyledPara>
 const Title = props => <StyledTitle>{props.children}</StyledTitle>
 const SubTitle = props => <StyledSubTitle>{props.children}</StyledSubTitle>
+const HelpText = props => <StyledHelpText>{props.children}</StyledHelpText>
+const Text1 = props => <StyledText1>{props.children}</StyledText1>
+const Text2 = props => <StyledText2>{props.children}</StyledText2>
+const Text3 = props => <StyledText3>{props.children}</StyledText3>
 
 const Text = ({ as, children, ...props }) => {
    switch (as) {
@@ -40,6 +48,14 @@ const Text = ({ as, children, ...props }) => {
          return <Title {...props}>{children}</Title>
       case 'subtitle':
          return <SubTitle {...props}>{children}</SubTitle>
+      case 'helpText':
+         return <HelpText {...props}>{children}</HelpText>
+      case 'text1':
+         return <Text1 {...props}>{children}</Text1>
+      case 'text2':
+         return <Text2 {...props}>{children}</Text2>
+      case 'text3':
+         return <Text3 {...props}>{children}</Text3>
       default:
          return 'No such type!'
    }

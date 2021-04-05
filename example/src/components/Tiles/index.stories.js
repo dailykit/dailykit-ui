@@ -41,7 +41,14 @@ export const ButtonTileVariant = () => (
       <ButtonTile
          type='primary'
          size='lg'
-         text='Add Title'
+         text='Add title'
+         onClick={e => console.log('Tile clicked')}
+         style={{ margin: '20px 0' }}
+      />
+      <ButtonTile
+         type='uploadImage'
+         size='lg'
+         text='Upload Images'
          onClick={e => console.log('Tile clicked')}
          style={{ margin: '20px 0' }}
       />
