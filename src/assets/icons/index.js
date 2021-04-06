@@ -22,7 +22,7 @@ export {
    ArrowRightIcon,
    CloseIcon,
    MoveIcon,
-   CameraIcon
+   CameraIcon,
    CloseIconv2,
    RoundedCloseIcon
 }

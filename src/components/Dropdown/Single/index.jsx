@@ -50,6 +50,14 @@ const SingleSelect = ({
       setIsOptionsVisible(false)
    })
 
+   const handleOptionClick = option => {
+      const index = options.findIndex(op => op.id === option.id)
+      setKeyword('')
+      setSelected(index)
+      selectedOption(option)
+      setIsOptionsVisible(!isOptionsVisible)
+   }
+
    return (
       <StyledSelect
          ref={ref}
@@ -113,12 +121,7 @@ const SingleSelect = ({
                         key={option.id}
                         title={option.title}
                         isSelected={selected === index}
-                        onClick={() => {
-                           setKeyword('')
-                           setSelected(index)
-                           selectedOption(option)
-                           setIsOptionsVisible(!isOptionsVisible)
-                        }}
+                        onClick={() => handleOptionClick(option)}
                      >
                         <div>
                            <span>{option.title}</span>
