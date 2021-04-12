@@ -1,5 +1,5 @@
 import React from 'react'
-import { Root, ToolTipWrapper,TooltipText,TooltipCard,TooltipBox } from './styles'
+import { TooltipText, TooltipCard, TooltipBox } from './styles'
 
 const ToolTip = ({ content, children, delay = 0, duration = 0.1 }) => {
    const [isVisible, setVisibility] = React.useState(false)
@@ -13,7 +13,7 @@ const ToolTip = ({ content, children, delay = 0, duration = 0.1 }) => {
    }
 
    const renderContent = () => {
-      return  content
+      return content
    }
 
    return (
@@ -27,23 +27,21 @@ const ToolTip = ({ content, children, delay = 0, duration = 0.1 }) => {
       //       {renderContent()}
       //    </ToolTipWrapper>
       // </Root>
-     
+
       <>
-      <TooltipCard>
-        <TooltipText>
-          <h3>Hover :D</h3>
-        </TooltipText>
-        <TooltipBox>
-          <p>First item</p>
-          <p>Second item</p>
-        </TooltipBox>
-      </TooltipCard>
-      <h4 style={{ color: "rgba(0,0,0,0.5)" }}>
-        Some content that is right below Hover :D
-      </h4>
-    </>
-     
-     
+         <TooltipCard>
+            <TooltipText>
+               <h3>Hover :D</h3>
+            </TooltipText>
+            <TooltipBox>
+               <p>First item</p>
+               <p>Second item</p>
+            </TooltipBox>
+         </TooltipCard>
+         <h4 style={{ color: 'rgba(0,0,0,0.5)' }}>
+            Some content that is right below Hover :D
+         </h4>
+      </>
    )
 }
 
