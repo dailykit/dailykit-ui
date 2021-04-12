@@ -130,18 +130,20 @@ export const Styles = {
             `
          }
          ${
-            hasAccess || disabled || isLoading
-               ? css`
-                    cursor: not-allowed;
-                    opacity: 0.5;
-                    ${type === 'solid' &&
-                    css`
-                       background: ${variant === 'secondary'
-                          ? secondary.light
-                          : primary.light};
-                    `}
-                 `
-               : null
+            (hasAccess === false || disabled || isLoading) &&
+            css`
+               cursor: not-allowed;
+               ${!isLoading &&
+               css`
+                  opacity: 0.5;
+               `};
+               ${type === 'solid' &&
+               css`
+                  background: ${variant === 'secondary'
+                     ? secondary.light
+                     : primary.light};
+               `}
+            `
          }
       `
    ),
@@ -247,20 +249,21 @@ export const Styles = {
                `}
             `
          }
-         
          ${
-            hasAccess || disabled || isLoading
-               ? css`
-                    cursor: not-allowed;
-                    opacity: 0.5;
-                    ${type === 'solid' &&
-                    css`
-                       background: ${variant === 'secondary'
-                          ? secondary.light
-                          : primary.light};
-                    `}
-                 `
-               : null
+            (hasAccess === false || disabled || isLoading) &&
+            css`
+               cursor: not-allowed;
+               ${!isLoading &&
+               css`
+                  opacity: 0.5;
+               `};
+               ${type === 'solid' &&
+               css`
+                  background: ${variant === 'secondary'
+                     ? secondary.light
+                     : primary.light};
+               `}
+            `
          }
       `
    ),
@@ -380,18 +383,20 @@ export const Styles = {
             `
          }
          ${
-            hasAccess || disabled || isLoading
-               ? css`
-                    cursor: not-allowed;
-                    opacity: 0.5;
-                    ${type === 'solid' &&
-                    css`
-                       background: ${variant === 'secondary'
-                          ? secondary.light
-                          : primary.light};
-                    `}
-                 `
-               : null
+            (hasAccess === false || disabled || isLoading) &&
+            css`
+               ${!isLoading &&
+               css`
+                  opacity: 0.5;
+               `};
+               cursor: not-allowed;
+               ${type === 'solid' &&
+               css`
+                  background: ${variant === 'secondary'
+                     ? secondary.light
+                     : primary.light};
+               `}
+            `
          }
       `
    ),
