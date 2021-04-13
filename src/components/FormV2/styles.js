@@ -191,17 +191,28 @@ const Styles = {
             background: #d1cece;
             display: inline-block;
             position: relative;
+            transition: all 0.1s linear;
+
             :after {
                top: ${size * 0.06}px;
-               left: ${size * 0.1}px;
-               bottom: ${size * 0.05}px;
+               left: ${size * 0.06}px;
                content: '';
                width: ${size * 0.38}px;
                height: ${size * 0.38}px;
                position: absolute;
                border-radius: ${size * 0.42}px;
                background: #fff;
-               transition: transform 0.1s linear;
+            }
+            :before {
+               display: none;
+               top: ${size * 0.06}px;
+               right: ${size * 0.06}px;
+               content: '';
+               width: ${size * 0.38}px;
+               height: ${size * 0.38}px;
+               position: absolute;
+               border-radius: ${size * 0.42}px;
+               background: #fff;
             }
          }
          input {
@@ -211,7 +222,10 @@ const Styles = {
             :checked ~ label {
                background: ${selectToggleColor(variant)};
                :after {
-                  transform: ${`translateX(${size * 0.42}px)`};
+                  display: none;
+               }
+               :before {
+                  display: block;
                }
             }
          }
@@ -292,6 +306,7 @@ const Styles = {
                height: 18px;
                border: none;
                background: none;
+               outline: none;
                grid-area: arrow;
                :first-of-type {
                   grid-area: arrowUp;
@@ -299,8 +314,11 @@ const Styles = {
                :last-of-type {
                   grid-area: arrowDown;
                }
+               &:hover,
+               &:active {
+                  background-color: #f4f4f4;
+               }
             }
-
             span {
                grid-area: unitText;
                padding: 0px 16px;

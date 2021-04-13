@@ -44,9 +44,7 @@ const SingleSelect = ({
    )
 
    useOnClickOutside(ref, () => {
-      if (matchedOptions.length) {
-         setKeyword('')
-      }
+      setKeyword('')
       setIsOptionsVisible(false)
    })
 
