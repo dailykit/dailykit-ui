@@ -94,73 +94,73 @@ storiesOf('Button', module)
       <>
          <ButtonGroup align='left'>
             <IconButton type='solid' size='sm'>
-               <PlusIcon />
+               <PlusIcon color='#fff' />
             </IconButton>
             <IconButton type='solid'>
-               <PlusIcon />
+               <PlusIcon color='#fff' />
             </IconButton>
             <IconButton type='solid' hasAccess={false}>
-               <PlusIcon />
+               <PlusIcon color='#fff' />
             </IconButton>
             <IconButton type='solid' disabled>
-               <PlusIcon />
+               <PlusIcon color='#fff' />
             </IconButton>
             <IconButton isLoading={true} type='solid'>
-               <PlusIcon />
+               <PlusIcon color='#fff' />
             </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
             <IconButton type='solid' variant='secondary' size='sm'>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
             <IconButton type='solid' variant='secondary'>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
             <IconButton type='solid' variant='secondary' hasAccess={false}>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
             <IconButton type='solid' variant='secondary' disabled>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
             <IconButton isLoading={true} type='solid' variant='secondary'>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
             <IconButton type='outline' size='sm'>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='outline'>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='outline' hasAccess={false}>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='outline' disabled>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton isLoading={true} type='outline'>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
          </ButtonGroup>
          <br />
          <ButtonGroup align='left'>
             <IconButton type='ghost' size='sm'>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='ghost'>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='ghost' hasAccess={false}>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton type='ghost' disabled>
-               <SearchIcon />
+               <SearchIcon color='#367BF5' />
             </IconButton>
             <IconButton isLoading={true} type='ghost'>
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </IconButton>
          </ButtonGroup>
       </>
@@ -188,19 +188,19 @@ storiesOf('Button', module)
          <ButtonGroup align='left'>
             <ComboButton type='outline' size='sm'>
                Add Ingredient
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </ComboButton>
             <ComboButton type='outline'>
                Add Ingredient
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </ComboButton>
             <ComboButton type='outline' hasAccess={false}>
                Add Ingredient
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </ComboButton>
             <ComboButton type='outline' disabled>
                Add Ingredient
-               <PlusIcon />
+               <PlusIcon color='#367BF5' />
             </ComboButton>
             <ComboButton isLoading={true} type='outline'>
                <SearchIcon color='#fff' /> Search
@@ -209,19 +209,19 @@ storiesOf('Button', module)
          <br />
          <ButtonGroup align='left'>
             <ComboButton type='ghost' size='sm'>
-               <ClearIcon />
+               <ClearIcon color='#367BF5' />
                Clear Filters
             </ComboButton>
             <ComboButton type='ghost'>
-               <ClearIcon />
+               <ClearIcon color='#367BF5' />
                Clear Filters
             </ComboButton>
             <ComboButton type='ghost' hasAccess={false}>
-               <ClearIcon />
+               <ClearIcon color='#367BF5' />
                Clear Filters
             </ComboButton>
             <ComboButton type='ghost' disabled>
-               <ClearIcon />
+               <ClearIcon color='#367BF5' />
                Clear Filters
             </ComboButton>
             <ComboButton isLoading={true} type='ghost'>
