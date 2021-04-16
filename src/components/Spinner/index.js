@@ -1,19 +1,10 @@
-import styled, { keyframes } from 'styled-components'
-
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
+import styled from 'styled-components'
 
 export const Spinner = styled.div`
    display: inline-block;
    position: relative;
-   width: 16px;
-   height: 16px;
+   width: ${props => (props.size ? props.size : '16px')};
+   height: ${props => (props.size ? props.size : '16px')};
    border: 1px solid transparent;
    border-radius: 50%;
    border-top: 1px solid #3498db;

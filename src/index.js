@@ -8,6 +8,7 @@ import Text from './components/Text'
 import Loader from './components/Loader'
 import Collapsible from './components/Collapsible'
 import ToolTip from './components/ToolTip'
+import Spinner from './components/Spinner'
 
 export {
    Toggle,
@@ -19,7 +20,8 @@ export {
    Text,
    Loader,
    Collapsible,
-   ToolTip
+   ToolTip,
+   Spinner
 }
 
 // Components

@@ -23,6 +23,15 @@ const sizeTextSelector = size => {
                fS: '14px'
             })}
          `
+      case 'md':
+         return css`
+            ${dimensions({
+               h: '40px',
+               p: '7px 20px 8px 20px',
+               fW: '500',
+               fS: '16px'
+            })}
+         `
       default:
          return css`
             ${dimensions({ h: '48px', p: '12px 24px', fW: '500', fS: '16px' })}
@@ -43,6 +52,7 @@ export const Styles = {
          color: #fff;
          border-radius: 2px;
          position: relative;
+         outline: none;
          ${sizeTextSelector(size)}
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          > span[data-type='spinner'] {
@@ -151,6 +161,7 @@ export const Styles = {
          position: relative;
          align-items: center;
          justify-content: center;
+         outline: none;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          ${sizeIconSelector(size, isLoading)}
          ${hasAccess === false &&
@@ -246,6 +257,7 @@ export const Styles = {
          border-radius: 2px;
          position: relative;
          align-items: center;
+         outline: none;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          ${isLoading &&
          css`
@@ -453,6 +465,13 @@ const sizeIconSelector = (size, isLoading) => {
                w: '36px'
             })}
          `
+      case 'md':
+         return css`
+            ${dimensions({
+               h: '40px',
+               w: '44px'
+            })}
+         `
       default:
          return css`
             ${dimensions({
@@ -471,6 +490,15 @@ const sizeComboSelector = size => {
                h: '32px',
                fW: '500',
                fS: '14px',
+               p: '7px 20px 8px 20px'
+            })}
+         `
+      case 'md':
+         return css`
+            ${dimensions({
+               h: '40px',
+               fW: '500',
+               fS: '16px',
                p: '7px 20px 8px 20px'
             })}
          `

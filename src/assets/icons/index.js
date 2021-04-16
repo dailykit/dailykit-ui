@@ -12,6 +12,8 @@ import CameraIcon from './CameraIcon'
 import CloseIconv2 from './CloseIconv2'
 import RoundedCloseIcon from './RoundedClose'
 import ThreeDots from './ThreeDots'
+import MinusIcon from './Minus'
+
 export {
    ClearIcon,
    SearchIcon,
@@ -26,7 +28,8 @@ export {
    CameraIcon,
    CloseIconv2,
    RoundedCloseIcon,
-   ThreeDots
+   ThreeDots,
+   MinusIcon
 }
 
 export * from './Up'
