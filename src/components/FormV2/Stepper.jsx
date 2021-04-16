@@ -35,7 +35,7 @@ export const Stepper = ({
          hasWriteAccess={hasWriteAccess}
       >
          <Styles.Stepper hasError={hasError} {...rest}>
-            <span>{fieldName} : </span>
+            <span>{fieldName}</span>
             {textBefore && (
                <span style={{ padding: '6px', fontSize: '20px' }}>
                   {textBefore}

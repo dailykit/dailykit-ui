@@ -12,23 +12,28 @@ export const HorizontalTabs = styled(Tabs)`
 `
 export const HorizontalTabList = styled(TabList)`
    display: flex;
+   justify-content: ${props =>
+      props.justifyContent ? props.justifyContent : 'center'};
    overflow-x: auto;
    padding: 0 20px 0 0;
-   border-bottom: 1px solid #c9e1ff;
+   border: 1px solid #ebf1f4;
 `
 const StyledTab = styled(Tab)`
    border: none;
+   outline: none;
+   cursor: pointer;
    height: 32px;
    min-width: fit-content;
-   color: #888d9d;
-   font-size: 16px;
+   color: #202020;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 14px;
    margin-right: 14px;
-   letter-spacing: 0.3px;
    background: transparent;
    border-bottom: 2px solid transparent;
    &[data-selected] {
-      color: #05abe4;
-      border-bottom: 2px solid #05abe4;
+      color: #367bf5;
+      border-bottom: 2px solid #367bf5;
    }
 `
 export const HorizontalTabPanels = styled(TabPanels)(

@@ -377,7 +377,7 @@ storiesOf('Form v2', module)
             <Form.Group>
                <Form.Stepper
                   width='100px'
-                  fieldName='Base Price'
+                  fieldName='Base Price:'
                   textBefore='$'
                   id='containers'
                   name='containers'
@@ -389,7 +389,7 @@ storiesOf('Form v2', module)
             <Form.Group>
                <Form.Stepper
                   unitText='min'
-                  fieldName='Cooking time'
+                  fieldName='Cooking time:'
                   id='containers'
                   name='containers'
                   value={state.containers.value}
