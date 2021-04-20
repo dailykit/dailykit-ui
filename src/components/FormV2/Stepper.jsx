@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 import Styles from './styles'
 import { Number } from './Number'
-import { UpIcon, DownIcon, LockIcon } from '../../assets/icons'
+import { LockIcon, PlusIcon, MinusIcon } from '../../assets/icons'
+import { IconButton } from '../../components/Button'
 
 export const Stepper = ({
    id,
@@ -13,6 +14,8 @@ export const Stepper = ({
    hasError,
    placeholder,
    onChange,
+   fieldName,
+   textBefore,
    unitText,
    hasReadAccess = true,
    hasWriteAccess = true,
@@ -32,23 +35,38 @@ export const Stepper = ({
          hasWriteAccess={hasWriteAccess}
       >
          <Styles.Stepper hasError={hasError} {...rest}>
+            <span>{fieldName}</span>
+            {textBefore && (
+               <span style={{ padding: '6px', fontSize: '20px' }}>
+                  {textBefore}
+               </span>
+            )}
+            <IconButton
+               disabled={value <= 0}
+               type='ghost'
+               size='sm'
+               onClick={decrement}
+            >
+               <MinusIcon color='#202020' />
+            </IconButton>
             <Number
                id={id}
                name={name}
                type='number'
                value={value}
-               placeholder={placeholder}
+               placeholder={placeholder ? placeholder : 0}
                onChange={e => onChange(e.target.value)}
+               onBlur={e => rest?.onBlur && rest.onBlur(e.target.value)}
             />
-            <div>
-               <button onClick={increment}>
-                  <UpIcon />
-               </button>
-               <button onClick={decrement}>
-                  <DownIcon />
-               </button>
-               {unitText && <span>{unitText}</span>}
-            </div>
+
+            <IconButton type='ghost' size='sm' onClick={increment}>
+               <PlusIcon color='#202020' />
+            </IconButton>
+            {unitText && (
+               <span style={{ color: '#202020', fontSize: '20px' }}>
+                  {unitText}
+               </span>
+            )}
          </Styles.Stepper>
          {(hasWriteAccess === false || hasReadAccess === false) && (
             <span className='locked'>

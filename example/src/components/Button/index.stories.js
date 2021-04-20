@@ -18,6 +18,9 @@ storiesOf('Button', module)
             <TextButton type='solid' size='sm'>
                Solid Button
             </TextButton>
+            <TextButton type='solid' size='md'>
+               Solid Button
+            </TextButton>
             <TextButton type='solid'>Solid Button</TextButton>
             <TextButton
                type='solid'
@@ -96,6 +99,9 @@ storiesOf('Button', module)
             <IconButton type='solid' size='sm'>
                <PlusIcon color='#fff' />
             </IconButton>
+            <IconButton type='solid' size='md'>
+               <PlusIcon color='#fff' />
+            </IconButton>
             <IconButton type='solid'>
                <PlusIcon color='#fff' />
             </IconButton>
@@ -169,6 +175,9 @@ storiesOf('Button', module)
       <>
          <ButtonGroup align='left'>
             <ComboButton type='solid' size='sm'>
+               <SearchIcon color='#fff' /> Search
+            </ComboButton>
+            <ComboButton type='solid' size='md'>
                <SearchIcon color='#fff' /> Search
             </ComboButton>
             <ComboButton type='solid'>

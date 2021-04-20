@@ -10,7 +10,56 @@ const selectToggleColor = variant => {
          return '#367BF5'
    }
 }
-
+const textInput = (variant, hasError) => {
+   switch (variant) {
+      case 'revamp':
+         return css`
+            border: none;
+            text-align: center;
+            font-weight: 500;
+            font-size: 40px;
+            :focus {
+               outline: none;
+               border: none;
+            }
+            :focus::placeholder {
+               color: transparent;
+            }
+         `
+      case 'revamp-sm':
+         return css`
+            border: none;
+            text-align: left;
+            font-weight: 500;
+            font-size: 16px;
+            :focus {
+               outline: none;
+               border: none;
+            }
+            :focus::placeholder {
+               color: transparent;
+            }
+         `
+      default:
+         return css`
+            border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+            text-align: left;
+            font-size: 16px;
+            padding: 0 12px;
+            height: 40px;
+            :focus {
+               outline: none;
+               border: 2px solid #799ef4;
+            }
+            :focus::placeholder {
+               color: transparent;
+            }
+            :hover:not(:focus) {
+               border: 1px solid #ccc1c1;
+            }
+         `
+   }
+}
 const Styles = {
    Section: styled.section`
       display: flex;
@@ -61,35 +110,9 @@ const Styles = {
       margin-bottom: 4px;
    `,
    Text: styled.input(
-      ({
-         hasError,
-         borderLess,
-         hidePlaceholder,
-         textAlign = 'left',
-         fontSize = '16px',
-         fontWeight = 'normal',
-         padding = '0 12px',
-         height = '40px'
-      }) => css`
-         height: ${height};
-         padding: ${padding};
+      ({ hasError, variant }) => css`
          border-radius: 4px;
-         text-align: ${textAlign};
-         font-size: ${fontSize};
-         font-weight: ${fontWeight};
-         border: ${borderLess
-            ? 'none'
-            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
-         :focus {
-            outline: none;
-            border: ${borderLess ? 'none' : `2px solid #799ef4`};
-         }
-         :focus::placeholder {
-            color: ${hidePlaceholder ? 'transparent' : null};
-         }
-         :hover:not(:focus) {
-            border: ${borderLess ? 'none' : `1px solid #ccc1c1`};
-         }
+         ${textInput(variant, hasError)}
       `
    ),
    Number: styled.input(
@@ -116,17 +139,21 @@ const Styles = {
       `
    ),
    TextArea: styled.textarea(
-      ({ hasError }) => css`
+      ({ hasError, noBorder }) => css`
          padding: 8px 12px;
          font-size: 16px;
+         font-weight: 500;
+         letter-spacing: 0.16px;
          border-radius: 4px;
-         border: 1px solid ${hasError ? '#c43535' : '#e3e3e3'};
+         border: ${noBorder
+            ? 'none'
+            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
          :focus {
             outline: none;
-            border: 2px solid #799ef4;
+            border: ${noBorder ? 'none' : `2px solid #799ef4`};
          }
          :hover:not(:focus) {
-            border: 1px solid #ccc1c1;
+            border: ${noBorder ? 'none' : `1px solid #ccc1c1;`};
          }
       `
    ),
@@ -256,72 +283,54 @@ const Styles = {
       }
    `,
    Stepper: styled.section(
-      ({ hasError, borderLess, inline, width }) => css`
+      ({ hasError, width }) => css`
          display: flex;
          align-items: center;
          height: 40px;
          font-size: 16px;
          font-weight: 500;
          border-radius: 4px;
-         border: ${borderLess
-            ? 'none'
-            : `1px solid ${hasError ? '#c43535' : '#e3e3e3'}`};
+         border: none;
          :focus-within {
             outline: none;
-            border: ${borderLess ? 'none' : `2px solid #799ef4`};
+            border: none;
          }
          :hover:not(:focus-within) {
-            border: ${borderLess ? 'none' : `2px solid #799ef4`};
-         }
-         section {
-            flex: ${inline ? null : 1};
-         }
-         input {
             border: none;
-            height: 36px;
-            width: ${`${width ? width : null}  !important`};
-            :focus {
-               outline: none;
-               border: none;
-            }
-            :hover:not(:focus) {
-               border: none;
-            }
-            ::-webkit-outer-spin-button,
-            ::-webkit-inner-spin-button {
-               -webkit-appearance: none;
-               margin: 0;
-            }
          }
-         div {
-            height: 36px;
-            display: grid;
-            justify-content: center;
-            align-items: center;
-            grid-template-areas:
-               'arrowUp unitText'
-               'arrowDown unitText';
-            button {
-               width: 24px;
-               height: 18px;
+         > :nth-child(1) {
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.16px;
+            color: #919699;
+         }
+
+         > section {
+            > input {
                border: none;
-               background: none;
-               outline: none;
-               grid-area: arrow;
-               :first-of-type {
-                  grid-area: arrowUp;
+               text-align: center;
+               padding: 0;
+               border: none;
+               font-size: 20px;
+               width: ${width ? width : '100%'}!important;
+               ::-webkit-outer-spin-button,
+               ::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
                }
-               :last-of-type {
-                  grid-area: arrowDown;
+               :focus,
+               :hover,
+               :hover:not(:focus-within) {
+                  border: none;
                }
-               &:hover,
-               &:active {
-                  background-color: #f4f4f4;
+               :focus::placeholder {
+                  color: transparent;
                }
             }
-            span {
-               grid-area: unitText;
-               padding: 0px 16px;
+            button {
+               color: #202020;
+               font-weight: bold;
+               font-size: 20px;
             }
          }
       `

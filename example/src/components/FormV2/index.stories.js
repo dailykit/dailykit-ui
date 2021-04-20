@@ -53,15 +53,9 @@ storiesOf('Form v2', module)
                   name='username'
                   onBlur={onBlur}
                   onChange={onChange}
+                  variant='revamp'
                   value={state.username.value}
                   placeholder='enter recipe'
-                  borderLess
-                  textAlign='center'
-                  fontSize='40px'
-                  fontWeight='500'
-                  padding='12px 12px'
-                  height='48px'
-                  hidePlaceholder
                   hasError={
                      state.username.meta.isTouched &&
                      !state.username.meta.isValid
@@ -73,6 +67,27 @@ storiesOf('Form v2', module)
                      <Form.Error justifyContent='center' key={index}>
                         {error}
                      </Form.Error>
+                  ))}
+            </Form.Group>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Text
+                  id='username'
+                  name='username'
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  variant='revamp-sm'
+                  value={state.username.value}
+                  placeholder='enter recipe'
+                  hasError={
+                     state.username.meta.isTouched &&
+                     !state.username.meta.isValid
+                  }
+               />
+               {state.username.meta.isTouched &&
+                  !state.username.meta.isValid &&
+                  state.username.meta.errors.map((error, index) => (
+                     <Form.Error key={index}>{error}</Form.Error>
                   ))}
             </Form.Group>
             <Spacer size='24px' />
@@ -361,15 +376,25 @@ storiesOf('Form v2', module)
             <Spacer size='16px' />
             <Form.Group>
                <Form.Stepper
-                  borderLess
-                  inline
-                  unitText='min'
-                  width='170px'
+                  width='100px'
+                  fieldName='Base Price:'
+                  textBefore='$'
                   id='containers'
                   name='containers'
                   value={state.containers.value}
-                  placeholder='enter cooking Time'
                   onChange={value => onChange(value)}
+               />
+            </Form.Group>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Stepper
+                  unitText='min'
+                  fieldName='Cooking time:'
+                  id='containers'
+                  name='containers'
+                  value={state.containers.value}
+                  onChange={value => onChange(value)}
+                  onBlur={value => console.log(value)}
                />
             </Form.Group>
             <Spacer size='24px' />
@@ -667,6 +692,7 @@ storiesOf('Form v2', module)
                <Form.TextArea
                   id='about'
                   name='about'
+                  noBorder
                   onChange={onChange}
                   value={state.about.value}
                   placeholder='Write about yourself'

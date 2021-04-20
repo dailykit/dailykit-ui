@@ -1,32 +1,23 @@
-import styled, { keyframes } from 'styled-components'
+import React from 'react'
+import { CheckCircleIcon } from '../../assets/icons'
+import Loading from './Loading'
 
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
-
-export const Spinner = styled.div`
-   display: inline-block;
-   position: relative;
-   width: 16px;
-   height: 16px;
-   border: 1px solid transparent;
-   border-radius: 50%;
-   border-top: 1px solid #3498db;
-   animation: spin 2s linear infinite;
-
-   @keyframes spin {
-      0% {
-         transform: rotate(0deg);
+const Spinner = ({ loading, updatedField, updated, setUpdated }) => {
+   React.useEffect(() => {
+      const timeId = setTimeout(() => {
+         setUpdated(null)
+      }, 1800)
+      return () => {
+         clearTimeout(timeId)
       }
-      100% {
-         transform: rotate(360deg);
-      }
-   }
-`
+   }, [updated])
+
+   return (
+      <div style={{ width: '24px', height: '24px' }}>
+         {!loading && updated === updatedField && <CheckCircleIcon />}
+         {loading && <Loading />}
+      </div>
+   )
+}
 
 export default Spinner

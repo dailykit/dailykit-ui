@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Spinner } from '../../../../src/components/Spinner'
+import { Spinner } from '@dailykit/ui'
 
-storiesOf('Spinner').add('default', () => <Spinner />)
+storiesOf('Spinner').add('default', () => <Spinner loading={true} />)
