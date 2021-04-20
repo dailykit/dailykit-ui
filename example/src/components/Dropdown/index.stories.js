@@ -15,6 +15,14 @@ export const Single = () => {
       { id: 5, title: 'Option5', description: 'This is option 5' },
       { id: 6, title: 'Option6', description: 'This is option 6' }
    ])
+   const [optionsWithoutDescription] = React.useState([
+      { id: 1, title: 'Indian' },
+      { id: 2, title: 'Bangladeshi' },
+      { id: 3, title: 'Chinese' },
+      { id: 4, title: 'Korean' },
+      { id: 5, title: 'Spanish' },
+      { id: 6, title: 'Russian' }
+   ])
    const selectedOption = option => console.log(option)
    const searchedOption = option => console.log(option)
    return (
@@ -33,6 +41,16 @@ export const Single = () => {
             variant='revamp'
             addOption={() => console.log('Item added')}
             options={options}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+         />
+         <br />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            addOption={() => console.log('Item added')}
+            options={optionsWithoutDescription}
             searchedOption={searchedOption}
             selectedOption={selectedOption}
             typeName='cuisine'

@@ -26,6 +26,7 @@ export const StyledOptions = styled.div(
          ? `0px 4px 6px rgba(0, 0, 0, 0.15)`
          : null};
       z-index: 2;
+      padding: 8px;
       ::-webkit-scrollbar {
          width: 6px;
       }
@@ -37,28 +38,30 @@ export const StyledOptions = styled.div(
 )
 
 export const StyledOption = styled.div(
-   () => css`
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      cursor: pointer;
-      margin: 6px 10px;
-      color: #202020;
-      > div {
-         background: #ebf1f4;
-         width: 100%;
-         border-radius: 4px;
-         font-size: 12px;
-         padding: 8px;
-         > span {
-            font-weight: 700;
-            margin-bottom: 4px;
+   ({ description }) =>
+      css`
+         display: ${description ? 'flex' : 'inline-block'};
+         align-items: flex-start;
+         flex-direction: column;
+         cursor: pointer;
+         margin: 4px;
+         color: #202020;
+         > div {
+            background: #ebf1f4;
+            width: ${description ? '100%' : 'auto'};
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 6px;
+            > span {
+               font-weight: 700;
+               margin-bottom: 4px;
+               line-height: 16px;
+            }
+            > p {
+               font-weight: 400;
+            }
          }
-         > p {
-            font-weight: 400;
-         }
-      }
-   `
+      `
 )
 
 export const StyledSelected = styled.div(

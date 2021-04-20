@@ -120,6 +120,7 @@ const SingleSelect = ({
                         title={option.title}
                         isSelected={selected === index}
                         onClick={() => handleOptionClick(option)}
+                        description={option.description}
                      >
                         <div>
                            <span>{option.title}</span>
