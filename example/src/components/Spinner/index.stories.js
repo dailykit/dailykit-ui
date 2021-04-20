@@ -3,4 +3,4 @@ import { storiesOf } from '@storybook/react'
 
 import { Spinner } from '@dailykit/ui'
 
-storiesOf('Spinner').add('default', () => <Spinner size='50px' />)
+storiesOf('Spinner').add('default', () => <Spinner loading={true} />)

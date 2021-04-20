@@ -16,7 +16,7 @@ export const HorizontalTabList = styled(TabList)`
       props.justifyContent ? props.justifyContent : 'center'};
    overflow-x: auto;
    padding: 0 20px 0 0;
-   border: 1px solid #ebf1f4;
+   border-bottom: 1px solid #ebf1f4;
 `
 const StyledTab = styled(Tab)`
    border: none;

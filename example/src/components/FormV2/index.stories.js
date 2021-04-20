@@ -394,6 +394,7 @@ storiesOf('Form v2', module)
                   name='containers'
                   value={state.containers.value}
                   onChange={value => onChange(value)}
+                  onBlur={value => console.log(value)}
                />
             </Form.Group>
             <Spacer size='24px' />

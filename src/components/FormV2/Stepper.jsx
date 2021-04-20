@@ -56,6 +56,7 @@ export const Stepper = ({
                value={value}
                placeholder={placeholder ? placeholder : 0}
                onChange={e => onChange(e.target.value)}
+               onBlur={e => rest?.onBlur && rest.onBlur(e.target.value)}
             />
 
             <IconButton type='ghost' size='sm' onClick={increment}>
