@@ -14,7 +14,7 @@ export default {
 }
 
 export const TunnelVision = () => {
-   const [tunnels, openTunnel, closeTunnel,visible] = useTunnel(4)
+   const [tunnels, openTunnel, closeTunnel, visible] = useTunnel(4)
 
    return (
       <>
@@ -22,7 +22,11 @@ export const TunnelVision = () => {
             Open Tunnel 1
          </TextButton>
          <Tunnels tunnels={tunnels}>
-            <Tunnel layer={1} visible={visible}>
+            <Tunnel
+               layer={1}
+               outSideClick={() => closeTunnel(1)}
+               visible={visible}
+            >
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeTunnel(1)}
@@ -35,7 +39,7 @@ export const TunnelVision = () => {
                />
             </Tunnel>
 
-            <Tunnel layer={2} size='lg'>
+            <Tunnel layer={2} outSideClick={() => closeTunnel(2)} size='lg'>
                <TunnelHeader
                   title='Tunnel 2'
                   right={{ action: () => openTunnel(3), title: 'Next' }}
@@ -43,7 +47,7 @@ export const TunnelVision = () => {
                />
             </Tunnel>
 
-            <Tunnel layer={3} size='md'>
+            <Tunnel layer={3} outSideClick={() => closeTunnel(3)} size='md'>
                <TunnelHeader
                   title='Tunnel 3'
                   right={{
@@ -54,7 +58,7 @@ export const TunnelVision = () => {
                />
             </Tunnel>
 
-            <Tunnel layer={4} size='sm'>
+            <Tunnel layer={4} outSideClick={() => closeTunnel(4)} size='sm'>
                <TunnelHeader
                   title='Tunnel 4'
                   right={{

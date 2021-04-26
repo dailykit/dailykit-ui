@@ -4,8 +4,10 @@ import { StyledTunnel, StyledTunnelPanel, StyledText } from './styled'
 import { Flex } from '../Flex'
 import { Spacer } from '../Spacer'
 import { TextButton, IconButton } from '../Button'
+import Text from '../Text'
 
 import { RoundedCloseIcon } from '../../assets/icons'
+import { useOnClickOutside } from '../../hooks'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
@@ -34,7 +36,7 @@ const useTunnel = count => {
       [tunnels, setTunnels, visible, setVisible]
    )
 
-   return [tunnels, openTunnel, closeTunnel, visible]
+   return [tunnels, openTunnel, closeTunnel, visible, setVisible]
 }
 
 const Tunnels = ({ mt = 108, tunnels, children }) => {
@@ -47,6 +49,7 @@ const Tunnels = ({ mt = 108, tunnels, children }) => {
                      ...tunnel,
                      props: {
                         mt,
+                        tunnels,
                         ...tunnel.props,
                         ...(tunnels[index + 1] === 'visible' && {
                            partial: true
@@ -63,15 +66,32 @@ const Tunnels = ({ mt = 108, tunnels, children }) => {
    )
 }
 
-const Tunnel = ({ mt, visible, closed, children, ...props }) => {
+const Tunnel = ({
+   mt,
+   tunnels,
+   visible,
+   closed,
+   outSideClick,
+   children,
+   ...props
+}) => {
    let drawerClasses = 'side-tunnelclosed'
    if (visible) {
       drawerClasses = 'side-tunnelopen'
    }
 
+   const ref = React.useRef()
+
+   useOnClickOutside(ref, () => {
+      if (props.layer === tunnels.lastIndexOf('visible') + 1 && outSideClick) {
+         outSideClick()
+      }
+   })
+
    return (
       <StyledTunnel mt={mt}>
          <StyledTunnelPanel
+            ref={ref}
             className={drawerClasses}
             visible={visible}
             {...props}
@@ -103,7 +123,11 @@ const TunnelHeader = ({
          </IconButton>
          <Spacer size='16px' xAxis />
          <Flex>
-            <StyledText as='h1'>{title}</StyledText>
+            <Flex container alignItems='center'>
+               <StyledText as='h1'>{title}</StyledText>
+               {tooltip}
+            </Flex>
+            {description && <Text as='subtitle'>{description}</Text>}
          </Flex>
       </Flex>
 
