@@ -59,90 +59,100 @@ export const Styles = {
             padding-right: 10px;
          }
 
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -50%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-               background: ;
-            }
-         `}
-         ${type === 'outline' &&
-         css`
-            color: ${primary.light};
-            background: transparent;
-            border: 1px solid ${primary.light};
-            font-style: normal;
-            font-weight: 500;
-            ${hasAccess !== false &&
+         ${
+            hasAccess === false &&
             css`
-               &:hover {
-                  color: ${props => props.color || primary.deep};
-                  border: 1px solid ${primary.deep};
-                  background: transparent;
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -50%);
+               }
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
                   border-radius: 2px;
+                  cursor: not-allowed;
+                  background: ;
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: red;
-               }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: ${variant === 'secondary' ? primary.light : '#fff'};
-            border: none;
-            background: ${variant === 'secondary'
-               ? secondary.light
-               : primary.light};
-            &:hover {
-               color: ${variant === 'secondary' ? primary.deep : '#fff'};
-               background: ${variant === 'secondary'
-                  ? secondary.deep
-                  : primary.deep};
-            }
-         `}
-         ${type === 'ghost' &&
-         css`
-            color: ${props => props.color || primary.light};
-            border: none;
-            background: transparent;
-            ${hasAccess !== false &&
+            `
+         }
+         ${
+            type === 'outline' &&
             css`
+               color: ${primary.light};
+               background: transparent;
+               border: 1px solid ${primary.light};
+               font-style: normal;
+               font-weight: 500;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     color: ${props => props.color || primary.deep};
+                     border: 1px solid ${primary.deep};
+                     background: transparent;
+                     border-radius: 2px;
+                  }
+               `}
                &:hover {
-                  background: #f5f5f5;
-                  color: ${primary.deep};
+                  .loader__divs {
+                     background: red;
+                  }
                }
-            `}
-         `}
-         ${hasAccess || disabled || isLoading
-            ? css`
-                 cursor: not-allowed;
-                 opacity: 0.5;
-                 ${type === 'solid' &&
-                 css`
-                    background: ${variant === 'secondary'
-                       ? secondary.light
-                       : primary.light};
-                 `}
-              `
-            : null}
+            `
+         }
+         ${
+            type === 'solid' &&
+            css`
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
+               border: none;
+               background: ${variant === 'secondary'
+                  ? secondary.light
+                  : primary.light};
+               &:hover {
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
+               }
+            `
+         }
+         ${
+            type === 'ghost' &&
+            css`
+               color: ${props => props.color || primary.light};
+               border: none;
+               background: transparent;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                     color: ${primary.deep};
+                  }
+               `}
+            `
+         }
+         ${
+            hasAccess === false || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
+         }
       `
    ),
 
@@ -164,83 +174,93 @@ export const Styles = {
          outline: none;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
          ${sizeIconSelector(size, isLoading)}
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -46%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-            }
-         `}
+         ${
+            hasAccess === false &&
+            css`
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -46%);
+               }
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  border-radius: 2px;
+                  cursor: not-allowed;
+               }
+            `
+         }
 
-         ${type === 'outline' &&
-         css`
-            background: transparent;
-            border: 1px solid ${primary.light};
-            ${hasAccess !== false &&
+         ${
+            type === 'outline' &&
             css`
+               background: transparent;
+               border: 1px solid ${primary.light};
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     color: ${primary.deep};
+                  }
+               `}
                &:hover {
-                  color: ${primary.deep};
+                  .loader__divs {
+                     background: #fff;
+                  }
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: #fff;
-               }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: ${variant === 'secondary' ? primary.light : '#fff'};
-            border: none;
-            background: ${variant === 'secondary'
-               ? secondary.light
-               : primary.light};
-            &:hover {
-               color: ${variant === 'secondary' ? primary.deep : '#fff'};
+            `
+         }
+         ${
+            type === 'solid' &&
+            css`
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
+               border: none;
                background: ${variant === 'secondary'
-                  ? secondary.deep
-                  : primary.deep};
-            }
-         `}
-         ${type === 'ghost' &&
-         css`
-            border: none;
-            background: transparent;
-            ${hasAccess !== false &&
-            css`
+                  ? secondary.light
+                  : primary.light};
                &:hover {
-                  background: #f5f5f5;
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
                }
-            `}
-         `}
+            `
+         }
+         ${
+            type === 'ghost' &&
+            css`
+               border: none;
+               background: transparent;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                  }
+               `}
+            `
+         }
          
-         ${hasAccess || disabled || isLoading
-            ? css`
-                 cursor: not-allowed;
-                 opacity: 0.5;
-                 ${type === 'solid' &&
-                 css`
-                    background: ${variant === 'secondary'
-                       ? secondary.light
-                       : primary.light};
-                 `}
-              `
-            : null}
+         ${
+            hasAccess === false || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
+         }
       `
    ),
    ComboButton: styled.button(
@@ -259,34 +279,38 @@ export const Styles = {
          align-items: center;
          outline: none;
          cursor: ${isLoading ? 'not-allowed' : 'pointer'};
-         ${isLoading &&
-         css`
-            justify-content: center;
-            padding: 0 14px !important;
-         `};
+         ${
+            isLoading &&
+            css`
+               justify-content: center;
+               padding: 0 14px !important;
+            `
+         };
          ${sizeComboSelector(size)}
-         ${hasAccess === false &&
-         css`
-            span.locked {
-               top: 50%;
-               left: 50%;
-               z-index: 10;
-               position: absolute;
-               cursor: not-allowed;
-               transform: translate(-50%, -50%);
-            }
-            ::before {
-               top: 0;
-               left: 0;
-               content: '';
-               z-index: 9;
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               border-radius: 2px;
-               cursor: not-allowed;
-            }
-         `}
+         ${
+            hasAccess === false &&
+            css`
+               span.locked {
+                  top: 50%;
+                  left: 50%;
+                  z-index: 10;
+                  position: absolute;
+                  cursor: not-allowed;
+                  transform: translate(-50%, -50%);
+               }
+               ::before {
+                  top: 0;
+                  left: 0;
+                  content: '';
+                  z-index: 9;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  border-radius: 2px;
+                  cursor: not-allowed;
+               }
+            `
+         }
          span {
             display: flex;
             height: inherit;
@@ -295,63 +319,71 @@ export const Styles = {
             padding: ${position === 'right' ? '0 0 0 10px' : '0 10px 0 0'};
          }
 
-         ${type === 'outline' &&
-         css`
-            color: ${primary.light};
-            background: transparent;
-            border: 1px solid ${primary.light};
-            ${hasAccess !== false &&
+         ${
+            type === 'outline' &&
             css`
+               color: ${primary.light};
+               background: transparent;
+               border: 1px solid ${primary.light};
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     color: ${primary.deep};
+                  }
+               `}
                &:hover {
-                  color: ${primary.deep};
+                  .loader__divs {
+                     background: #fff;
+                  }
                }
-            `}
-            &:hover {
-               .loader__divs {
-                  background: #fff;
-               }
-            }
-         `}
-         ${type === 'solid' &&
-         css`
-            color: ${variant === 'secondary' ? primary.light : '#fff'};
-            border: none;
-            background: ${variant === 'secondary'
-               ? secondary.light
-               : primary.light};
-
-            &:hover {
-               color: ${variant === 'secondary' ? primary.deep : '#fff'};
+            `
+         }
+         ${
+            type === 'solid' &&
+            css`
+               color: ${variant === 'secondary' ? primary.light : '#fff'};
+               border: none;
                background: ${variant === 'secondary'
-                  ? secondary.deep
-                  : primary.deep};
-            }
-         `}
+                  ? secondary.light
+                  : primary.light};
 
-         ${type === 'ghost' &&
-         css`
-            color: ${props => props.color || primary.light};
-            border: none;
-            background: transparent;
-            ${hasAccess !== false &&
-            css`
                &:hover {
-                  background: #f5f5f5;
+                  color: ${variant === 'secondary' ? primary.deep : '#fff'};
+                  background: ${variant === 'secondary'
+                     ? secondary.deep
+                     : primary.deep};
                }
-            `}
-         `}
-         ${hasAccess || disabled || isLoading
-            ? css`
-                 cursor: not-allowed;
-                 opacity: 0.5;
-                 ${type === 'solid' &&
-                 css`
-                    background: ${variant === 'secondary'
-                       ? secondary.light
-                       : primary.light};
-                 `}
-              `
-            : null}
+            `
+         }
+
+         ${
+            type === 'ghost' &&
+            css`
+               color: ${props => props.color || primary.light};
+               border: none;
+               background: transparent;
+               ${hasAccess !== false &&
+               css`
+                  &:hover {
+                     background: #f5f5f5;
+                  }
+               `}
+            `
+         }
+         ${
+            hasAccess === false || disabled || isLoading
+               ? css`
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                    ${type === 'solid' &&
+                    css`
+                       background: ${variant === 'secondary'
+                          ? secondary.light
+                          : primary.light};
+                    `}
+                 `
+               : null
+         }
       `
    ),
    ButtonGroup: styled.div(
