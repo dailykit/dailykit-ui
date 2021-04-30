@@ -35,13 +35,20 @@ const SingleSelect = ({
    const [selected, setSelected] = React.useState(null)
 
    React.useEffect(() => {
-      if (defaultValue !== null && defaultValue < options.length) {
-         setSelected(defaultValue - 1)
+      if (options.length > 0) {
+         if (defaultValue !== null && defaultValue < options.length) {
+            setSelected(defaultValue - 1)
+         }
+         if (defaultOption !== null) {
+            const index = options.findIndex(
+               item => item.id === defaultOption.id
+            )
+            if (index >= 0) {
+               setSelected(index)
+            }
+         }
       }
-      if (defaultOption !== null) {
-         setSelected(defaultOption.id)
-      }
-   }, [defaultValue, defaultOption])
+   }, [defaultValue, defaultOption, options])
 
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
@@ -53,18 +60,11 @@ const SingleSelect = ({
    })
 
    const handleOptionClick = option => {
-      if (defaultValue !== null) {
-         const index = options.findIndex(op => op.id === option.id)
-         setKeyword('')
-         setSelected(index)
-         selectedOption(option)
-         setIsOptionsVisible(!isOptionsVisible)
-      } else {
-         setKeyword('')
-         setSelected(option.id)
-         selectedOption(option)
-         setIsOptionsVisible(!isOptionsVisible)
-      }
+      const index = options.findIndex(op => op.id === option.id)
+      setKeyword('')
+      setSelected(index)
+      selectedOption(option)
+      setIsOptionsVisible(!isOptionsVisible)
    }
 
    return (
@@ -82,20 +82,14 @@ const SingleSelect = ({
                   <>
                      <span
                         data-type='text'
-                        title={
-                           defaultValue !== null
-                              ? options[selected].title
-                              : options.find(item => item.id === selected).title
-                        }
+                        title={options[selected].title}
                         onClick={() => {
                            setKeyword('')
                            setSelected(null)
                            setIsOptionsVisible(true)
                         }}
                      >
-                        {defaultValue !== null
-                           ? options[selected].title
-                           : options.find(item => item.id === selected).title}
+                        {options[selected].title}
                      </span>
                   </>
                ) : (
