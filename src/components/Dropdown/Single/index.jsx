@@ -23,7 +23,8 @@ const SingleSelect = ({
    placeholder,
    selectedOption,
    searchedOption,
-   defaultValue = null,
+   defaultOption = null, //default option with object
+   defaultValue = null, //default value with index
    typeName,
    addOption,
    variant
@@ -34,10 +35,20 @@ const SingleSelect = ({
    const [selected, setSelected] = React.useState(null)
 
    React.useEffect(() => {
-      if (defaultValue !== null) {
-         setSelected(defaultValue - 1)
+      if (options.length > 0) {
+         if (defaultValue !== null && defaultValue < options.length) {
+            setSelected(defaultValue - 1)
+         }
+         if (defaultOption !== null) {
+            const index = options.findIndex(
+               item => item.id === defaultOption.id
+            )
+            if (index >= 0) {
+               setSelected(index)
+            }
+         }
       }
-   }, [defaultValue])
+   }, [defaultValue, defaultOption, options])
 
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
@@ -120,11 +131,11 @@ const SingleSelect = ({
                         title={option.title}
                         isSelected={selected === index}
                         onClick={() => handleOptionClick(option)}
-                        description={option.description}
+                        description={option?.description || ''}
                      >
                         <div>
                            <span>{option.title}</span>
-                           {option.description && <p>{option.description}</p>}
+                           {option?.description && <p>{option.description}</p>}
                         </div>
                      </StyledOption>
                   ))}

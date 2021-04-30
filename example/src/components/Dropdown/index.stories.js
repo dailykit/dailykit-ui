@@ -36,9 +36,17 @@ export const Single = () => {
             placeholder="type what you're looking for..."
          />
          <br />
+         <br />
+         <h6>Single with defaultOption</h6>
+         <br />
          <Dropdown
             type='single'
             variant='revamp'
+            defaultOption={{
+               id: 3,
+               title: 'Option3',
+               description: 'This is option 3'
+            }}
             addOption={() => console.log('Item added')}
             options={options}
             searchedOption={searchedOption}
