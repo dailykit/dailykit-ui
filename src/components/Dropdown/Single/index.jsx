@@ -23,8 +23,8 @@ const SingleSelect = ({
    placeholder,
    selectedOption,
    searchedOption,
-   defaultOption = null,
-   defaultValue = null,
+   defaultOption = null, //default option with object
+   defaultValue = null, //default value with index
    typeName,
    addOption,
    variant
@@ -39,7 +39,7 @@ const SingleSelect = ({
          setSelected(defaultValue - 1)
       }
       if (defaultOption !== null) {
-         setSelected(defaultOption.id - 1)
+         setSelected(defaultOption.id)
       }
    }, [defaultValue, defaultOption])
 
@@ -53,11 +53,18 @@ const SingleSelect = ({
    })
 
    const handleOptionClick = option => {
-      const index = options.findIndex(op => op.id === option.id)
-      setKeyword('')
-      setSelected(index)
-      selectedOption(option)
-      setIsOptionsVisible(!isOptionsVisible)
+      if (defaultValue !== null) {
+         const index = options.findIndex(op => op.id === option.id)
+         setKeyword('')
+         setSelected(index)
+         selectedOption(option)
+         setIsOptionsVisible(!isOptionsVisible)
+      } else {
+         setKeyword('')
+         setSelected(option.id)
+         selectedOption(option)
+         setIsOptionsVisible(!isOptionsVisible)
+      }
    }
 
    return (
@@ -75,14 +82,20 @@ const SingleSelect = ({
                   <>
                      <span
                         data-type='text'
-                        title={options[selected].title}
+                        title={
+                           defaultValue !== null
+                              ? options[selected].title
+                              : options.find(item => item.id === selected).title
+                        }
                         onClick={() => {
                            setKeyword('')
                            setSelected(null)
                            setIsOptionsVisible(true)
                         }}
                      >
-                        {options[selected].title}
+                        {defaultValue !== null
+                           ? options[selected].title
+                           : options.find(item => item.id === selected).title}
                      </span>
                   </>
                ) : (
