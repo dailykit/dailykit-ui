@@ -66,10 +66,14 @@ export const StyledOption = styled.div(
 
 export const StyledSelected = styled.div(
    ({ selected, isOptionsVisible }) => css`
-      width: 100%;
+      width: ${isOptionsVisible
+         ? `100%`
+         : `76%;`};
       display: grid;
-      grid-template-columns: 1fr 20px;
-      padding: 8px 0px 8px 16px;
+      grid-template-columns: 1fr 12px;
+      padding: ${isOptionsVisible
+         ? `8px 8px 8px 16px`
+         : `8px 0px 8px 0px`};
       box-shadow: ${isOptionsVisible
          ? `0px -4px 6px rgba(0, 0, 0, 0.15)`
          : null};
@@ -78,7 +82,7 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 20px;
+         grid-template-columns: 1fr 0px;
          grid-template-areas: 'input search';
          input {
             height: 18px;
