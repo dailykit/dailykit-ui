@@ -23,6 +23,7 @@ const SingleSelect = ({
    placeholder,
    selectedOption,
    searchedOption,
+   defaultOption = null,
    defaultValue = null,
    typeName,
    addOption,
@@ -34,10 +35,13 @@ const SingleSelect = ({
    const [selected, setSelected] = React.useState(null)
 
    React.useEffect(() => {
-      if (defaultValue !== null) {
+      if (defaultValue !== null && defaultValue < options.length) {
          setSelected(defaultValue - 1)
       }
-   }, [defaultValue])
+      if (defaultOption !== null) {
+         setSelected(defaultOption.id - 1)
+      }
+   }, [defaultValue, defaultOption])
 
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
@@ -120,11 +124,11 @@ const SingleSelect = ({
                         title={option.title}
                         isSelected={selected === index}
                         onClick={() => handleOptionClick(option)}
-                        description={option.description}
+                        description={option?.description || ''}
                      >
                         <div>
                            <span>{option.title}</span>
-                           {option.description && <p>{option.description}</p>}
+                           {option?.description && <p>{option.description}</p>}
                         </div>
                      </StyledOption>
                   ))}
