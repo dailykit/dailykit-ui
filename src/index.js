@@ -41,6 +41,7 @@ export * from './components/Flex'
 export * from './components/Filler'
 export * as Form from './components/FormV2'
 export * from './components/ContextualMenu'
+export * from './components/AnchorNavigationMenu'
 // Hooks
 export * from './hooks'
 
