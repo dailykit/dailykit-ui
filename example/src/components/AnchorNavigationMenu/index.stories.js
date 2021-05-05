@@ -34,7 +34,6 @@ export const Default = () => (
          <Element
             name='element-1'
             style={{
-               background: 'wheat',
                height: '1000px'
             }}
          >
@@ -44,7 +43,6 @@ export const Default = () => (
          <Element
             name='element-2'
             style={{
-               background: 'wheat',
                height: '1000px'
             }}
          >
