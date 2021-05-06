@@ -9,6 +9,7 @@ export const StyledSelect = styled.div(
       align-items: center;
       position: relative;
       cursor: pointer;
+      z-index: 5;
       background: ${isOptionsVisible ? '#fff' : 'transparent'};
    `
 )
