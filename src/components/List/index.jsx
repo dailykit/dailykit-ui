@@ -9,6 +9,7 @@ import {
    StyledOptions,
    StyledListLabel
 } from './styled'
+import NoItemFound from './NoItemFound'
 
 export const List = ({ children, ...props }) => (
    <StyledList {...props}>{children}</StyledList>
@@ -134,20 +135,7 @@ export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
          {children.length ? (
             children
          ) : (
-            <>
-               {search && handleOnCreate && (
-                  <Flex padding='0px 0px 0px 14px'>
-                     <ComboButton
-                        size='sm'
-                        type='solid'
-                        onClick={handleOnCreate}
-                     >
-                        {text}
-                        <PlusIcon color='#fff' size={12} />
-                     </ComboButton>
-                  </Flex>
-               )}
-            </>
+            <NoItemFound keyword={search} addOption={handleOnCreate} />
          )}
       </StyledOptions>
    )
