@@ -28,7 +28,8 @@ const SingleSelect = ({
    typeName,
    addOption,
    variant,
-   disabled
+   disabled,
+   readOnly
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
@@ -86,9 +87,11 @@ const SingleSelect = ({
                         data-type='text'
                         title={options[selected].title}
                         onClick={() => {
-                           setKeyword('')
-                           setSelected(null)
-                           setIsOptionsVisible(true)
+                           if (!readOnly) {
+                              setKeyword('')
+                              setSelected(null)
+                              setIsOptionsVisible(true)
+                           }
                         }}
                      >
                         {options[selected].title}
@@ -104,7 +107,7 @@ const SingleSelect = ({
                      <input
                         type='text'
                         value={keyword}
-                        disabled={disabled}
+                        disabled={readOnly || disabled}
                         placeholder={
                            typeName
                               ? `${
@@ -121,39 +124,39 @@ const SingleSelect = ({
                   </>
                )}
             </div>
-            <button
-               disabled={disabled}
-               onClick={() => setIsOptionsVisible(!isOptionsVisible)}
-            >
-               {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            </button>
+            {!readOnly && (
+               <button
+                  disabled={disabled}
+                  onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+               >
+                  {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
+               </button>
+            )}
          </StyledSelected>
-         {isOptionsVisible && (
-            <>
-               <StyledOptions matchedOptions={matchedOptions}>
-                  {matchedOptions.map((option, index) => (
-                     <StyledOption
-                        key={option.id}
-                        title={option.title}
-                        isSelected={selected === index}
-                        onClick={() => handleOptionClick(option)}
-                        description={option?.description || ''}
-                     >
-                        <div>
-                           <span>{option.title}</span>
-                           {option?.description && <p>{option.description}</p>}
-                        </div>
-                     </StyledOption>
-                  ))}
-                  {!matchedOptions.length && (
-                     <NoItemFound
-                        addOption={addOption}
-                        keyword={keyword}
-                        typeName={typeName}
-                     />
-                  )}
-               </StyledOptions>
-            </>
+         {!readOnly && isOptionsVisible && (
+            <StyledOptions matchedOptions={matchedOptions}>
+               {matchedOptions.map((option, index) => (
+                  <StyledOption
+                     key={option.id}
+                     title={option.title}
+                     isSelected={selected === index}
+                     onClick={() => handleOptionClick(option)}
+                     description={option?.description || ''}
+                  >
+                     <div>
+                        <span>{option.title}</span>
+                        {option?.description && <p>{option.description}</p>}
+                     </div>
+                  </StyledOption>
+               ))}
+               {!matchedOptions.length && (
+                  <NoItemFound
+                     addOption={addOption}
+                     keyword={keyword}
+                     typeName={typeName}
+                  />
+               )}
+            </StyledOptions>
          )}
       </StyledSelect>
    )
