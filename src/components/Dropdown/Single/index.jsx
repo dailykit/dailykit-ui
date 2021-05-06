@@ -27,7 +27,8 @@ const SingleSelect = ({
    defaultValue = null, //default value with index
    typeName,
    addOption,
-   variant
+   variant,
+   disabled
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
@@ -74,6 +75,7 @@ const SingleSelect = ({
          isOptionsVisible={isOptionsVisible}
       >
          <StyledSelected
+            disabled={disabled}
             selected={selected}
             isOptionsVisible={isOptionsVisible}
          >
@@ -102,11 +104,12 @@ const SingleSelect = ({
                      <input
                         type='text'
                         value={keyword}
+                        disabled={disabled}
                         placeholder={
                            typeName
                               ? `${
                                    isOptionsVisible ? 'search' : 'select'
-                                } ${typeName} type`
+                                } ${typeName}`
                               : `${placeholder}`
                         }
                         onChange={e =>
@@ -118,9 +121,12 @@ const SingleSelect = ({
                   </>
                )}
             </div>
-            <span onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
+            <button
+               disabled={disabled}
+               onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+            >
                {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            </span>
+            </button>
          </StyledSelected>
          {isOptionsVisible && (
             <>

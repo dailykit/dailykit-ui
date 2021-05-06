@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dropdown } from '@dailykit/ui'
+import { Dropdown, Text, Spacer } from '@dailykit/ui'
 
 export default {
    title: 'Dropdown'
@@ -36,9 +36,8 @@ export const Single = () => {
             placeholder="type what you're looking for..."
          />
          <br />
-         <br />
-         <h6>Single with defaultOption</h6>
-         <br />
+         <Text as='text1'>Default option</Text>
+         <Spacer size='16px' />
          <Dropdown
             type='single'
             variant='revamp'
@@ -57,6 +56,19 @@ export const Single = () => {
          <Dropdown
             type='single'
             variant='revamp'
+            addOption={() => console.log('Item added')}
+            options={optionsWithoutDescription}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+         />
+         <br />
+         <Text as='text1'>Disabled state</Text>
+         <Spacer size='16px' />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            disabled={true}
             addOption={() => console.log('Item added')}
             options={optionsWithoutDescription}
             searchedOption={searchedOption}
