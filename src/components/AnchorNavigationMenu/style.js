@@ -5,7 +5,7 @@ const Styles = {
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
-      font-size: 12px;
+      font-size: 16px;
       line-height: 14px;
       color: #202020;
       border-bottom: 1px solid #ebf1f4;
@@ -14,7 +14,7 @@ const Styles = {
       justify-content: center;
       margin-bottom: 12px;
       > a {
-         padding: 4px 20px;
+         padding: 4px 24px;
       }
 
       .active {
