@@ -145,14 +145,12 @@ const SingleSelect = ({
                         </div>
                      </StyledOption>
                   ))}
-                  {!matchedOptions.length && <NoItemFound name={typeName} />}
                   {!matchedOptions.length && (
-                     <StyledButton onClick={addOption}>
-                        <PlusIcon color='#367BF5' />{' '}
-                        <span>
-                           add {keyword} {typeName && `as ${typeName}`}
-                        </span>
-                     </StyledButton>
+                     <NoItemFound
+                        addOption={addOption}
+                        keyword={keyword}
+                        typeName={typeName}
+                     />
                   )}
                </StyledOptions>
             </>

@@ -98,6 +98,8 @@ export const Multi = () => {
             searchedOption={searchedOption}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
+            typeName='option'
+            addOption={() => console.log('ITEM ADDED')}
          />
       </div>
    )

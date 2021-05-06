@@ -17,6 +17,7 @@ import {
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
+import NoItemFound from '../Single/NoItemFound'
 
 const optionExists = (options, item) => {
    for (let option of options) {
@@ -33,7 +34,9 @@ const MultiSelect = ({
    selectedOption,
    searchedOption,
    defaultOptions = [],
-   defaultIds = []
+   defaultIds = [],
+   addOption,
+   typeName
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
@@ -84,6 +87,10 @@ const MultiSelect = ({
          setSelectedOptions(result)
       }
    }, [defaultIds])
+
+   const matchedOptions = options.filter(option =>
+      option.title.toLowerCase().includes(keyword)
+   )
 
    return (
       <StyledSelect ref={ref}>
@@ -137,28 +144,31 @@ const MultiSelect = ({
          )}
          {isOptionsVisible && (
             <StyledOptions moveDown={selectedOptions.length > 0}>
-               {options
-                  .filter(option =>
-                     option.title.toLowerCase().includes(keyword)
-                  )
-                  .map(option => (
-                     <StyledOption
-                        key={option.id}
-                        title={option.title}
-                        onClick={() => selectOption(option)}
-                        isSelected={optionExists(selectedOptions, option.id)}
-                     >
-                        <div>
-                           <input
-                              type='checkbox'
-                              readOnly
-                              checked={optionExists(selectedOptions, option.id)}
-                           />
-                           <span>{option.title}</span>
-                        </div>
-                        {option.description && <p>{option.description}</p>}
-                     </StyledOption>
-                  ))}
+               {matchedOptions.map(option => (
+                  <StyledOption
+                     key={option.id}
+                     title={option.title}
+                     onClick={() => selectOption(option)}
+                     isSelected={optionExists(selectedOptions, option.id)}
+                  >
+                     <div>
+                        <input
+                           type='checkbox'
+                           readOnly
+                           checked={optionExists(selectedOptions, option.id)}
+                        />
+                        <span>{option.title}</span>
+                     </div>
+                     {option.description && <p>{option.description}</p>}
+                  </StyledOption>
+               ))}
+               {!matchedOptions.length && (
+                  <NoItemFound
+                     addOption={addOption}
+                     keyword={keyword}
+                     typeName={typeName}
+                  />
+               )}
             </StyledOptions>
          )}
       </StyledSelect>
