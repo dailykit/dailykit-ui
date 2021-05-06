@@ -32,11 +32,13 @@ const pickSize = size => {
 export const StyledTunnelPanel = styled.div(
    ({ size, partial, visible }) => css`
       margin-top: 8px;
-      height: 100%;
+      height: calc(100% - 116px);
+      padding-bottom: 16px;
       background: #fff;
       float: ${partial ? 'left' : 'right'};
       width: ${pickSize(size)};
       border-radius: 14px 0px 0px 0px;
+      overflow-y: auto;
       ${visible &&
       css`
          @keyframes transformOpen {
