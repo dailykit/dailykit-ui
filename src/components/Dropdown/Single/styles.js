@@ -9,7 +9,8 @@ export const StyledSelect = styled.div(
       align-items: center;
       position: relative;
       cursor: pointer;
-      background: #fff;
+      z-index: 5;
+      background: ${isOptionsVisible ? '#fff' : 'transparent'};
    `
 )
 
@@ -19,7 +20,7 @@ export const StyledOptions = styled.div(
       max-height: 180px;
       height: auto;
       overflow-y: auto;
-      top: 20px;
+      top: 18px;
       width: 100%;
       background: #fff;
       box-shadow: ${matchedOptions.length
@@ -65,18 +66,16 @@ export const StyledOption = styled.div(
 )
 
 export const StyledSelected = styled.div(
-   ({ selected, isOptionsVisible }) => css`
-      width: ${isOptionsVisible
-         ? `100%`
-         : `76%;`};
+   ({ selected, isOptionsVisible, disabled }) => css`
+      width: ${isOptionsVisible ? `100%` : `76%;`};
       display: grid;
       grid-template-columns: 1fr 12px;
-      padding: ${isOptionsVisible
-         ? `8px 8px 8px 16px`
-         : `8px 0px 8px 0px`};
+      padding: ${isOptionsVisible ? `8px 8px 8px 16px` : `8px 0px 8px 0px`};
       box-shadow: ${isOptionsVisible
          ? `0px -4px 6px rgba(0, 0, 0, 0.15)`
          : null};
+      opacity: ${disabled ? 0.5 : 1};
+      cursor: ${disabled && 'not-allowed'};
       div {
          height: 18px;
          display: flex;
@@ -90,10 +89,11 @@ export const StyledSelected = styled.div(
             border: none;
             font-weight: 500;
             grid-area: input;
-            font-size: 12px;
+            font-size: ${isOptionsVisible ? '12px' : '16px'};
             line-height: 16px;
             letter-spacing: 0.32px;
             color: #919699;
+            background: transparent;
             &:focus {
                outline: none;
             }
@@ -130,11 +130,13 @@ export const StyledSelected = styled.div(
             `}
          }
       }
-      > span {
+      > button {
          display: flex;
          align-items: center;
          justify-content: center;
          position: relative;
+         border: none;
+         background: transparent;
          &:after {
             content: '';
             position: absolute;

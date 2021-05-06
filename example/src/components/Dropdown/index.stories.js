@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dropdown } from '@dailykit/ui'
+import { Dropdown, Text, Spacer } from '@dailykit/ui'
 
 export default {
    title: 'Dropdown'
@@ -36,9 +36,8 @@ export const Single = () => {
             placeholder="type what you're looking for..."
          />
          <br />
-         <br />
-         <h6>Single with defaultOption</h6>
-         <br />
+         <Text as='text1'>Default option</Text>
+         <Spacer size='16px' />
          <Dropdown
             type='single'
             variant='revamp'
@@ -53,10 +52,42 @@ export const Single = () => {
             selectedOption={selectedOption}
             typeName='cuisine'
          />
+         <Spacer size='16px' />
+
+         <Text as='text1'>Locked state</Text>
+         <Spacer size='16px' />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            defaultOption={{
+               id: 3,
+               title: 'Option3',
+               description: 'This is option 3'
+            }}
+            addOption={() => console.log('Item added')}
+            options={options}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+            readOnly={true}
+         />
          <br />
          <Dropdown
             type='single'
             variant='revamp'
+            addOption={() => console.log('Item added')}
+            options={optionsWithoutDescription}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+         />
+         <br />
+         <Text as='text1'>Disabled state</Text>
+         <Spacer size='16px' />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            disabled={true}
             addOption={() => console.log('Item added')}
             options={optionsWithoutDescription}
             searchedOption={searchedOption}
@@ -86,6 +117,8 @@ export const Multi = () => {
             searchedOption={searchedOption}
             selectedOption={selectedOption}
             placeholder="type what you're looking for..."
+            typeName='option'
+            addOption={() => console.log('ITEM ADDED')}
          />
       </div>
    )

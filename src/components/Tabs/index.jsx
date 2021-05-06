@@ -26,7 +26,7 @@ const StyledTab = styled(Tab)`
    min-width: fit-content;
    color: #202020;
    font-weight: 500;
-   font-size: 12px;
+   font-size: 16px;
    line-height: 14px;
    margin-right: 14px;
    background: transparent;
