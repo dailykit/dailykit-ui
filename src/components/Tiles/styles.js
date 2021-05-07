@@ -123,6 +123,25 @@ const extendedButtonTileStyle = (type = 'primary', size = 'sm') => {
                margin-top: 16px;
             }
          `
+      case 'revamp':
+         return css`
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
+            color: #367bf5;
+            box-shadow: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            padding: 20px;
+            > div {
+               margin-left: 10px;
+            }
+            :hover {
+               background-color: #f4f4f4;
+            }
+         `
       default:
          extendedButtonTileStyle()
    }
@@ -139,13 +158,13 @@ export const StyledButtonTile = styled.button`
    font-size: 20px;
    font-weight: 500;
    border-radius: 2px;
-   ${props => extendedButtonTileStyle(props.type, props.size)};
    box-shadow: -1px 1px 2px rgba(184, 184, 184, 0.2),
       1px -1px 2px rgba(184, 184, 184, 0.2),
       -1px -1px 2px rgba(255, 255, 255, 0.9),
       1px 1px 3px rgba(184, 184, 184, 0.9),
       inset 1px 1px 2px rgba(255, 255, 255, 0.3),
       inset -1px -1px 2px rgba(184, 184, 184, 0.5);
+   ${props => extendedButtonTileStyle(props.type, props.size)};
 `
 
 export const StyledOptionTile = styled.button`

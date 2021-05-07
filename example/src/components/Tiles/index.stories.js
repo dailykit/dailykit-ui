@@ -80,5 +80,11 @@ export const ButtonTileVariant = () => (
          onClick={e => console.log('Tile clicked')}
          style={{ margin: '20px 0' }}
       />
+      <ButtonTile
+         type='revamp'
+         text='Select Sub Title'
+         onClick={e => console.log('Tile clicked')}
+         style={{ margin: '20px 0' }}
+      />
    </>
 )
