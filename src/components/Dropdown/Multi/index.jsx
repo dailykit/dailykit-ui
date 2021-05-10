@@ -13,7 +13,8 @@ import {
    ClearIcon,
    SearchIcon,
    ArrowDownIcon,
-   ArrowUpIcon
+   ArrowUpIcon,
+   CloseIcon
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
@@ -57,7 +58,7 @@ const MultiSelect = ({
       const withAdded = [...selectedOptions, option]
 
       // Pass to parent
-      selectedOption(withAdded)
+      selectedOption(exists ? withRemoved : withAdded)
 
       // Update selected options
       setSelectedOptions(() => (exists ? withRemoved : withAdded))
@@ -109,9 +110,19 @@ const MultiSelect = ({
                   }
                />
             </div>
-            <span onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
-               {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            </span>
+            <aside>
+               <span
+                  onClick={() => {
+                     setSelectedOptions([])
+                     selectedOption([])
+                  }}
+               >
+                  {selectedOptions.length > 0 && <CloseIcon />}
+               </span>
+               <span onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
+                  {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
+               </span>
+            </aside>
          </StyledSelected>
          {selectedOptions.length > 0 && (
             <SelectedOptions>
