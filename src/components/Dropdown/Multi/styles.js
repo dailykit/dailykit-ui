@@ -143,7 +143,12 @@ export const StyledSelected = styled.div`
          justify-content: center;
       }
    }
-   > span {
+   aside {
+      display: flex;
+      width: 35px;
+      justify-content: space-between;
+   }
+   aside > span {
       display: flex;
       align-items: center;
       justify-content: center;
