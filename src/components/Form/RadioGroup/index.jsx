@@ -3,9 +3,14 @@ import React from 'react'
 import { RadioButton } from '../styles'
 
 const RadioGroup = ({ options, active, onChange }) => {
-   const [selected, setSelected] = React.useState(active)
+   const [selected, setSelected] = React.useState(null)
 
    const select = option => {
+      if (selected === option.id) {
+         setSelected(null)
+         onChange(null)
+         return
+      }
       setSelected(option.id)
       onChange(option)
    }
