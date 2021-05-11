@@ -111,14 +111,16 @@ const MultiSelect = ({
                />
             </div>
             <aside>
-               <span
-                  onClick={() => {
-                     setSelectedOptions([])
-                     selectedOption([])
-                  }}
-               >
-                  {selectedOptions.length > 0 && <CloseIcon />}
-               </span>
+               {selectedOptions.length > 0 && (
+                  <span
+                     onClick={() => {
+                        setSelectedOptions([])
+                        selectedOption([])
+                     }}
+                  >
+                     <CloseIcon />
+                  </span>
+               )}
                <span onClick={() => setIsOptionsVisible(!isOptionsVisible)}>
                   {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
                </span>
