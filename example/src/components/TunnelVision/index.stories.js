@@ -14,7 +14,7 @@ export default {
 }
 
 export const TunnelVision = () => {
-   const [tunnels, openTunnel, closeTunnel,visible] = useTunnel(4)
+   const [tunnels, openTunnel, closeTunnel, visible] = useTunnel(4)
 
    return (
       <>

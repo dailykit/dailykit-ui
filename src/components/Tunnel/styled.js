@@ -30,9 +30,9 @@ const pickSize = size => {
 }
 
 export const StyledTunnelPanel = styled.div(
-   ({ size, partial, visible }) => css`
+   ({ size, partial, visible, mt }) => css`
       margin-top: 8px;
-      height: calc(100% - 116px);
+      height: ${`calc(100% - ${mt + 8}px)`};
       padding-bottom: 16px;
       background: #fff;
       float: ${partial ? 'left' : 'right'};

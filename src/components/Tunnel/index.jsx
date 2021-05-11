@@ -37,7 +37,7 @@ const useTunnel = count => {
    return [tunnels, openTunnel, closeTunnel, visible]
 }
 
-const Tunnels = ({ mt = 108, tunnels, children }) => {
+const Tunnels = ({ mt = 48, tunnels, children }) => {
    return (
       <div>
          {Array.isArray(children) &&
@@ -74,6 +74,7 @@ const Tunnel = ({ mt, visible, closed, children, ...props }) => {
          <StyledTunnelPanel
             className={drawerClasses}
             visible={visible}
+            mt={mt}
             {...props}
          >
             {children}
