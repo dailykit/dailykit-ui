@@ -76,6 +76,10 @@ const Styles = {
          input[type='password'],
          select {
             width: 100%;
+            background: transparent;
+            :hover {
+               background: #f7f7f7;
+            }
          }
          ${(hasWriteAccess === false || hasReadAccess === false) &&
          css`
