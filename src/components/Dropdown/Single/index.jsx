@@ -38,10 +38,15 @@ const SingleSelect = ({
 
    React.useEffect(() => {
       if (options.length > 0) {
-         if (defaultValue !== null && defaultValue < options.length) {
+         if (defaultOption === null && defaultValue === null) {
+            setSelected(null)
+         } else if (
+            defaultValue !== null &&
+            defaultValue >= 0 &&
+            defaultValue < options.length
+         ) {
             setSelected(defaultValue - 1)
-         }
-         if (defaultOption !== null) {
+         } else if (defaultOption !== null) {
             const index = options.findIndex(
                item => item.id === defaultOption.id
             )
