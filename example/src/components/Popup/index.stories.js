@@ -44,7 +44,10 @@ export const PopupAlert = () => {
          <TextButton type='solid' onClick={() => setShowDanger(!showDanger)}>
             Danger
          </TextButton>
-         <Popup show={showPrimary}>
+         <Popup
+            show={showPrimary}
+            clickOutsidePopup={() => setShowPrimary(false)}
+         >
             <Popup.Actions>
                <Popup.Text type='primary'>
                   Closing this file will not save any changes!
@@ -69,7 +72,10 @@ export const PopupAlert = () => {
                </ButtonGroup>
             </Popup.Actions>
          </Popup>
-         <Popup show={showDanger}>
+         <Popup
+            show={showDanger}
+            clickOutsidePopup={() => setShowDanger(false)}
+         >
             <Popup.Actions>
                <Popup.Text type='danger'>
                   Closing this file will not save any changes!

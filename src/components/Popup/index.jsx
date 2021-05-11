@@ -5,11 +5,16 @@ import { Wrapper, StyledPopup, Text, ConfirmText, Actions } from './styles'
 import { IconButton } from '../Button'
 
 import { RoundedCloseIcon } from '../../assets/icons'
+import { useOnClickOutside } from '../../hooks'
 
-const Popup = ({ show, children }) => {
+const Popup = ({ show, children, clickOutsidePopup }) => {
+   const ref = React.useRef(null)
+   useOnClickOutside(ref, () => {
+      clickOutsidePopup()
+   })
    return (
       <Wrapper show={show}>
-         <StyledPopup>{children}</StyledPopup>
+         <StyledPopup ref={ref}>{children}</StyledPopup>
       </Wrapper>
    )
 }
