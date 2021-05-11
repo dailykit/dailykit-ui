@@ -44,10 +44,16 @@ export const PopupAlert = () => {
          <TextButton type='solid' onClick={() => setShowDanger(!showDanger)}>
             Danger
          </TextButton>
-         <Popup show={showPrimary}>
-            <Popup.Text type='primary'>
-               Closing this file will not save any changes!
-            </Popup.Text>
+         <Popup
+            show={showPrimary}
+            clickOutsidePopup={() => setShowPrimary(false)}
+         >
+            <Popup.Actions>
+               <Popup.Text type='primary'>
+                  Closing this file will not save any changes!
+               </Popup.Text>
+               <Popup.Close closePopup={() => setShowPrimary(!showPrimary)} />
+            </Popup.Actions>
             <Popup.ConfirmText>Are you sure?</Popup.ConfirmText>
             <Popup.Actions>
                <ButtonGroup align='left'>
@@ -66,10 +72,16 @@ export const PopupAlert = () => {
                </ButtonGroup>
             </Popup.Actions>
          </Popup>
-         <Popup show={showDanger}>
-            <Popup.Text type='danger'>
-               Closing this file will not save any changes!
-            </Popup.Text>
+         <Popup
+            show={showDanger}
+            clickOutsidePopup={() => setShowDanger(false)}
+         >
+            <Popup.Actions>
+               <Popup.Text type='danger'>
+                  Closing this file will not save any changes!
+               </Popup.Text>
+               <Popup.Close closePopup={() => setShowDanger(!showDanger)} />
+            </Popup.Actions>
             <Popup.ConfirmText>Are you sure?</Popup.ConfirmText>
             <Popup.Actions>
                <ButtonGroup align='left'>
