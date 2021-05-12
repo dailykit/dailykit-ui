@@ -69,11 +69,9 @@ export const StyledSelected = styled.div(
    ({ selected, isOptionsVisible, disabled }) => css`
       width: ${isOptionsVisible ? `100%` : `76%;`};
       display: grid;
-      grid-template-columns: 1fr 12px;
-      padding: ${isOptionsVisible ? `8px 8px 8px 16px` : `8px 0px 8px 0px`};
-      box-shadow: ${isOptionsVisible
-         ? `0px -4px 6px rgba(0, 0, 0, 0.15)`
-         : null};
+      grid-template-columns: ${isOptionsVisible? '1fr 12px' : 'max-content 12px'};
+      padding: ${isOptionsVisible ? `8px 8px 8px 0px` : `8px 0px 8px 0px`};
+      box-shadow:  null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
       div {
@@ -81,7 +79,8 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 0px;
+         grid-template-columns: 1fr 12px;
+         
          grid-template-areas: 'input search';
          input {
             height: 18px;
@@ -89,9 +88,10 @@ export const StyledSelected = styled.div(
             border: none;
             font-weight: 500;
             grid-area: input;
-            font-size: ${isOptionsVisible ? '12px' : '16px'};
+            font-size: ${isOptionsVisible ? '16px' : '16px'};
             line-height: 16px;
             letter-spacing: 0.32px;
+            padding: 0px;
             color: #919699;
             background: transparent;
             &:focus {

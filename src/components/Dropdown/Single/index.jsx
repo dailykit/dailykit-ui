@@ -87,21 +87,19 @@ const SingleSelect = ({
          >
             <div>
                {selected !== null ? (
-                  <>
-                     <span
-                        data-type='text'
-                        title={options[selected].title}
-                        onClick={() => {
-                           if (!readOnly) {
-                              setKeyword('')
-                              setSelected(null)
-                              setIsOptionsVisible(true)
-                           }
-                        }}
-                     >
-                        {options[selected].title}
-                     </span>
-                  </>
+                  <span
+                     data-type='text'
+                     title={options[selected].title}
+                     onClick={() => {
+                        if (!readOnly) {
+                           setKeyword('')
+                           setSelected(null)
+                           setIsOptionsVisible(true)
+                        }
+                     }}
+                  >
+                     {options[selected].title}
+                  </span>
                ) : (
                   <>
                      {isOptionsVisible && (
