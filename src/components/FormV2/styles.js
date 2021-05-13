@@ -10,7 +10,7 @@ const selectToggleColor = variant => {
          return '#367BF5'
    }
 }
-const textInput = (variant, hasError) => {
+const textInput = (variant, hasError, disabled) => {
    switch (variant) {
       case 'revamp':
          return css`
@@ -39,6 +39,9 @@ const textInput = (variant, hasError) => {
             :focus::placeholder {
                color: transparent;
             }
+            background: transparent;
+            opacity: ${disabled ? 0.4 : 1};
+            cursor: ${disabled && 'not-allowed'};
          `
       default:
          return css`
@@ -110,9 +113,9 @@ const Styles = {
       margin-bottom: 4px;
    `,
    Text: styled.input(
-      ({ hasError, variant }) => css`
+      ({ hasError, variant, disabled }) => css`
          border-radius: 4px;
-         ${textInput(variant, hasError)}
+         ${textInput(variant, hasError, disabled)}
       `
    ),
    Number: styled.input(

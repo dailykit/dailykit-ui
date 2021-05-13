@@ -90,6 +90,30 @@ storiesOf('Form v2', module)
                      <Form.Error key={index}>{error}</Form.Error>
                   ))}
             </Form.Group>
+            <Spacer size='16px' />
+            <Text as='h3'>Disabled state</Text>
+            <Spacer size='16px' />
+            <Form.Group>
+               <Form.Text
+                  id='username'
+                  name='username'
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  variant='revamp-sm'
+                  value={state.username.value}
+                  disabled={true}
+                  placeholder='enter recipe'
+                  hasError={
+                     state.username.meta.isTouched &&
+                     !state.username.meta.isValid
+                  }
+               />
+               {state.username.meta.isTouched &&
+                  !state.username.meta.isValid &&
+                  state.username.meta.errors.map((error, index) => (
+                     <Form.Error key={index}>{error}</Form.Error>
+                  ))}
+            </Form.Group>
             <Spacer size='24px' />
             <Text as='h3'>With Full Access</Text>
             <Spacer size='16px' />
