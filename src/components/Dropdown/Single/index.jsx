@@ -84,6 +84,7 @@ const SingleSelect = ({
             disabled={disabled}
             selected={selected}
             isOptionsVisible={isOptionsVisible}
+            variant={variant}
          >
             <div>
                {selected !== null ? (
@@ -137,7 +138,7 @@ const SingleSelect = ({
             )}
          </StyledSelected>
          {!readOnly && isOptionsVisible && (
-            <StyledOptions matchedOptions={matchedOptions}>
+            <StyledOptions variant={variant} matchedOptions={matchedOptions}>
                {matchedOptions.map((option, index) => (
                   <StyledOption
                      key={option.id}
