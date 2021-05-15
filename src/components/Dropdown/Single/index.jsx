@@ -87,7 +87,7 @@ const SingleSelect = ({
             variant={variant}
          >
             <div>
-               {selected !== null ? (
+               {selected !== null && options.length>0 ? (
                   <span
                      data-type='text'
                      title={options[selected].title}
@@ -139,7 +139,7 @@ const SingleSelect = ({
          </StyledSelected>
          {!readOnly && isOptionsVisible && (
             <StyledOptions variant={variant} matchedOptions={matchedOptions}>
-               {matchedOptions.map((option, index) => (
+               {matchedOptions?.map((option, index) => (
                   <StyledOption
                      key={option.id}
                      title={option.title}
