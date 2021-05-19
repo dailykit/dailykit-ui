@@ -63,11 +63,11 @@ export const StyledOption = styled.div(
 )
 
 export const StyledSelected = styled.div(
-   ({ variant, selected, isOptionsVisible, disabled }) => css`
+   ({ variant, selected, disabled }) => css`
       width: ${variant === 'revamp' ? 'fit-content' : '100%'};
       display: grid;
       grid-template-columns: 1fr 20px;
-      box-shadow: null;
+      box-shadow: none;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
       div {
@@ -75,15 +75,15 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 20px;
-         grid-template-areas: 'input search';
+         grid-template-columns: ${selected !== null ? '1fr' : '20px auto'};
+         grid-template-areas: 'search input';
          input {
             height: 18px;
             width: ${variant === 'revamp' ? `122px` : `100%`};
             border: none;
             font-weight: 500;
             grid-area: input;
-            font-size: ${isOptionsVisible ? '16px' : '16px'};
+            font-size: 16px;
             line-height: 16px;
             letter-spacing: 0.32px;
             padding: '0px';

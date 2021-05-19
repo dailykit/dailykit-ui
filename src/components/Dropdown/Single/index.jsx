@@ -97,21 +97,15 @@ const SingleSelect = ({
                   </span>
                ) : (
                   <>
-                     {isOptionsVisible && (
-                        <span data-type='icon'>
-                           <SearchIcon color='#919699' size='12px' />
-                        </span>
-                     )}
+                     <span data-type='icon'>
+                        <SearchIcon color='#919699' size='12px' />
+                     </span>
                      <input
                         type='text'
                         value={keyword}
                         disabled={readOnly || disabled}
                         placeholder={
-                           typeName
-                              ? `${
-                                   isOptionsVisible ? 'search' : 'select'
-                                } ${typeName}`
-                              : `${placeholder}`
+                           typeName ? `select ${typeName}` : `${placeholder}`
                         }
                         onChange={e =>
                            searchedOption(e.target.value) ||
