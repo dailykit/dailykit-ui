@@ -4,16 +4,10 @@ import {
    StyledSelect,
    StyledOptions,
    StyledOption,
-   StyledSelected,
-   StyledButton
+   StyledSelected
 } from './styles'
 
-import {
-   SearchIcon,
-   ArrowDownIcon,
-   ArrowUpIcon,
-   PlusIcon
-} from '../../../assets/icons'
+import { SearchIcon, ArrowDownIcon, ArrowUpIcon } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
 import NoItemFound from './NoItemFound'
@@ -131,14 +125,18 @@ const SingleSelect = ({
             {!readOnly && (
                <button
                   disabled={disabled}
-                  onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+                  onClick={() => {
+                     setKeyword('')
+                     setSelected(null)
+                     setIsOptionsVisible(!isOptionsVisible)
+                  }}
                >
                   {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
                </button>
             )}
          </StyledSelected>
          {!readOnly && isOptionsVisible && (
-            <StyledOptions variant={variant} matchedOptions={matchedOptions}>
+            <StyledOptions variant={variant}>
                {matchedOptions.map((option, index) => (
                   <StyledOption
                      key={option.id}

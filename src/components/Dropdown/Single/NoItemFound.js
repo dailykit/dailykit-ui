@@ -5,8 +5,6 @@ import { StyledButton } from './styles'
 
 const Wrapper = styled.div(
    () => css`
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-      padding-top: 20px;
       margin-bottom: 12px;
       > div {
          display: flex;
@@ -33,35 +31,6 @@ const NoItemFound = ({ color = '#c4c4c4', typeName, keyword, addOption }) => {
    return (
       <>
          <Wrapper>
-            <div>
-               <svg
-                  width='12'
-                  height='2'
-                  viewBox='0 0 12 2'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-               >
-                  <rect width='12' height='2' rx='1' fill={color} />
-               </svg>
-               <svg
-                  width='12'
-                  height='2'
-                  viewBox='0 0 12 2'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-               >
-                  <rect width='12' height='2' rx='1' fill={color} />
-               </svg>
-               <svg
-                  width='12'
-                  height='2'
-                  viewBox='0 0 12 2'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-               >
-                  <rect width='12' height='2' rx='1' fill={color} />
-               </svg>
-            </div>
             <p> {typeName ? `no ${typeName} found` : 'not found'} </p>
          </Wrapper>
          {addOption && (

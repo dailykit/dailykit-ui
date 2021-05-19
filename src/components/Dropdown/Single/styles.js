@@ -4,32 +4,29 @@ export const StyledSelect = styled.div(
    ({ variant, isOptionsVisible }) => css`
       height: 18px;
       width: ${variant === 'revamp' ? 'fit-content' : '100%'};
-      min-width: ${isOptionsVisible ? '200px' : null};
       display: flex;
       align-items: center;
       position: relative;
       cursor: pointer;
-      z-index: 5;
       background: ${isOptionsVisible ? '#fff' : 'transparent'};
    `
 )
 
 export const StyledOptions = styled.div(
-   ({variant, matchedOptions }) => css`
+   () => css`
       position: absolute;
       max-height: 180px;
       height: auto;
       overflow-y: auto;
-      top: 18px;
-      width: ${variant==='revamp' ? `100%` : `100%`};
+      top: 26px;
+      width: 100%;
       background: #fff;
-      box-shadow: ${matchedOptions.length
-         ? `0px 4px 6px rgba(0, 0, 0, 0.15)`
-         : null};
-      z-index: 2;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+      z-index: 5;
       padding: 8px;
       ::-webkit-scrollbar {
          width: 6px;
+         height: 6px;
       }
       ::-webkit-scrollbar-thumb {
          background-color: rgba(196, 196, 196, 0.9);
@@ -66,12 +63,11 @@ export const StyledOption = styled.div(
 )
 
 export const StyledSelected = styled.div(
-   ({variant, selected, isOptionsVisible, disabled }) => css`
-      width: ${isOptionsVisible ? '100%' : 'fit-content'};
+   ({ variant, selected, isOptionsVisible, disabled }) => css`
+      width: ${variant === 'revamp' ? 'fit-content' : '100%'};
       display: grid;
-      grid-template-columns: 1fr 12px;
-      padding: ${isOptionsVisible ? `8px 8px 8px 0px` : `8px 0px 8px 0px`};
-      box-shadow:  null;
+      grid-template-columns: 1fr 20px;
+      box-shadow: null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
       div {
@@ -79,11 +75,11 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 12px;
+         grid-template-columns: 1fr 20px;
          grid-template-areas: 'input search';
          input {
             height: 18px;
-            width: ${variant==='revamp' ? `122px` : `100%`};
+            width: ${variant === 'revamp' ? `122px` : `100%`};
             border: none;
             font-weight: 500;
             grid-area: input;
@@ -92,7 +88,7 @@ export const StyledSelected = styled.div(
             letter-spacing: 0.32px;
             padding: '0px';
             color: #919699;
-            margin:'0px';
+            margin: '0px';
             background: transparent;
             &:focus {
                outline: none;
