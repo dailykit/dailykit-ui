@@ -7,7 +7,7 @@ import { IconButton } from '../Button'
 import { RoundedCloseIcon } from '../../assets/icons'
 import { useOnClickOutside } from '../../hooks'
 
-const Popup = ({ show, children, clickOutsidePopup }) => {
+const Popup = ({ show, children, clickOutsidePopup = () => {} }) => {
    const ref = React.useRef(null)
    useOnClickOutside(ref, () => {
       clickOutsidePopup()
