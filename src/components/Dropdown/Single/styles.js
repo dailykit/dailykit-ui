@@ -9,24 +9,23 @@ export const StyledSelect = styled.div(
       align-items: center;
       position: relative;
       cursor: pointer;
-      z-index: 5;
       background: ${isOptionsVisible ? '#fff' : 'transparent'};
    `
 )
 
 export const StyledOptions = styled.div(
-   ({variant, matchedOptions }) => css`
+   ({ variant, matchedOptions }) => css`
       position: absolute;
       max-height: 180px;
       height: auto;
       overflow-y: auto;
       top: 18px;
-      width: ${variant==='revamp' ? `100%` : `100%`};
+      width: ${variant === 'revamp' ? `100%` : `100%`};
       background: #fff;
       box-shadow: ${matchedOptions.length
          ? `0px 4px 6px rgba(0, 0, 0, 0.15)`
          : null};
-      z-index: 2;
+      z-index: 99999999;
       padding: 8px;
       ::-webkit-scrollbar {
          width: 6px;
@@ -66,12 +65,12 @@ export const StyledOption = styled.div(
 )
 
 export const StyledSelected = styled.div(
-   ({variant, selected, isOptionsVisible, disabled }) => css`
+   ({ variant, selected, isOptionsVisible, disabled }) => css`
       width: ${isOptionsVisible ? '100%' : 'fit-content'};
       display: grid;
       grid-template-columns: 1fr 12px;
       padding: ${isOptionsVisible ? `8px 8px 8px 0px` : `8px 0px 8px 0px`};
-      box-shadow:  null;
+      box-shadow: null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
       div {
@@ -83,7 +82,7 @@ export const StyledSelected = styled.div(
          grid-template-areas: 'input search';
          input {
             height: 18px;
-            width: ${variant==='revamp' ? `122px` : `100%`};
+            width: ${variant === 'revamp' ? `122px` : `100%`};
             border: none;
             font-weight: 500;
             grid-area: input;
@@ -92,7 +91,7 @@ export const StyledSelected = styled.div(
             letter-spacing: 0.32px;
             padding: '0px';
             color: #919699;
-            margin:'0px';
+            margin: '0px';
             background: transparent;
             &:focus {
                outline: none;
