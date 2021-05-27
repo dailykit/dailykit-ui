@@ -37,22 +37,22 @@ const LazyDropdown = ({
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
+   const [stateDefaultName, setStateDefaultName] = React.useState(defaultName)
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
    const [selected, setSelected] = React.useState(null)
-   const [optionsState, setOptionsState] = React.useState([])
 
    React.useEffect(() => {
-      if (optionsState.length > 0) {
+      if (options.length > 0) {
          if (defaultOption === null && defaultValue === null) {
             setSelected(null)
          } else if (
             defaultValue !== null &&
             defaultValue >= 0 &&
-            defaultValue < optionsState.length
+            defaultValue < options.length
          ) {
             setSelected(defaultValue - 1)
          } else if (defaultOption !== null) {
-            const index = optionsState.findIndex(
+            const index = options.findIndex(
                item => item.id === defaultOption.id
             )
             if (index >= 0) {
@@ -60,9 +60,9 @@ const LazyDropdown = ({
             }
          }
       }
-   }, [defaultValue, defaultOption, optionsState])
+   }, [defaultValue, defaultOption, options])
 
-   const matchedOptions = optionsState.filter(o =>
+   const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
    )
 
@@ -72,16 +72,17 @@ const LazyDropdown = ({
    })
 
    const handleOptionClick = option => {
-      const index = optionsState.findIndex(op => op.id === option.id)
+      const index = options.findIndex(op => op.id === option.id)
       setKeyword('')
       setSelected(index)
       selectedOption(option)
       setIsOptionsVisible(!isOptionsVisible)
    }
    const onDropdownSelcted = () => {
+      if (isOptionsVisible === false) {
+         handleClick()
+      }
       setIsOptionsVisible(!isOptionsVisible)
-      setOptionsState(options)
-      handleClick()
    }
    return (
       <StyledSelect
@@ -99,7 +100,7 @@ const LazyDropdown = ({
                {selected !== null ? (
                   <span
                      data-type='text'
-                     title={optionsState[selected].title}
+                     title={options[selected].title}
                      onClick={() => {
                         if (!readOnly) {
                            setKeyword('')
@@ -108,21 +109,23 @@ const LazyDropdown = ({
                         }
                      }}
                   >
-                     {optionsState[selected].title}
+                     {options[selected].title}
                   </span>
-               ) : defaultName !== null ? (
+               ) : stateDefaultName !== null ? (
                   <span
                      data-type='text'
-                     title={defaultName}
+                     title={stateDefaultName}
                      onClick={() => {
                         if (!readOnly) {
                            setKeyword('')
                            setSelected(null)
+                           setStateDefaultName('')
                            setIsOptionsVisible(true)
+                           handleClick()
                         }
                      }}
                   >
-                     {defaultName}
+                     {stateDefaultName}
                   </span>
                ) : (
                   <>
@@ -146,7 +149,10 @@ const LazyDropdown = ({
                            searchedOption(e.target.value) ||
                            setKeyword(e.target.value.toLowerCase())
                         }
-                        onFocus={() => setIsOptionsVisible(true)}
+                        onFocus={() => {
+                           handleClick()
+                           setIsOptionsVisible(true)
+                        }}
                      />
                   </>
                )}
