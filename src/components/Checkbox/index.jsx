@@ -12,9 +12,9 @@ const Checkbox = ({ id, checked, children, onChange, isAllSelected }) => {
                <TickIcon />
             ) : isAllSelected ? (
                <TickIcon />
-            ) : (
+            ) : isAllSelected === false ? (
                <MinusIcon />
-            )}
+            ) : null}
          </span>
          {typeof children === 'string' && (
             <label htmlFor={id} onClick={() => onChange(!checked)}>
