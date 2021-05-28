@@ -9,7 +9,12 @@ export const CheckboxField = () => {
    const [checked, setChecked] = React.useState(true)
    return (
       <React.Fragment>
-         <Checkbox id='label' checked={checked} onChange={setChecked}>
+         <Checkbox
+            id='label'
+            checked={checked}
+            onChange={setChecked}
+            isAllSelected={false}
+         >
             Yo, this is a label!
          </Checkbox>
       </React.Fragment>

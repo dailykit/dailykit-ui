@@ -1,14 +1,20 @@
 import React from 'react'
 
 import { StyledCheckbox } from './styles'
-import { TickIcon } from '../../assets/icons'
+import { TickIcon, MinusIcon } from '../../assets/icons'
 
-const Checkbox = ({ id, checked, children, onChange }) => {
+const Checkbox = ({ id, checked, children, onChange, isAllSelected }) => {
    return (
       <StyledCheckbox isChecked={checked}>
          <input type='checkbox' id={id} />
          <span onClick={() => onChange(!checked)}>
-            {checked && <TickIcon />}
+            {checked ? (
+               <TickIcon />
+            ) : isAllSelected ? (
+               <TickIcon />
+            ) : (
+               <MinusIcon />
+            )}
          </span>
          {typeof children === 'string' && (
             <label htmlFor={id} onClick={() => onChange(!checked)}>
