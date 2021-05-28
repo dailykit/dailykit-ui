@@ -5,8 +5,8 @@ export default {
    title: 'Checkbox'
 }
 
-export const CheckboxField = () => {
-   const [checked, setChecked] = React.useState(true)
+export const Normal = () => {
+   const [checked, setChecked] = React.useState(false)
    return (
       <React.Fragment>
          <Checkbox
@@ -16,6 +16,22 @@ export const CheckboxField = () => {
             isAllSelected={false}
          >
             Yo, this is a label!
+         </Checkbox>
+      </React.Fragment>
+   )
+}
+
+export const WithMinusIcon = () => {
+   const [checked, setChecked] = React.useState(false)
+   return (
+      <React.Fragment>
+         <Checkbox
+            id='label'
+            checked={checked}
+            onChange={setChecked}
+            isAllSelected={false}
+         >
+            Checkbox with 3 states
          </Checkbox>
       </React.Fragment>
    )
