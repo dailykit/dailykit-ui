@@ -26,7 +26,7 @@ const LazyDropdown = ({
    searchedOption,
    defaultOption = null, //default option with object
    defaultValue = null, //default value with index
-   defaultName = null,
+   defaultName = '',
    typeName,
    addOption,
    variant,
