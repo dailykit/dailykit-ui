@@ -26,7 +26,7 @@ const LazyDropdown = ({
    searchedOption,
    defaultOption = null, //default option with object
    defaultValue = null, //default value with index
-   defaultName = null,
+   defaultName = '',
    typeName,
    addOption,
    variant,
@@ -111,7 +111,7 @@ const LazyDropdown = ({
                   >
                      {options[selected].title}
                   </span>
-               ) : stateDefaultName !== null ? (
+               ) : stateDefaultName !== '' ? (
                   <span
                      data-type='text'
                      title={stateDefaultName}
