@@ -37,11 +37,12 @@ const LazyDropdown = ({
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
-   const [stateDefaultName, setStateDefaultName] = React.useState(defaultName)
+   const [stateDefaultName, setStateDefaultName] = React.useState('')
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
    const [selected, setSelected] = React.useState(null)
 
    React.useEffect(() => {
+      setStateDefaultName(defaultName)
       if (options.length > 0) {
          if (defaultOption === null && defaultValue === null) {
             setSelected(null)
@@ -60,7 +61,7 @@ const LazyDropdown = ({
             }
          }
       }
-   }, [defaultValue, defaultOption, options])
+   }, [defaultValue, defaultOption, options, defaultName])
 
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
