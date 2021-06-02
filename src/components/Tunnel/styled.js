@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components'
 
-export const StyledTunnel = styled.div(
-   ({ mt }) => css`
+export const StyledTunnel = styled.div(({ mt, direction }) => {
+   return css`
       top: ${mt || 0}px;
+      ${(direction === 'top' || direction === 'bottom') &&
+      css`
+         top: 0;
+      `};
       left: 0;
       right: 0;
       bottom: 0;
@@ -12,7 +16,7 @@ export const StyledTunnel = styled.div(
       background: rgba(17, 17, 17, 0.7);
       z-index: 1000;
    `
-)
+})
 
 const pickSize = size => {
    switch (size) {
@@ -28,49 +32,83 @@ const pickSize = size => {
          return '50%'
    }
 }
+const getTunnelDirectionStyle = (direction, size, mt) => {
+   const marginTop = 8
+   switch (direction) {
+      case 'top':
+         return css`
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: ${pickSize(size)};
+            border-radius: 0 0 14px 14px;
+         `
+      case 'right':
+         return css`
+            margin-top: 8px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: ${pickSize(size)};
+            height: ${`calc(100% - ${Number(mt) + marginTop}px)`};
+            border-radius: 14px 0 0 14px;
+            @media only screen and (max-width: 1023px) and (min-width: 569px) {
+               width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
+            }
+            @media only screen and (max-width: 568px) {
+               width: ${pickSize('full')};
+            }
+         `
+      case 'bottom':
+         return css`
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: ${pickSize(size)};
+            border-radius: 14px 14px 0 0;
+         `
+      case 'left':
+         return css`
+            margin-top: 8px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: ${pickSize(size)};
+            height: ${`calc(100% - ${Number(mt) + marginTop}px)`};
+            border-radius: 0 14px 14px 0;
+            @media only screen and (max-width: 1023px) and (min-width: 569px) {
+               width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
+            }
+            @media only screen and (max-width: 568px) {
+               width: ${pickSize('full')};
+            }
+         `
+      default:
+         return css`
+            margin-top: 8px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: ${pickSize(size)};
+            height: ${`calc(100% - ${Number(mt) + marginTop}px)`};
+            border-radius: 14px 0 0 14px;
+            @media only screen and (max-width: 1023px) and (min-width: 569px) {
+               width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
+            }
+            @media only screen and (max-width: 568px) {
+               width: ${pickSize('full')};
+            }
+         `
+   }
+}
 
 export const StyledTunnelPanel = styled.div(
-   ({ size, partial, visible }) => css`
-      margin-top: 8px;
-      height: calc(100% - 116px);
-      padding-bottom: 16px;
+   ({ size, direction, mt }) => css`
       background: #fff;
-      float: ${partial ? 'left' : 'right'};
-      width: ${pickSize(size)};
-      border-radius: 14px 0px 0px 0px;
       overflow-y: auto;
-      ${visible &&
-      css`
-         @keyframes transformOpen {
-            from {
-               transform: translateX(100%);
-            }
-            to {
-               transform: translateX(0%);
-            }
-         }
-
-         animation: transformOpen 1s ease-in-out;
-      `}
-
-      ${!visible &&
-      css`
-         @keyframes transformClose {
-            from {
-               transform: translateX(0%);
-            }
-            to {
-               transform: translateX(100%);
-            }
-         }
-         transition: transformClose 1s ease-in-out;
-      `}
-      @media only screen and (max-width: 1023px) and (min-width: 569px) {
-         width: ${size === 'sm' ? pickSize('md') : pickSize(size)};
-      }
-      @media only screen and (max-width: 568px) {
-         width: ${pickSize('full')};
-      }
+      position: absolute;
+      ${getTunnelDirectionStyle(direction, size, mt)}
    `
 )
 
@@ -91,3 +129,21 @@ export const StyledText = styled.h1`
    font-weight: 500;
    font-size: 23px;
 `
+export const StyledTunnelHeader = styled.div(
+   ({ position }) => css`
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 80px;
+      padding: 16px;
+      border-bottom: 1px solid #e4e4e4;
+      ${position === 'bottom' &&
+      css`
+         border-top: 1px solid #e4e4e4;
+         position: absolute;
+         width: 100%;
+         bottom: 0;
+         border-bottom: none;
+      `}
+   `
+)
