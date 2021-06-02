@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
 
-export const StyledTunnel = styled.div(({ mt, partial }) => {
+export const StyledTunnel = styled.div(({ mt, direction }) => {
    return css`
       top: ${mt || 0}px;
-      ${(partial === 'top' || partial === 'bottom') &&
+      ${(direction === 'top' || direction === 'bottom') &&
       css`
          top: 0;
       `};
@@ -32,9 +32,9 @@ const pickSize = size => {
          return '50%'
    }
 }
-const getTunnelPositionStyle = (partial, size, mt) => {
+const getTunnelDirectionStyle = (direction, size, mt) => {
    const marginTop = 8
-   switch (partial) {
+   switch (direction) {
       case 'top':
          return css`
             right: 0;
@@ -104,41 +104,11 @@ const getTunnelPositionStyle = (partial, size, mt) => {
 }
 
 export const StyledTunnelPanel = styled.div(
-   ({ size, partial, visible, mt }) => css`
-      background:  #fff;
+   ({ size, direction, mt }) => css`
+      background: #fff;
       overflow-y: auto;
-      position: absolute;       
-      ${getTunnelPositionStyle(partial, size, mt)}
-      /* ${
-         visible &&
-         css`
-            @keyframes transformOpen {
-               from {
-                  transform: translateX(100%);
-               }
-               to {
-                  transform: translateX(0%);
-               }
-            }
-
-            animation: transformOpen 1s ease-in-out;
-         `
-      }
-
-      ${
-         !visible &&
-         css`
-            @keyframes transformClose {
-               from {
-                  transform: translateX(0%);
-               }
-               to {
-                  transform: translateX(100%);
-               }
-            }
-            transition: transformClose 1s ease-in-out;
-         `
-      } */
+      position: absolute;
+      ${getTunnelDirectionStyle(direction, size, mt)}
    `
 )
 

@@ -12,9 +12,6 @@ import { RoundedCloseIcon } from '../../assets/icons'
 
 const useTunnel = count => {
    const [tunnels, setTunnels] = React.useState([])
-
-   const [visible, setVisible] = React.useState(false)
-
    React.useEffect(() => {
       setTunnels([...Array(count).fill('hidden')])
    }, [count])
@@ -23,21 +20,19 @@ const useTunnel = count => {
       layer => {
          tunnels[layer - 1] = 'visible'
          setTunnels([...tunnels])
-         setVisible(true)
       },
-      [tunnels, setTunnels, visible, setVisible]
+      [tunnels, setTunnels]
    )
 
    const closeTunnel = React.useCallback(
       layer => {
          tunnels[layer - 1] = 'hidden'
          setTunnels([...tunnels])
-         setVisible(false)
       },
-      [tunnels, setTunnels, visible, setVisible]
+      [tunnels, setTunnels]
    )
 
-   return [tunnels, openTunnel, closeTunnel, visible]
+   return [tunnels, openTunnel, closeTunnel]
 }
 
 const Tunnels = ({ mt = 108, tunnels, children }) => {
@@ -66,20 +61,10 @@ const Tunnels = ({ mt = 108, tunnels, children }) => {
    )
 }
 
-const Tunnel = ({ mt, visible, closed, children, ...props }) => {
-   let drawerClasses = 'side-tunnelclosed'
-   if (visible) {
-      drawerClasses = 'side-tunnelopen'
-   }
-
+const Tunnel = ({ mt, closed, children, ...props }) => {
    return (
       <StyledTunnel mt={mt} {...props}>
-         <StyledTunnelPanel
-            className={drawerClasses}
-            visible={visible}
-            {...props}
-            mt={mt}
-         >
+         <StyledTunnelPanel {...props} mt={mt}>
             {children}
          </StyledTunnelPanel>
       </StyledTunnel>

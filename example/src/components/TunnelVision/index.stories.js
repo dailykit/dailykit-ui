@@ -15,7 +15,7 @@ export default {
 }
 
 export const TunnelVision = () => {
-   const [tunnels, openTunnel, closeTunnel, visible] = useTunnel(4)
+   const [tunnels, openTunnel, closeTunnel] = useTunnel(4)
 
    return (
       <>
@@ -23,7 +23,7 @@ export const TunnelVision = () => {
             Open Tunnel 1
          </TextButton>
          <Tunnels tunnels={tunnels}>
-            <Tunnel size='full' layer={1} visible={visible}>
+            <Tunnel size='full' layer={1}>
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeTunnel(1)}
@@ -93,7 +93,7 @@ export const TunnelPositions = () => {
             </TextButton>
          </ButtonGroup>
          <Tunnels tunnels={topTunnel}>
-            <Tunnel layer={1} partial='top'>
+            <Tunnel layer={1} direction='top'>
                <TunnelHeader
                   position='bottom'
                   title='Tunnel 1'
@@ -109,7 +109,7 @@ export const TunnelPositions = () => {
          </Tunnels>
 
          <Tunnels tunnels={bottomTunnel}>
-            <Tunnel layer={1} partial='bottom'>
+            <Tunnel layer={1} direction='bottom'>
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeBottomTunnel(1)}
@@ -123,7 +123,7 @@ export const TunnelPositions = () => {
             </Tunnel>
          </Tunnels>
          <Tunnels tunnels={rightTunnel}>
-            <Tunnel layer={1} partial='right'>
+            <Tunnel layer={1} direction='right'>
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeRightTunnel(1)}
@@ -137,7 +137,7 @@ export const TunnelPositions = () => {
             </Tunnel>
          </Tunnels>
          <Tunnels tunnels={leftTunnel}>
-            <Tunnel layer={1} partial='left'>
+            <Tunnel layer={1} direction='left'>
                <TunnelHeader
                   title='Tunnel 1'
                   close={() => closeLeftTunnel(1)}
