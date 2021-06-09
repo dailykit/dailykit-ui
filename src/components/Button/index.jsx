@@ -1,7 +1,15 @@
 import React from 'react'
 
-import { Styles } from './styles'
-import { LockIcon } from '../../assets/icons'
+import { Styles, StyledOptions, StyledOption } from './styles'
+
+import {
+   LockIcon,
+   ArrowDownIcon,
+   SearchIcon,
+   ArrowUpIcon
+} from '../../assets/icons'
+import { useOnClickOutside } from '../../hooks'
+import { Spacer } from '../Spacer'
 
 export const TextButton = ({ children, ...props }) => {
    const title =
@@ -122,6 +130,72 @@ export const ComboButton = ({ children, ...props }) => {
             </>
          )}
       </Styles.ComboButton>
+   )
+}
+
+export const DropdownButton = ({ children, options, ...props }) => {
+   const ref = React.useRef(null)
+   const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
+
+   const title =
+      props?.hasAccess === false
+         ? props?.fallBackMessage || "You don't have access to this action"
+         : props?.title || ''
+
+   useOnClickOutside(ref, () => {
+      setIsOptionsVisible(false)
+   })
+
+   return (
+      <Styles.TextButton
+         ref={ref}
+         {...props}
+         title={props?.disabled ? 'Disabled' : title}
+         onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+         disabled={
+            props?.hasAccess === false || props?.disabled || props?.isLoading
+         }
+      >
+         {props?.isLoading ? (
+            <>
+               <span data-type='spinner'>
+                  <Spinner type={props?.type} variant={props?.variant} />
+               </span>
+               {children}
+            </>
+         ) : (
+            <>
+               {children}
+               {props?.hasAccess === false && (
+                  <span className='locked'>
+                     <LockIcon />
+                  </span>
+               )}
+            </>
+         )}
+         <Spacer xAxis size='10px' />
+         {isOptionsVisible ? (
+            <ArrowUpIcon color='#fff' />
+         ) : (
+            <ArrowDownIcon color='#fff' />
+         )}
+
+         {isOptionsVisible && (
+            <StyledOptions options={options}>
+               {options.map(option => (
+                  <StyledOption
+                     key={option.id}
+                     title={option.title}
+                     onClick={() => option.handleOnClick()}
+                  >
+                     <TextButton type='ghost' variant='primary'>
+                        {option.title}
+                     </TextButton>
+                  </StyledOption>
+               ))}
+            </StyledOptions>
+         )}
+      </Styles.TextButton>
    )
 }
 

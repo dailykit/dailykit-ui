@@ -1,5 +1,41 @@
 import styled, { css } from 'styled-components'
 
+export const StyledOption = styled.div(
+   ({ description }) =>
+      css`
+         display: inline-block;
+         padding: 2px;
+         align-items: flex-start;
+         flex-direction: column;
+         cursor: pointer;
+         margin: 4px;
+         color: #202020;
+      `
+)
+
+export const StyledOptions = styled.div(
+   ({ variant, options }) => css`
+      position: absolute;
+      max-height: 180px;
+      height: auto;
+      overflow-y: auto;
+      left: 0;
+      top: 32px;
+      width: 100%;
+      background: #fff;
+      box-shadow: ${options.length ? `0px 4px 6px rgba(0, 0, 0, 0.15)` : null};
+      z-index: 99999999;
+      padding: 2px;
+      ::-webkit-scrollbar {
+         width: 6px;
+      }
+      ::-webkit-scrollbar-thumb {
+         background-color: rgba(196, 196, 196, 0.9);
+         border-radius: 8px;
+      }
+   `
+)
+
 const colors = {
    primary: { light: '#367BF5', deep: '#165CDA' },
    secondary: { light: '#EBF1F4', deep: '#DFF4FF' }
@@ -50,6 +86,7 @@ export const Styles = {
          variant = 'primary'
       }) => css`
          color: #fff;
+         display: flex;
          border-radius: 2px;
          position: relative;
          outline: none;

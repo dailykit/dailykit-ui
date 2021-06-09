@@ -6,6 +6,7 @@ import {
    IconButton,
    ComboButton,
    ButtonGroup,
+   DropdownButton,
    PlusIcon,
    SearchIcon,
    ClearIcon
@@ -239,3 +240,56 @@ storiesOf('Button', module)
          </ButtonGroup>
       </>
    ))
+   .add('Dropdown Button', () => {
+      const options = [
+         {
+            id: 1,
+            title: 'Option1',
+            handleOnClick: () => {
+               console.log('option1')
+            }
+         },
+         {
+            id: 2,
+            title: 'Option2',
+            handleOnClick: () => {
+               console.log('option2')
+            }
+         },
+         {
+            id: 3,
+            title: 'Option3',
+            handleOnClick: () => {
+               console.log('option3')
+            }
+         },
+         {
+            id: 4,
+            title: 'Option4',
+            handleOnClick: () => {
+               console.log('option4')
+            }
+         },
+         {
+            id: 5,
+            title: 'Option5',
+            handleOnClick: () => {
+               console.log('option5')
+            }
+         },
+         {
+            id: 6,
+            title: 'Option6',
+            handleOnClick: () => {
+               console.log('option6')
+            }
+         }
+      ]
+      return (
+         <>
+            <DropdownButton options={options} type='solid' size='sm'>
+               Dropdown Button
+            </DropdownButton>
+         </>
+      )
+   })
