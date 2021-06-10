@@ -8,6 +8,7 @@ import {
    ButtonGroup,
    PlusIcon,
    SearchIcon,
+   DropdownButton,
    ClearIcon
 } from '@dailykit/ui'
 
@@ -237,5 +238,16 @@ storiesOf('Button', module)
                <SearchIcon color='#fff' /> Search
             </ComboButton>
          </ButtonGroup>
+      </>
+   ))
+   .add('Dropdown Button', () => (
+      <>
+         <DropdownButton title='Options' width='200px'>
+            <DropdownButton.Options>
+               <DropdownButton.Option>Option 1</DropdownButton.Option>
+               <DropdownButton.Option>Option 2</DropdownButton.Option>
+               <DropdownButton.Option>Option 3</DropdownButton.Option>
+            </DropdownButton.Options>
+         </DropdownButton>
       </>
    ))
