@@ -22,6 +22,9 @@ export const Header = styled.header(
       align-items: center;
       border: 1px solid ${primary.light};
       span {
+         color: ${primary.light};
+         font-weight: 500;
+         font-size: 16px;
          white-space: nowrap;
          overflow: hidden;
          text-overflow: ellipsis;
@@ -65,6 +68,8 @@ export const Button = styled.button(
       height: 40px;
       border: none;
       display: block;
+      color: ${primary.light};
+      font-weight: 500;
       font-size: 16px;
       cursor: pointer;
       background: transparent;
