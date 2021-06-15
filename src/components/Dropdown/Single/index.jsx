@@ -5,7 +5,8 @@ import {
    StyledOptions,
    StyledOption,
    StyledSelected,
-   StyledButton
+   StyledButton,
+   Spinner
 } from './styles'
 
 import {
@@ -25,20 +26,25 @@ const SingleSelect = ({
    searchedOption,
    defaultOption = null, //default option with object
    defaultValue = null, //default value with index
+   defaultName = '',
    typeName,
    addOption,
    variant,
    disabled,
-   readOnly
+   readOnly,
+   handleClick = null,
+   isLoading = false
 }) => {
    const ref = React.useRef(null)
    const [keyword, setKeyword] = React.useState('')
+   const [stateDefaultName, setStateDefaultName] = React.useState('')
    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false)
    const [selected, setSelected] = React.useState(null)
 
    React.useEffect(() => {
+      setStateDefaultName(defaultName)
       if (options.length > 0) {
-         if (defaultOption === null && defaultValue === null) {
+         if (defaultOption === null && defaultValue === null && defaultName==='') {
             setSelected(null)
          } else if (
             defaultValue !== null &&
@@ -55,7 +61,7 @@ const SingleSelect = ({
             }
          }
       }
-   }, [defaultValue, defaultOption, options])
+   }, [defaultValue, defaultOption, options, defaultName])
 
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
@@ -73,7 +79,12 @@ const SingleSelect = ({
       selectedOption(option)
       setIsOptionsVisible(!isOptionsVisible)
    }
-
+   const onDropdownSelcted = () => {
+      if (!isOptionsVisible) {
+         handleClick?.()
+      }
+      setIsOptionsVisible(!isOptionsVisible)
+   }
    return (
       <StyledSelect
          ref={ref}
@@ -101,6 +112,24 @@ const SingleSelect = ({
                   >
                      {options[selected].title}
                   </span>
+               ) : stateDefaultName !== '' && selected === null ? (
+                  <span
+                     data-type='text'
+                     title={stateDefaultName}
+                     onClick={() => {
+                        if (!readOnly) {
+                           setKeyword('')
+                           setSelected(null)
+                           setStateDefaultName('')
+                           setIsOptionsVisible(true)
+                           if (!isOptionsVisible) {
+                              handleClick?.()
+                           }
+                        }
+                     }}
+                  >
+                     {stateDefaultName}
+                  </span>
                ) : (
                   <>
                      {isOptionsVisible && (
@@ -123,42 +152,63 @@ const SingleSelect = ({
                            searchedOption(e.target.value) ||
                            setKeyword(e.target.value.toLowerCase())
                         }
-                        onFocus={() => setIsOptionsVisible(true)}
+                        onFocus={() => {
+                           if (!isOptionsVisible) {
+                              handleClick?.()
+                           }
+                           setIsOptionsVisible(true)
+                        }}
                      />
                   </>
                )}
             </div>
             {!readOnly && (
-               <button
-                  disabled={disabled}
-                  onClick={() => setIsOptionsVisible(!isOptionsVisible)}
-               >
+               <button disabled={disabled} onClick={onDropdownSelcted}>
                   {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}
                </button>
             )}
          </StyledSelected>
          {!readOnly && isOptionsVisible && (
             <StyledOptions variant={variant} matchedOptions={matchedOptions}>
-               {matchedOptions.map((option, index) => (
-                  <StyledOption
-                     key={option.id}
-                     title={option.title}
-                     isSelected={selected === index}
-                     onClick={() => handleOptionClick(option)}
-                     description={option?.description || ''}
-                  >
-                     <div>
-                        <span>{option.title}</span>
-                        {option?.description && <p>{option.description}</p>}
-                     </div>
-                  </StyledOption>
-               ))}
-               {!matchedOptions.length && (
-                  <NoItemFound
-                     addOption={addOption}
-                     keyword={keyword}
-                     typeName={typeName}
-                  />
+               {isLoading ? (
+                  <center>
+                     <StyledOption>
+                        <div>
+                           <span data-type='spinner'>
+                              <Spinner variant='secondary' />
+                           </span>
+                        </div>
+                     </StyledOption>
+                  </center>
+               ) : (
+                  <>
+                     {matchedOptions.map(
+                        (option, index) =>
+                           matchedOptions.length && (
+                              <StyledOption
+                                 key={option.id}
+                                 title={option.title}
+                                 isSelected={selected === index}
+                                 onClick={() => handleOptionClick(option)}
+                                 description={option?.description || ''}
+                              >
+                                 <div>
+                                    <span>{option.title}</span>
+                                    {option?.description && (
+                                       <p>{option.description}</p>
+                                    )}
+                                 </div>
+                              </StyledOption>
+                           )
+                     )}
+                     {!matchedOptions.length && (
+                        <NoItemFound
+                           addOption={addOption}
+                           keyword={keyword}
+                           typeName={typeName}
+                        />
+                     )}
+                  </>
                )}
             </StyledOptions>
          )}

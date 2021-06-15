@@ -167,3 +167,28 @@ export const StyledButton = styled.button(
       padding: 8px 20px;
    `
 )
+
+
+export const Spinner = styled.div(
+   ({ type, variant }) => css`
+      display: inline-block;
+      position: relative;
+      width: 14px;
+      height: 14px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      border-top: 1px solid
+         ${type === 'solid' && variant !== 'secondary'
+            ? '#fff'
+            : '#367BF5'};
+      animation: spin 2s linear infinite;
+      @keyframes spin {
+         0% {
+            transform: rotate(0deg);
+         }
+         100% {
+            transform: rotate(360deg);
+         }
+      }
+   `
+)
