@@ -27,25 +27,25 @@ const H4 = ({ children, ...props }) => (
    <StyledH4 {...props}>{children}</StyledH4>
 )
 const Para = ({ children, ...props }) => (
-   <StyledPara {...props}>{props.children}</StyledPara>
+   <StyledPara {...props}>{children}</StyledPara>
 )
 const Title = ({ children, ...props }) => (
-   <StyledTitle {...props}>{props.children}</StyledTitle>
+   <StyledTitle {...props}>{children}</StyledTitle>
 )
 const SubTitle = ({ children, ...props }) => (
-   <StyledSubTitle {...props}>{props.children}</StyledSubTitle>
+   <StyledSubTitle {...props}>{children}</StyledSubTitle>
 )
 const HelpText = ({ children, ...props }) => (
-   <StyledHelpText {...props}>{props.children}</StyledHelpText>
+   <StyledHelpText {...props}>{children}</StyledHelpText>
 )
 const Text1 = ({ children, ...props }) => (
-   <StyledText1 {...props}>{props.children}</StyledText1>
+   <StyledText1 {...props}>{children}</StyledText1>
 )
 const Text2 = ({ children, ...props }) => (
-   <StyledText2 {...props}>{props.children}</StyledText2>
+   <StyledText2 {...props}>{children}</StyledText2>
 )
 const Text3 = ({ children, ...props }) => (
-   <StyledText3 {...props}>{props.children}</StyledText3>
+   <StyledText3 {...props}>{children}</StyledText3>
 )
 
 const Text = ({ as, children, ...props }) => {
