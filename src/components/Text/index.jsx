@@ -14,7 +14,9 @@ import {
    StyledText3
 } from './styled'
 
-const H1 = props => <StyledH1>{props.children}</StyledH1>
+const H1 = ({ children, ...props }) => (
+   <StyledH1 {...props}>{props.children}</StyledH1>
+)
 const H2 = ({ children, ...props }) => (
    <StyledH2 {...props}>{children}</StyledH2>
 )
@@ -24,13 +26,27 @@ const H3 = ({ children, ...props }) => (
 const H4 = ({ children, ...props }) => (
    <StyledH4 {...props}>{children}</StyledH4>
 )
-const Para = props => <StyledPara>{props.children}</StyledPara>
-const Title = props => <StyledTitle>{props.children}</StyledTitle>
-const SubTitle = props => <StyledSubTitle>{props.children}</StyledSubTitle>
-const HelpText = props => <StyledHelpText>{props.children}</StyledHelpText>
-const Text1 = props => <StyledText1>{props.children}</StyledText1>
-const Text2 = props => <StyledText2>{props.children}</StyledText2>
-const Text3 = props => <StyledText3>{props.children}</StyledText3>
+const Para = ({ children, ...props }) => (
+   <StyledPara {...props}>{props.children}</StyledPara>
+)
+const Title = ({ children, ...props }) => (
+   <StyledTitle {...props}>{props.children}</StyledTitle>
+)
+const SubTitle = ({ children, ...props }) => (
+   <StyledSubTitle {...props}>{props.children}</StyledSubTitle>
+)
+const HelpText = ({ children, ...props }) => (
+   <StyledHelpText {...props}>{props.children}</StyledHelpText>
+)
+const Text1 = ({ children, ...props }) => (
+   <StyledText1 {...props}>{props.children}</StyledText1>
+)
+const Text2 = ({ children, ...props }) => (
+   <StyledText2 {...props}>{props.children}</StyledText2>
+)
+const Text3 = ({ children, ...props }) => (
+   <StyledText3 {...props}>{props.children}</StyledText3>
+)
 
 const Text = ({ as, children, ...props }) => {
    switch (as) {
