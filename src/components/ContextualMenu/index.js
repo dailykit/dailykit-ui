@@ -2,16 +2,26 @@ import React from 'react'
 import Styled from './styled'
 import { ArrowDownIcon, ArrowUpIcon, ThreeDots } from '../../assets/icons'
 import { IconButton } from '../Button'
+import { useOnClickOutside } from '../../hooks'
+//import { useOnClickOutside } from '../../hooks'
 
 export const ContextualMenu = ({ children }) => {
    const [isMenuOpen, setOpenMenu] = React.useState(false)
-
+   const ref = React.useRef()
+   useOnClickOutside(ref, () => {
+      console.log('Clicked outside!')
+      setOpenMenu(false)
+   })
+   
    return (
-      <Styled.Wrapper>
+      <Styled.Wrapper ref={ref} >
          <IconButton
             type='ghost'
             size='sm'
-            onClick={() => setOpenMenu(!isMenuOpen)}
+            onClick={() => {
+               console.log('ref')
+               setOpenMenu(!isMenuOpen)
+            }}
          >
             <ThreeDots color={isMenuOpen ? '#367BF5' : '#919699'} />
          </IconButton>
@@ -22,10 +32,12 @@ export const ContextualMenu = ({ children }) => {
 
 export const Context = ({ children, title, handleClick }) => {
    const [open, setOpen] = React.useState(false)
+
    return (
       <Styled.Context>
          <Styled.ContextTitle
             onClick={() => {
+               console.log('ref')
                children ? setOpen(!open) : handleClick()
             }}
          >
