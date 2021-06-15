@@ -23,6 +23,26 @@ export const Single = () => {
       { id: 5, title: 'Spanish' },
       { id: 6, title: 'Russian' }
    ])
+
+   const [
+      loadingOptionsWithoutDescription,
+      setLoadingOptionsWithoutDescription
+   ] = React.useState([])
+   const [loading, setLoading ] = React.useState(true)
+   const loadData = () => {
+      setTimeout(() => {
+         setLoadingOptionsWithoutDescription([
+            { id: 1, title: 'Indian' },
+            { id: 2, title: 'Bangladeshi' },
+            { id: 3, title: 'Chinese' },
+            { id: 4, title: 'Korean' },
+            { id: 5, title: 'Spanish' },
+            { id: 6, title: 'Russian' }
+         ])
+         setLoading(false)
+      }, 1000)
+   }
+   
    const selectedOption = option => console.log(option)
    const searchedOption = option => console.log(option)
    return (
@@ -93,6 +113,26 @@ export const Single = () => {
             searchedOption={searchedOption}
             selectedOption={selectedOption}
             typeName='cuisine'
+         />
+         <br />
+         <Text as='text1'>
+            Loading state with event listener onClick and default name for when
+            the options aren't loaded
+         </Text>
+         <Spacer size='16px' />
+         <Dropdown
+            type='single'
+            variant='revamp'
+            addOption={() => console.log('Item added')}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            options={loadingOptionsWithoutDescription}
+            typeName='cuisine'
+            handleClick={() => {
+               loadData()
+            }}
+            defaultName='Bangladeshi'
+            isLoading={loading}
          />
       </div>
    )
