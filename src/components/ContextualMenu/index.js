@@ -3,13 +3,11 @@ import Styled from './styled'
 import { ArrowDownIcon, ArrowUpIcon, ThreeDots } from '../../assets/icons'
 import { IconButton } from '../Button'
 import { useOnClickOutside } from '../../hooks'
-//import { useOnClickOutside } from '../../hooks'
 
 export const ContextualMenu = ({ children }) => {
    const [isMenuOpen, setOpenMenu] = React.useState(false)
    const ref = React.useRef()
    useOnClickOutside(ref, () => {
-      console.log('Clicked outside!')
       setOpenMenu(false)
    })
    
@@ -19,7 +17,6 @@ export const ContextualMenu = ({ children }) => {
             type='ghost'
             size='sm'
             onClick={() => {
-               console.log('ref')
                setOpenMenu(!isMenuOpen)
             }}
          >
@@ -37,7 +34,6 @@ export const Context = ({ children, title, handleClick }) => {
       <Styled.Context>
          <Styled.ContextTitle
             onClick={() => {
-               console.log('ref')
                children ? setOpen(!open) : handleClick()
             }}
          >
