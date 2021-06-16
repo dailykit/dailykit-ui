@@ -110,7 +110,7 @@ const extendedButtonTileStyle = (type = 'primary', size = 'sm') => {
             align-items: center;
             padding: 20px;
             > div {
-               margin-left: 11px;
+               margin-left: 12px;
             }
          `
       case 'uploadImage':
@@ -121,6 +121,20 @@ const extendedButtonTileStyle = (type = 'primary', size = 'sm') => {
             align-items: center;
             > div {
                margin-top: 16px;
+            }
+         `
+      case 'ghost':
+         return css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            box-shadow: none;
+            color: #367bf5;
+            border: none;
+            padding: 20px;
+            > div {
+               margin-left: 12px;
             }
          `
       default:
@@ -139,13 +153,13 @@ export const StyledButtonTile = styled.button`
    font-size: 20px;
    font-weight: 500;
    border-radius: 2px;
-   ${props => extendedButtonTileStyle(props.type, props.size)};
    box-shadow: -1px 1px 2px rgba(184, 184, 184, 0.2),
       1px -1px 2px rgba(184, 184, 184, 0.2),
       -1px -1px 2px rgba(255, 255, 255, 0.9),
       1px 1px 3px rgba(184, 184, 184, 0.9),
       inset 1px 1px 2px rgba(255, 255, 255, 0.3),
       inset -1px -1px 2px rgba(184, 184, 184, 0.5);
+   ${props => extendedButtonTileStyle(props.type, props.size)};
 `
 
 export const StyledOptionTile = styled.button`
