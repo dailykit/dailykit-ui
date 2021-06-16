@@ -9,7 +9,7 @@ import Loader from './components/Loader'
 import Collapsible from './components/Collapsible'
 import ToolTip from './components/ToolTip'
 import Spinner from './components/Spinner'
-import LazyDropdown from './components/LazyDropdown'
+
 export {
    Toggle,
    Checkbox,
@@ -22,7 +22,6 @@ export {
    Collapsible,
    ToolTip,
    Spinner,
-   LazyDropdown
 }
 
 // Components
@@ -43,7 +42,6 @@ export * from './components/Filler'
 export * as Form from './components/FormV2'
 export * from './components/ContextualMenu'
 export * from './components/AnchorNavigationMenu'
-export * from './components/LazyDropdown'
 export * from './components/DropdownButton'
 // Hooks
 export * from './hooks'
