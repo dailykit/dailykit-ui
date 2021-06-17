@@ -149,7 +149,6 @@ export const StyledSearchBox = styled.div(
    ({ hasWriteAccess, hasReadAccess }) => css`
       background: #ffffff;
       border: 1px solid #d9e9f1;
-      max-width: 380px;
       text-align: left;
       height: 40px;
       display: flex;
