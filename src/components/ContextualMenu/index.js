@@ -4,15 +4,15 @@ import { ArrowDownIcon, ArrowUpIcon, ThreeDots } from '../../assets/icons'
 import { IconButton } from '../Button'
 import { useOnClickOutside } from '../../hooks'
 
-export const ContextualMenu = ({ children }) => {
+export const ContextualMenu = ({ children, position }) => {
    const [isMenuOpen, setOpenMenu] = React.useState(false)
    const ref = React.useRef()
    useOnClickOutside(ref, () => {
       setOpenMenu(false)
    })
-   
+
    return (
-      <Styled.Wrapper ref={ref} >
+      <Styled.Wrapper ref={ref}>
          <IconButton
             type='ghost'
             size='sm'
@@ -22,7 +22,9 @@ export const ContextualMenu = ({ children }) => {
          >
             <ThreeDots color={isMenuOpen ? '#367BF5' : '#919699'} />
          </IconButton>
-         {isMenuOpen && <Styled.Contexts>{children}</Styled.Contexts>}
+         {isMenuOpen && (
+            <Styled.Contexts position={position}>{children}</Styled.Contexts>
+         )}
       </Styled.Wrapper>
    )
 }

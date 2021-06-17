@@ -4,7 +4,9 @@ import {
    TextButton,
    ButtonGroup,
    ContextualMenu,
-   Context
+   Context,
+   Text,
+   Spacer
 } from '@dailykit/ui'
 import { storiesOf } from '@storybook/react'
 
@@ -14,21 +16,70 @@ storiesOf('Popup', module)
 
 export const ContextualMenuWrapper = () => {
    return (
-      <ContextualMenu>
-         <Context
-            title='This is context 1'
-            handleClick={() => console.log('Context1')}
-         >
-            <p>This is things could be done</p>
-            <TextButton type='solid' size='sm'>
-               Update
-            </TextButton>
-         </Context>
-         <Context
-            title='This is context 2'
-            handleClick={() => console.log('Context2')}
-         />
-      </ContextualMenu>
+      <>
+         <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Text as='text1'>Default option</Text>
+            <Spacer size='16px' />
+            <ContextualMenu>
+               <Context
+                  title='This is context 1'
+                  handleClick={() => console.log('Context1')}
+               >
+                  <p>This is things could be done</p>
+                  <TextButton type='solid' size='sm'>
+                     Update
+                  </TextButton>
+               </Context>
+               <Context
+                  title='This is context 2'
+                  handleClick={() => console.log('Context2')}
+               />
+            </ContextualMenu>
+         </div>
+         <br />
+
+         <Spacer size='16px' />
+         <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Text as='text1'>Menu opens left shifted</Text>
+            <ContextualMenu position='left'>
+               <Context
+                  title='This is context 1'
+                  handleClick={() => console.log('Context1')}
+               >
+                  <p>This is things could be done</p>
+                  <TextButton type='solid' size='sm'>
+                     Update
+                  </TextButton>
+               </Context>
+               <Context
+                  title='This is context 2'
+                  handleClick={() => console.log('Context2')}
+               />
+            </ContextualMenu>
+         </div>
+         <br />
+
+         <Spacer size='16px' />
+         <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Text as='text1'>Menu opens right shifted</Text>
+            <ContextualMenu position='right'>
+               <Context
+                  title='This is context 1'
+                  handleClick={() => console.log('Context1')}
+               >
+                  <p>This is things could be done</p>
+                  <TextButton type='solid' size='sm'>
+                     Update
+                  </TextButton>
+               </Context>
+               <Context
+                  title='This is context 2'
+                  handleClick={() => console.log('Context2')}
+               />
+            </ContextualMenu>
+         </div>
+
+      </>
    )
 }
 
