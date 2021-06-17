@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Styled = {
    Wrapper: styled.div`
@@ -8,16 +8,22 @@ const Styled = {
       position: relative;
    `,
 
-   Contexts: styled.div`
-      background: #ffffff;
-      box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-      padding: 8px;
-      position: absolute;
-      :first-child {
-         margin-top: 12px;
-      }
-   `,
+   Contexts: styled.div(
+      ({ position }) => css`
+         background: #ffffff;
+         box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+         border-radius: 4px;
+         padding: 8px;
+         position: absolute;
+         min-width: max-content;
+         right: ${position === 'left' && `5px` };
+         left: ${position === 'right' && `5px` };
+         :first-child {
+            margin-top: 12px;
+         }
+         z-index: +20;
+      `
+   ),
    Context: styled.div`
       background: #f7f7f7;
       border-radius: 4px;
