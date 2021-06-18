@@ -44,7 +44,11 @@ const SingleSelect = ({
    React.useEffect(() => {
       setStateDefaultName(defaultName)
       if (options.length > 0) {
-         if (defaultOption === null && defaultValue === null && defaultName==='') {
+         if (
+            defaultOption === null &&
+            defaultValue === null &&
+            defaultName === ''
+         ) {
             setSelected(null)
          } else if (
             defaultValue !== null &&
@@ -66,10 +70,14 @@ const SingleSelect = ({
    const matchedOptions = options.filter(o =>
       o.title.toLowerCase().includes(keyword)
    )
-
+   const quickCreateRender = options.filter(
+      o => o.title.toLowerCase() === keyword
+   )
+   console.log(quickCreateRender, 'quickCreateRender')
    useOnClickOutside(ref, () => {
       setKeyword('')
       setIsOptionsVisible(false)
+      
    })
 
    const handleOptionClick = option => {
@@ -202,6 +210,18 @@ const SingleSelect = ({
                            )
                      )}
                      {!matchedOptions.length && (
+                        <center>
+                           <StyledOption>
+                              <p>
+                                 {' '}
+                                 {typeName
+                                    ? `no ${typeName} found`
+                                    : 'not found'}{' '}
+                              </p>
+                           </StyledOption>
+                        </center>
+                     )}
+                     {!quickCreateRender.length && keyword !== '' && (
                         <NoItemFound
                            addOption={addOption}
                            keyword={keyword}

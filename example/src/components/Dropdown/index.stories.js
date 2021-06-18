@@ -28,7 +28,7 @@ export const Single = () => {
       loadingOptionsWithoutDescription,
       setLoadingOptionsWithoutDescription
    ] = React.useState([])
-   const [loading, setLoading ] = React.useState(true)
+   const [loading, setLoading] = React.useState(true)
    const loadData = () => {
       setTimeout(() => {
          setLoadingOptionsWithoutDescription([
@@ -42,11 +42,13 @@ export const Single = () => {
          setLoading(false)
       }, 1000)
    }
-   
+
    const selectedOption = option => console.log(option)
    const searchedOption = option => console.log(option)
    return (
       <div>
+         <Text as='text1'>Default Value with no wrapper element</Text>
+         <Spacer size='16px' />
          <Dropdown
             type='single'
             defaultValue={2}
@@ -58,82 +60,93 @@ export const Single = () => {
          <br />
          <Text as='text1'>Default option</Text>
          <Spacer size='16px' />
-         <Dropdown
-            type='single'
-            variant='revamp'
-            defaultOption={{
-               id: 3,
-               title: 'Option3',
-               description: 'This is option 3'
-            }}
-            addOption={() => console.log('Item added')}
-            options={options}
-            searchedOption={searchedOption}
-            selectedOption={selectedOption}
-            typeName='cuisine'
-         />
+         <div style={{ width: '160px' }}>
+            <Dropdown
+               type='single'
+               variant='revamp'
+               defaultOption={{
+                  id: 3,
+                  title: 'Option3',
+                  description: 'This is option 3'
+               }}
+               addOption={() => console.log('Item added')}
+               options={options}
+               searchedOption={searchedOption}
+               selectedOption={selectedOption}
+               typeName='cuisine'
+            />
+         </div>
+
          <Spacer size='16px' />
 
          <Text as='text1'>Locked state</Text>
          <Spacer size='16px' />
-         <Dropdown
-            type='single'
-            variant='revamp'
-            defaultOption={{
-               id: 3,
-               title: 'Option3',
-               description: 'This is option 3'
-            }}
-            addOption={() => console.log('Item added')}
-            options={options}
-            searchedOption={searchedOption}
-            selectedOption={selectedOption}
-            typeName='cuisine'
-            readOnly={true}
-         />
+         <div style={{ width: '238px' }}>
+            <Dropdown
+               type='single'
+               variant='revamp'
+               defaultOption={{
+                  id: 3,
+                  title: 'Option3',
+                  description: 'This is option 3'
+               }}
+               addOption={() => console.log('Item added')}
+               options={options}
+               searchedOption={searchedOption}
+               selectedOption={selectedOption}
+               typeName='cuisine'
+               readOnly={true}
+            />
+         </div>
          <br />
-         <Dropdown
-            type='single'
-            variant='revamp'
-            addOption={() => console.log('Item added')}
-            options={optionsWithoutDescription}
-            searchedOption={searchedOption}
-            selectedOption={selectedOption}
-            typeName='cuisine'
-         />
+         <div style={{ width: '160px' }}>
+            <Dropdown
+               type='single'
+               variant='revamp'
+               addOption={() => console.log('Item added')}
+               options={optionsWithoutDescription}
+               searchedOption={searchedOption}
+               selectedOption={selectedOption}
+               typeName='cuisine'
+            />
+         </div>
          <br />
          <Text as='text1'>Disabled state</Text>
          <Spacer size='16px' />
-         <Dropdown
-            type='single'
-            variant='revamp'
-            disabled={true}
-            addOption={() => console.log('Item added')}
-            options={optionsWithoutDescription}
-            searchedOption={searchedOption}
-            selectedOption={selectedOption}
-            typeName='cuisine'
-         />
+         <div style={{ width: '160px' }}>
+            <Dropdown
+               type='single'
+               variant='revamp'
+               disabled={true}
+               addOption={() => console.log('Item added')}
+               options={optionsWithoutDescription}
+               searchedOption={searchedOption}
+               selectedOption={selectedOption}
+               typeName='cuisine'
+            />
+         </div>
          <br />
          <Text as='text1'>
             Loading state with event listener onClick and default name for when
             the options aren't loaded
          </Text>
          <Spacer size='16px' />
-         <Dropdown
-            type='single'
-            variant='revamp'
-            addOption={() => console.log('Item added')}
-            searchedOption={searchedOption}
-            selectedOption={selectedOption}
-            options={loadingOptionsWithoutDescription}
-            typeName='cuisine'
-            handleClick={() => {
-               loadData()
-            }}
-            defaultName='Bangladeshi'
-            isLoading={loading}
-         />
+         <div style={{ width: '160px' }}>
+            <Dropdown
+               type='single'
+               variant='revamp'
+               addOption={() => console.log('Item added')}
+               searchedOption={searchedOption}
+               selectedOption={selectedOption}
+               options={loadingOptionsWithoutDescription}
+               typeName='cuisine'
+               handleClick={() => {
+                  loadData()
+               }}
+               defaultName='Bangladeshi'
+               isLoading={loading}
+            />
+         </div>
       </div>
    )
 }
