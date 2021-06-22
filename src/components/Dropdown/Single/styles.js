@@ -4,7 +4,7 @@ export const StyledSelect = styled.div(
    ({ variant, isOptionsVisible }) => css`
       height: 18px;
       width: ${variant === 'revamp' ? '100%' : '100%'};
-
+      max-width: ${variant === 'revamp' && '160px'};
       display: flex;
       align-items: center;
       position: relative;
@@ -85,8 +85,8 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 12px;
-         grid-template-areas: 'input search';
+         grid-template-columns: 24px 1fr;
+         grid-template-areas: 'search input';
          input {
             height: 18px;
             width: ${variant === 'revamp' ? `100%` : `100%`};

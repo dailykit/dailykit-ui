@@ -17,7 +17,7 @@ import {
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
-import NoItemFound from './NoItemFound'
+import QuickCreate from './QuickCreate'
 
 const SingleSelect = ({
    options = [],
@@ -77,7 +77,6 @@ const SingleSelect = ({
    useOnClickOutside(ref, () => {
       setKeyword('')
       setIsOptionsVisible(false)
-      
    })
 
    const handleOptionClick = option => {
@@ -140,11 +139,10 @@ const SingleSelect = ({
                   </span>
                ) : (
                   <>
-                     {isOptionsVisible && (
-                        <span data-type='icon'>
-                           <SearchIcon color='#919699' size='12px' />
-                        </span>
-                     )}
+                     <span data-type='icon'>
+                        <SearchIcon  size='12px' />
+                     </span>
+
                      <input
                         type='text'
                         value={keyword}
@@ -152,7 +150,7 @@ const SingleSelect = ({
                         placeholder={
                            typeName
                               ? `${
-                                   isOptionsVisible ? 'search' : 'select'
+                                   isOptionsVisible ? 'search' : 'search'
                                 } ${typeName}`
                               : `${placeholder}`
                         }
@@ -222,7 +220,7 @@ const SingleSelect = ({
                         </center>
                      )}
                      {!quickCreateRender.length && keyword !== '' && (
-                        <NoItemFound
+                        <QuickCreate
                            addOption={addOption}
                            keyword={keyword}
                            typeName={typeName}

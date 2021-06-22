@@ -6,7 +6,9 @@ import {
    StyledOption,
    StyledSelected,
    SelectedOptions,
-   HiddenOptions
+   HiddenOptions,
+   QuickCreateWrappper,
+   NoItemFoundWrapper
 } from './styles'
 
 import {
@@ -18,7 +20,7 @@ import {
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
-import NoItemFound from '../Single/NoItemFound'
+import QuickCreate from '../Single/QuickCreate'
 
 const optionExists = (options, item) => {
    for (let option of options) {
@@ -181,26 +183,26 @@ const MultiSelect = ({
                      </StyledOption>
                   ))}
                   {!matchedOptions.length && (
-                     <center>
-                        <StyledOption>
-                           <p>
+                     <NoItemFoundWrapper >
+                        <StyledOption >
+                           <span>
                               {' '}
                               {typeName
                                  ? `no ${typeName} found`
                                  : 'not found'}{' '}
-                           </p>
+                           </span>
                         </StyledOption>
-                     </center>
+                     </NoItemFoundWrapper>
                   )}
                </StyledOptions>
                {!quickCreateRender.length && keyword !== '' && (
-                  <div style={{paddingTop:'200px', width: '100%'}}>
-                     <NoItemFound
+                  <QuickCreateWrappper matchedOptionsLength={matchedOptions.length} >
+                     <QuickCreate
                         addOption={addOption}
                         keyword={keyword}
                         typeName={typeName}
                      />
-                  </div>
+                  </QuickCreateWrappper>
                )}
             </>
          )}

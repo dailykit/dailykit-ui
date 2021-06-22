@@ -5,7 +5,7 @@ import { StyledButton } from './styles'
 
 
 
-const NoItemFound = ({ typeName, keyword, addOption }) => {
+const QuickCreate = ({ typeName, keyword, addOption }) => {
    return (
       <>
         
@@ -21,4 +21,4 @@ const NoItemFound = ({ typeName, keyword, addOption }) => {
    )
 }
 
-export default NoItemFound
+export default QuickCreate

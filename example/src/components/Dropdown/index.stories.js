@@ -63,7 +63,6 @@ export const Single = () => {
          <div style={{ width: '160px' }}>
             <Dropdown
                type='single'
-               variant='revamp'
                defaultOption={{
                   id: 3,
                   title: 'Option3',
@@ -84,7 +83,6 @@ export const Single = () => {
          <div style={{ width: '238px' }}>
             <Dropdown
                type='single'
-               variant='revamp'
                defaultOption={{
                   id: 3,
                   title: 'Option3',
@@ -102,7 +100,6 @@ export const Single = () => {
          <div style={{ width: '160px' }}>
             <Dropdown
                type='single'
-               variant='revamp'
                addOption={() => console.log('Item added')}
                options={optionsWithoutDescription}
                searchedOption={searchedOption}
@@ -116,7 +113,6 @@ export const Single = () => {
          <div style={{ width: '160px' }}>
             <Dropdown
                type='single'
-               variant='revamp'
                disabled={true}
                addOption={() => console.log('Item added')}
                options={optionsWithoutDescription}
@@ -134,7 +130,6 @@ export const Single = () => {
          <div style={{ width: '160px' }}>
             <Dropdown
                type='single'
-               variant='revamp'
                addOption={() => console.log('Item added')}
                searchedOption={searchedOption}
                selectedOption={selectedOption}
@@ -147,6 +142,21 @@ export const Single = () => {
                isLoading={loading}
             />
          </div>
+         <br />
+         <Text as='text1'>
+            Revamp Variant without wrapper
+         </Text>
+         <Spacer size='16px' />
+
+         <Dropdown
+            type='single'
+            variant='revamp'
+            addOption={() => console.log('Item added')}
+            options={optionsWithoutDescription}
+            searchedOption={searchedOption}
+            selectedOption={selectedOption}
+            typeName='cuisine'
+         />
       </div>
    )
 }
