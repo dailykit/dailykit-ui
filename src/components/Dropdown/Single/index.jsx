@@ -73,7 +73,7 @@ const SingleSelect = ({
    const quickCreateRender = options.filter(
       o => o.title.toLowerCase() === keyword
    )
-   console.log(quickCreateRender, 'quickCreateRender')
+   
    useOnClickOutside(ref, () => {
       setKeyword('')
       setIsOptionsVisible(false)

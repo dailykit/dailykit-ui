@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export const StyledSelect = styled.div(
    ({ variant, isOptionsVisible }) => css`
       height: 18px;
-      width: ${variant === 'revamp' ? '100%' : '100%'};
+      width: 100%;
       max-width: ${variant === 'revamp' && '160px'};
       display: flex;
       align-items: center;
@@ -19,7 +19,7 @@ export const StyledOptions = styled.div(
       height: auto;
       overflow-y: auto;
       top: 18px;
-      width: ${variant === 'revamp' ? `100%` : `100%`};
+      width: 100%;
       background: #fff;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
       z-index: 99999999;
@@ -73,10 +73,10 @@ export const StyledOption = styled.div(
 
 export const StyledSelected = styled.div(
    ({ variant, selected, isOptionsVisible, disabled }) => css`
-      width: ${isOptionsVisible ? '100%' : '100%'};
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 12px;
-      padding: ${isOptionsVisible ? `8px 8px 8px 0px` : `8px 8px 8px 0px`};
+      padding: 8px 8px 8px 0px;
       box-shadow: null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
@@ -89,11 +89,11 @@ export const StyledSelected = styled.div(
          grid-template-areas: 'search input';
          input {
             height: 18px;
-            width: ${variant === 'revamp' ? `100%` : `100%`};
+            width: 100%;
             border: none;
             font-weight: 500;
             grid-area: input;
-            font-size: ${isOptionsVisible ? '16px' : '16px'};
+            font-size: 16px;
             line-height: 16px;
             letter-spacing: 0.32px;
             padding: '0px';

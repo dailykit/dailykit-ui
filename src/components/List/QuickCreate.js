@@ -2,22 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { PlusIcon } from '../../assets/icons'
 
-const Wrapper = styled.div(
-   () => css`
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-      padding-top: 20px;
-      margin-bottom: 12px;
-      > div {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         > svg {
-            margin-left: 2px;
-         }
-      }
-      
-   `
-)
+
 const StyledButton = styled.button(
    () => css`
       width: 100%;
