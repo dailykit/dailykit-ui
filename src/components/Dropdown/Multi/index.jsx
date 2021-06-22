@@ -6,7 +6,9 @@ import {
    StyledOption,
    StyledSelected,
    SelectedOptions,
-   HiddenOptions
+   HiddenOptions,
+   QuickCreateWrappper,
+   NoItemFoundWrapper
 } from './styles'
 
 import {
@@ -18,7 +20,7 @@ import {
 } from '../../../assets/icons'
 
 import { useOnClickOutside } from '../../../hooks'
-import NoItemFound from '../Single/NoItemFound'
+import QuickCreate from '../Single/QuickCreate'
 
 const optionExists = (options, item) => {
    for (let option of options) {
@@ -93,6 +95,10 @@ const MultiSelect = ({
       option.title.toLowerCase().includes(keyword)
    )
 
+   const quickCreateRender = options.filter(
+      o => o.title.toLowerCase() === keyword
+   )
+
    return (
       <StyledSelect ref={ref}>
          <StyledSelected>
@@ -156,33 +162,49 @@ const MultiSelect = ({
             </SelectedOptions>
          )}
          {isOptionsVisible && (
-            <StyledOptions moveDown={selectedOptions.length > 0}>
-               {matchedOptions.map(option => (
-                  <StyledOption
-                     key={option.id}
-                     title={option.title}
-                     onClick={() => selectOption(option)}
-                     isSelected={optionExists(selectedOptions, option.id)}
-                  >
-                     <div>
-                        <input
-                           type='checkbox'
-                           readOnly
-                           checked={optionExists(selectedOptions, option.id)}
-                        />
-                        <span>{option.title}</span>
-                     </div>
-                     {option.description && <p>{option.description}</p>}
-                  </StyledOption>
-               ))}
-               {!matchedOptions.length && (
-                  <NoItemFound
-                     addOption={addOption}
-                     keyword={keyword}
-                     typeName={typeName}
-                  />
+            <>
+               <StyledOptions moveDown={selectedOptions.length > 0}>
+                  {matchedOptions.map(option => (
+                     <StyledOption
+                        key={option.id}
+                        title={option.title}
+                        onClick={() => selectOption(option)}
+                        isSelected={optionExists(selectedOptions, option.id)}
+                     >
+                        <div>
+                           <input
+                              type='checkbox'
+                              readOnly
+                              checked={optionExists(selectedOptions, option.id)}
+                           />
+                           <span>{option.title}</span>
+                        </div>
+                        {option.description && <p>{option.description}</p>}
+                     </StyledOption>
+                  ))}
+                  {!matchedOptions.length && (
+                     <NoItemFoundWrapper >
+                        <StyledOption >
+                           <span>
+                              {' '}
+                              {typeName
+                                 ? `no ${typeName} found`
+                                 : 'not found'}{' '}
+                           </span>
+                        </StyledOption>
+                     </NoItemFoundWrapper>
+                  )}
+               </StyledOptions>
+               {!quickCreateRender.length && keyword !== '' && (
+                  <QuickCreateWrappper matchedOptionsLength={matchedOptions.length} >
+                     <QuickCreate
+                        addOption={addOption}
+                        keyword={keyword}
+                        typeName={typeName}
+                     />
+                  </QuickCreateWrappper>
                )}
-            </StyledOptions>
+            </>
          )}
       </StyledSelect>
    )

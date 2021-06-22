@@ -110,6 +110,17 @@ export const StyledOption = styled.div(
          opacity: 0.7;
          margin-left: 20px;
       }
+      > span {
+         font-style: italic;
+         font-weight: normal;
+         font-size: 12px;
+         line-height: 16px;
+         letter-spacing: 0.32px;
+         color: #919699;
+         display: flex;
+         justify-content: center;
+         padding: 8px;
+      }
    `
 )
 
@@ -169,4 +180,15 @@ export const StyledSelected = styled.div`
          display: block;
       }
    }
+`
+export const QuickCreateWrappper = styled.div(
+   ({ matchedOptionsLength }) => css`
+      padding-top:${matchedOptionsLength===0 ? '70px' : '200px'};
+      width: 100%;
+   `
+)
+
+export const NoItemFoundWrapper = styled.div`
+   display:flex; 
+   justify-content: center;
 `

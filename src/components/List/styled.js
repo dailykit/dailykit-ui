@@ -55,5 +55,15 @@ export const StyledOptions = styled.ul(
       li:hover {
          background: #f3f3f3;
       }
+      > p {
+         font-style: italic;
+         font-weight: normal;
+         font-size: 12px;
+         line-height: 16px;
+         letter-spacing: 0.32px;
+         color: #919699;
+         text-align: center;
+         padding: 8px;
+      }
    `
 )

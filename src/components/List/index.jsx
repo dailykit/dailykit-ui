@@ -9,7 +9,7 @@ import {
    StyledOptions,
    StyledListLabel
 } from './styled'
-import NoItemFound from './NoItemFound'
+import QuickCreate from './QuickCreate'
 
 export const List = ({ children, ...props }) => (
    <StyledList {...props}>{children}</StyledList>
@@ -124,18 +124,33 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
 }
 
 export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
-   const text = React.useMemo(() => {
-      return search
-         ? `Add ${search.slice(0, 1).toUpperCase() + search.slice(1)}`
-         : ''
+   const renderedOptions = children.map(child => child.props.title.toLowerCase())
+   const [isQuickCreateRendered, setIsQuickCreateRendered] = React.useState(
+      false
+   )
+   React.useEffect(() => {
+      const typedWord = search.trim()
+      if (typedWord) {
+         const found = renderedOptions.includes(typedWord)
+         if (found) {
+            setIsQuickCreateRendered(false)
+         } else {
+            setIsQuickCreateRendered(true)
+         }
+      } else {
+         setIsQuickCreateRendered(false)
+      }
    }, [search])
 
    return (
       <StyledOptions {...props}>
-         {children.length ? (
-            children
+         {isQuickCreateRendered && (
+            <QuickCreate keyword={search} addOption={handleOnCreate} />
+         )}
+         {!children.length ? (
+            <p> {search.trim() ? `no ${search.trim()} found` : 'not found'} </p>
          ) : (
-            <NoItemFound keyword={search} addOption={handleOnCreate} />
+            children
          )}
       </StyledOptions>
    )

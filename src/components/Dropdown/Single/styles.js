@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 export const StyledSelect = styled.div(
    ({ variant, isOptionsVisible }) => css`
       height: 18px;
-      width: ${variant === 'revamp' ? 'fit-content' : '100%'};
-      min-width: ${isOptionsVisible ? '200px' : null};
+      width: 100%;
+      max-width: ${variant === 'revamp' && '160px'};
       display: flex;
       align-items: center;
       position: relative;
@@ -16,15 +16,12 @@ export const StyledSelect = styled.div(
 export const StyledOptions = styled.div(
    ({ variant, matchedOptions }) => css`
       position: absolute;
-      max-height: 180px;
       height: auto;
       overflow-y: auto;
       top: 18px;
-      width: ${variant === 'revamp' ? `100%` : `100%`};
+      width: 100%;
       background: #fff;
-      box-shadow: ${matchedOptions.length
-         ? `0px 4px 6px rgba(0, 0, 0, 0.15)`
-         : null};
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
       z-index: 99999999;
       padding: 8px;
       ::-webkit-scrollbar {
@@ -61,15 +58,25 @@ export const StyledOption = styled.div(
                font-weight: 400;
             }
          }
+         > p {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.32px;
+            color: #919699;
+            text-align: center;
+            padding: 8px;
+         }
       `
 )
 
 export const StyledSelected = styled.div(
    ({ variant, selected, isOptionsVisible, disabled }) => css`
-      width: ${isOptionsVisible ? '100%' : 'fit-content'};
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 12px;
-      padding: ${isOptionsVisible ? `8px 8px 8px 0px` : `8px 0px 8px 0px`};
+      padding: 8px 8px 8px 0px;
       box-shadow: null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
@@ -78,15 +85,15 @@ export const StyledSelected = styled.div(
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 1fr 12px;
-         grid-template-areas: 'input search';
+         grid-template-columns: 24px 1fr;
+         grid-template-areas: 'search input';
          input {
             height: 18px;
-            width: ${variant === 'revamp' ? `122px` : `100%`};
+            width: 100%;
             border: none;
             font-weight: 500;
             grid-area: input;
-            font-size: ${isOptionsVisible ? '16px' : '16px'};
+            font-size: 16px;
             line-height: 16px;
             letter-spacing: 0.32px;
             padding: '0px';
@@ -168,7 +175,6 @@ export const StyledButton = styled.button(
    `
 )
 
-
 export const Spinner = styled.div(
    ({ type, variant }) => css`
       display: inline-block;
@@ -178,9 +184,7 @@ export const Spinner = styled.div(
       border: 1px solid transparent;
       border-radius: 50%;
       border-top: 1px solid
-         ${type === 'solid' && variant !== 'secondary'
-            ? '#fff'
-            : '#367BF5'};
+         ${type === 'solid' && variant !== 'secondary' ? '#fff' : '#367BF5'};
       animation: spin 2s linear infinite;
       @keyframes spin {
          0% {
