@@ -14,13 +14,19 @@ const textInput = (variant, hasError, disabled) => {
    switch (variant) {
       case 'revamp':
          return css`
+            grid-area: input;
             border: none;
             text-align: center;
             font-weight: 500;
             font-size: 40px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
             :focus {
                outline: none;
-               border: none;
+               border-style: solid;
+               border-width: 0px 0px 2px 0px;
             }
             :focus::placeholder {
                color: transparent;
@@ -28,13 +34,19 @@ const textInput = (variant, hasError, disabled) => {
          `
       case 'revamp-sm':
          return css`
+            grid-area: input;
             border: none;
             text-align: left;
             font-weight: 500;
             font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
             :focus {
                outline: none;
-               border: none;
+               border-style: solid;
+               border-width: 0px 0px 2px 0px;
             }
             :focus::placeholder {
                color: transparent;
@@ -69,7 +81,7 @@ const Styles = {
       flex-direction: column;
    `,
    Field: styled.section(
-      ({ hasReadAccess, hasWriteAccess }) => css`
+      ({ hasReadAccess, hasWriteAccess, variant, disabled }) => css`
          position: relative;
          textarea,
          input[type='time'],
@@ -79,6 +91,19 @@ const Styles = {
          input[type='password'],
          select {
             width: 100%;
+         }
+         display: ${(variant === 'revamp' || variant === 'revamp-sm') &&
+         'grid'};
+         grid-template-columns: 1fr 16px;
+         grid-template-areas: 'input edit';
+         > span.edit {
+            opacity: 0;
+            grid-area: edit;
+         }
+         :hover {
+            > span.edit {
+               opacity: ${disabled === false ? '1' : '0'};
+            }
          }
          ${(hasWriteAccess === false || hasReadAccess === false) &&
          css`
@@ -90,6 +115,12 @@ const Styles = {
                cursor: not-allowed;
                transform: translate(-44%, -44%);
             }
+            :hover {
+               > span.edit {
+                  opacity: 0;
+               }
+            }
+
             ::before {
                top: 0;
                left: 0;
@@ -115,6 +146,7 @@ const Styles = {
    Text: styled.input(
       ({ hasError, variant, disabled }) => css`
          border-radius: 4px;
+
          ${textInput(variant, hasError, disabled)}
       `
    ),

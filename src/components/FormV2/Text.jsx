@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Styles from './styles'
-import { LockIcon } from '../../assets/icons'
+import { LockIcon, EditIcon } from '../../assets/icons'
 
 export const Text = ({
    id,
@@ -13,17 +13,24 @@ export const Text = ({
    hasReadAccess = true,
    hasWriteAccess = true,
    fallBackMessage = "You don't have access to this field",
+   variant,
+   title = null,
+   disabled = false,
    ...rest
 }) => {
-   const title =
-      hasWriteAccess === false || hasReadAccess === false
-         ? fallBackMessage
-         : null
+   
    return (
       <Styles.Field
-         title={title}
+         title={
+            hasWriteAccess === false || hasReadAccess === false
+               ? fallBackMessage
+               : title
+         }
          hasReadAccess={hasReadAccess}
          hasWriteAccess={hasWriteAccess}
+         variant={variant}
+         disabled={disabled}
+         {...rest}
       >
          <Styles.Text
             id={id}
@@ -31,11 +38,19 @@ export const Text = ({
             type='text'
             hasError={hasError}
             placeholder={placeholder}
+            variant={variant}
+            disabled={disabled}
             {...rest}
          />
+
          {(hasWriteAccess === false || hasReadAccess === false) && (
             <span className='locked'>
                <LockIcon />
+            </span>
+         )}
+         {(variant === 'revamp' || variant === 'revamp-sm') && (
+            <span className='edit'>
+               <EditIcon />
             </span>
          )}
       </Styles.Field>
