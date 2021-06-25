@@ -30,33 +30,67 @@ storiesOf('List', module)
       const [list, current, selectOption] = useSingleList(options)
 
       return (
-         <List>
-            {Object.keys(current).length > 0 ? (
-               <ListItem type='SSL1' title={current.title} />
-            ) : (
-               <ListSearch
-                  onChange={value => setSearch(value)}
-                  placeholder='type what you’re looking for...'
-               />
-            )}
-            <ListHeader type='SSL1' label='Ingredient' />
-            <ListOptions
-               search={search}
-               handleOnCreate={() => console.log(`Created ${search}`)}
-            >
-               {list
-                  .filter(option => option.title.toLowerCase().includes(search))
-                  .map(option => (
-                     <ListItem
-                        type='SSL1'
-                        key={option.id}
-                        title={option.title}
-                        isActive={option.id === current.id}
-                        onClick={() => selectOption('id', option.id)}
-                     />
-                  ))}
-            </ListOptions>
-         </List>
+         <>
+            <List>
+               {Object.keys(current).length > 0 ? (
+                  <ListItem type='SSL1' title={current.title} />
+               ) : (
+                  <ListSearch
+                     onChange={value => setSearch(value)}
+                     placeholder='type what you’re looking for...'
+                  />
+               )}
+               <ListHeader type='SSL1' label='Ingredient' />
+               <ListOptions
+                  search={search}
+                  handleOnCreate={() => console.log(`Created ${search}`)}
+                  isCreating={true}
+               >
+                  {list
+                     .filter(option =>
+                        option.title.toLowerCase().includes(search)
+                     )
+                     .map(option => (
+                        <ListItem
+                           type='SSL1'
+                           key={option.id}
+                           title={option.title}
+                           isActive={option.id === current.id}
+                           onClick={() => selectOption('id', option.id)}
+                        />
+                     ))}
+               </ListOptions>
+            </List>
+            <List>
+               {Object.keys(current).length > 0 ? (
+                  <ListItem type='SSL1' title={current.title} />
+               ) : (
+                  <ListSearch
+                     onChange={value => setSearch(value)}
+                     placeholder='type what you’re looking for...'
+                  />
+               )}
+               <ListHeader type='SSL1' label='Ingredient' />
+               <ListOptions
+                  search={search}
+                  handleOnCreate={() => console.log(`Created ${search}`)}
+               >
+                  {list
+                     .filter(option =>
+                        option.title.toLowerCase().includes(search)
+                     )
+                     .map(option => (
+                        <ListItem
+                           type='SSL1'
+                           key={option.id}
+                           title={option.title}
+                           isActive={option.id === current.id}
+                           onClick={() => selectOption('id', option.id)}
+                        />
+                     ))}
+               </ListOptions>
+            </List>
+         </>
       )
    })
    .add('SSL2', () => {

@@ -123,7 +123,7 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
    )
 }
 
-export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
+export const ListOptions = ({ search, children, handleOnCreate, isCreating=false, ...props }) => {
    const renderedOptions = children.map(child => child.props.title.toLowerCase())
    const [isQuickCreateRendered, setIsQuickCreateRendered] = React.useState(
       false
@@ -145,7 +145,7 @@ export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
    return (
       <StyledOptions {...props}>
          {isQuickCreateRendered && (
-            <QuickCreate keyword={search} addOption={handleOnCreate} />
+            <QuickCreate keyword={search} addOption={handleOnCreate} isCreating={isCreating} />
          )}
          {!children.length ? (
             <p> {search.trim() ? `no ${search.trim()} found` : 'not found'} </p>
