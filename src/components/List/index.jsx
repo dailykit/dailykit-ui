@@ -123,8 +123,25 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
    )
 }
 
-export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
-   const renderedOptions = children.map(child => child.props.title.toLowerCase())
+export const ListOptions = ({
+   search = '',
+   children,
+   handleOnCreate,
+   ...props
+}) => {
+   console.log(children, 'children')
+   let renderedOptions = []
+   switch (children[0]?.props?.type) {
+      case 'MSL1':
+      case 'SSL1':
+         renderedOptions = children.map(child =>
+            child.props.title.toLowerCase()
+         )
+         break
+      default:
+         renderedOptions = []
+   }
+
    const [isQuickCreateRendered, setIsQuickCreateRendered] = React.useState(
       false
    )
