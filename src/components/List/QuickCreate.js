@@ -26,6 +26,7 @@ const Spinner = styled.div(
       width: 14px;
       height: 14px;
       border: 1px solid transparent;
+      margin-right: 10px;
       border-radius: 50%;
       border-top: 1px solid
          ${type === 'solid' && variant !== 'secondary' ? '#fff' : '#367BF5'};
