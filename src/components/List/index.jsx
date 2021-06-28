@@ -129,19 +129,20 @@ export const ListOptions = ({
    handleOnCreate,
    ...props
 }) => {
-   console.log(children, 'children')
+   
    let renderedOptions = []
-   switch (children[0]?.props?.type) {
-      case 'MSL1':
-      case 'SSL1':
-         renderedOptions = children.map(child =>
-            child.props.title.toLowerCase()
-         )
-         break
-      default:
-         renderedOptions = []
+   if(children.length>0){
+      switch (children[0]?.props?.type) {
+         case 'MSL1':
+         case 'SSL1':
+            renderedOptions = children.map(child =>
+               child.props.title.toLowerCase()
+            )
+            break
+         default:
+            renderedOptions = []
+      }
    }
-
    const [isQuickCreateRendered, setIsQuickCreateRendered] = React.useState(
       false
    )
