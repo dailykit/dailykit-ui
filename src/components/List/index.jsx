@@ -123,8 +123,16 @@ export const ListSearch = ({ placeholder, onChange, children, ...props }) => {
    )
 }
 
-export const ListOptions = ({ search, children, handleOnCreate, ...props }) => {
-   const renderedOptions = children.map(child => child.props.title.toLowerCase())
+export const ListOptions = ({
+   search = '',
+   children,
+   handleOnCreate,
+   ...props
+}) => {
+   
+   const renderedOptions = children.map(child =>
+      child.props.title?.toLowerCase()
+   )
    const [isQuickCreateRendered, setIsQuickCreateRendered] = React.useState(
       false
    )
