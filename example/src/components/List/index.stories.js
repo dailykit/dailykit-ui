@@ -212,7 +212,7 @@ storiesOf('List', module)
             <ListOptions>
                {list
                   .filter(option =>
-                     option.supplier.title.toLowerCase().includes(search)
+                     option.contact.title.toLowerCase().includes(search)
                   )
                   .map(option => (
                      <ListItem
