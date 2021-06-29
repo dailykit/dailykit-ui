@@ -77,7 +77,6 @@ storiesOf('Form v2', module)
                   onBlur={onBlur}
                   onChange={onChange}
                   variant='revamp-sm'
-                   
                   value={state.username.value}
                   placeholder='enter recipe'
                   hasError={
@@ -102,7 +101,6 @@ storiesOf('Form v2', module)
                   onBlur={onBlur}
                   onChange={onChange}
                   variant='revamp-sm'
-                   
                   value={state.username.value}
                   disabled={true}
                   placeholder='enter recipe'
@@ -129,7 +127,6 @@ storiesOf('Form v2', module)
                   name='username'
                   onBlur={onBlur}
                   onChange={onChange}
-                   
                   value={state.username.value}
                   placeholder='Enter the username'
                   hasError={
@@ -155,7 +152,6 @@ storiesOf('Form v2', module)
                   name='username'
                   onBlur={onBlur}
                   onChange={onChange}
-                   
                   hasReadAccess={true}
                   hasWriteAccess={false}
                   value={state.username.value}
@@ -173,7 +169,6 @@ storiesOf('Form v2', module)
                   id='username'
                   name='username'
                   onBlur={onBlur}
-                   
                   onChange={onChange}
                   hasReadAccess={false}
                   hasWriteAccess={false}
