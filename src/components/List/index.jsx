@@ -127,6 +127,7 @@ export const ListOptions = ({
    search = '',
    children,
    handleOnCreate,
+   isCreating = false,
    ...props
 }) => {
    
@@ -153,7 +154,7 @@ export const ListOptions = ({
    return (
       <StyledOptions {...props}>
          {isQuickCreateRendered && (
-            <QuickCreate keyword={search} addOption={handleOnCreate} />
+            <QuickCreate keyword={search} addOption={handleOnCreate} isCreating={isCreating} />
          )}
          {!children.length ? (
             <p> {search.trim() ? `no ${search.trim()} found` : 'not found'} </p>
