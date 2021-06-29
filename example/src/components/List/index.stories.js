@@ -32,38 +32,34 @@ storiesOf('List', module)
       const [isCreating, setIsCreating] = React.useState(false)
 
       return (
-         <>
-            <List>
-               {Object.keys(current).length > 0 ? (
-                  <ListItem type='SSL1' title={current.title} />
-               ) : (
-                  <ListSearch
-                     onChange={value => setSearch(value)}
-                     placeholder='type what you’re looking for...'
-                  />
-               )}
-               <ListHeader type='SSL1' label='Ingredient' />
-               <ListOptions
-                  search={search}
-                  handleOnCreate={() => setIsCreating(true)}
-                  isCreating={isCreating}
-               >
-                  {list
-                     .filter(option =>
-                        option.title.toLowerCase().includes(search)
-                     )
-                     .map(option => (
-                        <ListItem
-                           type='SSL1'
-                           key={option.id}
-                           title={option.title}
-                           isActive={option.id === current.id}
-                           onClick={() => selectOption('id', option.id)}
-                        />
-                     ))}
-               </ListOptions>
-            </List>
-         </>
+         <List>
+            {Object.keys(current).length > 0 ? (
+               <ListItem type='SSL1' title={current.title} />
+            ) : (
+               <ListSearch
+                  onChange={value => setSearch(value)}
+                  placeholder='type what you’re looking for...'
+               />
+            )}
+            <ListHeader type='SSL1' label='Ingredient' />
+            <ListOptions
+               search={search}
+               handleOnCreate={() => setIsCreating(true)}
+               isCreating={isCreating}
+            >
+               {list
+                  .filter(option => option.title.toLowerCase().includes(search))
+                  .map(option => (
+                     <ListItem
+                        type='SSL1'
+                        key={option.id}
+                        title={option.title}
+                        isActive={option.id === current.id}
+                        onClick={() => selectOption('id', option.id)}
+                     />
+                  ))}
+            </ListOptions>
+         </List>
       )
    })
    .add('SSL2', () => {
@@ -242,7 +238,7 @@ storiesOf('List', module)
             <ListOptions
                search={search}
                handleOnCreate={() => setIsCreating(true)}
-               isCreating = {isCreating}
+               isCreating={isCreating}
             >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
