@@ -43,18 +43,18 @@ export const ListItem = ({ type, children, ...props }) => {
             <StyledSSL22
                onClick={props.onClick}
                isActive={props.isActive}
-               title={props.content.supplier.title}
+               title={props.content.contact.title}
             >
                <Avatar
                   withName
                   type='round'
-                  url={props.content.supplier.icon}
-                  title={props.content.supplier.title}
+                  url={props.content.contact.icon}
+                  title={props.content.contact.title}
                />
                <Avatar
                   withName
-                  url={props.content.contact.icon}
-                  title={props.content.contact.title}
+                  url={props.content.supplier.icon}
+                  title={props.content.supplier.title}
                />
             </StyledSSL22>
          )

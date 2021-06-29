@@ -29,6 +29,8 @@ storiesOf('List', module)
 
       const [list, current, selectOption] = useSingleList(options)
 
+      const [isCreating, setIsCreating] = React.useState(false)
+
       return (
          <List>
             {Object.keys(current).length > 0 ? (
@@ -42,7 +44,8 @@ storiesOf('List', module)
             <ListHeader type='SSL1' label='Ingredient' />
             <ListOptions
                search={search}
-               handleOnCreate={() => console.log(`Created ${search}`)}
+               handleOnCreate={() => setIsCreating(true)}
+               isCreating={isCreating}
             >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
@@ -178,7 +181,7 @@ storiesOf('List', module)
             <ListOptions>
                {list
                   .filter(option =>
-                     option.supplier.title.toLowerCase().includes(search)
+                     option.contact.title.toLowerCase().includes(search)
                   )
                   .map(option => (
                      <ListItem
@@ -209,6 +212,8 @@ storiesOf('List', module)
          []
       )
 
+      const [isCreating, setIsCreating] = React.useState(false)
+
       const [list, selected, selectOption] = useMultiList(options)
       return (
          <List>
@@ -232,7 +237,8 @@ storiesOf('List', module)
             <ListHeader type='MSL1' label='Ingredients' />
             <ListOptions
                search={search}
-               handleOnCreate={() => console.log(`Created ${search}`)}
+               handleOnCreate={() => setIsCreating(true)}
+               isCreating={isCreating}
             >
                {list
                   .filter(option => option.title.toLowerCase().includes(search))
