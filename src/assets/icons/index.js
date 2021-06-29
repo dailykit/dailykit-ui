@@ -14,6 +14,7 @@ import RoundedCloseIcon from './RoundedClose'
 import ThreeDots from './ThreeDots'
 import MinusIcon from './Minus'
 import CheckCircleIcon from './CheckCircle'
+import EditIcon from './EditIcon'
 export {
    ClearIcon,
    SearchIcon,
@@ -30,7 +31,8 @@ export {
    RoundedCloseIcon,
    ThreeDots,
    MinusIcon,
-   CheckCircleIcon
+   CheckCircleIcon,
+   EditIcon
 }
 
 export * from './Up'

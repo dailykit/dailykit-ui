@@ -84,6 +84,7 @@ storiesOf('Form v2', module)
                      !state.username.meta.isValid
                   }
                />
+
                {state.username.meta.isTouched &&
                   !state.username.meta.isValid &&
                   state.username.meta.errors.map((error, index) => (
