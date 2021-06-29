@@ -54,7 +54,6 @@ storiesOf('Form v2', module)
                   onBlur={onBlur}
                   onChange={onChange}
                   variant='revamp'
-                  title={state.username.value}
                   value={state.username.value}
                   placeholder='enter recipe'
                   hasError={
@@ -78,7 +77,7 @@ storiesOf('Form v2', module)
                   onBlur={onBlur}
                   onChange={onChange}
                   variant='revamp-sm'
-                  title={state.username.value}
+                   
                   value={state.username.value}
                   placeholder='enter recipe'
                   hasError={
@@ -103,7 +102,7 @@ storiesOf('Form v2', module)
                   onBlur={onBlur}
                   onChange={onChange}
                   variant='revamp-sm'
-                  title={state.username.value}
+                   
                   value={state.username.value}
                   disabled={true}
                   placeholder='enter recipe'
@@ -130,7 +129,7 @@ storiesOf('Form v2', module)
                   name='username'
                   onBlur={onBlur}
                   onChange={onChange}
-                  title={state.username.value}
+                   
                   value={state.username.value}
                   placeholder='Enter the username'
                   hasError={
@@ -156,7 +155,7 @@ storiesOf('Form v2', module)
                   name='username'
                   onBlur={onBlur}
                   onChange={onChange}
-                  title={state.username.value}
+                   
                   hasReadAccess={true}
                   hasWriteAccess={false}
                   value={state.username.value}
@@ -174,7 +173,7 @@ storiesOf('Form v2', module)
                   id='username'
                   name='username'
                   onBlur={onBlur}
-                  title={state.username.value}
+                   
                   onChange={onChange}
                   hasReadAccess={false}
                   hasWriteAccess={false}

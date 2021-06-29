@@ -14,9 +14,9 @@ export const Text = ({
    hasWriteAccess = true,
    fallBackMessage = "You don't have access to this field",
    variant,
-   title = null,
    disabled = false,
    onBlur,
+   value,
    ...rest
 }) => {
    const [isEditing, setIsEditing] = React.useState(false)
@@ -25,7 +25,7 @@ export const Text = ({
          title={
             hasWriteAccess === false || hasReadAccess === false
                ? fallBackMessage
-               : title
+               : value
          }
          hasReadAccess={hasReadAccess}
          hasWriteAccess={hasWriteAccess}
@@ -46,6 +46,7 @@ export const Text = ({
             placeholder={placeholder}
             variant={variant}
             disabled={disabled}
+            value = {value}
             {...rest}
          />
 
