@@ -15,10 +15,12 @@ export const StyledSelect = styled.div(
 
 export const StyledOptions = styled.div(
    ({ variant, matchedOptions }) => css`
+      display: flex;
+      flex-wrap: wrap;
       position: absolute;
       height: auto;
       overflow-y: auto;
-      top: 18px;
+      top: 25px;
       width: 100%;
       background: #fff;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
