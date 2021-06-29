@@ -16,9 +16,10 @@ export const Text = ({
    variant,
    title = null,
    disabled = false,
+   onBlur,
    ...rest
 }) => {
-   
+   const [isEditing, setIsEditing] = React.useState(false)
    return (
       <Styles.Field
          title={
@@ -33,6 +34,11 @@ export const Text = ({
          {...rest}
       >
          <Styles.Text
+            onFocus={() => setIsEditing(true)}
+            onBlur={() => {
+               setIsEditing(false)
+               onBlur?.()
+            }}
             id={id}
             name={name}
             type='text'
@@ -48,7 +54,7 @@ export const Text = ({
                <LockIcon />
             </span>
          )}
-         {(variant === 'revamp' || variant === 'revamp-sm') && (
+         {(variant === 'revamp' || variant === 'revamp-sm') && !isEditing && (
             <span className='edit'>
                <EditIcon />
             </span>
