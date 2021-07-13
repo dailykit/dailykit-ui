@@ -35,9 +35,9 @@ export const Text = ({
       >
          <Styles.Text
             onFocus={() => setIsEditing(true)}
-            onBlur={() => {
+            onBlur={(e) => {
                setIsEditing(false)
-               onBlur?.()
+               onBlur?.(e)
             }}
             id={id}
             name={name}
