@@ -29,17 +29,21 @@ export const TunnelVision = () => {
                   close={() => closeTunnel(1)}
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
-                  right={{
-                     title: 'Next',
-                     action: () => openTunnel(2)
-                  }}
+                  right={
+                     {
+                        title: 'Next',
+                        action: () => openTunnel(2)
+                     }
+                  }
                />
             </Tunnel>
 
             <Tunnel layer={2} size='lg'>
                <TunnelHeader
                   title='Tunnel 2'
-                  right={{ action: () => openTunnel(3), title: 'Next' }}
+                  right={
+                     { action: () => openTunnel(3), title: 'Next' }
+                  }
                   close={() => closeTunnel(2)}
                />
             </Tunnel>
@@ -47,10 +51,12 @@ export const TunnelVision = () => {
             <Tunnel layer={3} size='md'>
                <TunnelHeader
                   title='Tunnel 3'
-                  right={{
-                     title: 'Next',
-                     action: () => openTunnel(4)
-                  }}
+                  right={
+                     {
+                        title: 'Next',
+                        action: () => openTunnel(4)
+                     }
+                  }
                   close={() => closeTunnel(3)}
                />
             </Tunnel>
@@ -58,10 +64,12 @@ export const TunnelVision = () => {
             <Tunnel layer={4} size='sm'>
                <TunnelHeader
                   title='Tunnel 4'
-                  right={{
-                     title: 'Close',
-                     action: () => closeTunnel(4)
-                  }}
+                  right={
+                     {
+                        title: 'Close',
+                        action: () => closeTunnel(4)
+                     }
+                  }
                   close={() => closeTunnel(4)}
                   nextAction='Done'
                />
@@ -101,9 +109,25 @@ export const TunnelPositions = () => {
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
                   right={{
-                     title: 'CLOSE',
-                     action: () => closeTopTunnel(1)
+                     title: 'NEXT',
+                     action: () => {
+                        openBottomTunnel(1)
+                        closeTopTunnel(1)
+                     }
                   }}
+                  extraButtons={[
+                     {
+                        title: 'Action 1',
+                        action: () => {
+                           alert('Action1 triggered!')
+                        }
+                     },
+                     {
+                        title: 'Action 2',
+                        type: 'outline',
+                        action: () => alert('Action2 triggered!')
+                     }
+                  ]}
                />
             </Tunnel>
          </Tunnels>
@@ -116,9 +140,24 @@ export const TunnelPositions = () => {
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
                   right={{
-                     title: 'CLOSE',
-                     action: () => closeBottomTunnel(1)
+                     title: 'NEXT',
+                     action: () => {
+                        openRightTunnel(1)
+                           closeBottomTunnel(1)
+                     }
                   }}
+                  extraButtons={[
+                     {
+                        title: 'Action 1',
+                        action: () => {
+                           alert('Action1 triggered!')
+                        }
+                     },
+                     {
+                        title: 'Action 2',
+                        action: () => alert('Action2 triggered!')
+                     }
+                  ]}
                />
             </Tunnel>
          </Tunnels>
@@ -130,9 +169,24 @@ export const TunnelPositions = () => {
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
                   right={{
-                     title: 'CLOSE',
-                     action: () => closeRightTunnel(1)
+                     title: 'NEXT',
+                     action: () => {
+                        openLeftTunnel(1)
+                           closeRightTunnel(1)
+                     }
                   }}
+                  extraButtons={[
+                     {
+                        title: 'Action 1',
+                        action: () => {
+                           alert('Action1 triggered!')
+                        }
+                     },
+                     {
+                        title: 'Action 2',
+                        action: () => alert('Action2 triggered!')
+                     }
+                  ]}
                />
             </Tunnel>
          </Tunnels>
@@ -144,9 +198,24 @@ export const TunnelPositions = () => {
                   description='This is a description'
                   tooltip={<InfoIcon color='#a4a4a4' />}
                   right={{
-                     title: 'CLOSE',
-                     action: () => closeLeftTunnel(1)
+                     title: 'NEXT',
+                     action: () => {
+                        openTopTunnel(1)
+                           closeLeftTunnel(1)
+                     }
                   }}
+                  extraButtons={[
+                     {
+                        title: 'Action 1',
+                        action: () => {
+                           alert('Action1 triggered!')
+                        }
+                     },
+                     {
+                        title: 'Action 2',
+                        action: () => alert('Action2 triggered!')
+                     }
+                  ]}
                />
             </Tunnel>
          </Tunnels>

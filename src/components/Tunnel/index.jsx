@@ -75,6 +75,7 @@ const TunnelHeader = ({
    title,
    close,
    right,
+   extraButtons,
    tooltip = null,
    description = null,
    position = 'top'
@@ -89,18 +90,38 @@ const TunnelHeader = ({
             <StyledText as='h1'>{title}</StyledText>
          </Flex>
       </Flex>
+      <Flex container alignItems='center'>
+         {extraButtons &&
+            extraButtons.length > 0 &&
+            extraButtons[0].title &&
+            extraButtons[0].action &&
+            extraButtons.map((item, index) => {
+               return (
+                  <TextButton
+                     size='sm'
+                     type={item.type || 'ghost'}
+                     onClick={item.action}
+                     {...(item?.disabled && { disabled: item.disabled })}
+                     {...(item?.isLoading && { isLoading: item.isLoading })}
+                     style={{marginRight: '12px'}}
+                  >
+                     {item.title}
+                  </TextButton>
+               )
+            })}
 
-      {right && right.title && right.action && (
-         <TextButton
-            size='sm'
-            type='solid'
-            onClick={right.action}
-            {...(right?.disabled && { disabled: right.disabled })}
-            {...(right?.isLoading && { isLoading: right.isLoading })}
-         >
-            {right.title}
-         </TextButton>
-      )}
+         {right && right.title && right.action && (
+            <TextButton
+               size='sm'
+               type='solid'
+               onClick={right.action}
+               {...(right?.disabled && { disabled: right.disabled })}
+               {...(right?.isLoading && { isLoading: right.isLoading })}
+            >
+               {right.title}
+            </TextButton>
+         )}
+      </Flex>
    </StyledTunnelHeader>
 )
 
