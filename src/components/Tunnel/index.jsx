@@ -89,18 +89,23 @@ const TunnelHeader = ({
             <StyledText as='h1'>{title}</StyledText>
          </Flex>
       </Flex>
-
-      {right && right.title && right.action && (
-         <TextButton
-            size='sm'
-            type='solid'
-            onClick={right.action}
-            {...(right?.disabled && { disabled: right.disabled })}
-            {...(right?.isLoading && { isLoading: right.isLoading })}
-         >
-            {right.title}
-         </TextButton>
-      )}
+      {right &&
+         right?.length > 0 &&
+         right[0]?.title &&
+         right[0]?.action &&
+         right.map((item, index) => {
+            return (
+               <TextButton
+                  size='sm'
+                  type={`${index % 2 === 0 ? 'ghost' : 'solid'}`}
+                  onClick={item.action}
+                  {...(item?.disabled && { disabled: item.disabled })}
+                  {...(item?.isLoading && { isLoading: item.isLoading })}
+               >
+                  {item.title}
+               </TextButton>
+            )
+         })}
    </StyledTunnelHeader>
 )
 
