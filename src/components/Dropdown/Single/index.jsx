@@ -73,7 +73,7 @@ const SingleSelect = ({
    const quickCreateRender = options.filter(
       o => o.title.toLowerCase() === keyword
    )
-   
+
    useOnClickOutside(ref, () => {
       setKeyword('')
       setIsOptionsVisible(false)
@@ -104,43 +104,47 @@ const SingleSelect = ({
             isOptionsVisible={isOptionsVisible}
             variant={variant}
          >
-            <div>
+            <>
                {selected !== null ? (
-                  <span
-                     data-type='text'
-                     title={options[selected].title}
-                     onClick={() => {
-                        if (!readOnly) {
-                           setKeyword('')
-                           setSelected(null)
-                           setIsOptionsVisible(true)
-                        }
-                     }}
-                  >
-                     {options[selected].title}
-                  </span>
-               ) : stateDefaultName !== '' && selected === null ? (
-                  <span
-                     data-type='text'
-                     title={stateDefaultName}
-                     onClick={() => {
-                        if (!readOnly) {
-                           setKeyword('')
-                           setSelected(null)
-                           setStateDefaultName('')
-                           setIsOptionsVisible(true)
-                           if (!isOptionsVisible) {
-                              handleClick?.()
+                  <div data-type='text'>
+                     <span
+                        data-type='text'
+                        title={options[selected].title}
+                        onClick={() => {
+                           if (!readOnly) {
+                              setKeyword('')
+                              setSelected(null)
+                              setIsOptionsVisible(true)
                            }
-                        }
-                     }}
-                  >
-                     {stateDefaultName}
-                  </span>
+                        }}
+                     >
+                        {options[selected].title}
+                     </span>
+                  </div>
+               ) : stateDefaultName !== '' && selected === null ? (
+                  <div data-type='text'>
+                     <span
+                        data-type='text'
+                        title={stateDefaultName}
+                        onClick={() => {
+                           if (!readOnly) {
+                              setKeyword('')
+                              setSelected(null)
+                              setStateDefaultName('')
+                              setIsOptionsVisible(true)
+                              if (!isOptionsVisible) {
+                                 handleClick?.()
+                              }
+                           }
+                        }}
+                     >
+                        {stateDefaultName}
+                     </span>
+                  </div>
                ) : (
-                  <>
+                  <div data-type='icon'>
                      <span data-type='icon'>
-                        <SearchIcon  size='12px' />
+                        <SearchIcon size='12px' />
                      </span>
 
                      <input
@@ -165,9 +169,9 @@ const SingleSelect = ({
                            setIsOptionsVisible(true)
                         }}
                      />
-                  </>
+                  </div>
                )}
-            </div>
+            </>
             {!readOnly && (
                <button disabled={disabled} onClick={onDropdownSelcted}>
                   {isOptionsVisible ? <ArrowUpIcon /> : <ArrowDownIcon />}

@@ -80,12 +80,18 @@ export const StyledSelected = styled.div(
       box-shadow: null;
       opacity: ${disabled ? 0.5 : 1};
       cursor: ${disabled && 'not-allowed'};
+      div[data-type='text'] {
+         grid-template-columns: 1fr 24px;
+      }
+      div[data-type='icon'] {
+         grid-template-columns: 24px 1fr;
+      }
       div {
          height: 18px;
          display: flex;
          align-items: center;
          display: grid;
-         grid-template-columns: 24px 1fr;
+         ${'' /* grid-template-columns: 24px 1fr; */}
          grid-template-areas: 'search input';
          input {
             height: 18px;
